@@ -1,0 +1,67 @@
+<md-content flex >
+    <div flex></div>
+</md-content>
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="main">
+    <md-toolbar class="md-theme-light md-accent">
+        <span>
+            <h1 class="md-toolbar-tools">Eats</h1>
+        </span>
+    </md-toolbar>
+    <md-content ng-controller="authJwt" layout-padding>
+        <md-list ng-cloak layout-padding>
+            <!-- Link to profile -->
+            <md-list-item ng-if="!access" href="#aboutModal" data-toggle="modal" data-target="#profilsida" md-expando>
+                <p>{{ name }}</p>
+                <i class="fa fa-user"></i>
+            </md-list-item>
+            <!-- Link to settings -->
+            <md-list-item href="#">
+                <p>Inställningar</p>
+                <i class="fa fa-cog"></i>
+            </md-list-item>
+            <hr>
+            <!-- Group Menu -->
+            <md-subheader ng-if="!access" class="md-no-sticky">Grupper</md-subheader>
+            <md-list-item ng-if="!access" href="#">
+                <p>Grupp 1</p>
+                <i class="fa fa-users"></i>
+            </md-list-item>
+            <md-list-item ng-if="!access" href="#">
+                <p>Grupp 2</p>
+                <i class="fa fa-users"></i>
+            </md-list-item>
+            <hr ng-if="!access">
+    <!-- Others Menu -->
+            <md-subheader  class="md-no-sticky">Övrigt</md-subheader>
+            <!-- Menu seciton create new poll and new group and add restaurant -->
+            <md-list-item  ng-click="createPoll($event)">
+                <p>Skapa ny omröstning</p>
+                <i class="glyphicon glyphicon-plus"></i>
+            </md-list-item>
+            <md-list-item ng-hide="access" ng-click="createPoll($event)">
+                <p>Skapa ny grupp</p>
+                <i class="glyphicon glyphicon-plus"></i>
+            </md-list-item>
+            <md-list-item  href="#" ng-controller="templatepopup" id="addRestaurantButton" ng-click="toggleAddRestaurant(); showAdvanced($event, 'addrestaurant'); ">
+                <p>Lägg till restaurant</p>
+                <i class="fa fa-users"></i>
+            </md-list-item>
+			<md-list-item ng-click="showAdvanced($event)">
+				<p>Skapa ny restaurang</p>
+			</md-list-item>			
+			
+            <hr>
+            <div>
+                <div  class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
+                    <md-button ng-if="access" ng-controller="templatepopup"  class="login md-raised" ng-click="showTabDialog($event, 'login')" >
+                           <i class="glyphicon glyphicon-log-in"></i> Logga in
+                    </md-button>
+                    <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">
+                       <i class="glyphicon glyphicon-log-out"></i> Logga ut
+                    </md-button>
+                </div>
+            </div>
+            
+        </md-list>
+    </md-content>
+</md-sidenav>

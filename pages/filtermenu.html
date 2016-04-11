@@ -1,0 +1,67 @@
+<md-content flex >
+    <div flex></div>
+</md-content>
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="filter">
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Filtera ställen</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+    <!-- Filter Menu -->
+    <div>
+    <!-- Types of filter -->
+        <div>
+            <span class="filter-undertitle">		
+                Typ av ställe/utbud
+            </span>
+            <md-list ng-cloak>
+            </md-list>    
+            <!--
+            <table>
+                <tr ng-repeat="row in rows">
+                    <td ng-repeat="checkbox in checkboxes">{{ checkbox }}</td>
+                </tr>
+            </table>
+            -->
+            <table style="width:100%">
+
+                <tr>
+                    <td><md-checkbox class="md-primary">Alla ställen</md-checkbox></td>
+                    <td><md-checkbox class="md-primary">Café</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary">Indiskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary">Asiatiskt</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary">Vegetariskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary">Veganskt</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary">Sushi</md-checkbox></td>
+                    <td><md-checkbox class="md-primary">Pizza</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary">Kött</md-checkbox></td>
+                    <td><md-checkbox class="md-primary">Burgare</md-checkbox></td>
+                </tr>
+            </table>
+            <!-- Price Filter Slider -->
+            <md-slider-container>
+                <p class="filter-undertitle">Pris</p>
+                <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly">
+                </md-slider>
+            </md-slider-container>
+
+            <!-- Rating -->
+            <span class="filter-undertitle"> Betyg </span>
+                <div class="star-rating"> 
+                    <span class="fa fa-star" data-rating="1"></span>
+                    <span class="fa fa-star" data-rating="2"></span>
+                    <span class="fa fa-star" data-rating="3"></span>
+                    <span class="fa fa-star-o" data-rating="4"></span>
+                    <span class="fa fa-star-o" data-rating="5"></span>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</md-sidenav>

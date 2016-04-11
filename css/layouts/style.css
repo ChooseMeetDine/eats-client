@@ -1,0 +1,122 @@
+/* RESETS: md-button., md-list*/
+.md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
+    margin:0;
+    padding:0;
+    min-width:0;
+    min-height:0;
+    line-height:normal;
+}
+
+/*HTML*/
+html,body {
+    height: 100%;
+    overflow-x: hidden;
+    
+}
+/*Map*/
+#map {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    height: 100%;
+    z-index: 0;    
+}
+
+.filter-undertitle {
+    font-size: 18px;
+    padding: 10px;
+}
+.star-rating {
+    line-height: 32px;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+}
+
+/*Poll*/
+#createPollButton {
+    z-index: 2;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-decoration:none;
+    outline:none;
+}
+
+#createPollButton:hover {
+    opacity: 0.7;
+}
+/*mainmenu*/
+#menu{
+    position:absolute;
+    top:0;
+    left:0;
+    display:block;
+    height:25px;
+    background:white;
+    z-index:4;
+    padding:0;
+    margin:0;
+}
+#menu .md-button{
+    display:block;
+    width:25px;
+    float:left;
+    line-height: 25px;
+}
+md-sidenav{
+    display:block;
+    height:100vh;
+    z-index: 3;
+    padding-top:26px;
+    
+}
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+
+/*the width of the sidemenu*/    
+
+.infomenu{
+    width: 500px;
+}
+
+.moreinfo{
+    float:right;
+    z-index: 3;
+    background:white;
+    width:200px;
+    height:50px;
+    right:400px;
+}
+
+/*images*/
+.popupimg{
+    width:200px;
+    
+}
+.infoimg{
+    width:350px;
+}
+
+/*loginbutton*/
+.login{
+    width:50%;
+    height:30px;
+}
+/*add restaurant button*/
+.saveRestaurantButton{
+    /*display:none;*/
+    position:absolute;
+    right: 20px;
+    bottom: 100px;
+    z-index:2;
+    
+}
+/*hide md-dialog-container*/
+.display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
+    display: none !important;
+}

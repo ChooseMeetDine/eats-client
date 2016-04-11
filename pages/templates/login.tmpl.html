@@ -1,0 +1,73 @@
+<!--This is the main window for login and register --->
+<md-dialog aria-label="Login">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Logga in eller registrera dig</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+      
+      
+<md-dialog-content style="max-width:800px;max-height:810px; ">
+  <md-tabs md-dynamic-height md-border-bottom>
+       
+    
+    <!-- First tab wich includes the "login" page with input forms and logos -->           
+
+        <md-tab label="Logga in">        
+            <md-content class="md-padding">
+                <form name="login" ng-controller="loginUser" ng-submit="loginUser()">
+                    <md-input-container>
+                        <label>Email</label>
+                        <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
+                        <input ng-model="email" type="email">
+                    </md-input-container> <br>
+                    <md-input-container>
+                        <label>Lösenord</label>
+                        <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
+                        <input ng-model="password" type="password">
+                    </md-input-container>  
+                    <input type="submit" value="Logga in">
+                </form>
+            </md-content>
+        </md-tab>
+          
+    <!-- Second tab wich includes the "register" page with input forms and logos -->           
+        <md-tab label="Registrera">
+                <md-content class="md-padding">
+                    <form name="register" ng-controller="addUser" ng-submit="regUser()">
+                        <md-input-container>
+                            <label>Namn</label>
+                            <md-icon md-svg-src="images/icons/ic_person_24px.svg"></md-icon>
+                            <input ng-model="name" type="text">
+                        </md-input-container> <br>
+                        <md-input-container>
+                            <label>Email</label>
+                            <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
+                            <input ng-model="email" type="email">
+                        </md-input-container> <br>
+                        <md-input-container>
+                            <label>Lösenord</label>
+                            <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
+                            <input ng-model="password" type="password">
+                        </md-input-container>  
+                        <input type="submit" value="Registrera">
+                    </form>
+                </md-content>
+        </md-tab>
+    </md-tabs>
+</md-dialog-content>
+
+      
+    <!-- OK and Cancel buttons for sending the form and closing the window-->           
+      
+      
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()">
+        Avbryt
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

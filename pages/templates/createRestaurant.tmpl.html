@@ -1,0 +1,62 @@
+<md-dialog aria-label="addRestaurant"  ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">  
+                <h2>Lägg till ny restaurang</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+    
+    <md-dialog-content layout-padding>
+    <div ng-controller="addRestaurant" class="md-dialog-content">
+      <form name="addRestaurant" ng-submit="regRest()"> 
+	  
+        <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Namn</label>
+            <input ng-model="name" type="text" value=""/>
+        </md-input-container>
+        </div>
+		
+		<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+            <label>Adress</label>
+            <input ng-model="adress" type="text" value=""/>
+			<md-button class="md-raised md-primary" ng-click="cancel()">
+                Lägg till adress från kartan 
+			</md-button>
+        </md-input-container>
+        </div>
+
+		
+		<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+            <label>Telefon</label>
+            <input ng-model="phone" type="text" value=""/>
+        </md-input-container>
+        </div>
+		
+        <div layout-gt-sm="row">
+		<p>Betyg</p>
+          <md-checkbox>1</md-checkbox>
+        </div>
+	</md-dialog-content>
+	
+     <div layout-gt-sm="row">
+	 
+		<md-dialog-actions layout="row">
+			<md-button class="md-raised md-primary" ng-click="cancel()">
+                Spara 
+            </md-button>
+			<md-button class="md-raised md-primary" ng-click="cancel()">
+                Avbryt
+            </md-button>
+        </md-dialog-actions>	 
+	 
+	 
+         
+        </div>
+      </form>
+    </div>
+	
+	</md-dialog>
+ 

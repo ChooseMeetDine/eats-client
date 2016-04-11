@@ -1,0 +1,32 @@
+<!-- Modal - Profilsida i popup-fönster -->
+    <div ng-controller="authJwt" class="modal fade" id="profilsida" tabindex="-1" role="dialog" aria-labelledby="profilsidaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <center>
+                    <img src="images/profile.jpeg" name="profilsida" width="140" height="140" border="0" class="img-circle">
+                    <h3 class="media-heading">{{ name }} <small>Malmö</small></h3>
+                    <hr>
+                    <center>
+                    <p class="text-center">
+                        <strong>Email: </strong><br>
+                        {{ name }}@mail.se
+                    </p>
+                    <p class="text-center">
+                        <strong>Mobilnummer: </strong><br>
+                        0738097421
+                    </p>
+                    <br>
+                    <button type="button" class="btn btn-default">Redigera</button>
+                    </center>
+                    <br>                                         
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tillbaka till kartan</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>

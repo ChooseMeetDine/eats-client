@@ -1,0 +1,120 @@
+{
+	"links": {
+		"self": "/restaurants"
+	},
+	"data": [{
+		"type": "restaurant",
+		"id": "RESTAURANT_ID_1",
+		"attributes": {
+			"name": "Bamboo City",
+			"info": " Här kan du njuta av Thaibuffé, Kinabuffé, Sushi och Mongolian barbeque. Vi erbjuder en mycket hög kvalitet i våra bufféer i härliga lokaler. Vi serverar både lunch och a la carte.",
+			"photo": "http://www.lorensbergsteatern.se/sites/default/files/Mat.jpg",
+			"pricerate": 3,
+			"rating": 4,
+			"number_votes": 27,
+			"number_won_votes": 3,
+			"lng": 13.000259,
+			"lat": 55.6035815,
+			"temporary": false
+		},
+		"relationships": {
+			"category": {
+				"data": [{
+					"type": "category",
+					"id": "CATEGORY_ID_1"
+				}, {
+					"type": "category",
+					"id": "CATEGORY_ID_3"
+				}]
+			}
+		},
+		"links": {
+			"self": "/restaurants/RESTAURANT_ID_1"
+		}
+	}, {
+		"type": "restaurant",
+		"id": "RESTAURANT_ID_2",
+		"attributes": {
+			"name": "Green Mango",
+			"info": "Helt ovanligt thai restaurant",
+			"photo": "http://whatsupsthlm.se/images/content/location/2925/restaurang_muse(3).jpg",
+			"pricerate": 3,
+			"rating": 3,
+			"number_votes": 15,
+			"number_won_votes": 2,
+			"lng": 13.0085857,
+			"lat": 55.5909276,
+			"temporary": false
+		},
+		"relationships": {
+			"category": {
+				"data": [{
+					"type": "category",
+					"id": "CATEGORY_ID_2"
+				}, {
+					"type": "category",
+					"id": "CATEGORY_ID_3"
+				}]
+			}
+		},
+		"links": {
+			"self": "/restaurants/RESTAURANT_ID_2"
+		}
+	}, {
+		"type": "restaurant",
+		"id": "RESTAURANT_ID_3",
+		"attributes": {
+			"name": "Krua Thai",
+			"info": "Helt vanligt thai restaurant",
+			"photo": "http://static.thatsup.net/content/img/place/r/e/50bf02859354ad44c8455e71f04fa975.jpg",
+			"pricerate": 3,
+			"rating": 3,
+			"number_votes": 15,
+			"number_won_votes": 2,
+			"lng": 13.0067133,
+			"lat": 55.591311,
+			"temporary": false
+		},
+		"relationships": {
+			"category": {
+				"data": [{
+					"type": "category",
+					"id": "CATEGORY_ID_2"
+				}, {
+					"type": "category",
+					"id": "CATEGORY_ID_3"
+				}]
+			}
+		},
+		"links": {
+			"self": "/restaurants/RESTAURANT_ID_3"
+		}
+	}, {
+		"type": "restaurant",
+		"id": "RESTAURANT_ID_4",
+		"attributes": {
+			"name": "Veggie Garden",
+			"info": "Black magic veggie food for hipsters",
+			"photo": "http://www.thaibreak.se/wp-content/uploads/2012/11/Thaibreak-Restaurang-Uppsala-SEB-USIF-Arena-Dec-2012-101.jpg",
+			"pricerate": 3,
+			"rating": 1,
+			"number_votes": 23,
+			"number_won_votes": 4,
+			"lng": 13.0061388,
+			"lat": 55.6039523,
+			"temporary": false
+		},
+		"relationships": {
+			"category": {
+				"data": [{
+					"type": "category",
+					"id": "CATEGORY_ID_3"
+				}]
+			}
+		},
+		"links": {
+			"self": "/restaurants/RESTAURANT_ID_4"
+		}
+	}
+    ]
+}

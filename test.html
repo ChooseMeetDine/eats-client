@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CMD</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- Angular -->
+        <script src="libs/bower/lib/angular/angular.js"></script>
+        <!-- Angular Material -->
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <!-- Bootstrap -->
+		<script src="libs/bower/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="libs/bower/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="libs/bower/lib/bootstrap/dist/css/bootstrap.css">
+        <!-- MapBox -->
+        <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
+        <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
+		<!-- Leaflet -->
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.js'></script>
+        <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.css' rel='stylesheet' />
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="libs/bower/lib/font-awesome/css/font-awesome.css">
+        <!-- location button/mapbox -->
+		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+        <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+        <!--[if lt IE 9]>
+        <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
+        <![endif]-->
+
+        <!-- AngularJS App & Controllers & Views -->
+        <script src="js/app.js"></script>
+        <script src="js/controllers/registerUser.js"></script>
+        <script src="js/controllers/slider.js"></script>
+        <script src="js/controllers/list.js"></script>
+        <script src="js/controllers/checkbox.js"></script>
+        <script src="js/views/getRestaurants.js"></script>
+        <script src="js/views/getUserInformation.js"></script>
+        <script src="js/views/addRestaurant.js"></script>
+        <script src="js/views/addUser.js"></script>
+        <script src="js/views/addPoll.js"></script>
+
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+        <!-- Custom Stylesheets -->
+		<link rel="stylesheet" type="text/css" href="css/layouts/style.css">
+        
+	</head>
+    <body ng-app="app">
+        <div id="registerPage" ng-include="'pages/registerpage.html'"></div>
+	</body>
+</html>

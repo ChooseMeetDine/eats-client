@@ -1,0 +1,56 @@
+<md-dialog ng-controller="authJwt" aria-label="addPoll"  ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">  
+                <h2>Lägg till omröstning</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+    
+    <md-dialog-content layout-padding>
+    <div ng-controller="addPoll" class="md-dialog-content">
+      <form name="addPoll" ng-submit="regPoll()"> 
+        <div layout-gt-sm="row">
+          
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Omröstningsnamn</label>
+            <input ng-model="name" type="text" value="name" >
+        </md-input-container>
+        </div>
+        
+          <div layout-gt-xs="row">
+              <input type="datetime-local" ng-model="expires" name="expires">
+        </div>
+        <div layout-gt-xs="row">
+          <md-checkbox value="allowNewRestaurants" ng-model="allowNewRestaurants.value1">Endast jag får lägga till restauranger</md-checkbox>
+        </div>
+        <form>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Lägg till användare med id</label>
+                <input ng-model="userId" type="text" value="userId" >
+            </md-input-container>
+        </div>
+        </form>
+        <form ng-if="!access">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Lägg till användare med id</label>
+                <input ng-model="userId" type="text" value="userId" >
+            </md-input-container>
+        </div>
+        </form>
+        <div layout-gt-xs="row">
+          <md-button value="addRestaurants">Lägg till restauranger</md-button>
+        </div>
+        <div layout-gt-sm="row">
+            <input type="submit" value="Skapa omröstning" ng-click="cancel()">
+        </div>
+      </form>
+    </div>
+  </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">
+                Avbryt
+            </md-button>
+        </md-dialog-actions>
+</md-dialog>

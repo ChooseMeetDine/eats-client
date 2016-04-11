@@ -1,0 +1,10 @@
+# Framework library 
+libs/lib
+
+# Dependency dir.
+node_modules
+
+# Grunt filemanager
+libs/grunt
+
+.DS_Store

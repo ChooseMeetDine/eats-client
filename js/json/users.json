@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "type": "user",
+      "id": "USER_ID_1",
+      "attributes": {
+        "name": "Lars",
+        "photo": "http://photo.com/9876.jpg"
+      },
+      "links": {
+        "self": "/user/user_ID_1"
+      }
+    },
+    {
+      "type": "user",
+      "id": "USER_ID_2",
+      "attributes": {
+        "name": "Anders",
+        "photo": "http://photo.com/8765.jpg"
+      },
+      "links": {
+        "self": "/user/user_ID_2"
+      }
+    }
+  ]
+}

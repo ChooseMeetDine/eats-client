@@ -1,0 +1,17 @@
+<section id="moreInfoMenu" ng-controller="slideMenu">
+    <div flex></div>
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp infomenu" md-component-id="info">
+        <div id="moreInfoSlider">
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">{{ content.name }}</h1>
+            </md-toolbar>
+            <md-content  layout-padding>
+                <md-list>
+                    <md-list-item><img class="infoimg" src="{{ content.photo }}"></md-list-item>
+                    <md-list-item>Info:<br>{{ content.extra.info }}</md-list-item>
+                    <md-list-item>Betyg: {{ content.rating }}</md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+    </md-sidenav>
+</section>

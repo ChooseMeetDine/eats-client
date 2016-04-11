@@ -1,0 +1,49 @@
+<div id="addRestaurant">
+<h1>Add Restaurant</h1>
+<div  ng-controller="addRestaurant" layout="column" ng-cloak class="md-inline-form">
+    <form ng-submit="regRestaurant()">
+        namn: <input type="text" value="name" ng-model="name" required><br>
+        category: <input type="text" value="category" ng-model="category"><br>
+        price rate: <input type="text" value="priceRate" ng-model="priceRate" required><br>
+        rating: <input type="text" value="rating" ng-model="rating"><br>
+        info: <input type="text" value="info" ng-model="info" required><br>
+        photo: <input type="text" value="photo" ng-model="photo"><br>
+        lat: <input type="text" value="lng" ng-model="lat" required><br>
+        lng: <input type="text" value="lat" ng-model="lng" required><br>
+        <input type="submit" id="submit" value="addRestaurant">
+    </form>
+</div>
+</div>
+
+<div id="addUser">
+<h1>Add User</h1>    
+<div  ng-controller="addUser" layout="column" ng-cloak class="md-inline-form">
+    <form ng-submit="regUser()">
+        namn: <input type="text" value="name" ng-model="name" required><br>
+        password: <input type="text" value="password" ng-model="password" required><br>
+        email: <input type="text" value="email" ng-model="email" required><br>
+        <input type="submit" id="submit" value="addUser">
+    </form>
+</div>
+</div>
+
+<div id="addPoll">
+<h1>Add Poll</h1>    
+<div  ng-controller="addPoll" layout="column" ng-cloak class="md-inline-form">
+    <form ng-submit="regPoll()">
+        namn: <input type="text" value="name" ng-model="name" ><br>
+        expires: <input type="text" value="expires" ng-model="expires"><br>
+        restaurants: <input type="text" value="restaurants" ng-model="restaurants"><br>
+        <!--users: <input type="text" value="users" ng-model="users" ><br>-->
+        Disable add new restaurants: <input type="checkbox" value="allowNewRestaurants" ng-model="allowNewRestaurants.value1"><br>
+        <p>{{allowNewRestaurants.value1}}</p>
+        <!--<select>
+            <option ng-repeat="restaurant in restaurants">{{restaurant}}</option>
+        </select><br>
+        
+        group:<input type="text" value="group" ng-model="group" ><br>
+        -->
+        <input type="submit" id="submit" value="addUser">
+    </form>
+</div>
+</div>
