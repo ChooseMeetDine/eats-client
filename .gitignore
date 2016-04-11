@@ -1,5 +1,5 @@
 # Framework library 
-libs/lib
+libs/bower/lib
 
 # Dependency dir.
 node_modules
