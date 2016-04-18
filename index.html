@@ -38,6 +38,7 @@
     <script src="js/controllers/appCtrl.js"></script>
     <script src="js/controllers/showPoll.js"></script>
     <script src="js/controllers/activePolls.js"></script>
+    <script src="js/controllers/addRestaurantsToPoll.js"></script>
     <script src="js/services/pollService.js"></script>
     <script src="js/services/modeService.js"></script>
     <script src="js/views/loginUser.js"></script>
@@ -70,8 +71,8 @@
     <div ng-include="'pages/profilepage.html'"></div>
     <div ng-include="'pages/votepage.html'"></div>
     <div ng-include="'pages/activepolls.html'"></div>
-    <div ng-show="mode.active === 'ADD_RESTAURANTS_MODE'">asd
-        <md-button style='position:absolute;top:10px;left:300px;z-index:10;padding:20px;' class="md-raised md-warn"> MODE: ADDING RESTAURANTS </md-button>
+    <div ng-show="mode.active === 'ADD_RESTAURANTS_MODE'">
+        <div ng-include="'pages/addrestaurantstopoll.html'"></div>
     </div>
     <!--<div ng-controller="getUserInformation"></div>-->
     <!-- Karta -->

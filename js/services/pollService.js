@@ -3,10 +3,12 @@ app.factory('pollService', function() {
 
     var pollMap = {};
     var active = {};
-    var form = {};
+    var form = {
+        data: {}
+    };
 
-    pollService.setForm = function(formInput) {
-        form = formInput;
+    pollService.setForm = function(formData) {
+        form.data = formData;
     };
 
     pollService.getForm = function() {
@@ -25,7 +27,6 @@ app.factory('pollService', function() {
             }
         }
         if (!restaurantFound) {
-            alert('DU LA TILL RESTAURANGEN. WOHOO')
             form.restaurants.push(restaurant);
             return true;
         }
@@ -40,7 +41,7 @@ app.factory('pollService', function() {
         for (var i = 0; i < form.restaurants.length; i++) {
             if (form.restaurants[i].id === restaurant.id) {
                 restaurantFound = true;
-                array.splice(i, 1);
+                form.restaurants.splice(i, 1);
                 break;
             }
         }
