@@ -17,9 +17,7 @@ app.controller('addUser', function($scope, $http) {
             }, function errorCallback(){
                 $scope.regUser = "error";
             });
-            
             console.log(user);   
-            
         };
     });
                    
