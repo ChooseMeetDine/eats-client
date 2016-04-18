@@ -1,11 +1,14 @@
-
 var map = L.map('map', { zoomControl: false }).locate({setView: true, maxZoom: 13});
 
-//mapbox://styles/gustavsvensson/cin1hwd9a00bncznomsx507se
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    maxZoom: 18,
-    id: 'wiigolas.p7idlkkp',
-    accessToken: 'pk.eyJ1Ijoid2lpZ29sYXMiLCJhIjoiY2lreHYxejNvMDA0NndsbTRmejl4NndqMSJ9.5hfLbJnXbAsfsPRT3V4W4Q'
+//Referenses to map styles that are saved online
+//ID & Token list: 
+//{beijar/cin5pab6g00sectnf9c96x1u2 : pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q
+//{gustavsvensson/cin1hwd9a00bncznomsx507se : pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ}
+
+var mapId = 'gustavsvensson/cin1hwd9a00bncznomsx507se'
+var mapToken = 'pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ'
+
+L.tileLayer('https://api.mapbox.com/styles/v1/'+mapId+'/tiles/{z}/{x}/{y}?access_token='+mapToken, {
 }).addTo(map);
 
 var markers = new L.FeatureGroup();
@@ -17,7 +20,6 @@ new L.control.locate({position: 'topright'}).addTo(map);
 function onLocationFound(e) {
     var radius = e.accuracy;
     L.marker(e.latlng, {icon:redIcon}).addTo(map);
-
     }   
 
 function onLocationError(e) {
