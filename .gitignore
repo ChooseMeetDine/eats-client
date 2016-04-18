@@ -1,4 +1,4 @@
-# Framework library 
+# Framework library
 libs/bower/lib
 
 # Dependency dir.
@@ -6,5 +6,9 @@ node_modules
 
 # Grunt filemanager
 libs/grunt
+
+# Logs
+*.log
+npm-debug.log*
 
 .DS_Store

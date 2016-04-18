@@ -1,16 +1,15 @@
 # eats-client
 Public repository for the Eats client
 
-###How to start
-clone repo to your web server folder.
-Make sure you have installed npm and bower on your computer.
-open terminal window.
-run.
+### How to start
+Clone the repo to your web server folder and make sure you have installed npm and bower on your computer.
+
+Open a terminal window and run:
 ```
-npm install
+npm install && bower install
 ```
-run.
+To start a Node server, run:
 ```
-bower install
+npm start
 ```
-start your server.
+.. or use another web server of your choice (like Apache in an XAMPP installation).
