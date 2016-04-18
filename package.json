@@ -1,16 +1,29 @@
 {
-  "name": "cmd",
-  "version": "1.0.0",
+  "name": "eats-client",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "David Josefson",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-uglify": "^0.11.1",
     "bower": "^1.7.9"
+  },
+  "description": "Client for the Eats application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChooseMeetDine/eats-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChooseMeetDine/eats-client/issues"
+  },
+  "homepage": "https://github.com/ChooseMeetDine/eats-client",
+  "dependencies": {
+    "express": "^4.13.4"
   }
 }
