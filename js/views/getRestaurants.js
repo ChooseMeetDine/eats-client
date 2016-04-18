@@ -13,6 +13,14 @@ app.controller('getRestaurants', function($scope, $http, $window) {
             /*headers: {'x-access-token' : $window.localStorage['jwtToken']}*/
         }).then(function successCallback(response) {
             resultRestaurant(response.data);
+            for(var i = 0; i < response.data.data.length; i++){
+                //console.log(response.data.data[i].relationships.categories);
+                for(var j = 0; j < response.data.data[i].relationships.categories.length; j++){
+                    console.log(response.data.data[i].relationships.categories[j].data);
+                }
+         
+            }
+            //console.log(response.data.data[0].relationships.categories[0].data);
         }, function errorCallback(response) {
            console.log("Error, cannot load restaurants!");
         });
@@ -40,7 +48,7 @@ app.controller('getRestaurants', function($scope, $http, $window) {
             var id = restaurant.id;
             restaurantResult[id] = restaurantData;
         }
-        console.log(restaurantResult);
+        //console.log(restaurantResult);
         placeMarker(restaurantResult);
         
         
