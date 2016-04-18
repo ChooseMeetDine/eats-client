@@ -1,0 +1,14 @@
+<md-dialog ng-controller="showPoll" aria-label="addPoll" ng-cloak>
+    <md-dialog-content layout-padding>
+        <div class="md-dialog-content">
+            <h2>Namn: {{active.data.attributes.name}} </h2>
+            <p>ID: {{active}} </p>
+            <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
+            <p>created: {{active.data.attributes.created}} </p>
+            <p>Slutar: {{active.data.attributes.expires}}</p>
+            <p>Användare: </p>
+            <p ng-repeat="user in getPollUsers()">Namn: {{user.name}}</p>
+            <p>Restauranger: {{active.restaurants}} </p>
+        </div>
+    </md-dialog-content>
+</md-dialog>
