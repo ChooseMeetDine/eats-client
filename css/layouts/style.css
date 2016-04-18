@@ -5,12 +5,14 @@
     min-width:0;
     min-height:0;
     line-height:normal;
+    font-family: open sans, arial;
 }
 
 /*HTML*/
 html,body {
     height: 100%;
     overflow-x: hidden;
+    font-family: open sans, arial;
     
 }
 /*Map*/
@@ -36,19 +38,23 @@ html,body {
     margin: 10px;
 }
 
-/*Poll*/
+/*create poll button*/
 #createPollButton {
     z-index: 2;
     position: absolute;
     bottom: 20px;
     right: 20px;
-    text-decoration:none;
-    outline:none;
+    background: none;
 }
-
-#createPollButton:hover {
+/*create poll button when hovering*/
+#createPollIcon:hover {
     opacity: 0.7;
 }
+/*create poll icon making the plus sign bigger*/
+#createPollIcon {
+    font-size: 72px;
+}
+
 /*mainmenu*/
 #menu{
     position:absolute;
@@ -61,12 +67,15 @@ html,body {
     padding:0;
     margin:0;
 }
+/*all md-buttons in mainmenu*/
 #menu .md-button{
     display:block;
     width:25px;
     float:left;
     line-height: 25px;
 }
+
+/*sidenavu*/
 md-sidenav{
     display:block;
     height:100vh;
@@ -79,11 +88,11 @@ md-backdrop.md-sidenav-backdrop{
 }
 
 /*the width of the sidemenu*/    
-
 .infomenu{
     width: 500px;
 }
 
+/*more info about a restaurant*/
 .moreinfo{
     float:right;
     z-index: 3;

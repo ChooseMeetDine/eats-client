@@ -1,67 +1,66 @@
 <md-content flex >
     <div flex></div>
 </md-content>
+
+<!-- Filter Menu -->
 <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="filter">
+    
+    <!-- Menu title -->
     <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Filtera ställen</h1>
+        <h1 class="md-toolbar-tools">Filter</h1>
     </md-toolbar>
-    <md-content layout-padding>
-    <!-- Filter Menu -->
-    <div>
-    <!-- Types of filter -->
-        <div>
-            <span class="filter-undertitle">		
-                Typ av ställe/utbud
-            </span>
-            <md-list ng-cloak>
-            </md-list>    
-            <!--
-            <table>
-                <tr ng-repeat="row in rows">
-                    <td ng-repeat="checkbox in checkboxes">{{ checkbox }}</td>
-                </tr>
-            </table>
-            -->
-            <table style="width:100%">
+    
+    <!-- Menu content with different types of filter choices -->
+    <md-content layout-padding layout-margin layout-fill>
+        
+        <!-- Filter by type of place -->
+        <span class="filter-undertitle"> By type of place </span>
+        
+        <table style="width:100%">
+            <tr>
+                <td><md-checkbox class="md-primary">all places</md-checkbox></td>
+                <td><md-checkbox class="md-primary">coffee shops</md-checkbox></td>
+            </tr>
+            <tr>
+                <td><md-checkbox class="md-primary">indian food</md-checkbox></td>
+                <td><md-checkbox class="md-primary">asian</md-checkbox></td>
+            </tr>
+            <tr>
+                <td><md-checkbox class="md-primary">vegetarian</md-checkbox></td>
+                <td><md-checkbox class="md-primary">vegan</md-checkbox></td>
+            </tr>
+            <tr>
+                <td><md-checkbox class="md-primary">sushi</md-checkbox></td>
+                <td><md-checkbox class="md-primary">pizza</md-checkbox></td>
+            </tr>
+            <tr>
+                <td><md-checkbox class="md-primary">meat</md-checkbox></td>
+                <td><md-checkbox class="md-primary">burger</md-checkbox></td>
+            </tr>
+        </table>
+        <!-- The table should be done this way....
+        
+        <table>
+            <tr ng-repeat="row in rows">
+                <td ng-repeat="checkbox in checkboxes">{{ checkbox }}</td>
+            </tr>
+        </table>
+        -->
+            
+        <!-- Filter by type of price -->
+        <md-slider-container>
+            <span class="filter-undertitle"> Price </span>
+            <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly"></md-slider>
+        </md-slider-container>
 
-                <tr>
-                    <td><md-checkbox class="md-primary">Alla ställen</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Café</md-checkbox></td>
-                </tr>
-                <tr>
-                    <td><md-checkbox class="md-primary">Indiskt</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Asiatiskt</md-checkbox></td>
-                </tr>
-                <tr>
-                    <td><md-checkbox class="md-primary">Vegetariskt</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Veganskt</md-checkbox></td>
-                </tr>
-                <tr>
-                    <td><md-checkbox class="md-primary">Sushi</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Pizza</md-checkbox></td>
-                </tr>
-                <tr>
-                    <td><md-checkbox class="md-primary">Kött</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Burgare</md-checkbox></td>
-                </tr>
-            </table>
-            <!-- Price Filter Slider -->
-            <md-slider-container>
-                <p class="filter-undertitle">Pris</p>
-                <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly">
-                </md-slider>
-            </md-slider-container>
-
-            <!-- Rating -->
-            <span class="filter-undertitle"> Betyg </span>
-                <div class="star-rating"> 
-                    <span class="fa fa-star" data-rating="1"></span>
-                    <span class="fa fa-star" data-rating="2"></span>
-                    <span class="fa fa-star" data-rating="3"></span>
-                    <span class="fa fa-star-o" data-rating="4"></span>
-                    <span class="fa fa-star-o" data-rating="5"></span>
-                </div>
+        <!-- Filter by rating grades -->
+        <span class="filter-undertitle"> Rating </span>
+            <div class="star-rating"> 
+                <span data-rating="1"><i class="material-icons">grade</i></span>
+                <span data-rating="2"><i class="material-icons">grade</i></span>
+                <span data-rating="3"><i class="material-icons">grade</i></span>
+                <span data-rating="4"><i class="material-icons">grade</i></span>
+                <span data-rating="5"><i class="material-icons">grade</i></span>
             </div>
-        </div>
     </md-content>
 </md-sidenav>
