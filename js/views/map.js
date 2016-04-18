@@ -4,8 +4,8 @@ var map = L.map('map', { zoomControl: false }).locate({setView: true, maxZoom: 1
 //mapbox://styles/gustavsvensson/cin1hwd9a00bncznomsx507se
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,
-    id: 'wiigolas.p7idlkkp',
-    accessToken: 'pk.eyJ1Ijoid2lpZ29sYXMiLCJhIjoiY2lreHYxejNvMDA0NndsbTRmejl4NndqMSJ9.5hfLbJnXbAsfsPRT3V4W4Q'
+    id: 'gustavsvensson.7nqo8awn',
+    accessToken: 'pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2luMXQxYm90MDBwenc1bTFiZDNoeWkwdiJ9.cpBk5yS7ySqbJyi7ekZi-A'
 }).addTo(map);
 
 var markers = new L.FeatureGroup();
@@ -77,4 +77,6 @@ $('#map').on('click', '.trigger', function() {
 });
 
 
-
+new L.Control.GeoSearch({
+    provider: new L.GeoSearch.Provider.Google()
+}).addTo(map);
