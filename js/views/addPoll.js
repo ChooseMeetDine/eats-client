@@ -1,17 +1,25 @@
 /**
  * Controller for adding polls (POST /polls)
  */
-app.controller('addPoll', function($scope, $http) {
+// app.controller('addPoll', function($scope, $http) {
+app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', function($scope, $http, pollService, modeService) {
+
+  //This is where all formdata-models are stored
+  $scope.formdata = {};
+
+  $scope.loading = false;
+
+  $scope.error = '';
 
   //Input type "datetime-local" requires model to be a Date-object
-  $scope.expires = {
+  $scope.formdata.expires = {
     time: new Date(),
     isSet: false
   };
 
   //function is called when expiry is changed/set by user
-  $scope.exiprySet = function (){
-    $scope.expires.isSet = true;
+  $scope.formdata.exiprySet = function() {
+    $scope.formdata.expires.isSet = true;
   };
 
   /**
@@ -20,76 +28,93 @@ app.controller('addPoll', function($scope, $http) {
    * 3. Formatts response
    * 4. Returns response to ?????????????????????
    */
-  $scope.regPoll = function (){
-    var poll = createPollPostBody();
+  $scope.regPoll = function() {
+    var postBody = createPollPostBody();
+    $scope.error = null;
+    $scope.loading = true;
 
     $http({
         method: 'POST',
-        url: 'http://128.199.48.244:3000/polls' ,
-        headers: {'Content-Type': 'application/json'},
-        data: poll
-    }).then(function(response){
-      var createdPoll = formatPoll(response.data);
-    })
-    .catch(function(err){
-      console.log(err);
-    });
+        url: 'http://128.199.48.244:3000/polls',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: postBody
+      }).then(function(response) {
+        pollService.add(response.data); //Add poll to shared service
+        pollService.setActiveId(response.data.data.id); //set poll as active
+        $scope.swap('showActivePoll'); //Hide this popup and show active poll
+        $scope.loading = false;
+      })
+      .catch(function(err) {
+        $scope.error = err.data.error;
+        $scope.loading = false;
+      });
   };
 
-  /**
-   * Formats response from API into a more usable object
-   * @param  {Object} rawPollData response.data from API-call
-   * @return {Object} Formatted poll-data
-   */
-  var formatPoll = function(rawPollData){
-    //Transfer all attributes to a new object
-    var formattedPoll = rawPollData.data.attributes;
+  $scope.addRestaurants = function() {
+    pollService.setForm($scope.formdata);
+    modeService.setMode('ADD_RESTAURANTS_MODE');
+    $scope.hide();
 
-    //Set id and create arrays for users and restaurants
-    formattedPoll.id = rawPollData.data.id;
-    formattedPoll.users = [];
-    formattedPoll.restaurants = [];
-
-    //Fill users and restaurants properties of formattedPoll with data from "included"
-    for (let i = 0; i < rawPollData.included.length; i++) {
-      var newObject = rawPollData.included[i].attributes;
-      newObject.id = rawPollData.included[i].id;
-      newObject.self = rawPollData.included[i].links.self;
-      if(rawPollData.included[i].type = "user"){
-        formattedPoll.users.push(newObject);
-      } else if(rawPollData.included[i].type = "restaurant") {
-        formattedPoll.restaurants.push(newObject);
-      }
-    }
-    return formattedPoll;
   };
+  // An example of how this can be formatted if JSON-API is hard to work with. 
+  // /**
+  //  * Formats response from API into a more usable object
+  //  * @param  {Object} rawPollData response.data from API-call
+  //  * @return {Object} Formatted poll-data
+  //  */
+  // var formatPoll = function(rawPollData) {
+  //   //Transfer all attributes to a new object
+  //   var formattedPoll = rawPollData.data.attributes;
+
+  //   //Set id and create arrays for users and restaurants
+  //   formattedPoll.id = rawPollData.data.id;
+  //   formattedPoll.users = [];
+  //   formattedPoll.restaurants = [];
+
+  //   //Fill users and restaurants properties of formattedPoll with data from "included"
+  //   for (let i = 0; i < rawPollData.included.length; i++) {
+  //     var newObject = rawPollData.included[i].attributes;
+  //     newObject.id = rawPollData.included[i].id;
+  //     newObject.self = rawPollData.included[i].links.self;
+  //     if (rawPollData.included[i].type = "user") {
+  //       formattedPoll.users.push(newObject);
+  //     } else if (rawPollData.included[i].type = "restaurant") {
+  //       formattedPoll.restaurants.push(newObject);
+  //     }
+  //   }
+  //   return formattedPoll;
+  // };
 
   /**
    * Creates a POST-body from the form for adding polls
    * @return {Object} Complete POST-body
    */
-  var createPollPostBody = function(){
+  var createPollPostBody = function() {
+    var formdata = $scope.formdata;
+
     var poll = {
-        'name': $scope.name
+      'name': formdata.name
     };
 
     //Only add parameters actually set by user
-    if($scope.expires.isSet){
-      poll.expires = $scope.expires.time;
+    if (formdata.expires.isSet) {
+      poll.expires = formdata.expires.time;
     }
-    if($scope.restaurants){
-      poll.restaurants = $scope.restaurants;
+    if (formdata.restaurants) {
+      poll.restaurants = formdata.restaurants.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
     }
-    if($scope.users){
+    if (formdata.users) {
       //Splits string at commas and trims away spaces
-      poll.users = $scope.users.replace(/^\s*|\s*$/g,'').split(/\s*,\s*/);
+      poll.users = formdata.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
     }
-    if($scope.group){
-      poll.group = $scope.group;
+    if (formdata.group) {
+      poll.group = formdata.group;
     }
-    if($scope.allowNewRestaurants){
-      poll.allowNewRestaurants = $scope.allowNewRestaurants;
+    if (formdata.allowNewRestaurants) {
+      poll.allowNewRestaurants = formdata.allowNewRestaurants;
     }
     return poll;
   };
-});
+}]);
