@@ -1,8 +1,3 @@
-<!-- No idea what this does -->
-<md-content flex >
-    <div flex></div>
-</md-content>
-
 <!-- Side navigation main menu -->
 <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="main">
     
@@ -16,15 +11,15 @@
         <md-list ng-cloak layout-padding>
             
             <!-- Link to profile -->
-            <md-list-item href="#">
-                <p>{{ name }}</p>
+            <md-list-item>
+                <p>Username</p>
                 <i class="material-icons">account_circle</i>
             </md-list-item>
             
             <!-- Link to settings -->
-            <md-list-item href="#">
+            <md-list-item>
                 <p>Inställningar</p>
-                <i class="material-icons">settings</i>
+                <i class="fa fa-wrench" aria-hidden="true"></i>
             </md-list-item>
             
             <hr>
@@ -52,16 +47,19 @@
                 </md-list-item>
 
                 <md-list-item  href="#" ng-controller="templatepopup" id="addRestaurantButton" ng-click="toggleAddRestaurant(); showAdvanced($event, 'addrestaurant'); ">
-                    <p>Lägg till restaurant</p>
+                    <p>Lägg till restaurang</p>
                     <i class="material-icons">add</i>
                 </md-list-item>		
 			
             <hr>
             <div>
                 <div  class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
-                    <md-button ng-if="access" ng-controller="templatepopup"  class="login md-raised" ng-click="showTabDialog($event, 'login')" >
-                           <i class="glyphicon glyphicon-log-in"></i> Logga in
+                    <!-- login button -->
+                    <md-button ng-if="access" ng-controller="templatepopup"  class="login" ng-click="showTabDialog($event, 'login')" >
+                           
                     </md-button>
+                    
+                    <!-- logout button -->
                     <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">
                        <i class="glyphicon glyphicon-log-out"></i> Logga ut
                     </md-button>
