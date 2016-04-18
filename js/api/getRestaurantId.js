@@ -1,4 +1,5 @@
 //TODO: TEST THIS API FUNCTION, MAYBE RESTRUCTURE RESULT DATA FOR APP.USAGE
+// Not sure if this needs to be in a angular controller, if only called by other js-files
 app.controller('getRestaurantId', function($scope, $http) {
 	var restaurantIdResult = {}; 
     
