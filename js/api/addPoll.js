@@ -3,11 +3,11 @@
  */
 // app.controller('addPoll', function($scope, $http) {
 app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', function($scope, $http, pollService, modeService) {
-
-
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
+
+  // $scope.form.data.date = new Date(); // use this as time-picker-model in createpoll.tmpl.html
 
   /**
    * 1. Creates POST-body
@@ -44,9 +44,9 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
     $scope.hide();
   };
 
-      $scope.removeRestaurant = function($chip) {
-        pollService.removeRestaurantFromForm($chip);
-    };
+  $scope.removeRestaurant = function($chip) {
+    pollService.removeRestaurantFromForm($chip);
+  };
   // An example of how this can be formatted if JSON-API is hard to work with. 
   // /**
   //  * Formats response from API into a more usable object
