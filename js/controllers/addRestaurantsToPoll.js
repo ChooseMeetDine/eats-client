@@ -1,4 +1,4 @@
-app.controller('addRestaurantsToPoll', ['$scope', 'pollService', 'modeService', function($scope, pollService, modeService) {
+app.controller('addRestaurantsToPoll', ['$scope', 'pollService', 'modeService', '$mdDialog', function($scope, pollService, modeService, $mdDialog) {
     $scope.form = pollService.getForm();
 
     $scope.remove = function($chip) {
@@ -16,7 +16,12 @@ app.controller('addRestaurantsToPoll', ['$scope', 'pollService', 'modeService', 
         })
     }
 
+    $scope.switchToDefaultMode = function() {
+        modeService.setMode('DEFAULT');
+    }
+
     $scope.done = function() {
-        $scope.swap('createPoll'); //Hide this popup and show createPoll
+        $scope.dialogs.showTabDialog(null, 'createpoll');
+        modeService.setMode('DEFAULT');
     }
 }]);

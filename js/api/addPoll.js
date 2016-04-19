@@ -43,6 +43,10 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
     modeService.setMode('ADD_RESTAURANTS_MODE');
     $scope.hide();
   };
+
+      $scope.removeRestaurant = function($chip) {
+        pollService.removeRestaurantFromForm($chip);
+    };
   // An example of how this can be formatted if JSON-API is hard to work with. 
   // /**
   //  * Formats response from API into a more usable object

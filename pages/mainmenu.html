@@ -42,18 +42,18 @@
                 <p>Skapa ny grupp</p>
                 <i class="glyphicon glyphicon-plus"></i>
             </md-list-item>
-            <md-list-item href="#" id="addRestaurantButton" ng-click="toggleAddRestaurant(); showAdvanced($event, 'addrestaurant'); ">
+            <md-list-item href="#" id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showAdvanced($event, 'addrestaurant'); ">
                 <p>Lägg till restaurant</p>
                 <i class="fa fa-users"></i>
             </md-list-item>
-            <md-list-item ng-click="showAdvanced($event)">
+            <md-list-item ng-click="dialogs.showAdvanced($event)">
                 <p>Skapa ny restaurang</p>
             </md-list-item>
 
             <hr>
             <div>
                 <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
-                    <md-button ng-if="access" class="login md-raised" ng-click="showTabDialog($event, 'login')">
+                    <md-button ng-if="access" class="login md-raised" ng-click="dialogs.showTabDialog($event, 'login')">
                         <i class="glyphicon glyphicon-log-in"></i> Logga in
                     </md-button>
                     <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">

@@ -18,17 +18,24 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
     } else {
 
     }
+   
+    // Holds all functions for mdDialog to be able to change popups from other controllers
+    $scope.dialogs = {};
 
-    $scope.showAdvanced = function(ev, id) {
+    $scope.dialogs.showAdvanced = function(ev, id) {
+        dialogOptions = {
+            controller: DialogController,
+            templateUrl: 'pages/templates/' + id + '.tmpl.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: false,
+            fullscreen: useFullScreen
+        }
+        if(ev) {
+            dialogOptions.targetEvent = ev;
+        }
+
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-        $mdDialog.show({
-                controller: DialogController,
-                templateUrl: 'pages/templates/' + id + '.tmpl.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: false,
-                fullscreen: useFullScreen
-            })
+        $mdDialog.show(dialogOptions)
             .then(function(answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
             }, function() {
@@ -41,7 +48,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
         });
     };
 
-    $scope.showTabDialog = function(ev, id) {
+    $scope.dialogs.showTabDialog = function(ev, id) {
         console.log('showTabDialog');
         console.log(ev);
         $mdDialog.show({
@@ -83,5 +90,13 @@ function DialogController($scope, $mdDialog) {
             }, function() {
                 $scope.status = 'You cancelled the dialog.';
             });
+    };
+    $scope.show = function(id){
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'pages/templates/' + id + '.tmpl.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true
+        });
     };
 }

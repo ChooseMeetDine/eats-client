@@ -49,6 +49,12 @@
             <md-button type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
           </div>
 
+          <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
+              <md-chip-template ng-click="removeRestaurant($chip)">
+                  <strong>{{$chip.data.attributes.name}} X</strong>
+              </md-chip-template>
+          </md-chips>
+
           <div layout-gt-sm="row ">
             <md-button class="md-accent md-raised " type="submit "> Skapa omröstning </md-button>
           </div>
