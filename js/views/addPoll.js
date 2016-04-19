@@ -28,6 +28,20 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
         },
         data: postBody
       }).then(function(response) {
+        
+        response.data.data.relationships.restaurants = {
+            data: [{"type":"restaurant","id":"10", "attributes": {
+        "name": "Din Restaurang",
+        "lat": 56.1234,
+        "lng": 14.1234,
+        "temporary": false
+      }}, {"type":"restaurant","id":"10", "attributes": {
+        "name": "Min fina Restaurang",
+        "lat": 56.1234,
+        "lng": 14.1234,
+        "temporary": false
+      }}]
+        }
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
         $scope.swap('showActivePoll'); //Hide this popup and show active poll
@@ -77,28 +91,18 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
    * @return {Object} Complete POST-body
    */
   var createPollPostBody = function() {
-    var formdata = $scope.formdata;
+    var data = $scope.form.data;
 
     var poll = {
-      'name': formdata.name
+      'name': data.name
     };
 
-    //Only add parameters actually set by user
-    if (formdata.expires.isSet) {
-      poll.expires = formdata.expires.time;
-    }
-    if (formdata.restaurants) {
-      poll.restaurants = formdata.restaurants.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
-    }
-    if (formdata.users) {
+    if (data.users) {
       //Splits string at commas and trims away spaces
-      poll.users = formdata.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
+      poll.users = data.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
     }
-    if (formdata.group) {
-      poll.group = formdata.group;
-    }
-    if (formdata.allowNewRestaurants) {
-      poll.allowNewRestaurants = formdata.allowNewRestaurants;
+    if (data.allowNewRestaurants) {
+      poll.allowNewRestaurants = data.allowNewRestaurants;
     }
     return poll;
   };
