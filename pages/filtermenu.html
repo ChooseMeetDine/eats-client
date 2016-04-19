@@ -1,4 +1,4 @@
-<!-- Filter Menu -->
+<!-- Side navigation filter menu -->
 <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="filter">
     
     <!-- Menu title -->
@@ -7,52 +7,56 @@
     </md-toolbar>
     
     <!-- Menu content with different types of filter choices -->
-    <md-content layout-padding layout-margin layout-fill>
+    <md-content id="filterMenuContent">
         
         <!-- Filter by type of place -->
-        <span class="filter-undertitle"> By type of place </span>
+        <span class="filter-undertitle" id="firstUndertitleFilterMenu"> Typ av plats </span>
         
         <!-- Table with different choices of -->
-        <table style="width:100%">
+        <table id="filterMenuChoices">
             <tr>
-                <td><md-checkbox class="md-primary">all places</md-checkbox></td>
-                <td><md-checkbox class="md-primary">coffee shops</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Alla typer</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Kaffe och fika</md-checkbox></td>
             </tr>
             <tr>
-                <td><md-checkbox class="md-primary">indian food</md-checkbox></td>
-                <td><md-checkbox class="md-primary">asian</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Asiatiskt</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Enbart sushi</md-checkbox></td>
             </tr>
             <tr>
-                <td><md-checkbox class="md-primary">vegetarian</md-checkbox></td>
-                <td><md-checkbox class="md-primary">vegan</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Vegetariskt</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Veganskt</md-checkbox></td>
             </tr>
             <tr>
-                <td><md-checkbox class="md-primary">sushi</md-checkbox></td>
-                <td><md-checkbox class="md-primary">pizza</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Burgare</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Pizza</md-checkbox></td>
             </tr>
             <tr>
-                <td><md-checkbox class="md-primary">meat</md-checkbox></td>
-                <td><md-checkbox class="md-primary">burger</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Köttigt</md-checkbox></td>
+                <td><md-checkbox class="md-primary">Nåt annat</md-checkbox></td>
             </tr>
         </table>
         
-        <!-- The table should be done this way....
+        <hr>
+        
+        <!-- The table should be done this way Andreas says....
         
         <table>
-            <tr ng-repeat="row in rows">
-                <td ng-repeat="checkbox in checkboxes">{{ checkbox }}</td>
+            <tr ng-repeat="checkbox in checkboxes">
+                {{ checkbox }}
             </tr>
         </table>
         -->
             
         <!-- Filter by type of price -->
         <md-slider-container>
-            <span class="filter-undertitle"> Price </span>
+            <span class="filter-undertitle"> Priset spelar roll </span>
             <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly"></md-slider>
         </md-slider-container>
+        
+        <hr>
 
         <!-- Filter by rating grades -->
-        <span class="filter-undertitle"> Rating </span>
+        <span class="filter-undertitle"> Jag vill se vad andra gillar </span>
             <div class="star-rating"> 
                 <span data-rating="1"><i class="material-icons">star</i></span>
                 <span data-rating="2"><i class="material-icons">star</i></span>

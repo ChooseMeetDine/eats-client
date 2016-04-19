@@ -3,7 +3,7 @@
     
     <!-- Menu title -->
     <md-toolbar class="md-theme-light md-accent">
-        <span><h1 class="md-toolbar-tools">Eats</h1></span>
+        <h1 class="md-toolbar-tools">Eats</h1>
     </md-toolbar>
     
     <!-- Menu content -->
@@ -11,59 +11,60 @@
         <md-list ng-cloak layout-padding>
             
             <!-- Link to profile -->
-            <md-list-item>
-                <p>Username</p>
+            <md-list-item class="linksInMainMenu">
+                <p>Christoffer</p>
                 <i class="material-icons">account_circle</i>
             </md-list-item>
             
             <!-- Link to settings -->
-            <md-list-item>
+            <md-list-item class="linksInMainMenu">
                 <p>Inställningar</p>
-                <i class="fa fa-wrench" aria-hidden="true"></i>
+                <i class="material-icons">settings</i>
             </md-list-item>
             
+            <!-- divider -->
             <hr>
             
-            <!-- Groups -->
+            <!-- Groups 
             <md-subheader class="md-no-sticky">Groups</md-subheader>
             <table>
                 <tr ng-repeat="group in groups">
                     <td>{{ group }}</td>
                 </tr>
-            </table>
+            </table>-->
             
-            <!-- Other stuff in the main menu -->
-            <md-subheader  class="md-no-sticky">Övrigt</md-subheader>
+            <!-- Link to create new poll -->
+            <md-list-item  ng-click="createPoll($event)">
+                <p>Skapa ny omröstning</p>
+                <i class="material-icons">add</i>                
+            </md-list-item>
             
-                <!-- Menu seciton create new poll and new group and add restaurant -->
-                <md-list-item  ng-click="createPoll($event)">
-                    <p>Skapa ny omröstning</p>
-                    <i class="material-icons">add</i>
-                </md-list-item>
-
-                <md-list-item ng-hide="access" ng-click="createPoll($event)">
-                    <p>Skapa ny grupp</p>
-                    <i class="material-icons">person_add</i>
-                </md-list-item>
-
-                <md-list-item  href="#" ng-controller="templatepopup" id="addRestaurantButton" ng-click="toggleAddRestaurant(); showAdvanced($event, 'addrestaurant'); ">
-                    <p>Lägg till restaurang</p>
-                    <i class="material-icons">add</i>
-                </md-list-item>		
+            <!-- Link to create new group -->
+            <md-list-item ng-hide="access" ng-click="createPoll($event)">
+                <p>Skapa ny grupp</p>
+                <i class="material-icons">person_add</i>
+            </md-list-item>
+                
+            <!-- Link to add restaurant -->
+            <md-list-item  href="#" ng-controller="templatepopup" id="addRestaurantButton" ng-click="toggleAddRestaurant(); showAdvanced($event, 'addrestaurant'); ">
+                <p>Lägg till restaurang</p>
+                <i class="material-icons">add</i>
+            </md-list-item>		
 			
+            <!-- divider -->
             <hr>
-            <div>
-                <div  class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
-                    <!-- login button -->
-                    <md-button ng-if="access" ng-controller="templatepopup"  class="login" ng-click="showTabDialog($event, 'login')" >
-                           
-                    </md-button>
+            
+            <!-- Login, logout and register buttons -->
+            <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
                     
-                    <!-- logout button -->
-                    <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">
-                       <i class="glyphicon glyphicon-log-out"></i> Logga ut
-                    </md-button>
-                </div>
+                <!-- login button -->
+                <md-button ng-if="access" ng-controller="templatepopup" aria-label="Login" class="login md-raised" ng-click="showTabDialog($event, 'login')"> Logga in
+                </md-button>
+                
+                <!-- logout button -->
+                <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">
+                   <i class="glyphicon glyphicon-log-out"></i> Logga ut
+                </md-button>
             </div>
             
         </md-list>
