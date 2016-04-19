@@ -43,7 +43,7 @@ app.controller('getRestaurants', function($scope, $http, $window) {
         }
         //console.log(restaurantResult);
         //calls marker function from maps.js to create rest.markers on map
-        placeMarker(restaurantResult);
+        // placeMarker(restaurantResult);
         
         /**
         var end = new Date().getTime();
@@ -51,8 +51,8 @@ app.controller('getRestaurants', function($scope, $http, $window) {
         console.log("Exec time = " + time); **/
         
         
-        $scope.createInfoScopes = function(id){
-            $scope.content = restaurantResult[id];
-        }       
+    $scope.createInfoScopes = function(id) {
+      $scope.content = restaurantResult[id];
+    }
     }    
 });
