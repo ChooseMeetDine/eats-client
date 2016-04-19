@@ -1,15 +1,26 @@
 var map = L.map('map', { zoomControl: false, minZoom: 4}).locate({setView: true, maxZoom:15});
 
+
 //Referenses to map styles that are saved online
 //ID & Token list: 
 //{beijar/cin5pab6g00sectnf9c96x1u2 : pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q
 //{gustavsvensson/cin1hwd9a00bncznomsx507se : pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ}
 
-var mapId = 'gustavsvensson/cin1hwd9a00bncznomsx507se'
+var mapId = 'gustavsvensson/cin628bnu00vwctnf2rdfbfmv'
 var mapToken = 'pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ'
 
 L.tileLayer('https://api.mapbox.com/styles/v1/'+mapId+'/tiles/{z}/{x}/{y}?access_token='+mapToken, {
+    tileSize: 512,
+    zoomOffset: -1
 }).addTo(map);
+
+
+//L.tileLayer(
+//    'https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+//        tileSize: 512,
+//        zoomOffset: -1,
+//        attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+//    }).addTo(map);
 
 var markers = new L.FeatureGroup();
 
@@ -78,5 +89,6 @@ $('#map').on('click', '.trigger', function() {
     angular.element($('#moreInfoSlider')).scope().createInfoScopes(restId);
 });
 
-
-
+		new L.Control.GeoSearch({
+				provider: new L.GeoSearch.Provider.Google()
+		}).addTo(map);
