@@ -27,9 +27,16 @@ html,body {
     z-index: 0;    
 }
 
+/*Zoom in and zoom out controls */
 .leaflet-control-zoom-in, .leaflet-control-zoom-out{
     color:transparent!important;
-
+}
+/*Button that show me where I am*/
+.leaflet-control-locate .fa {
+    display: block;
+    float: left;
+    font-size: large;
+    margin-top: 2px;
 }
 
 /*Popup content*/
@@ -168,8 +175,4 @@ md-backdrop.md-sidenav-backdrop{
 /*hide link to leaflet*/
 .leaflet-control-attribution a{
     display: none!important;
-}
-/*hide button that shows me where I am*/
-.leaflet-control-locate{
-    display: none;
 }
