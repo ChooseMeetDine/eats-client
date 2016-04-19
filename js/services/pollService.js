@@ -7,7 +7,7 @@ app.factory('pollService', function() {
         data: {}
     };
 
-    pollService.setForm = function(formData) {
+    pollService.setFormData = function(formData) {
         form.data = formData;
     };
 
@@ -16,32 +16,32 @@ app.factory('pollService', function() {
     };
 
     pollService.addRestaurantToForm = function(restaurant) {
-        if (!form.restaurants) {
-            form.restaurants = [];
+        if (!form.data.restaurants) {
+            form.data.restaurants = [];
         }
         var restaurantFound = false;
-        for (var i = 0; i < form.restaurants.length; i++) {
-            if (form.restaurants[i].id === restaurant.id) {
+        for (var i = 0; i < form.data.restaurants.length; i++) {
+            if (form.data.restaurants[i].id === restaurant.id) {
                 restaurantFound = true;
                 break;
             }
         }
         if (!restaurantFound) {
-            form.restaurants.push(restaurant);
+            form.data.restaurants.push(restaurant);
             return true;
         }
         return false;
     };
 
     pollService.removeRestaurantFromForm = function(restaurant) {
-        if (!form.restaurants) {
+        if (!form.data.restaurants) {
             return false;
         }
         var restaurantFound = false;
-        for (var i = 0; i < form.restaurants.length; i++) {
-            if (form.restaurants[i].id === restaurant.id) {
+        for (var i = 0; i < form.data.restaurants.length; i++) {
+            if (form.data.restaurants[i].id === restaurant.id) {
                 restaurantFound = true;
-                form.restaurants.splice(i, 1);
+                form.data.restaurants.splice(i, 1);
                 break;
             }
         }

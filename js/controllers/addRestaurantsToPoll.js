@@ -1,9 +1,5 @@
 app.controller('addRestaurantsToPoll', ['$scope', 'pollService', 'modeService', function($scope, pollService, modeService) {
-    $scope.poll = pollService.getForm();
-    $scope.restaurants = [{
-        name: "Broderstugan"
-    }];
-    // $scope.restaurants = pollService.getForm().restaurants;
+    $scope.form = pollService.getForm();
 
     $scope.remove = function($chip) {
         pollService.removeRestaurantFromForm($chip);
@@ -20,4 +16,7 @@ app.controller('addRestaurantsToPoll', ['$scope', 'pollService', 'modeService', 
         })
     }
 
+    $scope.done = function() {
+        $scope.swap('createPoll'); //Hide this popup and show createPoll
+    }
 }]);

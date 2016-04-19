@@ -17,12 +17,12 @@
         <!--Shows error from POST-request, resets at every atempt -->
         <div class="md-warn " ng-show="error ">Det gick dåligt!<br>{{error}}</div>
 
-        <form name="addPoll " ng-submit="regPoll() ">
+        <form name="addPoll " ng-submit="regPoll()">
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
               <label>Omröstningsnamn</label>
-              <input ng-model="formdata.name " type="text " value="name ">
+              <input ng-model="form.data.name " type="text " value="name ">
             </md-input-container>
           </div>
 
@@ -33,13 +33,13 @@
         </div>-->
 
           <div layout-gt-xs="row ">
-            <md-checkbox value="allowNewRestaurants " ng-model="formdata.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
+            <md-checkbox value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
           </div>
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
               <label>Lägg till användare med id</label>
-              <input ng-model="formdata.users " type="text " value="userId ">
+              <input ng-model="form.data.users " type="text " value="userId ">
             </md-input-container>
           </div>
 

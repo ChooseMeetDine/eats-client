@@ -1,7 +1,7 @@
 <div ng-controller="addRestaurantsToPoll" style='position:absolute;top:10px;left:300px;z-index:10;padding:20px;background-color:white'>
     <b>Lägg till restauranger genom att använda kartan</b>
     <form name="addPoll" ng-submit="addRestaurantsToPoll()">
-        <md-chips ng-model="poll.restaurants" name="restaurantName" readonly="true">
+        <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
             <md-chip-template ng-click="remove($chip)">
                 <strong>{{$chip.data.attributes.name}} X</strong>
             </md-chip-template>

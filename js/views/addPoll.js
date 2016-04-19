@@ -4,29 +4,16 @@
 // app.controller('addPoll', function($scope, $http) {
 app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', function($scope, $http, pollService, modeService) {
 
-  //This is where all formdata-models are stored
-  $scope.formdata = {};
 
+  $scope.form = pollService.getForm();
   $scope.loading = false;
-
   $scope.error = '';
-
-  //Input type "datetime-local" requires model to be a Date-object
-  $scope.formdata.expires = {
-    time: new Date(),
-    isSet: false
-  };
-
-  //function is called when expiry is changed/set by user
-  $scope.formdata.exiprySet = function() {
-    $scope.formdata.expires.isSet = true;
-  };
 
   /**
    * 1. Creates POST-body
    * 2. Sends post request to API
-   * 3. Formatts response
-   * 4. Returns response to ?????????????????????
+   * 3. Formats response
+   * 4. Returns response to pollService
    */
   $scope.regPoll = function() {
     var postBody = createPollPostBody();
@@ -53,10 +40,8 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
   };
 
   $scope.addRestaurants = function() {
-    pollService.setForm($scope.formdata);
     modeService.setMode('ADD_RESTAURANTS_MODE');
     $scope.hide();
-
   };
   // An example of how this can be formatted if JSON-API is hard to work with. 
   // /**
@@ -117,4 +102,6 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
     }
     return poll;
   };
+
+
 }]);
