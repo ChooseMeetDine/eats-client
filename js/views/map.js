@@ -88,3 +88,7 @@ $('#map').on('click', '.trigger', function() {
     angular.element(document.getElementById('moreInfoMenu')).scope().toggleMoreInfoMenu();
     angular.element($('#moreInfoSlider')).scope().createInfoScopes(restId);
 });
+
+		new L.Control.GeoSearch({
+				provider: new L.GeoSearch.Provider.Google()
+		}).addTo(map);
