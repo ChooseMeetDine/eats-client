@@ -25,7 +25,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
   $scope.dialogs.showAdvanced = function(ev, id) {
     dialogOptions = {
       controller: DialogController,
-      templateUrl: 'pages/templates/' + id + '.tmpl.html',
+      templateUrl: 'html/popups/' + id + '.tmpl.html',
       parent: angular.element(document.body),
       clickOutsideToClose: false,
       fullscreen: useFullScreen
@@ -53,7 +53,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
     console.log(ev);
     $mdDialog.show({
         controller: DialogController,
-        templateUrl: 'pages/templates/' + id + '.tmpl.html',
+        templateUrl: 'html/popups/' + id + '.tmpl.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose: true
@@ -81,7 +81,7 @@ function DialogController($scope, $mdDialog) {
     $mdDialog.hide()
     $mdDialog.show({
         controller: DialogController,
-        templateUrl: 'pages/templates/' + id + '.tmpl.html',
+        templateUrl: 'html/popups/' + id + '.tmpl.html',
         parent: angular.element(document.body),
         clickOutsideToClose: true
       })
@@ -94,7 +94,7 @@ function DialogController($scope, $mdDialog) {
   $scope.show = function(id) {
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'pages/templates/' + id + '.tmpl.html',
+      templateUrl: 'html/popups/' + id + '.tmpl.html',
       parent: angular.element(document.body),
       clickOutsideToClose: true
     });

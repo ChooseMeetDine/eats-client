@@ -90,7 +90,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
-        message: "<div ng-include=\"\'pages/marker.html\'\">",
+        message: "<div ng-include=\"\'html/marker.html\'\">",
         focus: true,
         draggable: false,
         getMessageScope: function() { // "gives" a scope to the template
