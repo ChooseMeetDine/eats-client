@@ -1,4 +1,4 @@
-var map = L.map('map', { zoomControl: false }).locate({setView: true, maxZoom: 13});
+var map = L.map('map', { zoomControl: false, minZoom: 4}).locate({setView: true, maxZoom:15});
 
 //Referenses to map styles that are saved online
 //ID & Token list: 
