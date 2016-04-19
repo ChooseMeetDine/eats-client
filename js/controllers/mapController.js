@@ -1,4 +1,4 @@
-app.controller('mapController', ['$scope', '$http', function($scope, $http) {
+app.controller('mapController', ['$scope', '$http', 'pollService', function($scope, $http, pollService) {
   var restaurantMarkers = {};
   var apiUrl = 'http://128.199.48.244:3000/restaurants';
 
@@ -112,6 +112,11 @@ app.controller('mapController', ['$scope', '$http', function($scope, $http) {
     // }       
   };
   fetchRestaurants();
+
+  $scope.addRestaurantToPoll = function(restaurantId) {
+    pollService.addRestaurantToForm(restaurantMarkers[restaurantId]);
+  };
+
   $scope.openSlideMenu = function(restaurantId) {
     angular.element(document.getElementById('moreInfoMenu')).scope().toggleMoreInfoMenu();
     angular.element($('#moreInfoSlider')).scope().createInfoScopes(restaurantMarkers[restaurantId].attributes);

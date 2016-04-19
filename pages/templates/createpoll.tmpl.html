@@ -51,7 +51,7 @@
 
           <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
               <md-chip-template ng-click="removeRestaurant($chip)">
-                  <strong>{{$chip.data.attributes.name}} X</strong>
+                  {{$chip.attributes.name}} X
               </md-chip-template>
           </md-chips>
 

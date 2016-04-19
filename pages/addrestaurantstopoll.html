@@ -3,15 +3,12 @@
     <form name="addPoll" ng-submit="done()">
         <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
             <md-chip-template ng-click="remove($chip)">
-                <strong>{{$chip.data.attributes.name}} X</strong>
+                {{$chip.attributes.name}} X
             </md-chip-template>
         </md-chips>
 
         <div layout-gt-sm="row ">
             <md-button class="md-raised" type="button" ng-click="done()"> Klar! </md-button>
-        </div>
-        <div layout-gt-sm="row ">
-            <md-button class="md-raised" type="button" ng-click="add()"> add </md-button>
         </div>
     </form>
 </div>
