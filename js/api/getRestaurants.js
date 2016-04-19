@@ -1,5 +1,6 @@
 app.controller('getRestaurants', function($scope, $http, $window) {    
     var start = new Date().getTime();
+    //result data structure: {restaurantId:{all data for one restaurant}} 
     var restaurantResult = {};    
     var link = 'http://128.199.48.244:3000/restaurants';
     
@@ -40,17 +41,18 @@ app.controller('getRestaurants', function($scope, $http, $window) {
             var id = restaurant.id;
             restaurantResult[id] = restaurantData;
         }
-        console.log(restaurantResult);
-        placeMarker(restaurantResult);
+        //console.log(restaurantResult);
+        //calls marker function from maps.js to create rest.markers on map
+        // placeMarker(restaurantResult);
         
-        
+        /**
         var end = new Date().getTime();
         var time = end - start;
-        console.log("Exec time = " + time);
+        console.log("Exec time = " + time); **/
         
         
-        $scope.createInfoScopes = function(id){
-            $scope.content = restaurantResult[id];
-        }       
+    $scope.createInfoScopes = function(id) {
+      $scope.content = restaurantResult[id];
+    }
     }    
 });
