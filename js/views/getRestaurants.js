@@ -34,13 +34,13 @@ app.controller('getRestaurants', function($scope, $http, $window) {
                     "pricerate":  restaurant.attributes.pricerate,
                     "number_votes":  restaurant.attributes.number_votes,
                     "number_votes-won":  restaurant.attributes.number_won_votes,
-                    "categories":  restaurant.relationships.data
+                    "categories":  restaurant.relationships.categories
                 }
             }
             var id = restaurant.id;
             restaurantResult[id] = restaurantData;
         }
-        console.log(restaurantResult);
+        //console.log(restaurantResult);
         placeMarker(restaurantResult);
         
         

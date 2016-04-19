@@ -1,6 +1,5 @@
 var map = L.map('map', { zoomControl: false, minZoom: 4}).locate({setView: true, maxZoom:15});
 
-
 //Referenses to map styles that are saved online
 //ID & Token list: 
 //{beijar/cin5pab6g00sectnf9c96x1u2 : pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q
@@ -14,14 +13,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/'+mapId+'/tiles/{z}/{x}/{y}?access
     zoomOffset: -1
 }).addTo(map);
 
-
-//L.tileLayer(
-//    'https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
-//        tileSize: 512,
-//        zoomOffset: -1,
-//        attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-//    }).addTo(map);
-
 var markers = new L.FeatureGroup();
 
 new L.Control.Zoom({position: 'topright'}).addTo(map);
@@ -30,7 +21,7 @@ new L.control.locate({position: 'topright'}).addTo(map);
 
 function onLocationFound(e) {
     var radius = e.accuracy;
-    L.marker(e.latlng, {icon:redIcon}).addTo(map);
+    L.marker(e.latlng, {icon:yourLocationMarker}).addTo(map);
     }   
 
 function onLocationError(e) {
@@ -41,16 +32,22 @@ map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
 
 //costum marker with location
-var greenIcon = L.icon({
-    iconUrl: 'images/icons/marker-icon-coffee-red.png',
-    iconSize:     [25, 41], // size of the icon
-    iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
+var restMarker = L.icon({
+    iconUrl: 'images/icons/rest_marker.png',
+    iconSize:     [62, 62], // size of the icon
+    iconAnchor:   [31, 62], // point of the icon which will correspond to marker's location
 });
 
-var redIcon = L.icon({
-    iconUrl: 'images/icons/marker-icon-red.png',
-    iconSize:     [25, 41], // size of the icon
-    iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
+var cafeMarker = L.icon({
+    iconUrl: 'images/icons/cafe_marker.png',
+    iconSize:   [62, 62],
+    iconAnchor: [31, 62],
+});
+
+var yourLocationMarker = L.icon({
+    iconUrl: 'images/icons/you_marker.png',
+    iconSize:     [24, 24], // size of the icon
+    iconAnchor:   [12, 24], // point of the icon which will correspond to marker's location
 });
 
 //Function for creating map markers and marker popup from json data
@@ -65,7 +62,8 @@ function placeMarker(json) {
         
         
         if(item.lng != null || item.lat != null) {
-                marker = new L.marker([item.lat,item.lng]).bindPopup(info).addTo(map);
+                var marker = markerType(item.extra.categories);
+                marker = new L.marker([item.lat,item.lng],{icon: marker}).bindPopup(info).addTo(map);
                 markers.addLayer(marker);
         }
         else {
@@ -82,6 +80,26 @@ function createRatingStars(rating) {
     return spanElement;
 }
 
+//function that loops thru the data of one restaurant object and checks if 
+//it has the attribute of a café or not.
+//returns a map marker corresponding the attribute found.
+function markerType(restaurantExtraData){
+    //console.log(restaurantExtraData);
+    var data = restaurantExtraData;
+    var rest = restMarker;
+    for(i in data){
+        var object = data[i];
+        for(j in object){
+            //TODO: Create a check if key exist n object
+            if(object[j].id == "3"){
+                rest = cafeMarker;
+                break;
+                }
+            }
+        }
+    return rest;
+};
+
 $('#map').on('click', '.trigger', function() {
     var restId = $(this).attr('id');
     //console.log(restId);
@@ -89,6 +107,7 @@ $('#map').on('click', '.trigger', function() {
     angular.element($('#moreInfoSlider')).scope().createInfoScopes(restId);
 });
 
-		new L.Control.GeoSearch({
-				provider: new L.GeoSearch.Provider.Google()
-		}).addTo(map);
+
+new L.Control.GeoSearch({
+    provider: new L.GeoSearch.Provider.Google()
+}).addTo(map);
