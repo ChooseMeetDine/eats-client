@@ -1,1 +1,1 @@
-var app = angular.module('app', ['ui.bootstrap', 'ngMaterial', 'ngMessages', 'leaflet-directive'])
+var app = angular.module('app', ['ui.bootstrap', 'ngMaterial', 'ngMessages', 'leaflet-directive']);
