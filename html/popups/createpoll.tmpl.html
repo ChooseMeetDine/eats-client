@@ -22,21 +22,19 @@
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
               <label>Omröstningsnamn</label>
-              <input ng-model="form.data.name " type="text " value="name ">
+              <input ng-model="form.data.name " type="text " value="name" ng-required="true">
             </md-input-container>
           </div>
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
-              <label>Omröstningen avslutas:</label>
+              <label>Omröstningen avslutas: {{form.data.hour}}:{{form.data.minute}}</label>
+              <br>
+              Timme: <select ng-model="form.data.hour" ng-options="n for n in [] | range:0:23:1"></select>
+              Minut: <select ng-model="form.data.minute" ng-options="n for n in [] | range:0:55:5"></select>
             </md-input-container>
           </div>
 
-          <!-- NOTE: datetime-local has serious compatibility-issues! -->
-          <!-- NOTE: datetime-local has serious compatibility-issues! -->
-          <!--<div layout-gt-xs="row ">
-          <input type="datetime-local " ng-model="formdata.expires.time " name="expires " ng-change="exiprySet() ">
-        </div>-->
 
           <div layout-gt-xs="row ">
             <md-checkbox value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
@@ -49,10 +47,8 @@
             </md-input-container>
           </div>
 
-          <!-- NOTE: What is supposed to happen here?-->
-          <!-- formdata.restaurants should be either an array of ID's or a comma-serparated string of ID's-->
           <div layout-gt-xs="row ">
-            <md-button type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
+            <md-button class="md-raised" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
           </div>
 
           <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
@@ -60,12 +56,16 @@
                   {{$chip.attributes.name}} X
               </md-chip-template>
           </md-chips>
-
+          <br>
           <div layout-gt-sm="row ">
-            <md-button class="md-accent md-raised " type="submit "> Skapa omröstning </md-button>
+            <md-button class="md-raised" type="submit "> Skapa omröstning </md-button>
           </div>
 
-
+          <md-dialog-actions layout="row ">
+            <md-button ng-click="clearForm() ">
+              Rensa
+            </md-button>
+          </md-dialog-actions>
 
         </form>
 

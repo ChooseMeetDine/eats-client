@@ -6,8 +6,8 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
-
-  // $scope.form.data.date = new Date(); // use this as time-picker-model in createpoll.tmpl.html
+  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour:'12'; //initialize values if not set
+  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute:'00'; //initialize values if not set
 
   /**
    * 1. Creates POST-body
@@ -28,6 +28,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
         },
         data: postBody
       }).then(function(response) {
+        $scope.clearForm();
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
         $scope.swap('showActivePoll'); //Hide this popup and show active poll
@@ -47,65 +48,45 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
   $scope.removeRestaurant = function($chip) {
     pollService.removeRestaurantFromForm($chip);
   };
-  // An example of how this can be formatted if JSON-API is hard to work with. 
-  // /**
-  //  * Formats response from API into a more usable object
-  //  * @param  {Object} rawPollData response.data from API-call
-  //  * @return {Object} Formatted poll-data
-  //  */
-  // var formatPoll = function(rawPollData) {
-  //   //Transfer all attributes to a new object
-  //   var formattedPoll = rawPollData.data.attributes;
 
-  //   //Set id and create arrays for users and restaurants
-  //   formattedPoll.id = rawPollData.data.id;
-  //   formattedPoll.users = [];
-  //   formattedPoll.restaurants = [];
-
-  //   //Fill users and restaurants properties of formattedPoll with data from "included"
-  //   for (let i = 0; i < rawPollData.included.length; i++) {
-  //     var newObject = rawPollData.included[i].attributes;
-  //     newObject.id = rawPollData.included[i].id;
-  //     newObject.self = rawPollData.included[i].links.self;
-  //     if (rawPollData.included[i].type = "user") {
-  //       formattedPoll.users.push(newObject);
-  //     } else if (rawPollData.included[i].type = "restaurant") {
-  //       formattedPoll.restaurants.push(newObject);
-  //     }
-  //   }
-  //   return formattedPoll;
-  // };
+  $scope.clearForm = function() {
+    pollService.clearForm();
+    $scope.form.data.hour = '12';
+    $scope.form.data.minute = '00';
+  };
 
   /**
    * Creates a POST-body from the form for adding polls
    * @return {Object} Complete POST-body
    */
   var createPollPostBody = function() {
-    var formdata = $scope.formdata;
+    var data = $scope.form.data;
 
     var poll = {
-      'name': formdata.name
+      'name': data.name
     };
 
-    //Only add parameters actually set by user
-    if (formdata.expires.isSet) {
-      poll.expires = formdata.expires.time;
+    var exipres = new Date();
+    exipres.setHours(data.hour);
+    exipres.setMinutes(data.minute);
+    poll.expires = exipres;
+
+    if (data.restaurants) {
+      poll.restaurants = [];
+      for (let i = 0; i < data.restaurants.length; i++) {
+        poll.restaurants.push(data.restaurants[i].attributes.id);
+      }
     }
-    if (formdata.restaurants) {
-      poll.restaurants = formdata.restaurants.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
+
+    //Splits string at commas and trims away spaces
+    if (data.users) {
+      poll.users = data.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
     }
-    if (formdata.users) {
-      //Splits string at commas and trims away spaces
-      poll.users = formdata.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
-    }
-    if (formdata.group) {
-      poll.group = formdata.group;
-    }
-    if (formdata.allowNewRestaurants) {
-      poll.allowNewRestaurants = formdata.allowNewRestaurants;
+
+    if (data.allowNewRestaurants) {
+      poll.allowNewRestaurants = data.allowNewRestaurants;
     }
     return poll;
   };
-
 
 }]);

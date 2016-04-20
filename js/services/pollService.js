@@ -46,10 +46,13 @@ app.factory('pollService', function() {
       }
     }
     if (!restaurantFound) {
-      alert('DU TOG BORT RESTAURANGEN. WOHOO')
-      return true;
+      return false;
     }
-    return false;
+    return true;
+  };
+
+  pollService.clearForm = function() {
+    form.data = {};
   };
 
   pollService.setActiveId = function(id) {
