@@ -12,7 +12,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
     markers: restaurantMarkers,
     tiles: {
       name: 'Mapbox',
-      url: 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={apikey}',
+      url: 'https://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={apikey}',
       options: {
         apikey: 'pk.eyJ1Ijoid2lpZ29sYXMiLCJhIjoiY2lreHYxejNvMDA0NndsbTRmejl4NndqMSJ9.5hfLbJnXbAsfsPRT3V4W4Q',
         mapid: 'wiigolas.p7idlkkp'
