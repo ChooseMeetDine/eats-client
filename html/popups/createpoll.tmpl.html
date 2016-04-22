@@ -2,7 +2,7 @@
 
   <div ng-controller="addPoll">
 
-    <md-toolbar>
+    <md-toolbar id="toolbar">
       <div class="md-toolbar-tools">
         <h2 ng-hide="loading">Lägg till omröstning</h2>
         <span flex></span>
@@ -48,7 +48,7 @@
           </div>
 
           <div layout-gt-xs="row ">
-            <md-button class="md-raised" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
+            <md-button id="addrest" class="md-raised md-primary" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
           </div>
 
           <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
@@ -58,11 +58,11 @@
           </md-chips>
           <br>
           <div layout-gt-sm="row ">
-            <md-button class="md-raised" type="submit "> Skapa omröstning </md-button>
+            <md-button id="addpoll" class="md-raised md-primary" type="submit "> Skapa omröstning </md-button>
           </div>
 
           <md-dialog-actions layout="row ">
-            <md-button ng-click="clearForm() ">
+            <md-button id="clear" class="md-raised md-primary" ng-click="clearForm() ">
               Rensa
             </md-button>
           </md-dialog-actions>
@@ -72,7 +72,7 @@
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row ">
-      <md-button ng-click="cancel() ">
+      <md-button id="cancel" class="md-raised md-primary" ng-click="cancel() ">
         Avbryt
       </md-button>
     </md-dialog-actions>

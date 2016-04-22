@@ -1,0 +1,24 @@
+#toolbar{
+background-color: dimgrey;
+ 
+}
+
+.md-raised{
+    padding: 6px;
+}
+
+#clear{   
+ background-color: cyan;
+}
+
+#cancel{   
+ background-color: cyan;
+}
+
+#addrest{   
+ background-color: cyan;
+}
+
+#addpoll{   
+ background-color: cyan;
+}
