@@ -4,6 +4,10 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
     $scope.toggleMoreInfoMenu = buildToggler('info');
     $scope.toggleAddRestaurant = addRestaurantToggler();
     
+    $scope.createInfoScopes = function(restaurant){
+      $scope.content = restaurant;
+    }       
+
     function buildToggler(navID) {
       return function() {
         $mdSidenav(navID)

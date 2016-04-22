@@ -1,0 +1,80 @@
+<md-dialog ng-controller="authJwt" aria-label="addPoll" ng-cloak>
+
+  <div ng-controller="addPoll">
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 ng-hide="loading">Lägg till omröstning</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+
+    <md-dialog-content layout-padding>
+
+      <div class="md-dialog-content ">
+
+        <!--Shows error from POST-request, resets at every atempt -->
+        <div class="md-warn " ng-show="error ">Det gick dåligt!<br>{{error}}</div>
+
+        <form name="addPoll " ng-submit="regPoll()">
+
+          <div layout-gt-sm="row ">
+            <md-input-container class="md-block " flex-gt-sm>
+              <label>Omröstningsnamn</label>
+              <input ng-model="form.data.name " type="text " value="name" ng-required="true">
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row ">
+            <md-input-container class="md-block " flex-gt-sm>
+              <label>Omröstningen avslutas: {{form.data.hour}}:{{form.data.minute}}</label>
+              <br>
+              Timme: <select ng-model="form.data.hour" ng-options="n for n in [] | range:0:23:1"></select>
+              Minut: <select ng-model="form.data.minute" ng-options="n for n in [] | range:0:55:5"></select>
+            </md-input-container>
+          </div>
+
+
+          <div layout-gt-xs="row ">
+            <md-checkbox value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
+          </div>
+
+          <div layout-gt-sm="row ">
+            <md-input-container class="md-block " flex-gt-sm>
+              <label>Lägg till användare med id</label>
+              <input ng-model="form.data.users " type="text " value="userId ">
+            </md-input-container>
+          </div>
+
+          <div layout-gt-xs="row ">
+            <md-button class="md-raised" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
+          </div>
+
+          <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
+              <md-chip-template ng-click="removeRestaurant($chip)">
+                  {{$chip.attributes.name}} X
+              </md-chip-template>
+          </md-chips>
+          <br>
+          <div layout-gt-sm="row ">
+            <md-button class="md-raised" type="submit "> Skapa omröstning </md-button>
+          </div>
+
+          <md-dialog-actions layout="row ">
+            <md-button ng-click="clearForm() ">
+              Rensa
+            </md-button>
+          </md-dialog-actions>
+
+        </form>
+
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row ">
+      <md-button ng-click="cancel() ">
+        Avbryt
+      </md-button>
+    </md-dialog-actions>
+  </div>
+</md-dialog>

@@ -1,0 +1,8 @@
+<div class="restaurant-marker">
+	<p>{{name}}</p>
+	<span class="rating-static rating-{{rating}}"></span>
+	<img class="popupimg" ng-src="{{photo}}">
+	<br>
+	<button class="trigger" id="{{id}}" ng-click="openSlideMenu(id)">Mer info</button>
+	<button ng-show="mode.active === 'ADD_RESTAURANTS_MODE'" ng-click="addRestaurantToPoll(id)">+</button>
+</div>
