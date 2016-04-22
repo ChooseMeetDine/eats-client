@@ -11,7 +11,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
     center: {
       lat: 59.91,
       lng: 10.75,
-      zoom: 12,
+      zoom: 13,
       autoDiscover: true
     },
     markers: restaurantMarkers,
@@ -149,4 +149,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
         }
     return rest;
   };
+  /**new L.Control.GeoSearch({
+    provider: new L.GeoSearch.Provider.Google()
+}).addTo(map); **/
 }]);
