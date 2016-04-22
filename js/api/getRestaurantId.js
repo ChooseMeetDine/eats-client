@@ -5,7 +5,7 @@ app.controller('getRestaurantId', function($scope, $http) {
     
 	$scope.getRestaurantId = function(ID){
 		var id = ID;
-		var link = 'http://http://128.199.48.244:3000/restaurants/'+new String(id);
+		var link = 'http://http://128.199.48.244:7000/restaurants/'+new String(id);
 	
 		$http({
 		  method: 'GET',

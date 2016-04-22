@@ -2,7 +2,7 @@ app.controller('getRestaurants', function($scope, $http, $window) {
     var start = new Date().getTime();
     //result data structure: {restaurantId:{all data for one restaurant}} 
     var restaurantResult = {};    
-    var link = 'http://128.199.48.244:3000/restaurants';
+    var link = 'http://128.199.48.244:7000/restaurants';
     
     getRestaurant(link);
     
