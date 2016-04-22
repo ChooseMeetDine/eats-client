@@ -12,12 +12,13 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       $window.localStorage['userName'] = response.data.name;
       $window.localStorage['jwtToken'] = token;
       $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
+      $window.location.reload();
       console.log(token);
     }, function errorCallback(response) {
       console.log("Error, cannot load Anonynous User!");
     });
   } else {
-
+    $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
   }
 
   // Holds all functions for mdDialog to be able to change popups from other controllers
