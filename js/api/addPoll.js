@@ -22,7 +22,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
 
     $http({
         method: 'POST',
-        url: 'http://128.199.48.244:3000/polls',
+        url: 'http://128.199.48.244:7000/polls',
         headers: {
           'Content-Type': 'application/json'
         },

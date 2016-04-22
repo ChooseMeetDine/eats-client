@@ -5,7 +5,7 @@ app.controller('getUserId', function($scope, $http) {
     
 	$scope.getUserId = function(ID){
 		var id = ID;
-		var link = 'http://http://128.199.48.244:3000/users/'+new String(id);
+		var link = 'http://http://128.199.48.244:7000/users/'+new String(id);
 	
 		$http({
 		  method: 'GET',
