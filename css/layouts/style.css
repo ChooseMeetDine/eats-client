@@ -39,6 +39,10 @@ html,body {
     margin-top: 2px;
 }
 
+leaflet-popup-content-wrapper{
+    border:none!important;
+}
+
 /*Popup content*/
 .leaflet-popup-content{
     padding-top: 0px !important;

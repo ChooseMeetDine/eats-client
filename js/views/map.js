@@ -48,7 +48,7 @@ function placeMarker(json) {
         //calls function for rating stars element 
         var rating = createRatingStars(item.rating);
         //marker popup info
-        var info = '<img class="popupimg" src="' + item.photo + '"> <br> <p class="restaurantname">' + item.name + rating +'</p> <div id="moreInfoButtonContent"><button class="trigger" id="'+ item.id +'">...mer info</button></div>';
+        var info = '<br><img class="popupimg" src="' + item.photo + '"><p class="restaurantname">' + item.name + rating +'</p> <div id="moreInfoButtonContent"><button class="trigger" id="'+ item.id +'">...mer info</button></div>';
         
         if(item.lng != null || item.lat != null) {
                 marker = new L.marker([item.lat,item.lng]).bindPopup(info).addTo(map);
