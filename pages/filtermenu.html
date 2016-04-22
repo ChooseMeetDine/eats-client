@@ -22,23 +22,22 @@
                 </tr>
             </table>
             -->
-            <table style="width:100%">
-
+            <table id="filter_menu" ng-controller="getRestaurants" ng-controller="markersGroupController" style="width:100%">
                 <tr>
-                    <td><md-checkbox class="md-primary" checked="true">Alla ställen</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Fisk</md-checkbox></td>
+                    <td><md-checkbox class="md-primary md-checked"  ng-model="data.cb1" ng-change="markerFilter(data.cb1, 1)">Alla ställen</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb2" ng-change="markerFilter(data.cb2, 2)">Fisk</md-checkbox></td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary">Kött</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Kyckling</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb3" ng-change="markerFilter(data.cb3, 3)">Kött</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" value="3">Kyckling</md-checkbox></td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary">Vegetariskt</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Sushi</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" value="4">Vegetariskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" value="5">Sushi</md-checkbox></td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary">Pizza</md-checkbox></td>
-                    <td><md-checkbox class="md-primary">Vegansk</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" value="6">Pizza</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" value="7">Vegansk</md-checkbox></td>
                 </tr>
             </table>
             <!-- Price Filter Slider -->

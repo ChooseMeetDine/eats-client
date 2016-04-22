@@ -1,6 +1,6 @@
 app.controller('getRestaurants', function($scope, $http, $window) {    
     var start = new Date().getTime();
-    var restaurantResult = {};    
+    var restaurantResult = [];    
     var link = 'http://128.199.48.244:3000/restaurants';
     
     getRestaurant(link);
@@ -16,10 +16,10 @@ app.controller('getRestaurants', function($scope, $http, $window) {
             var categoryList = [];
             for(var i = 0; i < response.data.data.length; i++){
                 name = response.data.data[i].attributes.name;
-                console.log('Restaurang: ' + name);
+                //console.log('Restaurang: ' + name);
                 //console.log(response.data.data[i].relationships.categories);
                 for(var j = 0; j < response.data.data[i].relationships.categories.length; j++){
-                    console.log('kategori id ' + response.data.data[i].relationships.categories[j].data.id);
+                    //console.log('kategori id ' + response.data.data[i].relationships.categories[j].data.id);
                     categoryList.push(response.data.data[i].relationships.categories[j].data.id);
                 }
                 /*
@@ -38,7 +38,8 @@ app.controller('getRestaurants', function($scope, $http, $window) {
            console.log("Error, cannot load restaurants!");
         });
     }
-        
+     
+    //This function takes the result and creates a restaurantData object and pushes it to restaurantResult array.
     function resultRestaurant(resultData){
         var counter = -1;
         var items = resultData.data;
@@ -56,67 +57,58 @@ app.controller('getRestaurants', function($scope, $http, $window) {
                     "pricerate":  restaurant.attributes.priceRate,
                     "number_votes":  restaurant.attributes.number_votes,
                     "number_votes-won":  restaurant.attributes.number_won_votes,
-                    "categories": [
-                        {
-                            "category": undefined
-                        }
-                    ] //restaurant.relationships.categories[0].data.id
+                    "categories":restaurant.relationships.categories
                 }
             }
-            for(var x in k){
-                //console.log('test data: ' + restaurant.relationships.categories[x].data.id);
-                console.log('--------------');
+            //Push categories array from resultData to array in restaurantData object
+            //restaurantData.extra.categories.push(restaurant.relationships.categories)
+            for (var i in restaurantData.extra.categories) {
+                //console.log(restaurantData.extra.categories[i].data.id);
             }
             counter++;
-            var id = restaurant.id;
             restaurantResult[counter] = restaurantData;
+            var id = restaurant.id;
         }
-        //Create list where restaurant categories are saved.
-        var catObj = {
-            "id": undefined,
-            "category_id": [
-                {
-                    "id": undefined
+        
+         
+        console.log(restaurantResult[0].extra.categories[0].data.id);
+        
+        $scope.markerFilter = function(isTrue, categoryNum){
+            //alert(isTrue);
+            //alert(categoryNum);
+            /*
+            if(isTrue && categoryNum){
+                for(var restaurant in restaurantResult){
+                    //console.log(restaurantResult[restaurant].extra.categories);
+                    for(var i = 0; i < restaurantResult[restaurant].extra.categories.length; i++){
+                       //console.log(restaurantResult[restaurant].extra.categories[i][1].data);
+                       for(var j = 0; j < restaurantResult[restaurant].extra.categories[i].length; j++){
+                           //console.log(restaurantResult[restaurant].extra.categories[i][j].data);
+                           var categoryId = restaurantResult[restaurant].extra.categories[i][j].data.id;
+                           //console.log(categoryId);
+                           if(categoryId == categoryNum){
+                               var index = restaurantResult.indexOf(restaurantResult[restaurant]);
+                               console.log(index + ' this is the index');
+                               //alert(categoryNum);
+                               restaurantResult.splice(index, 1);
+                               placeMarker(restaurantResult);
+                           }
+                       }
+                    }
                 }
-            ]
-        }
-        var categoryList = [];
-        var categories = [];
-        for(var k in items){
-            var restaurant = items[k];
-            catObj.id = restaurant.id;
-            categories.push(restaurant.relationships.categories);
-            //console.log(restaurant.relationships.categories);
-            //console.log(categories);
-            categoryList.push(catObj);
+            }else{
+                placeMarker(restaurantResult);
+            }*/
             
         }
         
-        console.log('kategori id ' + categoryList[0]);
-      
-        //rätt utdata för id av kategori console.log(categoryList[0].category_id.id);
-        console.log('------------');
-        //Loop through categories and append to result object.
-        for(var i = 0; i < categories.length; i++){
-            catObj.categories = categories[i];
-            console.log(categories[i]);
-            for(var j = 0; j < categories[i].length; j++){
-                console.log('restaurang ' + [i] + ' och id ' + categories[i][j].data.id);
-                console.log(categoryList[i].category_id.push(categories[i][j].data.id));
-                //categories.push(categories[i][j].data.id);
-            }
-            
-        }
-        //console.log('data ska sparas här ' + restaurantResult[0].extra.categories);
-        console.log('final object');
-        console.log(categoryList);
-        placeMarker(restaurantResult);
-        
+        //placeMarker(restaurantResult);
         
         var end = new Date().getTime();
         var time = end - start;
-        console.log("Exec time = " + time);
+        //console.log("Exec time = " + time);
         
+        //console.log($scope.filterCheckbox);
         
         $scope.createInfoScopes = function(id){
             $scope.content = restaurantResult[id];
