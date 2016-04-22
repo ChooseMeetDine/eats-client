@@ -21,6 +21,9 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', function($scope, $
 
   $scope.getPollRestaurants = function() {
     var completeRestaurants = [];
+    if(!$scope.active.data.relationships.restaurants){
+      return [];
+    }
     var restaurants = $scope.active.data.relationships.restaurants.data;
 
     for (var i = 0; i < restaurants.length; i++) {
