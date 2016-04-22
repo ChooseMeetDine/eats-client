@@ -1,0 +1,65 @@
+.test{
+background-color:grey;
+}
+
+#sharebutton{
+padding: 8px;
+background-color: turquoise;
+float: right;
+}
+
+#top{
+width: 100%;    
+margin:0 auto;
+overflow:hidden;
+padding-bottom: 30px;
+}
+
+#name{
+margin-top:0;
+margin-right: 20px;
+float: left;
+margin-top: 10px;
+color: white;
+}
+
+#timeEnds{
+text-align: center;
+margin-right: 20px;
+margin-top: 10px;
+color: white;
+
+
+}
+
+#settings{
+border-top:0;
+float: right;
+padding: 0;
+margin-right: 0;
+}
+
+#close{
+border-top:0;
+float: right;
+padding: 0;
+margin-left: 0;  
+}
+
+#bottom{
+width: 100%;    
+margin:0 auto;
+overflow:hidden;
+padding-bottom: 20px;
+}
+
+#user{
+float: left;
+float: bottom;
+color: white;
+}
+
+#restaurants{
+margin-bottom: 100px;
+color: white;
+}
