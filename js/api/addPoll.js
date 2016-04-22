@@ -66,10 +66,10 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
       'name': data.name
     };
 
-    var exipres = new Date();
-    exipres.setHours(data.hour);
-    exipres.setMinutes(data.minute);
-    poll.expires = exipres;
+    var expires = new Date();
+    expires.setHours(data.hour);
+    expires.setMinutes(data.minute);
+    poll.expires = expires;
 
     if (data.restaurants) {
       poll.restaurants = [];
