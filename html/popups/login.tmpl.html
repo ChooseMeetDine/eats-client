@@ -13,7 +13,9 @@
 
 <md-dialog-content style="max-width:800px;max-height:810px; ">
     <!-- First tab wich includes the "login" page with input forms and logos -->
+
             <md-content class="md-padding">
+              <label>Logga in</label>
                 <form name="login" ng-controller="loginUser" ng-submit="loginUser()">
                     <md-input-container>
                         <label>Email</label>
@@ -30,6 +32,7 @@
             </md-content>
 
     <!-- Second tab wich includes the "register" page with input forms and logos -->
+    <label>Registrera dig</label>
                 <md-content class="md-padding">
                     <form name="register" ng-controller="addUser" ng-submit="regUser()">
                         <md-input-container>
