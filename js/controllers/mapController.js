@@ -1,6 +1,11 @@
 app.controller('mapController', ['$scope', '$http', 'pollService', function($scope, $http, pollService) {
   var restaurantMarkers = {};
   var apiUrl = 'http://128.199.48.244:3000/restaurants';
+  //url-id + token to map styles that are called from mapbox
+  var mapId = 'gustavsvensson/cin628bnu00vwctnf2rdfbfmv';
+  var mapToken = 'pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ';
+  var mapId2 = 'beijar/cin5pab6g00sectnf9c96x1u2';
+  var mapToken2 = 'pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q';
 
   angular.extend($scope, {
     center: {
@@ -12,10 +17,10 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
     markers: restaurantMarkers,
     tiles: {
       name: 'Mapbox',
-      url: 'https://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={apikey}',
+      url: 'https://api.mapbox.com/styles/v1/{mapid}/tiles/{z}/{x}/{y}?access_token={apikey}',
       options: {
-        apikey: 'pk.eyJ1Ijoid2lpZ29sYXMiLCJhIjoiY2lreHYxejNvMDA0NndsbTRmejl4NndqMSJ9.5hfLbJnXbAsfsPRT3V4W4Q',
-        mapid: 'wiigolas.p7idlkkp'
+        apikey: mapToken,
+        mapid: mapId
       }
     },
     events: {
@@ -46,9 +51,9 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
         draggable: false,
         focus: true,
         icon: {
-          iconUrl: 'images/icons/marker-icon-red.png',
-          iconSize: [25, 41], // size of the icon
-          iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+          iconUrl: 'images/icons/you_marker.png',
+          iconSize: [24, 24], // size of the icon
+          iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
         }
       }
     });
@@ -84,12 +89,17 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
           priceRate: restaurant.attributes.pricerate,
           numberVotes: restaurant.attributes.number_votes,
           numberVotesWon: restaurant.attributes.number_won_votes,
-          categories: restaurant.relationships.data
+          categories: restaurant.relationships.categories
         }
       };
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
+        icon: {
+          iconUrl: markerType(attributes.extra.categories),
+          iconSize:   [52, 52],
+          iconAnchor: [26, 52]
+        },
         message: "<div ng-include=\"\'html/marker.html\'\">",
         focus: true,
         draggable: false,
@@ -120,5 +130,23 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
   $scope.openSlideMenu = function(restaurantId) {
     angular.element(document.getElementById('moreInfoMenu')).scope().toggleMoreInfoMenu();
     angular.element($('#moreInfoSlider')).scope().createInfoScopes(restaurantMarkers[restaurantId].attributes);
+  };
+  //Ugly hack to decide marker type, TODO: redo to a leaflet solution
+  //for dynamic marker icons
+  function markerType(restaurantExtraData){
+    //console.log(restaurantExtraData);
+    var data = restaurantExtraData;
+    var rest = 'images/icons/rest_marker.png';
+    for(i in data){
+        var object = data[i];
+        for(j in object){
+            //TODO: Create a check if key exist n object
+            if(object[j].id == "3"){
+                rest = 'images/icons/cafe_marker.png';
+                break;
+                }
+            }
+        }
+    return rest;
   };
 }]);
