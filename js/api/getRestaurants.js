@@ -14,26 +14,7 @@ app.controller('getRestaurants', function($scope, $http, $window) {
       url: link,
       /*headers: {'x-access-token' : $window.localStorage['jwtToken']}*/
     }).then(function successCallback(response) {
-      //console.log(response);
-      var categoryList = [];
-      for (var i = 0; i < response.data.data.length; i++) {
-        name = response.data.data[i].attributes.name;
-        //console.log('Restaurang: ' + name);
-        //console.log(response.data.data[i].relationships.categories);
-        for (var j = 0; j < response.data.data[i].relationships.categories.length; j++) {
-          //console.log('kategori id ' + response.data.data[i].relationships.categories[j].data.id);
-          categoryList.push(response.data.data[i].relationships.categories[j].data.id);
-        }
-        /*
-        for(var j = 0; j < response.data.included.length; j++){
-            category = response.data.included[j].attributes.name;
-            console.log('     ' + name + ' serverar ' + category);
-            //categoryList.push(category);
-        }*/
-        //console.log(restaurant);
-        //console.log(response.data.included);
-      }
-      //console.log(categoryList);
+
       resultRestaurant(response.data);
 
     }, function errorCallback(response) {
@@ -63,45 +44,19 @@ app.controller('getRestaurants', function($scope, $http, $window) {
             "categories": restaurant.relationships.categories
           }
         }
-        //Push categories array from resultData to array in restaurantData object
-        //restaurantData.extra.categories.push(restaurant.relationships.categories)
-      for (var i in restaurantData.extra.categories) {
-        //console.log(restaurantData.extra.categories[i].data.id);
-      }
-      counter++;
-      restaurantResult[counter] = restaurantData;
-      var id = restaurant.id;
-    }
 
-    //console.log(restaurantResult[0].extra.categories[0].data.id);
+        for (var i in restaurantData.extra.categories) {
+          console.log(restaurantData.name);
+          console.log(restaurantData.extra.categories[i].data.id);
+        }
+        counter++;
+        restaurantResult[counter] = restaurantData;
+        var id = restaurant.id;
+      }
+
 
     $scope.markerFilter = function(isTrue, categoryNum) {
-      //alert(isTrue);
-      //alert(categoryNum);
-      /*
-      if(isTrue && categoryNum){
-          for(var restaurant in restaurantResult){
-              //console.log(restaurantResult[restaurant].extra.categories);
-              for(var i = 0; i < restaurantResult[restaurant].extra.categories.length; i++){
-                 //console.log(restaurantResult[restaurant].extra.categories[i][1].data);
-                 for(var j = 0; j < restaurantResult[restaurant].extra.categories[i].length; j++){
-                     //console.log(restaurantResult[restaurant].extra.categories[i][j].data);
-                     var categoryId = restaurantResult[restaurant].extra.categories[i][j].data.id;
-                     //console.log(categoryId);
-                     if(categoryId == categoryNum){
-                         var index = restaurantResult.indexOf(restaurantResult[restaurant]);
-                         console.log(index + ' this is the index');
-                         //alert(categoryNum);
-                         restaurantResult.splice(index, 1);
-                         placeMarker(restaurantResult);
-                     }
-                 }
-              }
-          }
-      }else{
-          placeMarker(restaurantResult);
-      }*/
-
+      
     }
 
     //console.log(restaurantResult);
@@ -114,8 +69,6 @@ app.controller('getRestaurants', function($scope, $http, $window) {
         //console.log("Exec time = " + time);
 
     */
-
-    //console.log($scope.filterCheckbox);
 
     $scope.createInfoScopes = function(id) {
       $scope.content = restaurantResult[id];
