@@ -1,0 +1,45 @@
+#toolbar{
+background-color: dimgrey;
+ 
+}
+
+.md-raised{
+    padding: 5px;
+}
+
+#cancel{   
+ background-color: darkturquoise;
+float: right;
+margin-top: 30px;
+margin-bottom: 0px;
+}
+
+#clear{   
+background-color: darkturquoise;
+
+}
+
+#addrest{   
+ background-color: darkturquoise;
+}
+
+#addpoll{   
+background-color: darkturquoise;
+margin-top: 30px;
+float: right;
+margin-right: 10px;
+}
+
+#bottom{
+display: inline-block;
+
+}
+
+#add{
+display: inline-block;     
+}
+
+md-dialog{
+    
+background-color: #E0E0E0;
+}
