@@ -2,11 +2,37 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
   $scope.mode = modeService.getMode();
 
   var anon = $window.localStorage['userAnon'];
-  if (localStorage.getItem("userAnon") === null) {
+  if (localStorage.getItem("userAnon") !== null) { //There is a token
+    $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken']; //use the token
+
+    $http({                       //Try to use the token to see if it's still valid
+      method: 'GET',
+      url: 'http://128.199.48.244:7000/polls'
+    }).then(function(response) {
+      console.log('You are now logged in as ' + $window.localStorage['userName']);
+    }).catch(function(response) {         //The token was not valid, get a new one
+      $http({
+        method: 'GET',
+        url: 'http://128.199.48.244:7000/auth/anonymous'
+      }).then(function(response) {
+        var token = response.data.token;
+        $window.localStorage['userAnon'] = response.data.anon;
+        $window.localStorage['userName'] = response.data.name;
+        $window.localStorage['jwtToken'] = token;
+        $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
+        console.log(token);
+        $window.location.reload();
+      }).catch (function errorCallback(response) {
+        console.log("Error, could not get anonymous token!");
+      });
+    });
+
+  } else { //There is no token, get one
+    console.log('You are not logged in, getting a token for you....');
     $http({
       method: 'GET',
       url: 'http://128.199.48.244:7000/auth/anonymous'
-    }).then(function successCallback(response) {
+    }).then(function (response) {
       var token = response.data.token;
       $window.localStorage['userAnon'] = response.data.anon;
       $window.localStorage['userName'] = response.data.name;
@@ -14,11 +40,9 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
       $window.location.reload();
       console.log(token);
-    }, function errorCallback(response) {
-      console.log("Error, cannot load Anonynous User!");
+    }).catch(function (response) {
+      console.log("Error, could not get anonymous token!");
     });
-  } else {
-    $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
   }
 
   // Holds all functions for mdDialog to be able to change popups from other controllers

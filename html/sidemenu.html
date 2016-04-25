@@ -1,11 +1,20 @@
-<div id="menu">
-    <md-button class="menubutton" ng-click="toggleMainMenu()" aria-label="main menu button">
-        <i class="glyphicon glyphicon-menu-hamburger" ></i>
+<!-- Main menu and filter menu, buttons and including content files -->
+<div id="menubuttons">
+    
+    <!-- Main menu button -->
+    <md-button class="menubutton" ng-click="toggleMainMenu()" aria-label="Main menu button">
+        <!-- font awesome icon -->
+        <i class="fa fa-bars" aria-hidden="true"></i>
     </md-button>
-    <md-button class="menubutton" ng-click="toggleFilterMenu()" aria-label="filter menu button">
-        <i class="glyphicon glyphicon-filter"></i>
+    
+    <!-- Filter menu button -->
+    <md-button class="menubutton" ng-click="toggleFilterMenu()" aria-label="Filter menu button">
+        <!-- font awesome icon -->
+        <i class="fa fa-sliders" aria-hidden="true"></i>
     </md-button>
 </div>
+
+<!-- Div including main menu and filter menu contents -->
 <div>
     <div ng-include="'html/filtermenu.html'"></div>
     <div ng-include="'html/mainmenu.html'"></div>
