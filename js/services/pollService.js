@@ -1,4 +1,4 @@
-app.factory('pollService', function() {
+app.factory('pollService', ['$http',function($http) {
   var pollService = {};
 
   var pollMap = {};
@@ -75,5 +75,21 @@ app.factory('pollService', function() {
   pollService.getAll = function() {
     return pollMap;
   }
+
+  pollService.isUserParticipantInPoll = function(pollId, userId){
+    return $http({
+      method: 'GET',
+      url: 'http://128.199.48.244:7000/polls/' + pollId
+    }).then(function (response) {
+      var allUsers = response.data.data.relationships.users.data;
+      for (let i = 0; i < allUsers.length; i++) {
+        if(userId === allUsers[i].id){
+          return true;
+        }
+      }
+      return false;
+    });
+  }
+
   return pollService;
-});
+}]);
