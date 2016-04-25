@@ -2,7 +2,7 @@
 <md-dialog aria-label="Login">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2>Fortsätt som anonym, logga in eller registrera dig</h2>
+      <h2>Hur vill du fortsätta?</h2>
       <span flex></span>
       <md-button class="md-icon-button" ng-click="cancel()">
         <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
@@ -14,13 +14,29 @@
   <md-dialog-content style="max-width:800px;max-height:810px; ">
 
   <div ng-controller="continueAs">
+
+    <md-content class="md-padding" ng-if="isUserWithInvalidToken">
+      <md-dialog-actions layout="row">
+          Du är inte längre inloggad som {{username}}
+      </md-dialog-actions>
+    </md-content>
+
     <md-content class="md-padding">
       <md-dialog-actions layout="row">
-        <md-button ng-click="continueWithPresentTokenOrGetAnonymous()" class="md-raised">
+        <md-button ng-click="continueAsAnonymous()" class="md-raised">
           Fortsätt som anonym
         </md-button>
       </md-dialog-actions>
     </md-content>
+
+    <md-content class="md-padding" ng-if="isLoggedInAsUser">
+      <md-dialog-actions layout="row">
+        <md-button ng-click="continueAsUser()" class="md-raised">
+          Fortsätt som {{username}}
+        </md-button>
+      </md-dialog-actions>
+    </md-content>
+
   </div>
 
     <!-- First tab wich includes the "login" page with input forms and logos -->
