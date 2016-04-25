@@ -46,35 +46,32 @@
               <input ng-model="form.data.users " type="text " value="userId ">
             </md-input-container>
           </div>
-
-          <div layout-gt-xs="row ">
-            <md-button id="addrest" class="md-raised md-primary" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
-          </div>
+ 
 
           <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
               <md-chip-template ng-click="removeRestaurant($chip)">
                   {{$chip.attributes.name}} X
               </md-chip-template>
           </md-chips>
-          <br>
-          <div layout-gt-sm="row ">
-            <md-button id="addpoll" class="md-raised md-primary" type="submit "> Skapa omröstning </md-button>
+        
+          <div id="add">
+            <md-button id="addrest" class="md-raised md-primary" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
+              
+            <md-button id="clear" class="md-raised md-primary" ng-click="clearForm() ">Rensa</md-button>
           </div>
+            
+        <div id="bottom"> 
+            
+        <md-button id="cancel" class="md-raised md-primary" ng-click="cancel() ">Avbryt</md-button>
+        <md-button id="addpoll" class="md-raised md-primary" type="submit "> Skapa omröstning </md-button>
+              
+  
 
-          <md-dialog-actions layout="row ">
-            <md-button id="clear" class="md-raised md-primary" ng-click="clearForm() ">
-              Rensa
-            </md-button>
-          </md-dialog-actions>
-
+        </div>
         </form>
 
       </div>
     </md-dialog-content>
-    <md-dialog-actions layout="row ">
-      <md-button id="cancel" class="md-raised md-primary" ng-click="cancel() ">
-        Avbryt
-      </md-button>
-    </md-dialog-actions>
+
   </div>
 </md-dialog>
