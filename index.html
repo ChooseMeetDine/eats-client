@@ -88,19 +88,25 @@
   </head>
 
   <body ng-controller="appCtrl" ng-app="app">
-    <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
-    <div ng-include="'html/profilepage.html'"></div>
-    <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
-    <div ng-include="'html/activepolls.html'"></div>
-
-    <div ng-show="mode.active === 'ADD_RESTAURANTS_MODE'">
-      <div ng-include="'html/addrestaurantstopoll.html'"></div>
+    <div ng-if="!tokenStatus.valid" layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-circular md-diameter="150" md-mode="indeterminate"></md-progress-circular>
     </div>
 
-    <div ng-controller="mapController">
-      <leaflet center="center" markers="markers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
-    </div>
+    <div ng-if="tokenStatus.valid">
+      <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
+      <div ng-include="'html/profilepage.html'"></div>
+      <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
+      <div ng-include="'html/activepolls.html'"></div>
 
-    <div ng-include="'html/moreinfo.html'"></div>
+      <div ng-show="mode.active === 'ADD_RESTAURANTS_MODE'">
+        <div ng-include="'html/addrestaurantstopoll.html'"></div>
+      </div>
+
+      <div ng-controller="mapController">
+        <leaflet center="center" markers="markers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
+      </div>
+
+      <div ng-include="'html/moreinfo.html'"></div>
+    </div>
   </body>
 </html>
