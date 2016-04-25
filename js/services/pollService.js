@@ -60,7 +60,7 @@ app.factory('pollService', function() {
   }
 
   pollService.add = function(poll) {
-    poll.data.voteLink = 'localhost:4444/polls/' + poll.data.id;
+    poll.data.voteLink = 'localhost:4444/#?poll=' + poll.data.id;
     pollMap[poll.data.id] = poll;
   }
 
