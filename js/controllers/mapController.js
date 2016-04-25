@@ -92,7 +92,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
           categories: restaurant.relationships.categories
         }
       };
-      console.log(attributes);
+      //console.log(attributes);
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
@@ -150,7 +150,8 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
         }
     return rest;
   };
-  /**new L.Control.GeoSearch({
+//old geo search implementation, saved if we can implement in ang.leaflet
+ /**geosearch = new L.Control.GeoSearch({
     provider: new L.GeoSearch.Provider.Google()
-}).addTo(map); **/
+    }); **/
 }]);
