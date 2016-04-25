@@ -11,7 +11,6 @@ app.factory('tokenService', ['$window','$http', function($window, $http) {
       $window.localStorage['userName'] = response.data.name;
       $window.localStorage['jwtToken'] = token;
       $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
-      console.log(token);
       $window.location.reload();
     }).catch (function errorCallback(response) {
       console.log("Error, could not get anonymous token!");
@@ -20,6 +19,7 @@ app.factory('tokenService', ['$window','$http', function($window, $http) {
 
   //Try to use the token to see if it's still valid
   tokenService.testToken = function() {
+    $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
     return $http({
       method: 'GET',
       url: 'http://128.199.48.244:7000/polls'
