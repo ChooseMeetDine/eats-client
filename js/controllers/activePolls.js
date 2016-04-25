@@ -1,6 +1,7 @@
-app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window', function($scope, pollService, $http, $q, $window) {
+app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window','$location', function($scope, pollService, $http, $q, $window, $location) {
 
   $scope.polls = pollService.getAll();
+  parameterPollId = $location.search().poll; // poll ID from URL
 
   $scope.switchActivePoll = function(poll) {
       pollService.setActiveId(poll.data.id);
@@ -39,6 +40,10 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window',
       url:"http://128.199.48.244:7000/polls/" + pollId
     }).then(function(response) {
       pollService.add(response.data);
+      if (parameterPollId === response.data.data.id){
+        pollService.setActiveId(parameterPollId);
+        $scope.dialogs.showTabDialog(null, 'showActivePoll');
+      }
     });
   };
 
