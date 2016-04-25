@@ -19,7 +19,7 @@
                 <p>Inställningar</p>
                  <i class="material-icons">settings</i>
             </md-list-item>
-            <hr>
+            <hr ng-if="!access">
             <!-- Link to create new poll -->
              <!-- Groups 
             <md-subheader class="md-no-sticky">Groups</md-subheader>
@@ -32,13 +32,12 @@
             <!-- Others Menu -->
             <md-subheader class="md-no-sticky">Övrigt</md-subheader>
             <!-- Menu seciton create new poll and new group and add restaurant -->
-            
-            <md-list-item  ng-click="createPoll($event)">
+            <md-list-item ng-if="!access" ng-click="dialogs.showAdvanced($event, 'createpoll')">
                 <p>Skapa ny omröstning</p>
-                <i class="material-icons">add</i>                
+                <i class="material-icons">add</i>
             </md-list-item>
             
-            <md-list-item ng-hide="access" ng-click="createPoll($event)">
+            <md-list-item ng-if="!access" ng-click="createPoll($event)">
                 <p>Skapa ny grupp</p>
                 <i class="material-icons">person_add</i>
             </md-list-item>
