@@ -97,4 +97,5 @@ function DialogController($scope, $mdDialog) {
       clickOutsideToClose: true
     });
   };
+
 }

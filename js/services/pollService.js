@@ -21,7 +21,7 @@ app.factory('pollService', function() {
     }
     var restaurantFound = false;
     for (var i = 0; i < form.data.restaurants.length; i++) {
-      if (form.data.restaurants[i].attributes.id === restaurant.attributes.id) {
+      if (form.data.restaurants[i].id === restaurant.id) {
         restaurantFound = true;
         break;
       }
@@ -39,7 +39,7 @@ app.factory('pollService', function() {
     }
     var restaurantFound = false;
     for (var i = 0; i < form.data.restaurants.length; i++) {
-      if (form.data.restaurants[i].attributes.id === restaurant.attributes.id) {
+      if (form.data.restaurants[i].id === restaurant.id) {
         restaurantFound = true;
         form.data.restaurants.splice(i, 1);
         break;
