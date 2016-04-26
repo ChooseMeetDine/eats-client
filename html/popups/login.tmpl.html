@@ -1,4 +1,5 @@
-<!--This is the main window for login and register --->
+<!-- Detta används inte? Vem skrev det och behöver vi det? /Amanda
+
 <md-dialog aria-label="Login">
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -9,7 +10,7 @@
         </md-button>
       </div>
     </md-toolbar>
-
+--->
 
 <md-dialog-content style="max-width:800px;max-height:810px; ">
     <!-- First tab wich includes the "login" page with input forms and logos -->
@@ -21,12 +22,14 @@
                         <label>Email</label>
                         <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
                         <input ng-model="email" type="email">
-                    </md-input-container> <br>
+                    </md-input-container>
+                    <br>
                     <md-input-container>
                         <label>Lösenord</label>
                         <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
                         <input ng-model="password" type="password">
                     </md-input-container>
+                    <br>
                     <input type="submit" value="Logga in">
                 </form>
             </md-content>
@@ -39,12 +42,14 @@
                             <label>Namn</label>
                             <md-icon md-svg-src="images/icons/ic_person_24px.svg"></md-icon>
                             <input ng-model="name" type="text">
-                        </md-input-container> <br>
+                        </md-input-container>
+                        <br>
                         <md-input-container>
                             <label>Email</label>
                             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
                             <input ng-model="email" type="email">
-                        </md-input-container> <br>
+                        </md-input-container>
+                        <br>
                         <md-input-container>
                             <label>Lösenord</label>
                             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>

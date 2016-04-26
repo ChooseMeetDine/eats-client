@@ -16,6 +16,13 @@ Dove Gray       #616161     97,97,97
 Mine Shaft      #424242     66,66,66
 Mine Shaft-1    #212121     33,33,33
 
+Anakiwa         #84FFFF     132,255,255
+Cyan/Aqua       #18FFFF     24,255,255
+Cyan/Aqua-1     #00E5FF     0,229,255
+Pacific Blue    #00B8D4     0,184,212
+
+@import url("exempel.css")
+
 */
 
 /* RESETS: md-button., md-list */
@@ -28,12 +35,51 @@ Mine Shaft-1    #212121     33,33,33
     font-family: open sans, arial;
 }
 
+/*Logotype div container*/
+#logotype{
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*Logotype img*/
+#logoEats{
+    width:200px;
+}
+
 /*HTML,BODY*/
-html,body {
+html,body{
     height: 100%;
     overflow-x: hidden;
     font-family: open sans, arial;
     font-size: 14px;
+}
+
+/*Color backgrounds*/
+.md-content, .layout-padding{
+    background: #212121;
+    color: #FAFAFA;
+}
+/*Color toolbars*/
+.md-toolbar-tools{
+    background: #616161;
+}
+/*Styling all buttons*/
+.md-button{
+    padding:10px;
+}
+/*Forms*/
+form{
+    padding:5px;
+}
+
+/*Submit buttons*/
+form input{
+    background: #00b8d4;
+    border: none;
+    border-radius: 2px;
+    color: #FAFAFA;
+    padding:10px;
 }
 
 /*MAP*/
@@ -106,48 +152,58 @@ leaflet-popup-content-wrapper{
 /*---------------MAIN MENU & FILTER MENU-------------*/
 /*Buttons*/
 #menubuttons{
-    background: #FAFAFA;
+    background:#212121;
+    color: #FAFAFA;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 4;
 }
+    
 .menubutton{
     font-size: 180%;
     border-radius: 0px;
     padding:5px 10px;
     float: left;
+}.menubutton:hover{
+    background: #212121;
 }
 
 /*Menu content*/
 md-sidenav{
+    background: #212121;
     display:block;
     height:100vh;
     z-index: 3;
     overflow: hidden;
-    padding-top: 45px;
+    padding-top: 44px;
+}
+md-sidenav .md-toolbar-tools{
+    background: #616161;
+    color: #FAFAFA;
+    max-height: 100px!important;
+    height: 70px;
+}
+md-sidenav .material-icons{
+    color:#FAFAFA;
 }
 md-backdrop.md-sidenav-backdrop{
     z-index:2;
 }
 
 /*-------------------MAIN MENU-----------------------*/
-/*Main menu links to profile and settings*/
-.linksInMainMenu{
-    padding-left:20px!important;
-    padding-right:20px!important;
-    margin-top:10px!important;
-    cursor:pointer;
+md-sidenav hr{
+    border-color: #424242;
 }
 
-/*LOGIN*/
-/*Login button i main menu*/
-.login{
-    width:50%;
-    height:30px;
+/*Login or register button i main menu*/
+.login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
 }
 
-/*FILTER MENU*/
+/*-------------------FILTER MENU----------------------*/
 /*Filter menu undertitles*/
 .filter-undertitle {
     font-size: 14px;
@@ -176,7 +232,8 @@ md-backdrop.md-sidenav-backdrop{
 /*--------------------CREATE POLL---------------------*/
 /*Create poll button*/
 #createPollButton {
-    padding:0;
+    color: #212121;
+    padding: 0;
     z-index: 2;
     position: absolute;
     bottom: 20px;
