@@ -3,7 +3,7 @@
     <form name="addPoll" ng-submit="done()">
         <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
             <md-chip-template ng-click="remove($chip)">
-                {{$chip.attributes.name}} X
+                {{$chip.name}} X
             </md-chip-template>
         </md-chips>
 

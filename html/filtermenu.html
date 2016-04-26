@@ -7,7 +7,7 @@
     </md-toolbar>
     <md-content layout-padding>
     <!-- Filter Menu -->
-    <div>
+    <div ng-controller="filterController">
     <!-- Types of filter -->
         <div>
             <span class="filter-undertitle">		
@@ -22,22 +22,26 @@
                 </tr>
             </table>
             -->
-            <table id="filter_menu" ng-controller="getRestaurants" ng-controller="markersGroupController" style="width:100%">
+            <table id="filter_menu" style="width:100%">
                 <tr>
-                    <td><md-checkbox class="md-primary md-checked"  ng-model="data.cb1" ng-change="markerFilter(data.cb1, 1)">Alla ställen</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" ng-model="data.cb2" ng-change="markerFilter(data.cb2, 2)">Fisk</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" md-checked="true"" ng-model="data.cb1" ng-change="toggle(1)">Sushi</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb2" ng-change="toggle(2)">Grillat</md-checkbox></td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary" ng-model="data.cb3" ng-change="markerFilter(data.cb3, 3)">Kött</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" value="3">Kyckling</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb3" ng-change="toggle(3)">Hamburgare</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb4" ng-change="toggle(4)">Vegetariskt</md-checkbox></td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary" value="4">Vegetariskt</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" value="5">Sushi</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb5" ng-change="toggle(5)">Sallad</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb6" ng-change="toggle(6)">Pizza</md-checkbox></td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary" value="6">Pizza</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" value="7">Vegansk</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb7" ng-change="toggle(7)">Indiskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb8" ng-change="toggle(8)">Italienskt</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb9" ng-change="toggle(9)">Thailändskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="data.cb10" ng-change="toggle(10)">Övrigt</md-checkbox></td>
                 </tr>
             </table>
             <!-- Price Filter Slider -->

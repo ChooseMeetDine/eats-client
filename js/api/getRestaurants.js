@@ -24,7 +24,7 @@ app.controller('getRestaurants', function($scope, $http, $window) {
 
   //This function takes the result and creates a restaurantData object and pushes it to restaurantResult array.
   function resultRestaurant(resultData) {
-    console.log('called');
+    //console.log('called');
     var counter = -1;
     var items = resultData.data;
     for (var k in items) {
@@ -45,23 +45,14 @@ app.controller('getRestaurants', function($scope, $http, $window) {
           }
         }
 
-        for (var i in restaurantData.extra.categories) {
-          console.log(restaurantData.name);
-          console.log(restaurantData.extra.categories[i].data.id);
-        }
         counter++;
         restaurantResult[counter] = restaurantData;
         var id = restaurant.id;
       }
 
-
-    $scope.markerFilter = function(isTrue, categoryNum) {
-      
-    }
-
     //console.log(restaurantResult);
     //calls marker function from maps.js to create rest.markers on map
-    // placeMarker(restaurantResult);
+    //placeMarker(restaurantResult);
 
     /**
         var end = new Date().getTime();
