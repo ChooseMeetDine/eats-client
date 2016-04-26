@@ -1,12 +1,14 @@
-app.controller('mapController', ['$scope', '$http', 'pollService', function($scope, $http, pollService) {
-  var restaurantMarkers = {};
-  var apiUrl = 'http://128.199.48.244:7000/restaurants';
+app.controller('mapController', ['$scope', '$http', 'pollService', 'filterService', function($scope, $http, pollService, filterService) {
+  var restaurantMarkers = [];
+  var restaurants = {};
+  var apiUrl = 'http://128.199.48.244:3000/restaurants';
   //url-id + token to map styles that are called from mapbox
   var mapId = 'gustavsvensson/cin628bnu00vwctnf2rdfbfmv';
   var mapToken = 'pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ';
   var mapId2 = 'beijar/cin5pab6g00sectnf9c96x1u2';
   var mapToken2 = 'pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q';
-
+  var overlays = filterService.overlays;
+  
   angular.extend($scope, {
     center: {
       lat: 59.91,
@@ -22,6 +24,9 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
         apikey: mapToken,
         mapid: mapId
       }
+    },
+    layers:{
+      overlays
     },
     events: {
       map: {
@@ -92,7 +97,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
           categories: restaurant.relationships.categories
         }
       };
-      console.log(attributes);
+      //console.log(attributes);
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
@@ -109,28 +114,34 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
           angular.extend(scope, this.attributes); // adds attributes to scope, to let the template reach the data
           return scope;
         },
-        attributes: attributes
+        attributes: attributes,
       }
-
-      restaurantMarkers[restaurant.id] = marker;
-    }
-    //console.log(restaurantResult);
-    //calls marker function from maps.js to create rest.markers on map
-    // placeMarker(restaurantResult);
-
-    // $scope.createInfoScopes = function(id){
-    //     $scope.content = restaurantResult[id];
-    // }       
+      
+      for(var i = 0; i < attributes.extra.categories.length; i++){
+        //console.log(attributes.name);
+        var markerCopy = angular.copy(marker);
+        markerCopy.layer =  attributes.extra.categories[i].data.id;
+        //console.log(attributes.extra.categories[i].data.id);
+        restaurantMarkers.push(markerCopy);
+      }
+      restaurants[restaurant.id] = attributes;
+      
+    }   
   };
   fetchRestaurants();
-
+  
+  //test function
+  $scope.toggleKyckling = function(){
+    $scope.layers.overlays[3].visible = false;
+  };
+  
   $scope.addRestaurantToPoll = function(restaurantId) {
-    pollService.addRestaurantToForm(restaurantMarkers[restaurantId]);
+    pollService.addRestaurantToForm(restaurants[restaurantId]);
   };
 
   $scope.openSlideMenu = function(restaurantId) {
     angular.element(document.getElementById('moreInfoMenu')).scope().toggleMoreInfoMenu();
-    angular.element($('#moreInfoSlider')).scope().createInfoScopes(restaurantMarkers[restaurantId].attributes);
+    angular.element($('#moreInfoSlider')).scope().createInfoScopes(restaurants[restaurantId]);
   };
   //Ugly hack to decide marker type, TODO: redo to a leaflet solution
   //for dynamic marker icons
