@@ -3,6 +3,10 @@ background-color:#616161;
 width: 500px;
 }
 
+#content-dialog{
+padding: 5px;
+}
+
 #sharebutton{
 padding: 8px;
 background-color: #00b8d4;
@@ -51,7 +55,7 @@ margin-left: 0;
 width: 100%;    
 margin:0 auto;
 overflow:hidden;
-padding-bottom: 20px;
+padding-bottom: 5px;
 }
 
 #user{
