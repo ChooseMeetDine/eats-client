@@ -1,6 +1,6 @@
 app.controller('mapController', ['$scope', '$http', 'pollService', function($scope, $http, pollService) {
   var restaurantMarkers = {};
-  var apiUrl = 'http://128.199.48.244:3000/restaurants';
+  var apiUrl = 'http://128.199.48.244:7000/restaurants';
   //url-id + token to map styles that are called from mapbox
   var mapId = 'gustavsvensson/cin628bnu00vwctnf2rdfbfmv';
   var mapToken = 'pk.eyJ1IjoiZ3VzdGF2c3ZlbnNzb24iLCJhIjoiY2lrOGh5cmc4MDJtb3cwa2djenZzbmwzbiJ9.aKbD4sJfKeFr1GBTtlvOFQ';
@@ -94,6 +94,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
           categories: restaurant.relationships.categories
         }
       };
+      console.log(attributes);
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,

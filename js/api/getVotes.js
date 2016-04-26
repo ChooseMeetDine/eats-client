@@ -11,7 +11,7 @@ app.controller('getVotes', function($scope, $http) {
 
         $http({
             methos: 'GET', 
-            url:"http://128.199.48.244:3000/polls"
+            url:"http://128.199.48.244:7000/polls"
         }).then(function successCallback(response) {
             $scope.item = response.data;
             var items = response.data.included;

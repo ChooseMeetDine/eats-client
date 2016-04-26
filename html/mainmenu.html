@@ -10,57 +10,53 @@
     <md-content ng-controller="authJwt" layout-padding>
         <md-list ng-cloak layout-padding>
             <!-- Link to profile -->
-            <md-list-item ng-if="!access" href="#aboutModal" data-toggle="modal" data-target="#profilsida" md-expando>
+            <md-list-item class="linksInMainMenu" ng-if="!access" href="#aboutModal" data-toggle="modal" data-target="#profilsida" md-expando>
                 <p>{{ name }}</p>
-                <i class="fa fa-user"></i>
+                <i class="material-icons">account_circle</i>
             </md-list-item>
             <!-- Link to settings -->
-            <md-list-item href="#">
+            <md-list-item href="#" class="linksInMainMenu">
                 <p>Inställningar</p>
-                <i class="fa fa-cog"></i>
+                 <i class="material-icons">settings</i>
             </md-list-item>
-            <hr>
-            <!-- Group Menu -->
-            <md-subheader ng-if="!access" class="md-no-sticky">Grupper</md-subheader>
-            <md-list-item ng-if="!access" href="#">
-                <p>Grupp 1</p>
-                <i class="fa fa-users"></i>
-            </md-list-item>
-            <md-list-item ng-if="!access" href="#">
-                <p>Grupp 2</p>
-                <i class="fa fa-users"></i>
-            </md-list-item>
+            <hr ng-if="!access">
+            <!-- Link to create new poll -->
+             <!-- Groups 
+            <md-subheader class="md-no-sticky">Groups</md-subheader>
+            <table>
+                <tr ng-repeat="group in groups">
+                    <td>{{ group }}</td>
+                </tr>
+            </table>-->
             <hr ng-if="!access">
             <!-- Others Menu -->
             <md-subheader class="md-no-sticky">Övrigt</md-subheader>
             <!-- Menu seciton create new poll and new group and add restaurant -->
-            <md-list-item ng-click="createPoll($event)">
+            <md-list-item ng-if="!access" ng-click="dialogs.showAdvanced($event, 'createpoll')">
                 <p>Skapa ny omröstning</p>
-                <i class="glyphicon glyphicon-plus"></i>
+                <i class="material-icons">add</i>
             </md-list-item>
-            <md-list-item ng-hide="access" ng-click="createPoll($event)">
+            
+            <md-list-item ng-if="!access" ng-click="createPoll($event)">
                 <p>Skapa ny grupp</p>
-                <i class="glyphicon glyphicon-plus"></i>
+                <i class="material-icons">person_add</i>
             </md-list-item>
+            
             <md-list-item href="#" id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showAdvanced($event, 'addrestaurant'); ">
                 <p>Lägg till restaurant</p>
-                <i class="fa fa-users"></i>
-            </md-list-item>
-            <md-list-item ng-click="dialogs.showAdvanced($event)">
-                <p>Skapa ny restaurang</p>
+                <i class="material-icons">add</i>
             </md-list-item>
 
             <hr>
-            <div>
                 <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
                     <md-button ng-if="access" class="login md-raised" ng-click="dialogs.showTabDialog($event, 'login')">
                         <i class="glyphicon glyphicon-log-in"></i> Logga in
                     </md-button>
+                    
                     <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">
                         <i class="glyphicon glyphicon-log-out"></i> Logga ut
                     </md-button>
                 </div>
-            </div>
 
         </md-list>
     </md-content>

@@ -1,22 +1,20 @@
-app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia', 'modeService', function($http, $window, $scope, $mdDialog, $mdMedia, modeService) {
+app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia', 'modeService', 'tokenService', function($http, $window, $scope, $mdDialog, $mdMedia, modeService, tokenService) {
   $scope.mode = modeService.getMode();
 
   var anon = $window.localStorage['userAnon'];
-  if (localStorage.getItem("userAnon") === null) {
-    $http({
-      method: 'GET',
-      url: 'http://128.199.48.244:3000/auth/anonymous'
-    }).then(function successCallback(response) {
-      var token = response.data.token;
-      $window.localStorage['userAnon'] = response.data.anon;
-      $window.localStorage['userName'] = response.data.name;
-      $window.localStorage['jwtToken'] = token;
-      console.log(token);
-    }, function errorCallback(response) {
-      console.log("Error, cannot load Anonynous User!");
-    });
-  } else {
+  if (localStorage.getItem("userAnon") !== null) { //There is a token
+    $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken']; //use the token
 
+    tokenService.testToken()  //Try to use the token to see if it's still valid
+    .then(function(response) {
+      console.log('You are now logged in as ' + $window.localStorage['userName']);
+    }).catch(function(response) {
+      tokenService.getAnonymousToken(); //The token was not valid, get a new one
+    });
+
+  } else { //There is no token, get one
+    console.log('You are not logged in, getting a token for you....');
+    tokenService.getAnonymousToken(); //The token was not valid, get a new one
   }
 
   // Holds all functions for mdDialog to be able to change popups from other controllers
