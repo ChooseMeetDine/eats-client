@@ -1,45 +1,77 @@
+@font-face {
+    font-family: Aileron;
+    font-weight: bold;
+    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+        format("opentype");
+}
+
 #toolbar{
-background-color: dimgrey;
- 
+    background-color: #9E9E9E;
+    font-family: Aileron;
+    
 }
 
 .md-raised{
     padding: 5px;
 }
 
-#cancel{   
- background-color: darkturquoise;
-float: right;
-margin-top: 30px;
-margin-bottom: 0px;
-}
+/*Lägg till restauranger*/
 
 #clear{   
-background-color: darkturquoise;
-
+    background-color: #ffffff;
+    color: #616161;
 }
 
 #addrest{   
- background-color: darkturquoise;
-}
-
-#addpoll{   
-background-color: darkturquoise;
-margin-top: 30px;
-float: right;
-margin-right: 10px;
-}
-
-#bottom{
-display: inline-block;
-
+    background-color: #ffffff;
+    color: #616161;    
 }
 
 #add{
-display: inline-block;     
+    display: inline-block;
+    margin-top: 10px;
+}
+
+
+/*Skapa eller avbryt skapning av omröstning*/
+
+#cancel{   
+    background-color: #ffffff;
+    float: right;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    color: #616161;
+}
+
+#addpoll{   
+    background-color: #00B8D4;
+    margin-top: 30px;
+    float: right;
+    margin-left: 10px;
+    
+    
+}
+
+#bottom{
+    display: inline-block;
+    float: right;
+    
+
 }
 
 md-dialog{
-    
-background-color: #E0E0E0;
+    background-color: #FAFAFA;
 }
+
+/*Checkbox "Endast jag får lägga till restauranger"*/
+
+md-checkbox.md-checked.checkboxpermission .md-icon {
+ background-color: #00B8D4;
+}
+
+/*Inputfält*/
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #00B8D4;
+    font-family: Aileron;
+}   

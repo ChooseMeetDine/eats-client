@@ -21,7 +21,7 @@
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
-              <label>Omröstningsnamn</label>
+              <label>Ange namn för omröstning</label>
               <input ng-model="form.data.name " type="text " value="name" ng-required="true">
             </md-input-container>
           </div>
@@ -37,7 +37,7 @@
 
 
           <div layout-gt-xs="row ">
-            <md-checkbox value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
+            <md-checkbox class="checkboxpermission" value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
           </div>
 
           <div layout-gt-sm="row ">
@@ -62,10 +62,12 @@
             
         <div id="bottom"> 
             
-        <md-button id="cancel" class="md-raised md-primary" ng-click="cancel() ">Avbryt</md-button>
         <md-button id="addpoll" class="md-raised md-primary" type="submit "> Skapa omröstning </md-button>
+        
+        <md-button id="cancel" class="md-raised md-primary" ng-click="cancel() ">Avbryt</md-button>
+        
               
-  
+
 
         </div>
         </form>

@@ -20,7 +20,9 @@ app.controller('mapController', ['$scope', '$http', 'pollService', function($sco
       url: 'https://api.mapbox.com/styles/v1/{mapid}/tiles/{z}/{x}/{y}?access_token={apikey}',
       options: {
         apikey: mapToken,
-        mapid: mapId
+        mapid: mapId,
+        tileSize: 512,
+        zoomOffset: -1,
       }
     },
     events: {
