@@ -50,29 +50,41 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
 
   var userFollowedPollLink = ($scope.parameterPollId); //votelänk användes
 
-  tokenService
-  .validateToken()
-  .then(function() {
-    if(userFollowedPollLink){ //User followed poll-link and has a valid token
-      pollService
-        .isUserParticipantInPoll($scope.parameterPollId, tokenService.getUserId())
-        .then(function(userIsParticipant) { // userIsParticipant is true or false
-          if(!userIsParticipant){
-            console.log('You are logged in as ' + tokenService.getTokenUserName() + ' but you are not participating in this poll');
-            $scope.dialogs.showAdvanced(null, 'continueAs') //User is not in this poll, ask what he/she would like to continue as
-          } else {
-            console.log('You are logged in as ' + tokenService.getTokenUserName() + ' and you are a participant in this poll');
-          }
-        });
-    }
-  }).catch(function() {
-    console.log('You do not have a valid token yet.')
-    if(userFollowedPollLink){ //User followed poll-link and has an invalid token that belongs to a registered user
-      $scope.dialogs.showAdvanced(null, 'continueAs');
-    } else {
-      tokenService.getAnonymousToken(); //User did not follow a poll-link and does not have a valid token
-    }
-  });
+  tokenService.validateToken();
+
+  if(userFollowedPollLink) {
+    pollService
+    .getPollIdAndSetAsActive($scope.parameterPollId)
+    .then(function () {
+      $scope.dialogs.showAdvanced(null, 'showActivePoll');
+    });
+  }
+
+
+  // tokenService
+  // .validateToken()
+  // .then(function() {
+  //   if(userFollowedPollLink){ //User followed poll-link and has a valid token
+  //     pollService
+  //       .isUserParticipantInPoll($scope.parameterPollId, tokenService.getUserId())
+  //       .then(function(userIsParticipant) { // userIsParticipant is true or false
+  //         if(!userIsParticipant){
+  //           console.log('You are logged in as ' + tokenService.getTokenUserName() + ' but you are not participating in this poll');
+  //           $scope.dialogs.showAdvanced(null, 'continueToPollAs'); //User is not in this poll, ask what he/she would like to continue as
+  //         } else {
+  //           console.log('You are logged in as ' + tokenService.getTokenUserName() + ' and you are a participant in this poll');
+  //         }
+  //       });
+  //   }
+  // }).catch(function() {
+  //   console.log('You do not have a valid token yet.')
+  //   if(userFollowedPollLink){ //User followed poll-link and has an invalid token that belongs to a registered user
+  //     $scope.dialogs.showAdvanced(null, 'continueAs');
+  //   } else {
+  //     tokenService.getAnonymousToken(); //User did not follow a poll-link and does not have a valid token
+  //   }
+  // });
+
 
   // localStorage.getItem("userAnon") === null //Token finns inte
   // var userFollowedPollLink = ($scope.parameterPollId); //votelänk användes

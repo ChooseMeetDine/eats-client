@@ -18,7 +18,7 @@
             <div id="restaurants">
                 <h4>Restauranger:</h4> <br>
                 <p>
-                <b ng-repeat="restaurant in getPollRestaurants()">{{restaurant.attributes.name}} <br/>
+                <b ng-repeat="restaurant in restaurants" ng-click="vote(restaurant.id)">{{restaurant.attributes.name}} <br/>
                 </b>
                 </p>
                <!-- <p>ID: {{active}} </p>
@@ -26,10 +26,14 @@
                 <p>created: {{active.data.attributes.created}} </p>-->
             </div>
 
+            <div>
+              <p ng-repeat="vote in votes"><br>Användare: {{vote.user}} har röstat på {{vote.restaurant}}</p>
+            </div>
+
             <!--<p>Användare: </p>-->
             <hr>
             <div id="bottom">
-            <p id="user" ng-repeat="user in getPollUsers()">Namn: {{user.attributes.name}}</p>
+            <p id="user" ng-repeat="user in users">Namn: {{user.attributes.name}}</p>
             <md-button id="sharebutton" class="md-raised md-primary">Share</md-button>
             </div>
         </div>

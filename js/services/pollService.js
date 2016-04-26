@@ -91,5 +91,27 @@ app.factory('pollService', ['$http',function($http) {
     });
   }
 
+  pollService.joinPoll = function(pollId){
+    return $http({
+      method: 'POST',
+      url: 'http://128.199.48.244:7000/polls/' + pollId + '/users'
+    }).then(function (response) {
+      console.log('Joined poll');
+    });
+  }
+
+  pollService.getPollIdAndSetAsActive = function(pollId){
+    return $http({
+      method: 'Get',
+      url: 'http://128.199.48.244:7000/polls/' + pollId
+    }).then(function (response) {
+      console.log('Joined poll');
+      response.data.voteLink = 'localhost:4444/#?poll=' + pollId;
+      pollMap[pollId] = response.data;
+      active = pollMap[pollId];
+      return pollId;
+    });
+  }
+
   return pollService;
 }]);

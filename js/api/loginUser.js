@@ -12,7 +12,7 @@ app.controller('loginUser', [ '$scope', '$http', '$window','tokenService', funct
             $window.localStorage.removeItem('jwtToken');
             $window.localStorage.removeItem('userAnon');
             $window.localStorage.removeItem('userName');
-            $scope.dialogs.showAdvanced(null, 'continueAs');
+            $scope.dialogs.showAdvanced(null, 'continueToPollAs');
         }
 
 }]);
