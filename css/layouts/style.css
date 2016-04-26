@@ -273,7 +273,6 @@ md-sidenav hr{
     z-index:2;
 }
 
-
 /*hide md-dialog-container*/
 .display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
     display: none !important;
