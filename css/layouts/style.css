@@ -1,3 +1,18 @@
+/*FONTS*/
+@font-face {
+    font-family: aileron;
+    font-weight: bold;
+    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+        format("opentype");
+}
+
+@font-face {
+    font-family: borg;
+    src: url("/css/fonts/borg/Borg.ttf")
+        format("opentype");
+}
+
+
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
@@ -12,9 +27,16 @@
 html,body {
     height: 100%;
     overflow-x: hidden;
-    font-family: open sans, arial;
+    font-family: aileron, open sans, arial;
     font-size: 14px;
 }
+
+.md-toolbar-tools{
+    font-family: borg, aileron, open sans, arial;
+    font-size: 42px;
+}
+
+
 
 /*MAP*/
 #map {
