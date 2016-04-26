@@ -69,6 +69,65 @@ app.factory('pollService', ['$http', function($http) {
     return active;
   }
 
+
+  pollService.getActiveWithCleanedData = function()  {
+    var cleanedActive = {
+      id: active.data.id,
+      users: [],
+      restaurants: [],
+      votes: []
+    };
+
+    // Extract user data
+    var activeUsers = active.data.relationships.users.data;
+    for (var i = 0; i < activeUsers.length; i++) {
+      for (var j = 0; j < active.included.length; j++) {
+        if (active.included[j].id === activeUsers[i].id) {
+          cleanedActive.users.push(active.included[j]);
+        }
+      }
+    }
+
+    // Extract restaurant data
+    if (!active.data.relationships.restaurants) { //Prevents error when poll is created without restaurants
+      cleanedActive.restaurants = [];
+    } else {
+      var activeRestaurants = active.data.relationships.restaurants.data;
+      for (var i = 0; i < activeRestaurants.length; i++) {
+        for (var j = 0; j < active.included.length; j++) {
+          if (active.included[j].id === activeRestaurants[i].id) {
+            var restaurant = active.included[j];
+            restaurant.votes = [];
+            cleanedActive.restaurants.push(restaurant);
+          }
+        }
+      }
+    }
+
+    // Extract vote data
+    for (var i = 0; i < active.included.length; i++) {
+      if (active.included[i].type === 'vote') {
+        cleanedActive.votes.push({
+          id: active.included[i].id,
+          user: active.included[i].relationships.user.data.id,
+          restaurant: active.included[i].relationships.restaurant.data.id
+        });
+
+        // Add vote to vote array in restaurant
+        for (var j = 0; j < cleanedActive.restaurants.length; j++) {
+          if (cleanedActive.restaurants[j].id === active.included[i].relationships.restaurant.data.id) {
+            cleanedActive.restaurants[j].votes.push({
+              id: active.included[i].id,
+              user: active.included[i].relationships.user.data.id
+            })
+          }
+        };
+      }
+    }
+
+    return cleanedActive;
+  }
+
   pollService.getWithId = function(id) {
     return pollMap[id];
   }
@@ -85,6 +144,18 @@ app.factory('pollService', ['$http', function($http) {
       }
     }
     return false;
+  }
+
+  pollService.checkWhatRestaurantUserHasVotedOnInActivePoll = function(userId) {
+    console.log('ACCCTIVE');
+    console.log(active);
+    var included = active.included;
+    for (var i = 0; i < included.length; i++) {
+      if (included[i].type === 'vote' && included[i].relationships.user.data.id === userId) {
+        return included[i].relationships.restaurant.data.id;
+      }
+    }
+    return null;
   }
 
   pollService.joinActivePoll = function() {

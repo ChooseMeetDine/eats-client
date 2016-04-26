@@ -60,9 +60,27 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
     }
   }
 
-  tokenService.validateToken()
-    .then(showPollPopupFromLink)
-    .catch(showPollPopupFromLink);
+  if (tokenService.getJwt() === undefined)  { // no token at all = first time on the site
+    tokenService.getAnonymousToken()
+      .then(function() {
+        if (userFollowedPollLink) {
+          showPollPopupFromLink();
+        }
+      });
+  } else {
+    tokenService.validateToken() // token exists = has visited site before
+      .then(function() {
+        if (userFollowedPollLink) {
+          showPollPopupFromLink();
+        }
+        // TODO: HÄR KAN GÖRAS EN pollService.fetchAllPollsForUser ISTÄLLET FÖR ATT HA DET I showPoll-controllern..
+      });
+  }
+
+  // tokenService.validateToken()
+  //   .then(showPollPopupFromLink)
+  //   .catch(showPollPopupFromLink);
+
 
 
 

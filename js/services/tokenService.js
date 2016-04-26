@@ -25,13 +25,19 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
   tokenService.validateToken = function() {
     $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
     console.log('Validating token for ' + $window.localStorage['userName'] + '... ');
+
     return $http({
-      method: 'GET',
-      url: 'http://128.199.48.244:7000/polls'
-    }).then(function() {
-      console.log('Token is valid');
-      tokenStatus.valid = true;
-    });
+        method: 'GET',
+        url: 'http://128.199.48.244:7000/polls'
+      }).then(function() {
+        console.log('Token is valid');
+        tokenStatus.valid = true;
+        return true;
+      })
+      .catch(function(err) {
+        console.log(err);
+        return false;
+      });
   }
 
   tokenService.getTokenStatus = function() {
