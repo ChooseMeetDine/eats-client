@@ -1,14 +1,11 @@
-@font-face {
-    font-family: Aileron;
-    font-weight: bold;
-    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
-        format("opentype");
+#toolbar{
+    background-color: #616161;
+    padding: 2%;
 }
 
-#toolbar{
-    background-color: #9E9E9E;
-    font-family: Aileron;
-    
+#dialogheader{
+    font-size: 55px;
+    font-family: borg;
 }
 
 .md-raised{
@@ -48,9 +45,11 @@
     margin-top: 30px;
     float: right;
     margin-left: 10px;
-    
-    
+    color: #fafafa;
 }
+
+
+
 
 #bottom{
     display: inline-block;
@@ -63,6 +62,44 @@ md-dialog{
     background-color: #FAFAFA;
 }
 
+
+/*Välja tid för omröstning*/
+
+#sluttid{
+    color: #616161;
+    font-size: 19px;
+}
+
+#hourlabel{
+    color: #616161;
+    margin-bottom: 30px;
+    
+}
+
+#hourselect{
+    margin-right: 10px;
+}
+#minutelabel{
+    color: #616161;
+    margin-bottom: 30px;
+    margin-left: 60px;
+    
+}
+
+select{
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 34px;
+    background-color: #bdbdbd;
+    color: #fafafa;
+    
+}
+
+select option{
+    background-color: #bdbdbd;
+}
+
+
 /*Checkbox "Endast jag får lägga till restauranger"*/
 
 md-checkbox.md-checked.checkboxpermission .md-icon {
@@ -70,6 +107,11 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 }
 
 /*Inputfält*/
+
+#lunchname{
+    font-size: 25px;
+    color: #616161;
+}
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
