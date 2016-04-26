@@ -7,7 +7,7 @@ app.controller('addUser', function($scope, $http) {
             };
             $http({
                 method: 'POST',
-                url: 'http://128.199.48.244:3000/users',
+                url: 'http://128.199.48.244:7000/users',
                 headers: {'Content-Type': 'application/json'},
                 data: user
             }).then(function successCallback(response){
@@ -17,8 +17,6 @@ app.controller('addUser', function($scope, $http) {
             }, function errorCallback(){
                 $scope.regUser = "error";
             });
-            console.log(user);   
+            console.log(user);
         };
     });
-                   
-                

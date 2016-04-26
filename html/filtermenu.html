@@ -1,9 +1,9 @@
-<md-content flex >
-    <div flex></div>
-</md-content>
+<!-- Side navigation filter menu -->
 <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="filter">
+    
+    <!-- Menu title -->
     <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Filtera ställen</h1>
+        <h1 class="md-toolbar-tools">Filter</h1>
     </md-toolbar>
     <md-content layout-padding>
     <!-- Filter Menu -->
@@ -50,18 +50,23 @@
                 <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly">
                 </md-slider>
             </md-slider-container>
+            
+        <!-- Filter by type of price -->
+        <md-slider-container>
+            <span class="filter-undertitle"> Priset spelar roll </span>
+            <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly"></md-slider>
+        </md-slider-container>
+        
+        <hr>
 
-            <!-- Rating
-            <span class="filter-undertitle"> Betyg </span>
-                <div class="star-rating"> 
-                    <span class="fa fa-star" data-rating="1"></span>
-                    <span class="fa fa-star" data-rating="2"></span>
-                    <span class="fa fa-star" data-rating="3"></span>
-                    <span class="fa fa-star-o" data-rating="4"></span>
-                    <span class="fa fa-star-o" data-rating="5"></span>
-                </div>
-                -->
+        <!-- Filter by rating grades -->
+        <span class="filter-undertitle"> Jag vill se vad andra gillar </span>
+            <div class="star-rating"> 
+                <span data-rating="1"><i class="material-icons">star</i></span>
+                <span data-rating="2"><i class="material-icons">star</i></span>
+                <span data-rating="3"><i class="material-icons">star</i></span>
+                <span data-rating="4"><i class="material-icons">star_half</i></span>
+                <span data-rating="5"><i class="material-icons">star_border</i></span>
             </div>
-        </div>
     </md-content>
 </md-sidenav>

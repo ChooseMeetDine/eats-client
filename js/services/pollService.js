@@ -56,12 +56,10 @@ app.factory('pollService', function() {
   };
 
   pollService.setActiveId = function(id) {
-    console.log('set a new active poll');
     active = pollMap[id];
   }
 
   pollService.add = function(poll) {
-    console.log('added a new poll');
     pollMap[poll.data.id] = poll;
   }
 

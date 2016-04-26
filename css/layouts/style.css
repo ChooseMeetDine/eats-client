@@ -1,19 +1,22 @@
-/* RESETS: md-button., md-list*/
+/* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
     padding:0;
     min-width:0;
     min-height:0;
     line-height:normal;
+    font-family: open sans, arial;
 }
 
-/*HTML*/
+/*HTML,BODY*/
 html,body {
     height: 100%;
     overflow-x: hidden;
-    
+    font-family: open sans, arial;
+    font-size: 14px;
 }
-/*Map*/
+
+/*MAP*/
 #map {
     position:absolute;
     top:0;
@@ -24,10 +27,93 @@ html,body {
     z-index: 0;    
 }
 
+/*LEAFLET BAR*/
+/*Zoom and show me where I am buttons*/
+.leaflet-bar{
+    border:none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+/*Zoom in and zoom out controls */
+.leaflet-control-zoom-in, .leaflet-control-zoom-out{
+    color:transparent!important;
+}
+/*Show me where I am button container*/
+.leaflet-bar a, .leaflet-bar a:hover{
+    text-align: -webkit-center;
+    border:none;
+}
+.leaflet-control-locate a{
+    padding:2px;
+}
+
+/*MAIN MENU & FILTER MENU*/
+/*Buttons*/
+#menubuttons{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FAFAFA;
+    z-index: 4;
+}
+.menubutton{
+    font-size: 160%;
+    border-radius: 0px;
+    padding:5px 10px;
+    float: left;
+}
+
+/*Menu content*/
+md-sidenav{
+    display:block;
+    height:100vh;
+    z-index: 3;
+    padding-top:40px;
+    overflow: hidden;
+}
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+
+/*MAIN MENU*/
+/*Main menu links to profile and settings*/
+.linksInMainMenu{
+    padding-left:20px!important;
+    padding-right:20px!important;
+    margin-top:10px!important;
+    cursor:pointer;
+}
+.linksInMainMenu:hover{
+    background-color:#EEEEEE;
+}
+
+/*LOGIN*/
+/*Login button i main menu*/
+.login{
+    width:50%;
+    height:30px;
+}
+
+/*FILTER MENU*/
+/*Filter menu undertitles*/
 .filter-undertitle {
-    font-size: 18px;
+    font-size: 14px;
     padding: 10px;
 }
+/*First undertitle in filter menu*/
+#filterMenuContent{
+    margin: 20px;
+}
+
+/*Checkboxes*/
+#filterMenuChoices{
+    width: 100%;
+    margin-top: 20px;
+}
+
+/*Filter menu star rating*/
 .star-rating {
     line-height: 32px;
     font-size: 2em;
@@ -36,87 +122,81 @@ html,body {
     margin: 10px;
 }
 
-/*Poll*/
+/*CREATE POLL*/
+/*Create poll button*/
 #createPollButton {
+    padding:0;
     z-index: 2;
     position: absolute;
     bottom: 20px;
     right: 20px;
-    text-decoration:none;
-    outline:none;
+    background: none;
+    border-radius: 50%;
 }
-
-#createPollButton:hover {
+/*Create poll button when hovering*/
+#createPollIcon:hover {
     opacity: 0.7;
 }
-/*mainmenu*/
-#menu{
-    position:absolute;
-    top:0;
-    left:0;
-    display:block;
-    height:25px;
-    background:white;
-    z-index:4;
-    padding:0;
-    margin:0;
-}
-#menu .md-button{
-    display:block;
-    width:25px;
-    float:left;
-    line-height: 25px;
-}
-md-sidenav{
-    display:block;
-    height:100vh;
-    z-index: 3;
-    padding-top:26px;
-    
-}
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
+/*Create poll icon making the plus sign bigger*/
+#createPollIcon {
+    font-size: 72px;
 }
 
-/*the width of the sidemenu*/    
+/*POPUP*/
+/*Popup content wrapper*/
+leaflet-popup-content-wrapper{
+    border:none!important;
+}
 
+/*Popup content*/
+.leaflet-popup-content{
+    padding-top: 0px !important;
+    width: 160px;
+    padding: 10px;
+}
+/*Popup images*/
+.leaflet-popup-content img{   
+    width: 140px;
+}
+/*Popup button that says mer info*/
+.leaflet-popup-content .trigger{
+    border: none;
+    font-size: 14px;
+}
+/*Container for Popup button that says mer info*/
+#moreInfoButtonContent {
+    width: 140px;
+    text-align: right;
+    padding-top: 4px;
+}
+
+/*MORE INFO ABOUT RESTAURANTS*/
+/*Infoslider with more info about restaurant*/
+#moreInfoSlider .md-no-proxy {
+    padding:10px!important;
+}
+/*Infoslider content width*/
 .infomenu{
     width: 500px;
 }
-
-.moreinfo{
-    float:right;
-    z-index: 3;
-    background:white;
-    width:200px;
-    height:50px;
-    right:400px;
-}
-
-/*images*/
-.popupimg{
-    width:200px;
-    
-}
+/*Infoslider img width*/
 .infoimg{
-    width:350px;
+    width: 350px;
 }
 
-/*loginbutton*/
-.login{
-    width:50%;
-    height:30px;
-}
-/*add restaurant button*/
+/*Add restaurant button for save restaurant*/
 .saveRestaurantButton{
-    /*display:none;*/
     position:absolute;
     right: 20px;
     bottom: 100px;
     z-index:2;
-    
 }
+
 /*hide md-dialog-container*/
 .display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
     display: none !important;
+}
+/*hide link to leaflet*/
+.leaflet-control-attribution a{
+    display: none!important;
 }
