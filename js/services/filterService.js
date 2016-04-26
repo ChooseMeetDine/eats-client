@@ -5,7 +5,7 @@ app.factory('filterService', function(){
         1:{
           name: 'Sushi',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -13,7 +13,7 @@ app.factory('filterService', function(){
         2:{
           name: 'Grill',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -21,7 +21,7 @@ app.factory('filterService', function(){
         3:{
           name: 'Hamburger',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -29,7 +29,7 @@ app.factory('filterService', function(){
         4:{
           name: 'Vegetarian',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -37,7 +37,7 @@ app.factory('filterService', function(){
         5:{
           name: 'Salad',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -45,7 +45,7 @@ app.factory('filterService', function(){
         6:{
           name: 'Pizza',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -53,7 +53,7 @@ app.factory('filterService', function(){
         7:{
           name: 'Indian',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -61,7 +61,7 @@ app.factory('filterService', function(){
         8:{
           name: 'Italian',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -69,7 +69,7 @@ app.factory('filterService', function(){
         9:{
           name: 'Thai',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
@@ -77,7 +77,7 @@ app.factory('filterService', function(){
         10:{
           name: 'Other',
           type: 'group',
-          visible: false,
+          visible: true,
           layerParams:{
             showOnSelector: false
           }
