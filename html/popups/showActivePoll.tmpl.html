@@ -1,41 +1,51 @@
 <md-dialog class="test" ng-controller="showPoll" aria-label="addPoll" ng-cloak>
-    <md-dialog-content layout-padding>
-        <div class="md-dialog-content">
+  <md-dialog-content layout-padding>
+    <div class="md-dialog-content">
 
-            <div id="top">
-                 <h3 id="name">{{active.data.attributes.name}}</h3>
-                <md-button ng-click="cancel() " id="close" class="md-icon-button md-primary">
-                <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
-                </md-button>
+      <div id="top">
+        <h3 id="name">{{active.data.attributes.name}}</h3>
+        <md-button ng-click="cancel() " id="close" class="md-icon-button md-primary">
+          <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
+        </md-button>
 
-                <md-button id="settings" class="md-icon-button md-primary">
-                <md-icon md-svg-src="images/icons/ic_settings_white_24px.svg"></md-icon>
-                </md-button>
+        <md-button id="settings" class="md-icon-button md-primary">
+          <md-icon md-svg-src="images/icons/ic_settings_white_24px.svg"></md-icon>
+        </md-button>
 
-                <p id="timeEnds"><!--Slutar:--> {{active.data.attributes.expires | date: 'HH:mm'}}</p>
-            </div>
+        <p id="timeEnds" ng-show="now < active.data.expiresAsDateObj">
+          <!--Slutar:-->{{active.data.attributes.expires | date: 'HH:mm'}}</p>
 
-            <div id="restaurants">
-                <h4>Restauranger:</h4> <br>
-                <p>
-                <b ng-repeat="restaurant in restaurants" ng-click="vote(restaurant.id)">{{restaurant.attributes.name}} <br/>
+        <p id="timeEnds" ng-show="now > active.data.expiresAsDateObj">Omröstningen är avslutad</p>
+
+      </div>
+
+      <div id="restaurants">
+        <h4>Restauranger:</h4> <br>
+        <p>
+          <b ng-repeat="restaurant in restaurants" ng-click="vote(restaurant.id)">{{restaurant.attributes.name}} <br/>
                 </b>
-                </p>
-               <!-- <p>ID: {{active}} </p>
+        </p>
+        <!-- <p>ID: {{active}} </p>
                 <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.data.attributes.created}} </p>-->
-            </div>
+      </div>
 
-            <div>
-              <p ng-repeat="vote in votes"><br>Användare: {{vote.user}} har röstat på {{vote.restaurant}}</p>
-            </div>
+      <div>
+        <p ng-repeat="vote in votes"><br>Användare: {{vote.user}} har röstat på {{vote.restaurant}}</p>
+      </div>
 
-            <!--<p>Användare: </p>-->
-            <hr>
-            <div id="bottom">
-            <p id="user" ng-repeat="user in users">Namn: {{user.attributes.name}}</p>
-            <md-button id="sharebutton" class="md-raised md-primary">Share</md-button>
-            </div>
-        </div>
-    </md-dialog-content>
+      <!--<p>Användare: </p>-->
+      <hr>
+      <div id="bottom">
+        <p id="user" ng-repeat="user in users">Namn: {{user.attributes.name}}</p>
+        <md-button id="sharebutton" class="md-raised md-primary">Share</md-button>
+      </div>
+
+      <div ng-if="!userIsParticipantInPoll && now < active.data.expiresAsDateObj">
+        <p>Du är inte med i den här omröstningen, vill du gå med?</p>
+        <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
+        <md-button class="md-raised md-primary">Nej</md-button>
+      </div>
+    </div>
+  </md-dialog-content>
 </md-dialog>

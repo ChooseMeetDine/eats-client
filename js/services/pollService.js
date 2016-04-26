@@ -61,6 +61,7 @@ app.factory('pollService', ['$http',function($http) {
 
   pollService.add = function(poll) {
     poll.data.voteLink = 'localhost:4444/#?poll=' + poll.data.id;
+    poll.data.expiresAsDateObj = new Date(poll.data.attributes.expires);
     pollMap[poll.data.id] = poll;
   }
 
