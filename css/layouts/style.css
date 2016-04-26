@@ -8,7 +8,7 @@
     font-family: open sans, arial;
 }
 
-/*All content*/
+/*HTML,BODY*/
 html,body {
     height: 100%;
     overflow-x: hidden;
@@ -16,7 +16,7 @@ html,body {
     font-size: 14px;
 }
 
-/*Map*/
+/*MAP*/
 #map {
     position:absolute;
     top:0;
@@ -27,18 +27,123 @@ html,body {
     z-index: 0;    
 }
 
+/*LEAFLET BAR*/
+/*Zoom and show me where I am buttons*/
+.leaflet-bar{
+    border:none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
 /*Zoom in and zoom out controls */
 .leaflet-control-zoom-in, .leaflet-control-zoom-out{
     color:transparent!important;
 }
-/*Button that show me where I am*/
-.leaflet-control-locate .fa {
-    display: block;
-    float: left;
-    font-size: large;
-    margin-top: 2px;
+/*Show me where I am button container*/
+.leaflet-bar a, .leaflet-bar a:hover{
+    text-align: -webkit-center;
+    border:none;
+}
+.leaflet-control-locate a{
+    padding:2px;
 }
 
+/*MAIN MENU & FILTER MENU*/
+/*Buttons*/
+#menubuttons{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FAFAFA;
+    z-index: 4;
+}
+.menubutton{
+    font-size: 160%;
+    border-radius: 0px;
+    padding:5px 10px;
+    float: left;
+}
+
+/*Menu content*/
+md-sidenav{
+    display:block;
+    height:100vh;
+    z-index: 3;
+    padding-top:40px;
+    overflow: hidden;
+}
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+
+/*MAIN MENU*/
+/*Main menu links to profile and settings*/
+.linksInMainMenu{
+    padding-left:20px!important;
+    padding-right:20px!important;
+    margin-top:10px!important;
+    cursor:pointer;
+}
+.linksInMainMenu:hover{
+    background-color:#EEEEEE;
+}
+
+/*LOGIN*/
+/*Login button i main menu*/
+.login{
+    width:50%;
+    height:30px;
+}
+
+/*FILTER MENU*/
+/*Filter menu undertitles*/
+.filter-undertitle {
+    font-size: 14px;
+    padding: 10px;
+}
+/*First undertitle in filter menu*/
+#filterMenuContent{
+    margin: 20px;
+}
+
+/*Checkboxes*/
+#filterMenuChoices{
+    width: 100%;
+    margin-top: 20px;
+}
+
+/*Filter menu star rating*/
+.star-rating {
+    line-height: 32px;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+}
+
+/*CREATE POLL*/
+/*Create poll button*/
+#createPollButton {
+    padding:0;
+    z-index: 2;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: none;
+    border-radius: 50%;
+}
+/*Create poll button when hovering*/
+#createPollIcon:hover {
+    opacity: 0.7;
+}
+/*Create poll icon making the plus sign bigger*/
+#createPollIcon {
+    font-size: 72px;
+}
+
+/*POPUP*/
+/*Popup content wrapper*/
 leaflet-popup-content-wrapper{
     border:none!important;
 }
@@ -65,87 +170,7 @@ leaflet-popup-content-wrapper{
     padding-top: 4px;
 }
 
-/*Buttons for main menu and filter menu*/
-#menubuttons{
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    background: #FAFAFA;
-    z-index: 4;
-    padding:5px;
-}
-.menubutton{
-    font-size: 20px;
-    width: 25px;
-}
-
-/*Main menu and filter menu*/
-md-sidenav{
-    display:block;
-    height:100vh;
-    z-index: 3;
-    padding-top:45px;
-    overflow: hidden;
-}
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
-}
-
-/*Main menu links to profile and settings*/
-.linksInMainMenu{
-    padding-left:20px!important;
-    padding-right:20px!important;
-    margin-top:10px!important;
-    cursor:pointer;
-}
-.linksInMainMenu:hover{
-    background-color:#EEEEEE;
-}
-
-/*Filter menu undertitles*/
-.filter-undertitle {
-    font-size: 14px;
-    padding: 10px;
-}
-/*Some more margin for the first undertitle in filter menu*/
-#filterMenuContent{
-    margin: 20px;
-}
-
-/*Checkboxes*/
-#filterMenuChoices{
-    width: 100%;
-    margin-top: 20px;
-}
-
-/*Filter menu star rating*/
-.star-rating {
-    line-height: 32px;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 10px;
-    margin: 10px;
-}
-
-/*Create poll button*/
-#createPollButton {
-    z-index: 2;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: none;
-    border-radius: 50%;
-}
-/*Create poll button when hovering*/
-#createPollIcon:hover {
-    opacity: 0.7;
-}
-/*Create poll icon making the plus sign bigger*/
-#createPollIcon {
-    font-size: 72px;
-}
-
+/*MORE INFO ABOUT RESTAURANTS*/
 /*Infoslider with more info about restaurant*/
 #moreInfoSlider .md-no-proxy {
     padding:10px!important;
@@ -157,12 +182,6 @@ md-backdrop.md-sidenav-backdrop{
 /*Infoslider img width*/
 .infoimg{
     width: 350px;
-}
-
-/*Login button*/
-.login{
-    width:50%;
-    height:30px;
 }
 
 /*Add restaurant button for save restaurant*/
