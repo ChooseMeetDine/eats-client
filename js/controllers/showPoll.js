@@ -86,4 +86,8 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   $scope.extractUsersFromActivePoll();
   $scope.extractVotesFromActivePoll();
 
+  $scope.joinPoll = function()  {
+    $scope.swap('continueToPollAs');
+  };
+
 }]);

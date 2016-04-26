@@ -1,25 +1,25 @@
-app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window','$location', function($scope, pollService, $http, $q, $window, $location) {
+app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window', '$location', function($scope, pollService, $http, $q, $window, $location) {
 
   $scope.polls = pollService.getAll();
   parameterPollId = $location.search().poll; // poll ID from URL
 
   $scope.switchActivePoll = function(poll) {
-      pollService.setActiveId(poll.data.id);
+    pollService.setActiveId(poll.data.id);
   }
 
-  var getPolls = function(){
+  var getPolls = function() {
     var currentDate = new Date();
     $scope.displayDate = currentDate.getTime();
 
     var voteMap = {};
-        voteMap.user = [];
-        voteMap.restaurant = [];
-        voteMap.vote = [];
-        voteMap.group = [];
+    voteMap.user = [];
+    voteMap.restaurant = [];
+    voteMap.vote = [];
+    voteMap.group = [];
 
     $http({
-        methos: 'GET',
-        url:"http://128.199.48.244:7000/polls"
+      methos: 'GET',
+      url: "http://128.199.48.244:7000/polls"
     }).then(function successCallback(response) {
 
       var pollRequests = [];
@@ -34,16 +34,12 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window',
     });
   };
 
-  var getSinglePoll = function(pollId){
+  var getSinglePoll = function(pollId) {
     return $http({
       methos: 'GET',
-      url:"http://128.199.48.244:7000/polls/" + pollId
+      url: "http://128.199.48.244:7000/polls/" + pollId
     }).then(function(response) {
       pollService.add(response.data);
-      if (parameterPollId === response.data.data.id){
-        pollService.setActiveId(parameterPollId);
-        $scope.dialogs.showTabDialog(null, 'showActivePoll');
-      }
     });
   };
 

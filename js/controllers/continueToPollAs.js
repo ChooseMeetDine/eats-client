@@ -1,4 +1,4 @@
-app.controller('continueToPollAs', ['$scope', '$http', 'tokenService','$window', 'pollService', '$location', function($scope, $http, tokenService, $window, pollService, $location) {
+app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window', 'pollService', '$location', function($scope, $http, tokenService, $window, pollService, $location) {
   $scope.isLoggedInAsUser = tokenService.isUserWithValidToken();
   $scope.isLoggedInAsAnonymous = tokenService.isAnonymousWithValidToken();
   $scope.isUserWithInvalidToken = tokenService.isUserWithInvalidToken();
@@ -6,16 +6,58 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService','$window',
   $scope.parameterPollId = $location.search().poll // THIS THE THE POLL!
 
   $scope.continueAsAnonymous = function() {
-    if(!$scope.isLoggedInAsAnonymous){
+    if (!$scope.isLoggedInAsAnonymous) {
       tokenService.getAnonymousToken()
-      .then(function() {
-        $scope.hide();
-      });
+        .then(pollService.joinActivePoll)
+        .then(function() {
+          $window.location.reload();
+        });
     } else {
-      pollService.joinPoll($scope.parameterPollId);
-      $scope.hide();
+      pollService.joinActivePoll();
+      $window.location.reload();
     }
   };
 
-  //continueAsUser()
+  $scope.continueAsUser = function() {
+    pollService.joinActivePoll()
+      .then(function() {
+        $window.location.reload();
+      });
+  }
+
+  $scope.loginUserAndContinue = function() {
+    var user = {
+      'email': $scope.email,
+      'password': $scope.password
+    };
+
+    tokenService.login(user)
+      .then(pollService.joinActivePoll)
+      .then(function() {
+        $window.location.reload();
+      })
+      .catch(function(err) {
+        console.log('Fel vid inloggning av användare: ');
+        console.log(err);
+      });
+  };
+
+  $scope.registerUserAndContinue = function() {
+    var user = {
+      'email': $scope.email,
+      'password': $scope.password,
+      'name': $scope.name
+    };
+
+    tokenService.register(user)
+      .then(pollService.joinActivePoll)
+      .then(function() {
+        $window.location.reload();
+      })
+      .catch(function(err) {
+        console.log('Fel vid registrering av användare: ');
+        console.log(err);
+        alert(err.data.error);
+      });
+  };
 }]);

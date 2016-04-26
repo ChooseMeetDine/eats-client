@@ -1,4 +1,4 @@
-app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia', 'modeService', 'tokenService','$location', 'pollService', function($http, $window, $scope, $mdDialog, $mdMedia, modeService, tokenService, $location, pollService) {
+app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia', 'modeService', 'tokenService', '$location', 'pollService', function($http, $window, $scope, $mdDialog, $mdMedia, modeService, tokenService, $location, pollService) {
   $scope.mode = modeService.getMode();
 
   $scope.parameterPollId = $location.search().poll // THIS THE THE POLL!
@@ -50,15 +50,21 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
 
   var userFollowedPollLink = ($scope.parameterPollId); //votelänk användes
 
-  tokenService.validateToken();
-
-  if(userFollowedPollLink) {
-    pollService
-    .getPollIdAndSetAsActive($scope.parameterPollId)
-    .then(function () {
-      $scope.dialogs.showAdvanced(null, 'showActivePoll');
-    });
+  var showPollPopupFromLink = function() {
+    if (userFollowedPollLink) {
+      pollService
+        .getPollIdAndSetAsActive($scope.parameterPollId)
+        .then(function() {
+          $scope.dialogs.showAdvanced(null, 'showActivePoll');
+        });
+    }
   }
+
+  tokenService.validateToken()
+    .then(showPollPopupFromLink)
+    .catch(showPollPopupFromLink);
+
+
 
 
   // tokenService
@@ -110,37 +116,37 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
   // hinta om att du inte är inloggad vid skapande av omröstning
 
 
-//   if(!$scope.parameterPollId) {                                                           //User did not reach this webpage from a #?poll= adress
-//     var anon = $window.localStorage['userAnon'];
-//     if (localStorage.getItem("userAnon") !== null) {                                      //There is a token
-//       tokenService.testToken()                                                            //Try to use the token to see if it's still valid
-//       .then(function(response) {
-//         tokenService.setTokenExists();
-//         console.log('You are now logged in as ' + $window.localStorage['userName']);      //Token is valid
-//       }).catch(function(response) {
-//         tokenService.getAnonymousToken();                                                 //The token was not valid, get a new one
-//       });
-//     } else {                                                                              //There is no token, get one
-//       console.log('You are not logged in, getting a token for you....');
-//       tokenService.getAnonymousToken();
-//     }
-//   } else if (localStorage.getItem("userAnon") === null) {                                 //User reached this webpage from a #?poll= adress without having a token
-//     $scope.dialogs.showAdvanced(null, 'continueAs');
-//   } else  {                                                                               //User reached this webpage from a #?poll= adress and has a token
-//     tokenService
-//       .testToken()                                                                        //Try to use the token to see if it's still valid
-//       .then(function() {
-//         tokenService.setTokenExists();                                                                 //Token is valid
-//         $http({                                                                           //Add this user to the poll
-//           method: 'POST',
-//           url: 'http://128.199.48.244:7000/polls/' + $scope.parameterPollId + '/users'
-//         }).then(function(){
-//           $window.location.reload();
-//         }).catch(function(response) {
-//           $scope.dialogs.showAdvanced(null, 'continueAs');
-//         });
-//       });
-//   }
+  //   if(!$scope.parameterPollId) {                                                           //User did not reach this webpage from a #?poll= adress
+  //     var anon = $window.localStorage['userAnon'];
+  //     if (localStorage.getItem("userAnon") !== null) {                                      //There is a token
+  //       tokenService.testToken()                                                            //Try to use the token to see if it's still valid
+  //       .then(function(response) {
+  //         tokenService.setTokenExists();
+  //         console.log('You are now logged in as ' + $window.localStorage['userName']);      //Token is valid
+  //       }).catch(function(response) {
+  //         tokenService.getAnonymousToken();                                                 //The token was not valid, get a new one
+  //       });
+  //     } else {                                                                              //There is no token, get one
+  //       console.log('You are not logged in, getting a token for you....');
+  //       tokenService.getAnonymousToken();
+  //     }
+  //   } else if (localStorage.getItem("userAnon") === null) {                                 //User reached this webpage from a #?poll= adress without having a token
+  //     $scope.dialogs.showAdvanced(null, 'continueAs');
+  //   } else  {                                                                               //User reached this webpage from a #?poll= adress and has a token
+  //     tokenService
+  //       .testToken()                                                                        //Try to use the token to see if it's still valid
+  //       .then(function() {
+  //         tokenService.setTokenExists();                                                                 //Token is valid
+  //         $http({                                                                           //Add this user to the poll
+  //           method: 'POST',
+  //           url: 'http://128.199.48.244:7000/polls/' + $scope.parameterPollId + '/users'
+  //         }).then(function(){
+  //           $window.location.reload();
+  //         }).catch(function(response) {
+  //           $scope.dialogs.showAdvanced(null, 'continueAs');
+  //         });
+  //       });
+  //   }
 }]);
 
 function DialogController($scope, $mdDialog) {

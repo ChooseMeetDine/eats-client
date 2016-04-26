@@ -1,4 +1,4 @@
-app.factory('pollService', ['$http',function($http) {
+app.factory('pollService', ['$http', function($http) {
   var pollService = {};
 
   var pollMap = {};
@@ -77,38 +77,36 @@ app.factory('pollService', ['$http',function($http) {
     return pollMap;
   }
 
-  pollService.isUserParticipantInPoll = function(pollId, userId){
-    return $http({
-      method: 'GET',
-      url: 'http://128.199.48.244:7000/polls/' + pollId
-    }).then(function (response) {
-      var allUsers = response.data.data.relationships.users.data;
-      for (let i = 0; i < allUsers.length; i++) {
-        if(userId === allUsers[i].id){
-          return true;
-        }
+  pollService.checkIfUserIsParticipantInActivePoll = function(userId) {
+    var allUsers = active.data.relationships.users.data;
+    for (var i = 0; i < allUsers.length; i++) {
+      if (userId === allUsers[i].id) {
+        return true;
       }
-      return false;
-    });
+    }
+    return false;
   }
 
-  pollService.joinPoll = function(pollId){
+  pollService.joinActivePoll = function() {
     return $http({
-      method: 'POST',
-      url: 'http://128.199.48.244:7000/polls/' + pollId + '/users'
-    }).then(function (response) {
-      console.log('Joined poll');
-    });
+        method: 'Post',
+        url: 'http://128.199.48.244:7000/polls/' + active.data.id + '/users'
+      }).then(function(response) {
+        console.log('Joined poll');
+      })
+      .catch(function(err)  {
+        console.log(err);
+        alert(err);
+      });
   }
 
-  pollService.getPollIdAndSetAsActive = function(pollId){
+  pollService.getPollIdAndSetAsActive = function(pollId) {
     return $http({
       method: 'Get',
       url: 'http://128.199.48.244:7000/polls/' + pollId
-    }).then(function (response) {
+    }).then(function(response) {
       console.log('Joined poll');
-      response.data.voteLink = 'localhost:4444/#?poll=' + pollId;
-      pollMap[pollId] = response.data;
+      pollService.add(response.data);
       active = pollMap[pollId];
       return pollId;
     });
