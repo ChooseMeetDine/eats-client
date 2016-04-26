@@ -1,3 +1,13 @@
+/*Dialogrutan*/
+
+md-dialog{
+    background-color: #FAFAFA;
+    max-height: 90%;
+    width: 500px;
+}
+
+/*Header*/
+
 #toolbar{
     background-color: #616161;
     padding: 2%;
@@ -7,6 +17,8 @@
     font-size: 55px;
     font-family: borg;
 }
+
+/*Knappar*/
 
 .md-raised{
     padding: 5px;
@@ -23,15 +35,7 @@
     background-color: #ffffff;
     color: #616161;    
 }
-
-#add{
-    display: inline-block;
-    margin-top: 10px;
-}
-
-
 /*Skapa eller avbryt skapning av omröstning*/
-
 #cancel{   
     background-color: #ffffff;
     float: right;
@@ -48,27 +52,26 @@
     color: #fafafa;
 }
 
-
-
+#add{
+    margin-top: 10px;
+}
 
 #bottom{
-    display: inline-block;
     float: right;
-    
-
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
-md-dialog{
-    background-color: #FAFAFA;
-}
-
 
 /*Välja tid för omröstning*/
 
+
+/*Ange sluttid*/
 #sluttid{
     color: #616161;
     font-size: 19px;
 }
+
+/*Tim och minut label*/
 
 #hourlabel{
     color: #616161;
@@ -76,9 +79,6 @@ md-dialog{
     
 }
 
-#hourselect{
-    margin-right: 10px;
-}
 #minutelabel{
     color: #616161;
     margin-bottom: 30px;
@@ -91,9 +91,13 @@ select{
     font-size: 16px;
     height: 34px;
     background-color: #bdbdbd;
-    color: #fafafa;
-    
+    color: #fafafa;    
 }
+
+#hourselect{
+    margin-right: 10px;
+}
+
 
 select option{
     background-color: #bdbdbd;
@@ -113,7 +117,12 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
     color: #616161;
 }
 
+md-input-container.md-block {
+    margin-bottom: 5px;
+}
+
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: Aileron;
+    margin-bottom: 2px;
 }   
