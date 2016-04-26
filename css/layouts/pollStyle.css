@@ -1,11 +1,11 @@
-.test{
-background-color:grey;
+.poll-dialog{
+background-color:#616161;
 width: 500px;
 }
 
 #sharebutton{
 padding: 8px;
-background-color: turquoise;
+background-color: #00b8d4;
 float: right;
 }
 
@@ -21,14 +21,14 @@ margin-top:0;
 margin-right: 20px;
 float: left;
 margin-top: 10px;
-color: white;
+color: #FFF;
 }
 
 #timeEnds{
 text-align: center;
 margin-right: 20px;
 margin-top: 10px;
-color: white;
+color: #FFF;
 
 
 }
@@ -57,10 +57,10 @@ padding-bottom: 20px;
 #user{
 float: left;
 float: bottom;
-color: white;
+color: #FFF;
 }
 
 #restaurants{
 margin-bottom: 100px;
-color: white;
+color: #FFF;
 }
