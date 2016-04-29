@@ -1,0 +1,35 @@
+/*Popup location*/
+.leaflet-popup{
+    margin-bottom: 45px;
+}
+
+/*Popup content wrapper*/
+.leaflet-popup-content-wrapper{
+    border: none!important;
+    padding: 0px;
+}
+
+/*Popup content*/
+.leaflet-popup-content{
+    padding: 0px!important;
+}
+
+.popupimg{
+    z-index: 1;
+}
+
+/*Popup button that says mer info*/
+.leaflet-popup-content .trigger{
+    background: #00B8D4;
+    border: none;
+    font-size: 14px;
+    color: #FAFAFA;
+    border-radius: 2px;
+}
+
+/*Popup title*/
+.leaflet-popup-content p, .leaflet-popup-content .ng-binding{
+    background: #424242;
+    color: #FAFAFA;
+    text-align: center;
+}
