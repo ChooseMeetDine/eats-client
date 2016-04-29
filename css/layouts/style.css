@@ -31,11 +31,50 @@ html,body {
     font-size: 14px;
 }
 
+/*Dialogruta*/
+
+md-dialog{
+    background-color: #FAFAFA;
+    max-height: 92%;
+    width: 500px;
+}
+
+/*Header för dialogrutor*/
+
 .md-toolbar-tools{
     font-family: borg, aileron, open sans, arial;
     font-size: 42px;
+    background-color: #616161;
+    padding: 2%;    
 }
 
+h1{
+    font-size: 55px;
+    font-family: borg;
+    
+}
+
+/*Färg vid klickad checkbox */
+
+
+md-checkbox.md-checked.checkboxpermission .md-icon {
+ background-color: #00B8D4;
+}
+
+/*Inputfält, väljer font och färg */
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #00B8D4;
+    font-family: Aileron;
+    margin-bottom: 2px;
+}   
+
+/*Aktiveringsknappar, exemeplvis för att SKAPA något*/
+
+.actionbutton{
+    background-color: #00B8D4;
+    color: #fafafa;
+}
 
 /*MAP*/
 #map {
