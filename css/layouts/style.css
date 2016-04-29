@@ -72,7 +72,7 @@ html,body{
 
 /*Color backgrounds*/
 .md-content, .layout-padding{
-    background: #212121;
+    background: #424242;
     color: #FAFAFA;
 }
 /*Color toolbars*/
@@ -169,7 +169,7 @@ leaflet-popup-content-wrapper{
 /*---------------MAIN MENU & FILTER MENU-------------*/
 /*Buttons*/
 #menubuttons{
-    background:#212121;
+    background:#424242;
     color: #FAFAFA;
     position: absolute;
     top: 0;
@@ -188,7 +188,7 @@ leaflet-popup-content-wrapper{
 
 /*Menu content*/
 md-sidenav{
-    background: #212121;
+    background: #424242;
     display:block;
     height:100vh;
     z-index: 3;
@@ -196,7 +196,7 @@ md-sidenav{
     padding-top: 44px;
 }
 md-sidenav .md-toolbar-tools{
-    background: #616161;
+    background: #757575;
     color: #FAFAFA;
     max-height: 100px!important;
     height: 70px;
