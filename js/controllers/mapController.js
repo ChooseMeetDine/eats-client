@@ -130,6 +130,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       
     }   
   };
+    
   fetchRestaurants();
   
   //test function

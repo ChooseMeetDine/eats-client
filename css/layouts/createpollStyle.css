@@ -79,11 +79,11 @@ md-dialog{
 #hourselect{
     margin-right: 10px;
 }
+
 #minutelabel{
     color: #616161;
     margin-bottom: 30px;
-    margin-left: 60px;
-    
+    margin-left: 60px; 
 }
 
 select{
