@@ -218,6 +218,7 @@ md-sidenav hr{
     background: #00b8d4!important;
     color:#FAFAFA!important;
     padding:10px;
+    float: left;
 }
 
 /*-------------------FILTER MENU----------------------*/
