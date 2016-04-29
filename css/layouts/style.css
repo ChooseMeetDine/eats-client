@@ -38,8 +38,6 @@ Pacific Blue    #00B8D4     0,184,212
     src: url("/css/fonts/borg/Borg.ttf")
         format("opentype");
 }
-
-
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
@@ -49,19 +47,6 @@ Pacific Blue    #00B8D4     0,184,212
     line-height:normal;
     font-family: aileron, open sans, arial;
 }
-
-/*Logotype div container*/
-#logotype{
-    position: fixed;
-    z-index: 999;
-    left: 50%;
-    transform: translateX(-50%);
-}
-/*Logotype img*/
-#logoEats{
-    width:200px;
-}
-
 /*HTML,BODY*/
 html,body{
     height: 100%;
@@ -69,21 +54,9 @@ html,body{
     font-family: aileron, open sans, arial;
     font-size: 14px;
 }
-
-/*Color backgrounds*/
-.md-content, .layout-padding{
-    background: #424242;
-    color: #FAFAFA;
-}
-/*Color toolbars*/
-.md-toolbar-tools{
-    background: #616161;
-    font-family: borg, aileron, open sans, arial;
-    font-size: 42px;
-}
-/*Styling all buttons*/
-.md-button{
-    padding:10px;
+h1{
+    font-size: 55px;
+    font-family: borg;    
 }
 /*Forms*/
 form{
@@ -97,7 +70,89 @@ form input{
     color: #FAFAFA;
     padding:10px;
 }
+/*Color toolbars*/
+/*Dialogruta*/
+md-dialog{
+    background-color: #FAFAFA;
+    max-height: 92%;
+    width: 500px;
+    color: #212121;
+}
+/*Färg vid klickad checkbox */
+md-checkbox.md-checked.checkboxpermission .md-icon {
+ background-color: #00B8D4;
+}
+/*Inputfält, väljer font och färg */
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #00B8D4;
+    font-family: Aileron;
+    margin-bottom: 2px;
+}
+/*Popup content wrapper*/
+leaflet-popup-content-wrapper{
+    border:none!important;
+}
+/*Menu content*/
+md-sidenav{
+    background: #424242;
+    display:block;
+    height:100vh;
+    z-index: 3;
+    overflow: hidden;
+    padding-top: 44px;
+}
+md-sidenav .md-toolbar-tools{
+    background: #757575;
+    color: #FAFAFA;
+    max-height: 100px!important;
+    height: 70px;
+}
+md-sidenav .material-icons{
+    color:#FAFAFA;
+}
+md-sidenav hr{
+    border-color: #424242;
+}
 
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
+    padding-left: 0px;
+}
+/*Color backgrounds*/
+.md-content, .layout-padding{
+    background: #424242;
+    color: #FAFAFA;
+    padding: 0;
+}
+/*Header för dialogrutor*/
+.md-toolbar-tools{
+    font-family: borg, aileron, open sans, arial;
+    font-size: 42px;
+    background-color: #616161;
+    padding: 2%;    
+}
+/*Logotype div container*/
+#logotype{
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*Logotype img*/
+#logoEats{
+    width:200px;
+}
+/*Styling all buttons*/
+.md-button{
+    padding:10px;
+}  
+/*Aktiveringsknappar, exemeplvis för att SKAPA något*/
+.actionbutton{
+    background-color: #00B8D4;
+    color: #fafafa;
+}
 /*MAP*/
 #map {
     position: absolute;
@@ -109,6 +164,9 @@ form input{
     z-index: 0;    
 }
 
+#main-meny-nav{
+    padding: 2px;
+}
 /*--------------------LEAFLET STUFF-------------------*/
 /*Zoom and show me where I am buttons*/
 .leaflet-bar{
@@ -132,17 +190,10 @@ form input{
 .leaflet-control-locate a{
     padding:2px;
 }
-
 /*POPUP*/
 .leaflet-popup{
     margin-bottom: 45px;
 }
-
-/*Popup content wrapper*/
-leaflet-popup-content-wrapper{
-    border:none!important;
-}
-
 /*Popup content*/
 .leaflet-popup-content{
     padding-top: 0px !important;
@@ -164,7 +215,6 @@ leaflet-popup-content-wrapper{
     text-align: right;
     padding-top: 4px;
 }
-
 /*---------------MAIN MENU & FILTER MENU-------------*/
 /*Buttons*/
 #menubuttons{
@@ -175,43 +225,17 @@ leaflet-popup-content-wrapper{
     left: 0;
     z-index: 4;
 }
-    
+   
 .menubutton{
     font-size: 180%;
     border-radius: 0px;
     padding:5px 10px;
     float: left;
-}.menubutton:hover{
+}
+
+.menubutton:hover{
     background: #212121;
 }
-
-/*Menu content*/
-md-sidenav{
-    background: #424242;
-    display:block;
-    height:100vh;
-    z-index: 3;
-    overflow: hidden;
-    padding-top: 44px;
-}
-md-sidenav .md-toolbar-tools{
-    background: #757575;
-    color: #FAFAFA;
-    max-height: 100px!important;
-    height: 70px;
-}
-md-sidenav .material-icons{
-    color:#FAFAFA;
-}
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
-}
-
-/*-------------------MAIN MENU-----------------------*/
-md-sidenav hr{
-    border-color: #424242;
-}
-
 /*Login or register button i main menu*/
 .login, .logout{
     background: #00b8d4!important;
@@ -230,13 +254,11 @@ md-sidenav hr{
 #filterMenuContent{
     margin: 20px;
 }
-
 /*Checkboxes*/
 #filterMenuChoices{
     width: 100%;
     margin-top: 20px;
 }
-
 /*Filter menu star rating*/
 .star-rating {
     line-height: 32px;
@@ -245,7 +267,6 @@ md-sidenav hr{
     padding: 10px;
     margin: 10px;
 }
-
 /*--------------------CREATE POLL---------------------*/
 /*Create poll button*/
 #createPollButton {
@@ -270,7 +291,9 @@ md-sidenav hr{
     text-shadow: 1px 2px #818181;
     
 }
-
+.md-dialog-content {
+    color: #212121;
+}
 /*-------------MORE INFO ABOUT RESTAURANTS------------*/
 /*Infoslider with more info about restaurant*/
 #moreInfoSlider .md-no-proxy {
@@ -292,7 +315,6 @@ md-sidenav hr{
     bottom: 100px;
     z-index:2;
 }
-
 /*hide md-dialog-container*/
 .display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
     display: none !important;
