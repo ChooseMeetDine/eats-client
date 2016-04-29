@@ -1,15 +1,33 @@
-<md-dialog ng-controller="showPoll" aria-label="addPoll" ng-cloak>
+<md-dialog class="poll-dialog" ng-controller="showPoll" aria-label="addPoll" ng-cloak>
     <md-dialog-content layout-padding>
-        <div class="md-dialog-content">
-            <h1>Namn: {{active.data.attributes.name}} </h1>
-            <p>ID: {{active.data.id}} </p>
-            <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
-            <p>created: {{active.data.attributes.created}} </p>
-            <p>Slutar: {{active.data.attributes.expires}}</p>
-            <p>Användare: </p>
-            <p ng-repeat="user in getPollUsers()">{{user.attributes.name}}</p>
-            <p>Restauranger: {{active.restaurants}} </p>
-            <p ng-repeat="restaurant in getPollRestaurants()">{{restaurant.attributes.name}}</p>
-        </div>
+            <div id="poll-dialog-top">
+                 <h3 id="poll-dialog-name">{{active.data.attributes.name}}</h3>
+                <md-button ng-click="cancel() " id="close" class="md-icon-button md-primary">
+                <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
+                </md-button>
+
+                <md-button id="poll-dialog-settings" class="md-icon-button md-primary">
+                <md-icon md-svg-src="images/icons/ic_settings_white_24px.svg"></md-icon>
+                </md-button>
+
+                <p id="poll-dialog-timeEnds"><!--Slutar:--> {{active.data.attributes.expires | date: 'HH:mm'}}</p>
+            </div>
+            <div id="poll-dialog-restaurants">
+                <h4>Restauranger:</h4> <br>
+                <p>
+                <b ng-repeat="restaurant in getPollRestaurants()">{{restaurant.attributes.name}} <br/>
+                </b>
+                </p>
+               <!-- <p>ID: {{active}} </p>
+                <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
+                <p>created: {{active.data.attributes.created}} </p>-->
+            </div>
+
+            <!--<p>Användare: </p>-->
+            <hr>
+            <div id="poll-dialog-bottom">
+            <p id="poll-dialog-user" ng-repeat="user in getPollUsers()">Namn: {{user.attributes.name}}</p>
+            <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
+            </div>
     </md-dialog-content>
 </md-dialog>

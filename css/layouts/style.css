@@ -47,7 +47,7 @@ Pacific Blue    #00B8D4     0,184,212
     min-width:0;
     min-height:0;
     line-height:normal;
-    font-family: open sans, arial;
+    font-family: aileron, open sans, arial;
 }
 
 /*Logotype div container*/
@@ -90,7 +90,6 @@ form{
     padding:5px;
 }
 
-/*Submit buttons*/
 form input{
     background: #00b8d4;
     border: none;
@@ -266,7 +265,10 @@ md-sidenav hr{
 }
 /*Create poll icon making the plus sign bigger*/
 #createPollIcon {
-    font-size: 72px;
+    font-size: 6em;
+    color: #00B8D4;
+    text-shadow: 1px 2px #818181;
+    
 }
 
 /*-------------MORE INFO ABOUT RESTAURANTS------------*/

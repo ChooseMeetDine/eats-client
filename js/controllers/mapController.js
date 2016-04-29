@@ -21,8 +21,12 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       name: 'Mapbox',
       url: 'https://api.mapbox.com/styles/v1/{mapid}/tiles/{z}/{x}/{y}?access_token={apikey}',
       options: {
-        apikey: mapToken,
-        mapid: mapId
+          apikey: mapToken,
+          mapid: mapId,
+          tileSize: 512,
+          zoomOffset: -1,
+          maxZoom: 19,
+          minZoom: 4
       }
     },
     layers:{
@@ -36,7 +40,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     },
     defaults: {
       zoomControlPosition: 'topright',
-      locationControlPosition: 'topright'
+      locationControlPosition: 'topright',
     },
     controls: {
       custom: [
@@ -128,6 +132,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       
     }   
   };
+    
   fetchRestaurants();
   
   //test function

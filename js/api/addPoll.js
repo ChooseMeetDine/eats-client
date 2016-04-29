@@ -29,6 +29,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
         data: postBody
       }).then(function(response) {
         $scope.clearForm();
+        response.data.data.attributes.exipres = new Date (response.data.data.attributes.exipres);
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
         $scope.swap('showActivePoll'); //Hide this popup and show active poll
