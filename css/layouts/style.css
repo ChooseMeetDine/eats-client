@@ -1,3 +1,45 @@
+/*
+Author: CMD 
+Description: Eats helps you decide where to go and eat lunch.
+Version: 1.0
+Tags: Eats, CMD, Choose Meet Dine
+
+Colors
+Alabaster       #FAFAFA     250,250,250
+Wild Sand       #F5F5F5     245,245,245
+Gallery         #EEEEEE     238,238,238
+Mercury         #E0E0E0     224,224,224
+Silver          #BDBDBD     189,189,189
+Silver Chalice  #9E9E9E     158,158,158
+Boulder         #757575     117,117,117
+Dove Gray       #616161     97,97,97
+Mine Shaft      #424242     66,66,66
+Mine Shaft-1    #212121     33,33,33
+
+Anakiwa         #84FFFF     132,255,255
+Cyan/Aqua       #18FFFF     24,255,255
+Cyan/Aqua-1     #00E5FF     0,229,255
+Pacific Blue    #00B8D4     0,184,212
+
+@import url("exempel.css")
+
+*/
+
+/*FONTS*/
+@font-face {
+    font-family: aileron;
+    font-weight: bold;
+    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+        format("opentype");
+}
+
+@font-face {
+    font-family: borg;
+    src: url("/css/fonts/borg/Borg.ttf")
+        format("opentype");
+}
+
+
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
@@ -8,28 +50,70 @@
     font-family: open sans, arial;
 }
 
+/*Logotype div container*/
+#logotype{
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*Logotype img*/
+#logoEats{
+    width:200px;
+}
+
 /*HTML,BODY*/
-html,body {
+html,body{
     height: 100%;
     overflow-x: hidden;
-    font-family: open sans, arial;
+    font-family: aileron, open sans, arial;
     font-size: 14px;
+}
+
+/*Color backgrounds*/
+.md-content, .layout-padding{
+    background: #212121;
+    color: #FAFAFA;
+}
+/*Color toolbars*/
+.md-toolbar-tools{
+    background: #616161;
+    font-family: borg, aileron, open sans, arial;
+    font-size: 42px;
+}
+/*Styling all buttons*/
+.md-button{
+    padding:10px;
+}
+/*Forms*/
+form{
+    padding:5px;
+}
+
+/*Submit buttons*/
+form input{
+    background: #00b8d4;
+    border: none;
+    border-radius: 2px;
+    color: #FAFAFA;
+    padding:10px;
 }
 
 /*MAP*/
 #map {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 100%;
     z-index: 0;    
 }
 
-/*LEAFLET BAR*/
+/*--------------------LEAFLET STUFF-------------------*/
 /*Zoom and show me where I am buttons*/
 .leaflet-bar{
+    zoom: 130%;
     border:none;
     border-radius: 0px;
     -webkit-box-shadow: none;
@@ -45,104 +129,16 @@ html,body {
     text-align: -webkit-center;
     border:none;
 }
+/*Show me where I am icon*/
 .leaflet-control-locate a{
     padding:2px;
 }
 
-/*MAIN MENU & FILTER MENU*/
-/*Buttons*/
-#menubuttons{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #FAFAFA;
-    z-index: 4;
-}
-.menubutton{
-    font-size: 160%;
-    border-radius: 0px;
-    padding:5px 10px;
-    float: left;
-}
-
-/*Menu content*/
-md-sidenav{
-    display:block;
-    height:100vh;
-    z-index: 3;
-    padding-top:40px;
-    overflow: hidden;
-}
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
-}
-
-/*MAIN MENU*/
-/*Main menu links to profile and settings*/
-.linksInMainMenu{
-    padding-left:20px!important;
-    padding-right:20px!important;
-    margin-top:10px!important;
-    cursor:pointer;
-}
-.linksInMainMenu:hover{
-    background-color:#EEEEEE;
-}
-
-/*LOGIN*/
-/*Login button i main menu*/
-.login{
-    width:50%;
-    height:30px;
-}
-
-/*FILTER MENU*/
-/*Filter menu undertitles*/
-.filter-undertitle {
-    font-size: 14px;
-    padding: 10px;
-}
-/*First undertitle in filter menu*/
-#filterMenuContent{
-    margin: 20px;
-}
-
-/*Checkboxes*/
-#filterMenuChoices{
-    width: 100%;
-    margin-top: 20px;
-}
-
-/*Filter menu star rating*/
-.star-rating {
-    line-height: 32px;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 10px;
-    margin: 10px;
-}
-
-/*CREATE POLL*/
-/*Create poll button*/
-#createPollButton {
-    padding:0;
-    z-index: 2;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: none;
-    border-radius: 50%;
-}
-/*Create poll button when hovering*/
-#createPollIcon:hover {
-    opacity: 0.7;
-}
-/*Create poll icon making the plus sign bigger*/
-#createPollIcon {
-    font-size: 72px;
-}
-
 /*POPUP*/
+.leaflet-popup{
+    margin-bottom: 45px;
+}
+
 /*Popup content wrapper*/
 leaflet-popup-content-wrapper{
     border:none!important;
@@ -170,7 +166,109 @@ leaflet-popup-content-wrapper{
     padding-top: 4px;
 }
 
-/*MORE INFO ABOUT RESTAURANTS*/
+/*---------------MAIN MENU & FILTER MENU-------------*/
+/*Buttons*/
+#menubuttons{
+    background:#212121;
+    color: #FAFAFA;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+    
+.menubutton{
+    font-size: 180%;
+    border-radius: 0px;
+    padding:5px 10px;
+    float: left;
+}.menubutton:hover{
+    background: #212121;
+}
+
+/*Menu content*/
+md-sidenav{
+    background: #212121;
+    display:block;
+    height:100vh;
+    z-index: 3;
+    overflow: hidden;
+    padding-top: 44px;
+}
+md-sidenav .md-toolbar-tools{
+    background: #616161;
+    color: #FAFAFA;
+    max-height: 100px!important;
+    height: 70px;
+}
+md-sidenav .material-icons{
+    color:#FAFAFA;
+}
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+
+/*-------------------MAIN MENU-----------------------*/
+md-sidenav hr{
+    border-color: #424242;
+}
+
+/*Login or register button i main menu*/
+.login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
+}
+
+/*-------------------FILTER MENU----------------------*/
+/*Filter menu undertitles*/
+.filter-undertitle {
+    font-size: 14px;
+    padding: 10px;
+}
+/*First undertitle in filter menu*/
+#filterMenuContent{
+    margin: 20px;
+}
+
+/*Checkboxes*/
+#filterMenuChoices{
+    width: 100%;
+    margin-top: 20px;
+}
+
+/*Filter menu star rating*/
+.star-rating {
+    line-height: 32px;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+}
+
+/*--------------------CREATE POLL---------------------*/
+/*Create poll button*/
+#createPollButton {
+    color: #212121;
+    padding: 0;
+    z-index: 2;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: none;
+    border-radius: 50%;
+    zoom: 130%;
+}
+/*Create poll button when hovering*/
+#createPollIcon:hover {
+    opacity: 0.7;
+}
+/*Create poll icon making the plus sign bigger*/
+#createPollIcon {
+    font-size: 72px;
+}
+
+/*-------------MORE INFO ABOUT RESTAURANTS------------*/
 /*Infoslider with more info about restaurant*/
 #moreInfoSlider .md-no-proxy {
     padding:10px!important;

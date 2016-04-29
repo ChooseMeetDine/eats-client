@@ -4,7 +4,7 @@
 
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2 ng-hide="loading">Lägg till omröstning</h2>
+        <h1 ng-hide="loading">Lägg till omröstning</h1>
         <span flex></span>
       </div>
     </md-toolbar>
@@ -53,7 +53,7 @@
 
           <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
               <md-chip-template ng-click="removeRestaurant($chip)">
-                  {{$chip.attributes.name}} X
+                  {{$chip.name}} X
               </md-chip-template>
           </md-chips>
           <br>

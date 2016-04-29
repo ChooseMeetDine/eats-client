@@ -5,64 +5,46 @@
     <md-toolbar class="md-theme-light">
         <h1 class="md-toolbar-tools">Filter</h1>
     </md-toolbar>
-    
-    <!-- Menu content with different types of filter choices -->
-    <md-content id="filterMenuContent">
-        
-        <!-- Filter by type of place -->
-        <span class="filter-undertitle" id="firstUndertitleFilterMenu"> Typ av plats </span>
-        
-        <!-- Table with different choices of -->
-        <table id="filterMenuChoices">
-            <tr>
-                <td><md-checkbox class="md-primary">Alla typer</md-checkbox></td>
-                <td><md-checkbox class="md-primary">Kaffe och fika</md-checkbox></td>
-            </tr>
-            <tr>
-                <td><md-checkbox class="md-primary">Asiatiskt</md-checkbox></td>
-                <td><md-checkbox class="md-primary">Enbart sushi</md-checkbox></td>
-            </tr>
-            <tr>
-                <td><md-checkbox class="md-primary">Vegetariskt</md-checkbox></td>
-                <td><md-checkbox class="md-primary">Veganskt</md-checkbox></td>
-            </tr>
-            <tr>
-                <td><md-checkbox class="md-primary">Burgare</md-checkbox></td>
-                <td><md-checkbox class="md-primary">Pizza</md-checkbox></td>
-            </tr>
-            <tr>
-                <td><md-checkbox class="md-primary">Köttigt</md-checkbox></td>
-                <td><md-checkbox class="md-primary">Nåt annat</md-checkbox></td>
-            </tr>
-        </table>
-        
-        <hr>
-        
-        <!-- The table should be done this way Andreas says....
-        
-        <table>
-            <tr ng-repeat="checkbox in checkboxes">
-                {{ checkbox }}
-            </tr>
-        </table>
-        -->
-            
-        <!-- Filter by type of price -->
-        <md-slider-container>
-            <span class="filter-undertitle"> Priset spelar roll </span>
-            <md-slider ng-model="princeRange" class="md-primary" aria-label="Price Range Slider" flex md-discrete ng-readonly="readonly"></md-slider>
-        </md-slider-container>
-        
-        <hr>
-
-        <!-- Filter by rating grades -->
-        <span class="filter-undertitle"> Jag vill se vad andra gillar </span>
-            <div class="star-rating"> 
-                <span data-rating="1"><i class="material-icons">star</i></span>
-                <span data-rating="2"><i class="material-icons">star</i></span>
-                <span data-rating="3"><i class="material-icons">star</i></span>
-                <span data-rating="4"><i class="material-icons">star_half</i></span>
-                <span data-rating="5"><i class="material-icons">star_border</i></span>
-            </div>
+    <md-content layout-padding>
+    <!-- Filter Menu -->
+    <div ng-controller="filterController">
+    <!-- Types of filter -->
+        <div>
+            <span class="filter-undertitle">		
+                Typ av ställe/utbud
+            </span>
+            <md-list ng-cloak>
+            </md-list>    
+            <!--
+            <table>
+                <tr ng-repeat="row in rows">
+                    <td ng-repeat="checkbox in checkboxes">{{ checkbox }}</td>
+                </tr>
+            </table>
+            -->
+            <table id="filter_menu" style="width:100%">
+                <tr>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[0]" ng-change="toggle(1)">Sushi</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[1]" ng-change="toggle(2)">Grillat</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[2]" ng-change="toggle(3)">Hamburgare</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[3]" ng-change="toggle(4)">Vegetariskt</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[4]" ng-change="toggle(5)">Sallad</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[5]" ng-change="toggle(6)">Pizza</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[6]" ng-change="toggle(7)">Indiskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[7]" ng-change="toggle(8)">Italienskt</md-checkbox></td>
+                </tr>
+                <tr>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[8]" ng-change="toggle(9)">Thailändskt</md-checkbox></td>
+                    <td><md-checkbox class="md-primary" ng-model="truthy[9]" ng-change="toggle(10)">Övrigt</md-checkbox></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     </md-content>
 </md-sidenav>
