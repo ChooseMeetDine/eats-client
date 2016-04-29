@@ -23,26 +23,54 @@
             </table>
             -->
             <table id="filter_menu" style="width:100%">
+                <tbody>
                 <tr>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[0]" ng-change="toggle(1)">Sushi</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[1]" ng-change="toggle(2)">Grillat</md-checkbox></td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[0]" ng-change="toggle(1)" checked="checked" name='thing' value='valuable' id="sushi"/>
+                        <label class="checkboxImg" for="sushi"><span class="text">Sushi</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                        
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[1]" ng-change="toggle(2)" checked="checked" name='thing' value='valuable' id="grillat"/>
+                        <label class="checkboxImg" for="grillat"><span class="text">Grillat</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[2]" ng-change="toggle(3)" checked="checked" name='thing' value='valuable' id="hamburgare"/>
+                        <label class="checkboxImg" for="hamburgare"><span class="text">Hamburgare</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[2]" ng-change="toggle(3)">Hamburgare</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[3]" ng-change="toggle(4)">Vegetariskt</md-checkbox></td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[3]" ng-change="toggle(4)" checked="checked" name='thing' value='valuable' id="vegetariskt"/>
+                        <label class="checkboxImg" for="vegetariskt"><span class="text">Vegetariskt</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[4]" ng-change="toggle(5)" checked="checked" name='thing' value='valuable' id="sallad"/>
+                        <label class="checkboxImg" for="sallad"><span class="text">Sallad</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[5]" ng-change="toggle(6)" checked="checked" name='thing' value='valuable' id="pizza"/>
+                        <label class="checkboxImg" for="pizza"><span class="text">Pizza</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[4]" ng-change="toggle(5)">Sallad</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[5]" ng-change="toggle(6)">Pizza</md-checkbox></td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[6]" ng-change="toggle(7)" checked="checked" name='thing' value='valuable' id="indiskt"/>
+                        <label class="checkboxImg" for="indiskt"><img class="filterImg" src="../images/icons/pizza.png" alt="indiskt"></label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[7]" ng-change="toggle(8)" checked="checked" name='thing' value='valuable' id="italienskt"/>
+                        <label class="checkboxImg" for="italienskt"><span class="text">Italienskt</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[8]" ng-change="toggle(9)" checked="checked" name='thing' value='valuable' id="thai"/>
+                        <label class="checkboxImg" for="thai"><span class="text">Thailändskt</span><img class="filterImg" src="../images/icons/pizza.png"></label>
+                    </td>
                 </tr>
                 <tr>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[6]" ng-change="toggle(7)">Indiskt</md-checkbox></td>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[7]" ng-change="toggle(8)">Italienskt</md-checkbox></td>
-                </tr>
-                <tr>
-                    <td><md-checkbox class="md-primary" ng-model="truthy[8]" ng-change="toggle(9)">Thailändskt</md-checkbox></td>
                     <td><md-checkbox class="md-primary" ng-model="truthy[9]" ng-change="toggle(10)">Övrigt</md-checkbox></td>
                 </tr>
+                </tbody>
             </table>
         </div>
     </div>

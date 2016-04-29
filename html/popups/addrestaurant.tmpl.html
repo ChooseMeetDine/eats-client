@@ -8,37 +8,41 @@
             
         </md-toolbar>
     
-    <md-dialog-content layout-padding>
+    <md-dialog-content>
         <div class="md-dialog-content">
             <form name="addRestaurant" ng-submit="regRestaurant()"> 
-                <md-input-container class="md-block" flex-gt-sm>
+                <md-input-container class="md-block">
                         <label>Restaurangnamn</label>
                         <input ng-model="name" type="text" value="name" required>
                 </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
+                <md-input-container class="md-block">
                         <label>Info</label>
                         <input ng-model="info" type="text" value="info" required>
                 </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
+                <md-input-container class="md-block">
                     <div ng-repeat="cat in cats">
                         <md-checkbox ng-checked="exists(cat, selected)" ng-click="toggle(cat, selected)">
                             {{ cat }} <span ng-if="exists(cat, selected)">selected</span>
                         </md-checkbox>
                     </div>
                 </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Prisklass</label>
-                    <md-slider ng-model="priceRate" flex md-discrete step="1" min="1" max="5" aria-label="rating" required>
+                <div>
+                    <div>
+                        <span class="sliderTitle">
+                            Prisklass:
+                        </span>    
+                        <span class="sliderTitle">
+                            Betyg:
+                        </span>
+                    </div>
+                    <md-slider class="slider" ng-model="priceRate" md-discrete step="1" min="1" max="5" aria-label="rating" required>
                     </md-slider>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Betyg</label>
-                    <md-slider ng-model="rating" flex md-discrete step="1" min="1" max="5" aria-label="rating" required>
+                    <md-slider class="slider" ng-model="rating" md-discrete step="1" min="1" max="5" aria-label="rating" required>
                     </md-slider>
-                </md-input-container>
+                </div>
                  <md-button class="md-raised" id="placeMarker" ng-click="hidePopup(); showAddButton(); placeMarkerOnClick();">Välj plats på kartan</md-button><br>
-                <input ng-model="photo" type="file" value="Ladda upp bild" required>
-                <input type="submit" value="Lägg till restaurang">
+                <!--<input ng-model="photo" type="file" value="Ladda upp bild" required>-->
+                <input id="submitRestaurant" type="submit" value="Lägg till restaurang">
             </form>            
         </div>
     </md-dialog-content>
