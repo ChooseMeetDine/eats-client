@@ -11,7 +11,7 @@ app.factory('filterService', function(){
           }
         },
         2:{
-          name: 'Grill',
+          name: 'Falafel',
           type: 'group',
           visible: true,
           layerParams:{
