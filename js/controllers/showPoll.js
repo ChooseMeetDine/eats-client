@@ -6,7 +6,6 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   $scope.isLoggedInAsAnonymous = tokenService.isAnonymousWithValidToken();
   $scope.isUserWithInvalidToken = tokenService.isUserWithInvalidToken();
   $scope.username = tokenService.getTokenUserName();
-  // $scope.parameterPollId = $location.search().poll // THIS THE THE POLL!
 
   $scope.active = pollService.getActive();
 
@@ -17,66 +16,16 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   $scope.activePollCleaned = pollService.getActiveWithCleanedData();
 
 
-  // TODO: 
-  // !! HÄR ÄR JAG !!
-  // - användaren "davve@mail.se" verkar hämta en massa polls som han inte är med i.. varför då?
-  // 
-  // eventuellt: 
+  // TODO (eventuellt): 
   // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
   // --- Eller ska det räcka med att göra en POST på en restaurang man inte redan röstat på?
 
-
-  // $scope.users = [];
-  // $scope.restaurants = [];
-  // $scope.votes = [];
 
   // Updates the date every second to be able to compare to the expiration date of the poll
   // Disables joining the poll when it has 10 seconds left (to let the user have time to log in if need be)
   $interval(function() {
     $scope.now = new Date(new Date().getTime() + 20000);
   }, 1000);
-
-  // $scope.extractUsersFromActivePoll = function() {
-  //   $scope.users = [];
-  //   var users = $scope.active.data.relationships.users.data;
-
-  //   for (var i = 0; i < users.length; i++) {
-  //     for (var j = 0; j < $scope.active.included.length; j++) {
-  //       if ($scope.active.included[j].id === users[i].id) {
-  //         $scope.users.push($scope.active.included[j]);
-  //       }
-  //     }
-  //   }
-  // };
-
-  // $scope.extractRestaurantsFromActivePoll = function() {
-  //   $scope.restaurants = [];
-  //   if (!$scope.active.data.relationships.restaurants) { //Prevents error when poll is created without restaurants
-  //     return [];
-  //   }
-  //   var restaurants = $scope.active.data.relationships.restaurants.data;
-
-  //   for (var i = 0; i < restaurants.length; i++) {
-  //     for (var j = 0; j < $scope.active.included.length; j++) {
-  //       if ($scope.active.included[j].id === restaurants[i].id) {
-  //         $scope.restaurants.push($scope.active.included[j]);
-  //       }
-  //     }
-  //   }
-  // };
-
-  // $scope.extractVotesFromActivePoll = function() {
-  //   $scope.votes = [];
-  //   for (let i = 0; i < $scope.active.included.length; i++) {
-
-  //     if ($scope.active.included[i].type === 'vote') {
-  //       $scope.votes.push({
-  //         user: $scope.active.included[i].relationships.user.data.id,
-  //         restaurant: $scope.active.included[i].relationships.restaurant.data.id
-  //       });
-  //     }
-  //   }
-  // };
 
   $scope.vote = function(restaurant) {
     $http({
@@ -94,11 +43,6 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
       console.log(error);
     })
   };
-
-  // $scope.extractRestaurantsFromActivePoll();
-  // $scope.extractUsersFromActivePoll();
-  // $scope.extractVotesFromActivePoll();
-
 
   $scope.joinPoll = function()  {
     $scope.swap('continueToPollAs');
