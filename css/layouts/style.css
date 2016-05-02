@@ -281,6 +281,26 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     border-radius: 50%;
     zoom: 130%;
 }
+/*----------ACTIVE POLL-------------*/
+.md-button.md-raised {
+    color: #fff;
+    background-color: #00B8D4;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.md-button.md-raised:hover {
+    opacity: 0.7!important;
+    background-color: #00B8D4!important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+#activePollPosition{
+    position:absolute;
+    bottom:0px;
+    z-index:2;
+}
+#activePollPosition button{
+    padding: 10px;
+    margin: 2px;
+}
 /*Create poll button when hovering*/
 #createPollIcon:hover {
     opacity: 0.7;
