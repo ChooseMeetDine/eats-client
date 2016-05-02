@@ -19,8 +19,6 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   // TODO: 
   // !! HÄR ÄR JAG !!
-  // - fixa så att länken för att rösta disablas för restaurangen man redan röstat på i htmlen (showActivePoll.tmpl.html)
-  // - fixa så att röstningslänken ligger i scope - så att designarna kan nå den
   // - användaren "davve@mail.se" verkar hämta en massa polls som han inte är med i.. varför då?
   // 
   // eventuellt: 

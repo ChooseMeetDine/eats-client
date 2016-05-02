@@ -18,18 +18,16 @@
 
       </div>
 
-     
+
       <div id="poll-dialog-restaurants">
-        <h4 id="rest-text">Restauranger</h4> <br>
-        
-        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)" class="poll-dialog-vote-object" 
-        ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
-         <i class="material-icons md-24 thumb">thumb_up</i>
+        <h3 id="rest-text">Restauranger:</h3> <br>
+        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="restaurant.id === restaurantIdUserHasVotedOn || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
+          <i class="material-icons md-24 thumb">thumb_up</i>
           <span>
             {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
           </span>
         </p>
-        
+
         <!-- <p>ID: {{active}} </p>
                 <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.data.attributes.created}} </p>-->
@@ -46,13 +44,12 @@
         <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
       </div>
     
-    <!-- Target -->   
-    <input id="foo" value="https://github.com/Beijar">
+    <!-- Så här kan man nå röstningslänken! -->
+    <input id="foo" value={{activePollCleaned.voteLink}}>
     <!-- Trigger -->
     <button class="btn" ngclipboard data-clipboard-target="#foo">
         <md-icon class="material-icons md-light copyButton">content_copy</md-icon>
     </button>
-        
       <div ng-if="!userIsParticipantInPoll && now < active.data.expiresAsDateObj">
         <p>Du är inte med i den här omröstningen, vill du gå med?</p>
         <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
