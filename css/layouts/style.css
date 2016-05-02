@@ -434,6 +434,7 @@ input[type=checkbox]:checked + .checkboxImg {
 
 #placeMarker{
     background:#FAFAFA;
+    color:#212121;
 }
 
 #submitRestaurant{

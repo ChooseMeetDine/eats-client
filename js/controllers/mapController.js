@@ -13,7 +13,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     center: {
       lat: 59.91,
       lng: 10.75,
-      zoom: 13,
+      zoom: 15,
       autoDiscover: true
     },
     markers: restaurantMarkers,
