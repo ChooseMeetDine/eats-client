@@ -4,11 +4,10 @@
 
       <div id="poll-dialog-top">
         <h1 id="poll-dialog-name">{{active.data.attributes.name}}</h1>
-        <md-button ng-click="cancel() " id="close" class="md-icon-button md-primary">
+        <md-button ng-click="cancel()" aria-label="closeVoteWindow" id="close" class="md-icon-button md-primary">
           <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
         </md-button>
-
-        <md-button id="poll-dialog-settings" class="md-icon-button md-primary">
+        <md-button id="poll-dialog-settings" aria-label="voteSettings" class="md-icon-button md-primary">
           <md-icon md-svg-src="images/icons/ic_settings_white_24px.svg"></md-icon>
         </md-button>
 
