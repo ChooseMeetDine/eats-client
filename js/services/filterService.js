@@ -81,6 +81,14 @@ app.factory('filterService', function(){
           layerParams:{
             showOnSelector: false
           }
+        },
+        11:{
+          name: 'Other',
+          type: 'group',
+          visible: true,
+          layerParams:{
+            showOnSelector: false
+          }
         }
       };
       
