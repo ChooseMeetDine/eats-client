@@ -158,7 +158,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         var object = data[i];
         for(j in object){
             //TODO: Create a check if key exist n object
-            if(object[j].id == "3"){
+            if(object[j].id == "11"){
                 rest = 'images/icons/cafe_marker.png';
                 break;
                 }

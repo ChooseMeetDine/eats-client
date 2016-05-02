@@ -124,7 +124,6 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 .md-content, .layout-padding{
     background: #424242;
     color: #FAFAFA;
-    padding: 0;
 }
 /*Header för dialogrutor*/
 .md-toolbar-tools{
