@@ -11,22 +11,17 @@
     </md-toolbar>
     <md-content id="main-meny-nav" ng-controller="authJwt" layout-padding>
         <md-list ng-cloak layout-padding>
-            
-            <!-- Link to profile -->
-            <md-list-item href="#" ng-if="!access">
+            <md-list-item class="linksInMainMenu" ng-if="!access" href="#aboutModal" data-toggle="modal" data-target="#profilsida" md-expando>
                 <p>{{ name }}</p>
                 <i class="material-icons">account_circle</i>
             </md-list-item>
-            
             <!-- Link to settings -->
-            <md-list-item href="#">
+            <md-list-item href="#" class="linksInMainMenu">
                 <p>Inställningar</p>
                  <i class="material-icons">settings</i>
             </md-list-item>
-            
             <!-- Divider if needed -->
             <hr ng-if="!access">
-            
             <!-- Menu section create new poll and new group and add restaurant -->
             <md-list-item ng-if="!access" ng-click="dialogs.showAdvanced($event, 'createpoll')">
                 <p>Skapa ny omröstning</p>

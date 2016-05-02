@@ -242,6 +242,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     color:#FAFAFA!important;
     padding:10px;
     float: left;
+    margin-left: 2%;
 }
 
 /*-------------------FILTER MENU----------------------*/
