@@ -20,7 +20,7 @@
 
      
       <div id="poll-dialog-restaurants">
-        <h3 id="rest-text">Restauranger:</h3> <br>
+        <h4 id="rest-text">Restauranger</h4> <br>
         
         <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)" class="poll-dialog-vote-object" 
         ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
@@ -42,7 +42,7 @@
       <!--<p>Användare: </p>-->
       <hr>
       <div id="poll-dialog-bottom">
-        <p id="poll-dialog-user" ng-repeat="user in activePollCleaned.users">Namn: {{user.attributes.name}}</p>
+        <p id="poll-dialog-user" ng-repeat="user in activePollCleaned.users">{{user.attributes.name}}</p>
         <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
       </div>
 
