@@ -1,45 +1,91 @@
-#toolbar{
-background-color: dimgrey;
- 
-}
-
-.md-raised{
-    padding: 5px;
-}
-
-#cancel{   
- background-color: darkturquoise;
-float: right;
-margin-top: 30px;
-margin-bottom: 0px;
-}
+/*Lägg till restauranger*/
 
 #clear{   
-background-color: darkturquoise;
-
+    background-color: #ffffff;
+    color: #616161;
 }
 
 #addrest{   
- background-color: darkturquoise;
+    background-color: #ffffff;
+    color: #616161;    
+}
+/*Skapa eller avbryt skapning av omröstning*/
+#cancel{   
+    background-color: #ffffff;
+    float: right;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    color: #616161;
 }
 
 #addpoll{   
-background-color: darkturquoise;
-margin-top: 30px;
-float: right;
-margin-right: 10px;
-}
-
-#bottom{
-display: inline-block;
-
+    margin-top: 30px;
+    float: right;
+    margin-left: 10px;
+    background-color: #00B8D4;
+    color: #fafafa;
 }
 
 #add{
-display: inline-block;     
+    margin-top: 10px;
 }
 
-md-dialog{
+#bottom{
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/*Välja tid för omröstning*/
+
+
+/*Ange sluttid*/
+#sluttid{
+    color: #616161;
+    font-size: 19px;
+}
+
+/*Tim och minut label*/
+
+#hourlabel{
+    color: #616161;
+    margin-bottom: 30px;
     
-background-color: #E0E0E0;
+}
+
+
+#hourselect{
+    margin-right: 10px;
+}
+
+
+#minutelabel{
+    color: #616161;
+    margin-bottom: 30px;
+    margin-left: 60px; 
+}
+
+select{
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 34px;
+    background-color: #bdbdbd;
+    color: #fafafa;    
+}
+
+
+select option{
+    background-color: #bdbdbd;
+}
+
+
+/*Inputfält*/
+
+#lunchname{
+    font-size: 25px;
+    color: #616161;
+}
+
+md-input-container.md-block {
+    margin-bottom: 5px;
 }

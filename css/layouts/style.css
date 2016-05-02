@@ -1,3 +1,43 @@
+/*
+Author: CMD 
+Description: Eats helps you decide where to go and eat lunch.
+Version: 1.0
+Tags: Eats, CMD, Choose Meet Dine
+
+Colors
+Alabaster       #FAFAFA     250,250,250
+Wild Sand       #F5F5F5     245,245,245
+Gallery         #EEEEEE     238,238,238
+Mercury         #E0E0E0     224,224,224
+Silver          #BDBDBD     189,189,189
+Silver Chalice  #9E9E9E     158,158,158
+Boulder         #757575     117,117,117
+Dove Gray       #616161     97,97,97
+Mine Shaft      #424242     66,66,66
+Mine Shaft-1    #212121     33,33,33
+
+Anakiwa         #84FFFF     132,255,255
+Cyan/Aqua       #18FFFF     24,255,255
+Cyan/Aqua-1     #00E5FF     0,229,255
+Pacific Blue    #00B8D4     0,184,212
+
+@import url("exempel.css")
+
+*/
+
+/*FONTS*/
+@font-face {
+    font-family: aileron;
+    font-weight: bold;
+    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+        format("opentype");
+}
+
+@font-face {
+    font-family: borg;
+    src: url("/css/fonts/borg/Borg.ttf")
+        format("opentype");
+}
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
@@ -5,44 +45,155 @@
     min-width:0;
     min-height:0;
     line-height:normal;
-    font-family: open sans, arial;
+    font-family: aileron, open sans, arial;
 }
-
-/*All content*/
-html,body {
+/*HTML,BODY*/
+html,body{
     height: 100%;
     overflow-x: hidden;
-    font-family: open sans, arial;
+    font-family: aileron, open sans, arial;
     font-size: 14px;
 }
+h1{
+    font-size: 55px;
+    font-family: borg;    
+}
+/*Forms*/
+form{
+    padding:5px;
+}
 
-/*Map*/
+form input{
+    background: #00b8d4;
+    border: none;
+    border-radius: 2px;
+    color: #FAFAFA;
+    padding:10px;
+}
+/*Color toolbars*/
+/*Dialogruta*/
+md-dialog{
+    background-color: #FAFAFA;
+    max-height: 92%;
+    width: 500px;
+    color: #212121;
+}
+/*Färg vid klickad checkbox */
+md-checkbox.md-checked.checkboxpermission .md-icon {
+ background-color: #00B8D4;
+}
+/*Inputfält, väljer font och färg */
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #00B8D4;
+    font-family: Aileron;
+    margin-bottom: 2px;
+}
+/*Popup content wrapper*/
+leaflet-popup-content-wrapper{
+    border:none!important;
+}
+/*Menu content*/
+md-sidenav{
+    background: #424242;
+    display:block;
+    height:100vh;
+    z-index: 3;
+    overflow: hidden;
+    padding-top: 44px;
+}
+md-sidenav .md-toolbar-tools{
+    background: #757575;
+    color: #FAFAFA;
+    max-height: 100px!important;
+    height: 70px;
+}
+md-sidenav .material-icons{
+    color:#FAFAFA;
+}
+md-sidenav hr{
+    border-color: #424242;
+}
+
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
+    padding-left: 0px;
+}
+/*Color backgrounds*/
+.md-content, .layout-padding{
+    background: #424242;
+    color: #FAFAFA;
+    padding: 0;
+}
+/*Header för dialogrutor*/
+.md-toolbar-tools{
+    font-family: borg, aileron, open sans, arial;
+    font-size: 42px;
+    background-color: #616161;
+    padding: 2%;    
+}
+/*Logotype div container*/
+#logotype{
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*Logotype img*/
+#logoEats{
+    width:200px;
+}
+/*Styling all buttons*/
+.md-button{
+    padding:10px;
+}  
+/*Aktiveringsknappar, exemeplvis för att SKAPA något*/
+.actionbutton{
+    background-color: #00B8D4;
+    color: #fafafa;
+}
+/*MAP*/
 #map {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 100%;
     z-index: 0;    
 }
 
+#main-meny-nav{
+    padding: 2px;
+}
+/*--------------------LEAFLET STUFF-------------------*/
+/*Zoom and show me where I am buttons*/
+.leaflet-bar{
+    zoom: 130%;
+    border:none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
 /*Zoom in and zoom out controls */
 .leaflet-control-zoom-in, .leaflet-control-zoom-out{
     color:transparent!important;
 }
-/*Button that show me where I am*/
-.leaflet-control-locate .fa {
-    display: block;
-    float: left;
-    font-size: large;
-    margin-top: 2px;
+/*Show me where I am button container*/
+.leaflet-bar a, .leaflet-bar a:hover{
+    text-align: -webkit-center;
+    border:none;
 }
-
-leaflet-popup-content-wrapper{
-    border:none!important;
+/*Show me where I am icon*/
+.leaflet-control-locate a{
+    padding:2px;
 }
-
+/*POPUP*/
+.leaflet-popup{
+    margin-bottom: 45px;
+}
 /*Popup content*/
 .leaflet-popup-content{
     padding-top: 0px !important;
@@ -64,61 +215,51 @@ leaflet-popup-content-wrapper{
     text-align: right;
     padding-top: 4px;
 }
-
-/*Buttons for main menu and filter menu*/
+/*---------------MAIN MENU & FILTER MENU-------------*/
+/*Buttons*/
 #menubuttons{
+    background:#424242;
+    color: #FAFAFA;
     position: absolute;
     top: 0;
     left: 0;
-    display: block;
-    background: #FAFAFA;
     z-index: 4;
-    padding:5px;
 }
+   
 .menubutton{
-    font-size: 20px;
-    width: 25px;
+    font-size: 180%;
+    border-radius: 0px;
+    padding:5px 10px;
+    float: left;
 }
 
-/*Main menu and filter menu*/
-md-sidenav{
-    display:block;
-    height:100vh;
-    z-index: 3;
-    padding-top:45px;
-    overflow: hidden;
+.menubutton:hover{
+    background: #212121;
 }
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
-}
-
-/*Main menu links to profile and settings*/
-.linksInMainMenu{
-    padding-left:20px!important;
-    padding-right:20px!important;
-    margin-top:10px!important;
-    cursor:pointer;
-}
-.linksInMainMenu:hover{
-    background-color:#EEEEEE;
+/*Login or register button i main menu*/
+.login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
+    float: left;
+    margin-left: 2%;
 }
 
+/*-------------------FILTER MENU----------------------*/
 /*Filter menu undertitles*/
 .filter-undertitle {
     font-size: 14px;
     padding: 10px;
 }
-/*Some more margin for the first undertitle in filter menu*/
+/*First undertitle in filter menu*/
 #filterMenuContent{
     margin: 20px;
 }
-
 /*Checkboxes*/
 #filterMenuChoices{
     width: 100%;
     margin-top: 20px;
 }
-
 /*Filter menu star rating*/
 .star-rating {
     line-height: 32px;
@@ -127,15 +268,18 @@ md-backdrop.md-sidenav-backdrop{
     padding: 10px;
     margin: 10px;
 }
-
+/*--------------------CREATE POLL---------------------*/
 /*Create poll button*/
 #createPollButton {
+    color: #212121;
+    padding: 0;
     z-index: 2;
     position: absolute;
     bottom: 20px;
     right: 20px;
     background: none;
     border-radius: 50%;
+    zoom: 130%;
 }
 /*Create poll button when hovering*/
 #createPollIcon:hover {
@@ -143,9 +287,15 @@ md-backdrop.md-sidenav-backdrop{
 }
 /*Create poll icon making the plus sign bigger*/
 #createPollIcon {
-    font-size: 72px;
+    font-size: 6em;
+    color: #00B8D4;
+    text-shadow: 1px 2px #818181;
+    
 }
-
+.md-dialog-content {
+    color: #212121;
+}
+/*-------------MORE INFO ABOUT RESTAURANTS------------*/
 /*Infoslider with more info about restaurant*/
 #moreInfoSlider .md-no-proxy {
     padding:10px!important;
@@ -159,12 +309,6 @@ md-backdrop.md-sidenav-backdrop{
     width: 350px;
 }
 
-/*Login button*/
-.login{
-    width:50%;
-    height:30px;
-}
-
 /*Add restaurant button for save restaurant*/
 .saveRestaurantButton{
     position:absolute;
@@ -172,7 +316,6 @@ md-backdrop.md-sidenav-backdrop{
     bottom: 100px;
     z-index:2;
 }
-
 /*hide md-dialog-container*/
 .display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
     display: none !important;

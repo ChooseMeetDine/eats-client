@@ -68,9 +68,12 @@
     <script src="js/controllers/authJwt.js"></script>
     <script src="js/controllers/slider.js"></script>
     <script src="js/controllers/continueToPollAs.js"></script>
+    <script src="js/controllers/filterController.js"></script>
+
 
     <script src="js/services/pollService.js"></script>
     <script src="js/services/modeService.js"></script>
+    <script src="js/services/filterService.js"></script>
     <script src="js/services/tokenService.js"></script>
 
     <script src="js/api/getRestaurants.js"></script>
@@ -102,11 +105,13 @@
         <div ng-include="'html/addrestaurantstopoll.html'"></div>
       </div>
 
-      <div ng-controller="mapController">
-        <leaflet center="center" markers="markers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
-      </div>
+   <!-- <div ng-include="'html/logotype.html'"></div> --> 
+    <div ng-controller="mapController">
+      <leaflet center="center" markers="markers" layers="layers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
+      <!--<button type="button" class="btn btn-default" ng-click="toogleKyckling()" ng-disabled="true">Remove Hillshade Overlay</button>-->
+    </div>
 
-      <div ng-include="'html/moreinfo.html'"></div>
+    <div ng-include="'html/moreinfo.html'"></div>
     </div>
   </body>
 </html>
