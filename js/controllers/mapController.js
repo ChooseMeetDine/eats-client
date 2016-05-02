@@ -101,7 +101,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
           categories: restaurant.relationships.categories
         }
       };
-      //console.log(attributes);
+      console.log(attributes);
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
