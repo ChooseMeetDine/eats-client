@@ -73,6 +73,7 @@ app.factory('pollService', ['$http', function($http) {
   pollService.getActiveWithCleanedData = function()  {
     var cleanedActive = {
       id: active.data.id,
+      voteLink: active.data.voteLink,
       users: [],
       restaurants: [],
       votes: []

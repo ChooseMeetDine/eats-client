@@ -19,7 +19,6 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   // TODO: 
   // !! HÄR ÄR JAG !!
-  // - fixa så att röstningslänken ligger i scope - så att designarna kan nå den
   // - användaren "davve@mail.se" verkar hämta en massa polls som han inte är med i.. varför då?
   // 
   // eventuellt: 

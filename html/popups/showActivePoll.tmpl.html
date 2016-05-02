@@ -46,6 +46,10 @@
         <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
       </div>
 
+      <!-- Så här kan man nå röstningslänken! -->
+      <p>Röstningslänk:</p>
+      <a ng-href="{{activePollCleaned.voteLink}}"> {{activePollCleaned.voteLink}}</a>
+
       <div ng-if="!userIsParticipantInPoll && now < active.data.expiresAsDateObj">
         <p>Du är inte med i den här omröstningen, vill du gå med?</p>
         <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
