@@ -294,20 +294,6 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 .md-dialog-content {
     color: #212121;
 }
-/*-------------MORE INFO ABOUT RESTAURANTS------------*/
-/*Infoslider with more info about restaurant*/
-#moreInfoSlider .md-no-proxy {
-    padding:10px!important;
-}
-/*Infoslider content width*/
-.infomenu{
-    width: 500px;
-}
-/*Infoslider img width*/
-.infoimg{
-    width: 350px;
-}
-
 /*Add restaurant button for save restaurant*/
 .saveRestaurantButton{
     position:absolute;

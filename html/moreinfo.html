@@ -4,17 +4,41 @@
         <div id="moreInfoSlider">
             
             <!-- Name of restaurant -->
-            <md-toolbar class="md-theme-light">
+            <div id="restaurantname">
+
                 <h1 class="md-toolbar-tools">{{ content.name }}</h1>
-            </md-toolbar>
+   
+            </div>
             
-            <!-- More info about the restaurant -->
+        <!-- More info about the restaurant -->
+            <div id="infoimg">
             <md-content  layout-padding>
-                <md-list>
-                    <md-list-item><img class="infoimg" src="{{ content.photo }}"></md-list-item>
-                    <md-list-item>{{ content.extra.info }}</md-list-item>
-                    <md-list-item>Restaurangen har fått {{ content.rating }} av 5 stjärnor i betyg</md-list-item>
-                </md-list>
+    
+                    <md-list-item class="img-list-item"><img class="infoimg" src="{{ content.photo }}"></md-list-item>
+            </div>
+                
+            <div id="label">
+                <div ng-repeat="category in content.extra.categories[0]">
+                    <img src="../images/icons/" + {{ category.id }} + ".png">
+                </div>
+            </div>
+            <br>
+                
+            <div id="extrainfo">
+            <md-list-item>{{ content.extra.info }}</md-list-item>
+            </div>
+             <!-- Stars for rating        
+            <div id="rating"> 
+                <md-list-item>Restaurangen har fått {{ content.rating }} av 5 stjärnor i betyg</md-list-item>
+            </div>
+            --> 
+            <br>
+
+                
+            <div id="type">
+            
+            </div>
+
             </md-content>
         </div>
     </md-sidenav>

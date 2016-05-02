@@ -1,0 +1,41 @@
+/*-------------MORE INFO ABOUT RESTAURANTS------------*/
+/*Infoslider with more info about restaurant*/
+#moreInfoSlider .md-no-proxy {
+    padding:0px!important;
+
+}
+/*Infoslider content width*/
+.infomenu{
+    width: 500px;
+
+}
+/*Infoslider img width*/
+.infoimg{
+    width: 100%;
+    padding: 0px;
+    height: 80%;
+}
+
+#label{
+background-color: #00B8D4;
+height:70px;
+}
+
+.img-list-item{
+    padding: 0;
+}
+
+md-list-item{
+color: white;
+padding: 10px;
+}
+
+}
+#restaurantname{
+text-align: center;    
+background-color: white;
+}
+
+#extrainfo{
+padding: 10px;
+}
