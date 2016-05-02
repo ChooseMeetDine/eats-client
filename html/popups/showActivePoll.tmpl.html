@@ -13,7 +13,7 @@
         </md-button>
 
         <p id="poll-dialog-timeEnds" ng-show="now < active.data.expiresAsDateObj">
-          <!--Slutar:-->{{active.data.attributes.expires | date: 'HH:mm'}}</p>
+          [ Kl. {{active.data.attributes.expires | date: 'HH:mm'}} ]</p>
 
         <p id="poll-dialog-timeEnds" ng-show="now > active.data.expiresAsDateObj">Omröstningen är avslutad</p>
 
@@ -23,12 +23,12 @@
       <div id="poll-dialog-restaurants">
         <h3 id="rest-text">Restauranger:</h3> <br>
         
-        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)" class="poll-dialog-vote-object">
+        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)" class="poll-dialog-vote-object" 
+        ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
          <i class="material-icons md-24 thumb">thumb_up</i>
-          <b>
-            {{restaurant.attributes.name}} # Röster: {{restaurant.votes.length}}
-          </b>
-          <span ng-if="restaurant.id === restaurantIdUserHasVotedOn"> Du ({{username}}) har röstat på den här restaurangen </span>
+          <span>
+            {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
+          </span>
         </p>
         
         <!-- <p>ID: {{active}} </p>

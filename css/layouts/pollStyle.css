@@ -14,6 +14,13 @@
 .poll-dialog-vote-object:hover{
     background-color: #b0e88d;
 }
+
+.poll-dialoge-vote-object-has-vote{
+    background-color: #b0e88d;
+}
+.poll-dialog-vote-object span{
+}
+
 .poll-dialog-vote-object:active{
     position: relative;
     top: 1px;
@@ -21,9 +28,13 @@
 
 .material-icons.thumb{
     color: #616161;
-    margin-right: 4px;
+    margin-right: 5px;
 }
-
+.number-of-votes{
+    float: right;
+    padding-right: 10px;
+    margin-top: 5px;
+}
 #rest-text{
     margin: 0;
 }
@@ -39,24 +50,23 @@ float: right;
 
 #poll-dialog-top{
 width: 100%;    
-margin:0 auto;
+margin-bottom: 30px;
 overflow:hidden;
-padding-bottom: 30px;
 }
 
 #poll-dialog-name{
 margin-top:0;
-margin-right: 20px;
 float: left;
-margin-top: 10px;
 color: #FFF;
 }
 
 #poll-dialog-timeEnds{
+display: inline-block;
+float: right;
 text-align: center;
-margin-right: 20px;
+color: #ffffff;
+font-size: 18px;
 margin-top: 10px;
-color: #FFF;
 }
 
 #poll-dialog-settings{
