@@ -1,0 +1,68 @@
+.poll-dialog{
+background-color:#616161;
+width: 500px;
+}
+
+#content-dialog{
+padding: 5px;
+}
+
+#poll-dialog-sharebutton{
+padding: 8px;
+background-color: #00b8d4;
+float: right;
+}
+
+#poll-dialog-top{
+width: 100%;    
+margin:0 auto;
+overflow:hidden;
+padding-bottom: 30px;
+}
+
+#poll-dialog-name{
+margin-top:0;
+margin-right: 20px;
+float: left;
+margin-top: 10px;
+color: #FFF;
+}
+
+#poll-dialog-timeEnds{
+text-align: center;
+margin-right: 20px;
+margin-top: 10px;
+color: #FFF;
+}
+
+#poll-dialog-settings{
+border-top:0;
+float: right;
+padding: 0;
+margin-right: 0;
+}
+
+#close{
+border-top:0;
+float: right;
+padding: 0;
+margin-left: 0;  
+}
+
+#poll-dialog-bottom{
+width: 100%;    
+margin:0 auto;
+overflow:hidden;
+padding-bottom: 5px;
+}
+
+#poll-dialog-user{
+float: left;
+float: bottom;
+color: #FFF;
+}
+
+#poll-dialog-restaurants{
+margin-bottom: 100px;
+color: #FFF;
+}
