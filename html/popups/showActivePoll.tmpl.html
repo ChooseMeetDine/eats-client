@@ -35,9 +35,9 @@
                 <p>created: {{active.data.attributes.created}} </p>-->
       </div>
 
-      <div>
+      <!-- <div>
         <p ng-repeat="vote in activePollCleaned.votes"><br>Användare: {{vote.user}} har röstat på {{vote.restaurant}}</p>
-      </div>
+      </div> -->
 
       <!--<p>Användare: </p>-->
       <hr>
@@ -45,7 +45,14 @@
         <p id="poll-dialog-user" ng-repeat="user in activePollCleaned.users">{{user.attributes.name}}</p>
         <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
       </div>
-
+    
+    <!-- Target -->   
+    <input id="foo" value="https://github.com/Beijar">
+    <!-- Trigger -->
+    <button class="btn" ngclipboard data-clipboard-target="#foo">
+        <md-icon class="material-icons md-light copyButton">content_copy</md-icon>
+    </button>
+        
       <div ng-if="!userIsParticipantInPoll && now < active.data.expiresAsDateObj">
         <p>Du är inte med i den här omröstningen, vill du gå med?</p>
         <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
