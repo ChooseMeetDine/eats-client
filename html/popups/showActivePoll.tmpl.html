@@ -3,7 +3,7 @@
     <div class="md-dialog-content">
 
       <div id="poll-dialog-top">
-        <h3 id="poll-dialog-name">{{active.data.attributes.name}}</h3>
+        <h1 id="poll-dialog-name">{{active.data.attributes.name}}</h1>
         <md-button ng-click="cancel() " id="close" class="md-icon-button md-primary">
           <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
         </md-button>
@@ -19,14 +19,17 @@
 
       </div>
 
+     
       <div id="poll-dialog-restaurants">
-        <h4>Restauranger:</h4> <br>
-        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)">
+        <h3>Restauranger:</h3> <br>
+        
+        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)" class="poll-dialog-vote-object">
           <b>
             {{restaurant.attributes.name}} # Röster: {{restaurant.votes.length}}
           </b>
           <span ng-if="restaurant.id === restaurantIdUserHasVotedOn"> Du ({{username}}) har röstat på den här restaurangen </span>
         </p>
+        
         <!-- <p>ID: {{active}} </p>
                 <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.data.attributes.created}} </p>-->
