@@ -21,9 +21,10 @@
 
      
       <div id="poll-dialog-restaurants">
-        <h3>Restauranger:</h3> <br>
+        <h3 id="rest-text">Restauranger:</h3> <br>
         
         <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="vote(restaurant.id)" class="poll-dialog-vote-object">
+         <i class="material-icons md-24 thumb">thumb_up</i>
           <b>
             {{restaurant.attributes.name}} # Röster: {{restaurant.votes.length}}
           </b>

@@ -1,6 +1,6 @@
 .poll-dialog{
-background-color:#616161;
-width: 500px;
+    background-color:rgba(97, 97, 97, 0.5);
+    max-width: 500px;
 }
 
 .poll-dialog-vote-object{
@@ -11,6 +11,22 @@ width: 500px;
     box-shadow: 2px 2px 2px #212121
 }
 
+.poll-dialog-vote-object:hover{
+    background-color: #b0e88d;
+}
+.poll-dialog-vote-object:active{
+    position: relative;
+    top: 1px;
+}
+
+.material-icons.thumb{
+    color: #616161;
+    margin-right: 4px;
+}
+
+#rest-text{
+    margin: 0;
+}
 #content-dialog{
 padding: 5px;
 }
