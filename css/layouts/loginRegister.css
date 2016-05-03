@@ -15,8 +15,8 @@ margin-top: 10px;
 }
 
 #container{
-    
-background-color: white;
+    width: auto;
+    background-color: white;
 }
 
 #loginbutton{
