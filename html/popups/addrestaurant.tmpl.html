@@ -20,11 +20,71 @@
                         <input ng-model="info" type="text" value="info" required>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <div ng-repeat="cat in cats">
-                        <md-checkbox ng-checked="exists(cat, selected)" ng-click="toggle(cat, selected)">
-                            {{ cat }} <span ng-if="exists(cat, selected)">selected</span>
-                        </md-checkbox>
-                    </div>
+                <table id="category_checkboxes">
+                <tr>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="sushi"/>
+                        <label class="addRestaurantCheckboxImg" for="sushi">
+                            <img class="addRestaurantFilterImg" src="../images/icons/1.png">
+                        </label>
+                        
+                    </td>
+                </tr>
+                    <!--<td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="fastfood"/>
+                        <label class="addRestaurantCheckboxImg" for="fastfood">
+                            <img class="addRestaurantFilterImg" src="../images/icons/2.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="burgers"/>
+                        <label class="addRestaurantCheckboxImg" for="burgers">
+                            <img class="addRestaurantFilterImg" src="../images/icons/3.png">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="vegetarian"/>
+                        <label class="addRestaurantCheckboxImg" for="vegetarian">
+                            <img class="addRestaurantFilterImg" src="../images/icons/4.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="salad"/>
+                        <label class="addRestaurantCheckboxImg" for="salad">
+                            <img class="addRestaurantFilterImg" src="../images/icons/5.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="pizza"/>
+                        <label class="addRestaurantCheckboxImg" for="pizza">
+                            <img class="addRestaurantFilterImg" src="../images/icons/6.png">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="indian"/>
+                        <label class="addRestaurantCheckboxImg" for="indian">
+                            <img class="addRestaurantFilterImg" src="../images/icons/7.png" alt="indiskt">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="italian"/>
+                        <label class="addRestaurantCheckboxImg" for="italian">
+                            <img class="addRestaurantFilterImg" src="../images/icons/8.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="thai"/>
+                        <label class="addRestaurantCheckboxImg" for="thai">
+                            <img class="addRestaurantFilterImg" src="../images/icons/9.png">
+                        </label>
+                    </td>
+                </tr>-->
+
+            </table>
                 </md-input-container>
                 <div>
                     <div>  

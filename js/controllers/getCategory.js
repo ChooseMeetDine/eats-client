@@ -22,13 +22,13 @@ app.controller('getCategory', function($scope, $http, $window) {
     function resultCategory(resultData){
         var items = resultData.data;
         for(var item in items){
-            var category = items[item];
+            var restaurant = items[item];
             var restaurantCategories = {
-                id : category.id, 
+                id : restaurant.id, 
                 categories : []
             }
-            for(var i = 0; i < category.relationships.categories.length; i++){
-                restaurantCategories.categories.push(category.relationships.categories[i].data.id);
+            for(var i = 0; i < restaurant.relationships.categories.length; i++){
+                restaurantCategories.categories.push(restaurant.relationships.categories[i].data.id);
             }
             categoryResult.push(restaurantCategories);
         }
