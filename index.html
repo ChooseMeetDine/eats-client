@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>CMD</title>
     <meta charset="UTF-8">
@@ -47,7 +48,7 @@
 
     <!-- Angular Material Library -->
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-    
+
     <!-- Angular clipboard -->
     <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
     <script src="libs/bower/lib/ngclipboard/dist/ngclipboard.min.js"></script>
@@ -64,7 +65,8 @@
     <script src="js/controllers/activePolls.js"></script>
     <script src="js/controllers/addRestaurantsToPoll.js"></script>
     <script src="js/controllers/addRestaurant.js"></script>
-    <script src="js/controllers/authJwt.js"></script>
+    <script src="js/controllers/mainMenu.js"></script>
+    <script src="js/controllers/profilePage.js"></script>
     <script src="js/controllers/slider.js"></script>
     <script src="js/controllers/continueToPollAs.js"></script>
     <script src="js/controllers/filterController.js"></script>
@@ -92,11 +94,11 @@
   </head>
 
   <body ng-controller="appCtrl" ng-app="app">
-    <div ng-if="!tokenStatus.valid" layout="row" layout-sm="column" layout-align="space-around">
+    <div ng-if="!tokenData.valid" layout="row" layout-sm="column" layout-align="space-around">
       <md-progress-circular md-diameter="150" md-mode="indeterminate"></md-progress-circular>
     </div>
 
-    <div ng-if="tokenStatus.valid">
+    <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
       <div ng-include="'html/profilepage.html'"></div>
       <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
@@ -106,13 +108,14 @@
         <div ng-include="'html/addrestaurantstopoll.html'"></div>
       </div>
 
-   <!-- <div ng-include="'html/logotype.html'"></div> --> 
-    <div ng-controller="mapController">
-      <leaflet center="center" markers="markers" layers="layers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
-      <!--<button type="button" class="btn btn-default" ng-click="toogleKyckling()" ng-disabled="true">Remove Hillshade Overlay</button>-->
-    </div>
+      <!-- <div ng-include="'html/logotype.html'"></div> -->
+      <div ng-controller="mapController">
+        <leaflet center="center" markers="markers" layers="layers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
+        <!--<button type="button" class="btn btn-default" ng-click="toogleKyckling()" ng-disabled="true">Remove Hillshade Overlay</button>-->
+      </div>
 
-    <div ng-include="'html/moreinfo.html'"></div>
+      <div ng-include="'html/moreinfo.html'"></div>
     </div>
   </body>
+
 </html>

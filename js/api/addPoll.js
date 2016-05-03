@@ -6,8 +6,8 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
-  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour:'12'; //initialize values if not set
-  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute:'00'; //initialize values if not set
+  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : '12'; //initialize values if not set
+  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : '00'; //initialize values if not set
 
   /**
    * 1. Creates POST-body
@@ -29,7 +29,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
         data: postBody
       }).then(function(response) {
         $scope.clearForm();
-        response.data.data.attributes.exipres = new Date (response.data.data.attributes.exipres);
+        response.data.data.attributes.expires = new Date(response.data.data.attributes.expires);
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
         $scope.swap('showActivePoll'); //Hide this popup and show active poll

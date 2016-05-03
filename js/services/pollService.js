@@ -148,7 +148,6 @@ app.factory('pollService', ['$http', function($http) {
   }
 
   pollService.checkWhatRestaurantUserHasVotedOnInActivePoll = function(userId) {
-    console.log('ACCCTIVE');
     console.log(active);
     var included = active.included;
     for (var i = 0; i < included.length; i++) {

@@ -1,4 +1,4 @@
-app.controller('loginUser', ['$scope', '$http', '$window', 'tokenService', function($scope, $http, $window, tokenService) {
+app.controller('loginUser', ['$scope', '$window', 'tokenService', function($scope, $window, tokenService) {
   $scope.loginUser = function() {
     var user = {
       'email': $scope.email,
@@ -12,10 +12,7 @@ app.controller('loginUser', ['$scope', '$http', '$window', 'tokenService', funct
   };
 
   $scope.logoutUser = function() {
-    $window.localStorage.removeItem('jwtToken');
-    $window.localStorage.removeItem('userAnon');
-    $window.localStorage.removeItem('userName');
+    tokenService.logout();
     $scope.dialogs.showAdvanced(null, 'continueToPollAs');
   }
-
 }]);

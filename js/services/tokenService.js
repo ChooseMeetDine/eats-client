@@ -1,18 +1,25 @@
 app.factory('tokenService', ['$window', '$http', function($window, $http) {
   var tokenService = {};
-  var tokenStatus = {
-    valid: false
+  var tokenData = {
+    valid: false,
+    userType: $window.localStorage['userType'], // 'anonymous' or 'user'
+    id: $window.localStorage['userId'],
+    name: $window.localStorage['userName'],
+    jwt: $window.localStorage['jwtToken']
   };
+
   tokenService.getAnonymousToken = function() {
     return $http({
       method: 'GET',
       url: 'http://128.199.48.244:7000/auth/anonymous'
     }).then(function(response) {
+      tokenData.valid = true;
+
       $window.localStorage['userType'] = 'anonymous';
       $window.localStorage['userName'] = response.data.name;
       $window.localStorage['jwtToken'] = response.data.token;
       $window.localStorage['userId'] = response.data.id;
-      tokenStatus.valid = true;
+
       $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
       return true;
     }).catch(function(response) {
@@ -31,7 +38,7 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
         url: 'http://128.199.48.244:7000/polls'
       }).then(function() {
         console.log('Token is valid');
-        tokenStatus.valid = true;
+        tokenData.valid = true;
         return true;
       })
       .catch(function(err) {
@@ -40,20 +47,20 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
       });
   }
 
-  tokenService.getTokenStatus = function() {
-    return tokenStatus;
+  tokenService.getTokenData = function() {
+    return tokenData;
   };
 
   tokenService.isUserWithInvalidToken = function() {
-    return ($window.localStorage['userType'] === 'user' && tokenStatus.valid === false);
+    return ($window.localStorage['userType'] === 'user' && tokenData.valid === false);
   };
 
   tokenService.isUserWithValidToken = function() {
-    return ($window.localStorage['userType'] === 'user' && tokenStatus.valid === true);
+    return ($window.localStorage['userType'] === 'user' && tokenData.valid === true);
   };
 
   tokenService.isAnonymousWithValidToken = function() {
-    return ($window.localStorage['userType'] === 'anonymous' && tokenStatus.valid === true);
+    return ($window.localStorage['userType'] === 'anonymous' && tokenData.valid === true);
   };
 
   tokenService.getJwt = function() {
@@ -84,23 +91,28 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
         data: user
       })
       .then(function successCallback(response) {
-        var userData = response.data;
+        tokenData.valid = true;
 
+        var userData = response.data;
         $window.localStorage['userType'] = 'user';
         $window.localStorage['userId'] = userData.id;
         $window.localStorage['userName'] = userData.name;
         $window.localStorage['jwtToken'] = userData.token;
 
         $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
-
-        tokenStatus.valid = true;
-
       })
       .catch(function(err) {
         console.log('Error when trying to log in user ' + user.email);
         throw err;
       });
   }
+
+  tokenService.logout = function() {
+    $window.localStorage.removeItem('userType');
+    $window.localStorage.removeItem('userId');
+    $window.localStorage.removeItem('userName');
+    $window.localStorage.removeItem('jwtToken');
+  };
 
   tokenService.register = function(userForRegister) {
     return $http({
