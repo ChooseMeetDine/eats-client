@@ -1,24 +1,18 @@
+<!-- Popup -->
 <div class="restaurant-marker-popup">
     
+    <!-- Add restaurant to poll (upper right corner button) -->
     <i ng-show="mode.active === 'ADD_RESTAURANTS_MODE'" ng-click="addRestaurantToPoll(id)" class="material-icons md-48" id="add_to_poll_1" title="Starta en ny omröstning">add_circle</i>	
-    <i ng-show="mode.active === 'ADD_RESTAURANTS_MODE'" ng-click="addRestaurantToPoll(id)" class="material-icons md-48" id="add_to_poll_2" title="Starta en ny omröstning">brightness_1</i>	        
-
- 
-    	
- 
+    <i ng-show="mode.active === 'ADD_RESTAURANTS_MODE'" ng-click="addRestaurantToPoll(id)" class="material-icons md-48" id="add_to_poll_2" title="Starta en ny omröstning">brightness_1</i>
  	    	
-    	    	    	    	
+    <!-- image, restaurant name and more info button (down right corner button) -->
 	<div id="image_content">
         <img ng-src="{{photo}}">	
-<p><span>{{name}}</span></p>        	
-
-<i ng-click="openSlideMenu(id)" class="material-icons md-48" id="more_info_1" title="Mer info om restaurang">info</i>
-
-<i ng-click="openSlideMenu(id)" class="material-icons md-48" id="more_info_2" title="Marker fin">brightness_1</i>
-            
+        <h1><span>{{name}}</span></h1>        	
+        <i ng-click="openSlideMenu(id)" class="material-icons md-48" id="more_info_1" title="Mer info om restaurang">info</i>
+        <i ng-click="openSlideMenu(id)" class="material-icons md-48" id="more_info_2" title="Marker fin">brightness_1</i>
+        
 <!--           <span id="rating_stars" class="rating-static rating-{{rating}}"></span>    		                    -->
             
-            </div>
-            
-            		      
+    </div>
 </div>
