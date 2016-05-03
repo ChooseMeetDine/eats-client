@@ -25,11 +25,12 @@
                 <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.data.attributes.created}} </p>-->
       </div>
-      <!--<p>Användare: </p>-->
+      <!--Användare:-->
+      <!-- TODO: DO A NULL CHECK IN DIRECTIVE -->
       <hr>
       <div id="poll-dialog-bottom">
         <div class="poll-dialog-user" ng-repeat="user in activePollCleaned.users">
-            <img class="poll-user-img" title="{{user.attributes.name}}" fallback-src="images/icons/ic_account.png" ng-src="nopeurl"/>
+            <img class="poll-user-img" title="{{user.attributes.name}}" fallback-src="images/icons/ic_account.png" ng-src="user.attributes.photo"/>
         </div>
       </div>
     <!-- {{user.attributes.name}} -->
