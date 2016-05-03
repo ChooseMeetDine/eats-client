@@ -1,4 +1,4 @@
-app.controller('addRestaurant', ['$scope', '$http', '$window', 'modeService','createRestaurantService', function($scope, $http, $window, modeService,createRestaurantService) {
+app.controller('addRestaurant', ['$scope', '$http', '$window', 'modeService', 'createRestaurantService', '__env', function($scope, $http, $window, modeService, createRestaurantService, __env) {
 
   $scope.form = createRestaurantService.getForm();
 
@@ -17,14 +17,14 @@ app.controller('addRestaurant', ['$scope', '$http', '$window', 'modeService','cr
     }
     var categories = [];
     for (let prop in $scope.form.data.categories) {
-      if($scope.form.data.categories[prop]){
-        categories.push('' + (parseInt(prop) +1));
+      if ($scope.form.data.categories[prop]) {
+        categories.push('' + (parseInt(prop) + 1));
       }
     }
     restaurant.categories = categories;
     $http({
       method: 'POST',
-      url: 'http://128.199.48.244:7000/restaurants',
+      url: __env.API_URL + '/restaurants',
       headers: {
         'Content-Type': 'application/json'
       },
