@@ -188,31 +188,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 .leaflet-control-locate a{
     padding:2px;
 }
-/*POPUP*/
-.leaflet-popup{
-    margin-bottom: 45px;
-}
-/*Popup content*/
-.leaflet-popup-content{
-    padding-top: 0px !important;
-    width: 160px;
-    padding: 10px;
-}
-/*Popup images*/
-.leaflet-popup-content img{   
-    width: 140px;
-}
-/*Popup button that says mer info*/
-.leaflet-popup-content .trigger{
-    border: none;
-    font-size: 14px;
-}
-/*Container for Popup button that says mer info*/
-#moreInfoButtonContent {
-    width: 140px;
-    text-align: right;
-    padding-top: 4px;
-}
+
 /*---------------MAIN MENU & FILTER MENU-------------*/
 /*Buttons*/
 #menubuttons{
