@@ -53,8 +53,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   });
 
   $scope.$on('leafletDirectiveMap.locationfound', function(event) {
-    angular.extend($scope.markers, {
-      userMarker: {
+    restaurantMarkers.push({
         lat: $scope.center.lat,
         lng: $scope.center.lng,
         draggable: false,
@@ -64,8 +63,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
           iconSize: [24, 24], // size of the icon
           iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
         }
-      }
-    });
+      });
   });
 
   $scope.$on('leafletDirectiveMap.click', function(event, args){
@@ -109,7 +107,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
           categories: restaurant.relationships.categories
         }
       };
-      console.log(attributes);
+      //console.log(attributes);
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
@@ -142,11 +140,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   };
 
   fetchRestaurants();
-
-  //test function
-  $scope.toggleKyckling = function(){
-    $scope.layers.overlays[3].visible = false;
-  };
 
   $scope.addRestaurantToPoll = function(restaurantId) {
     pollService.addRestaurantToForm(restaurants[restaurantId]);
