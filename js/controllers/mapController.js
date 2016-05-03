@@ -57,7 +57,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         lat: $scope.center.lat,
         lng: $scope.center.lng,
         draggable: false,
-        focus: true,
         icon: {
           iconUrl: 'images/icons/you_marker.png',
           iconSize: [24, 24], // size of the icon
