@@ -1,35 +1,89 @@
-/*Popup location*/
+/*POPUP WINDOW*/
 .leaflet-popup{
     margin-bottom: 45px;
 }
 
-/*Popup content wrapper*/
 .leaflet-popup-content-wrapper{
-    border: none!important;
-    padding: 0px;
+    background-color: #fafafa;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+    background-color: #fafafa;
 }
 
 /*Popup content*/
 .leaflet-popup-content{
-    padding: 0px!important;
+    padding-top: 0px !important;
+    background-color: #fafafa;
+    border-radius: 10px;    
+    width: 250px;
 }
 
-.popupimg{
-    z-index: 1;
+/*Popup images*/
+
+#image_content{
+    background-color: #bdbdbd;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
 }
+
+#image_content img{
+    width: 240px;
+    max-height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+    border-radius: 5px;
+}
+
+
+/*Restaurant name*/
+#image_content p{
+    color: #fafafa;
+    
+}
+
+p span {
+    position: absolute;
+    bottom: 30px;
+    color: #fafafa; 
+    letter-spacing: -1px;  
+    background: rgba(97, 97, 97, 0.73);
+    padding: 3px; 
+    font-size: 22px;
+    max-width: 70%;
+}
+
+/*Rating stars*/
+
+#rating_stars{
+}
+
 
 /*Popup button that says mer info*/
-.leaflet-popup-content .trigger{
-    background: #00B8D4;
+.trigger{
     border: none;
     font-size: 14px;
-    color: #FAFAFA;
-    border-radius: 2px;
+}
+/*Container for Popup button that says mer info*/
+#moreInfoButtonContent {
+    width: 140px;
+    text-align: right;
+    padding-top: 4px;
+    
 }
 
-/*Popup title*/
-.leaflet-popup-content p, .leaflet-popup-content .ng-binding{
-    background: #424242;
-    color: #FAFAFA;
-    text-align: center;
+/*Create poll button when hovering*/
+#createPollIcons:hover {
+    opacity: 0.7;
+}
+/*Create poll icon making the plus sign bigger*/
+#createPollIcons { 
+    position: absolute;
+    top: 70px;
+    left: 90px;
+    font-size: 6em;
+    color: #bdbdbd;
+    text-shadow: 1px 2px #818181;
 }
