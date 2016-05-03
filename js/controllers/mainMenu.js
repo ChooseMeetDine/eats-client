@@ -1,4 +1,9 @@
-app.controller('mainMenu', ['$scope', 'tokenService', function($scope, tokenService) {
+app.controller('mainMenu', ['$scope', '$window', 'tokenService', function($scope, $window, tokenService) {
   $scope.tokenData = tokenService.getTokenData();
   $scope.isUserWithValidToken = tokenService.isUserWithValidToken();
+
+  $scope.logoutUser = function() {
+    tokenService.logout();
+    $window.location.reload();
+  }
 }]);

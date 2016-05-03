@@ -107,6 +107,13 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
       });
   }
 
+  tokenService.logout = function() {
+    $window.localStorage.removeItem('userType');
+    $window.localStorage.removeItem('userId');
+    $window.localStorage.removeItem('userName');
+    $window.localStorage.removeItem('jwtToken');
+  };
+
   tokenService.register = function(userForRegister) {
     return $http({
         method: 'POST',
