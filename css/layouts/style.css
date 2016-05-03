@@ -25,17 +25,15 @@ Pacific Blue    #00B8D4     0,184,212
 
 /*FONTS*/
 @font-face {
-    font-family: aileron;
-    font-weight: bold;
-    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+    font-family: lane;
+    src: url("/css/fonts/lane/LANENAR_.ttf")
         format("opentype");
 }
 
-@font-face {
-    font-family: borg;
-    src: url("/css/fonts/borg/Borg.ttf")
-        format("opentype");
+html,body,p{
+    font-family: open sans, arial;
 }
+
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
@@ -43,18 +41,16 @@ Pacific Blue    #00B8D4     0,184,212
     min-width:0;
     min-height:0;
     line-height:normal;
-    font-family: aileron, open sans, arial;
 }
 /*HTML,BODY*/
 html,body{
     height: 100%;
     overflow-x: hidden;
-    font-family: aileron, open sans, arial;
     font-size: 14px;
 }
 h1{
     font-size: 55px;
-    font-family: borg;    
+    font-family: lane, open sans, arial;
 }
 /*Forms*/
 form{
@@ -83,7 +79,7 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 /*Inputfält, väljer font och färg */
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: Aileron;
+    font-family: open sans, arial;
     margin-bottom: 2px;
 }
 /*Popup content wrapper*/
@@ -126,8 +122,8 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 }
 /*Header för dialogrutor*/
 .md-toolbar-tools{
-    font-family: borg, aileron, open sans, arial;
-    font-size: 42px;
+    font-family: lane;
+    font-size: 36px;
     background-color: #616161;
     padding: 2%;    
 }
