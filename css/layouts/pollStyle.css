@@ -25,6 +25,10 @@
     cursor: default;
 }
 
+.poll-dialoge-vote-object-has-vote:hover{
+    background-color: #c7efae;
+}
+
 .poll-dialog-vote-object:active{
     position: relative;
     top: 1px;
