@@ -52,7 +52,7 @@
     margin-bottom: 25px;
 }
 
-.btn {
+.btn.share {
     border: 1px solid #909090;
     float:right;
     padding-bottom: 0px;

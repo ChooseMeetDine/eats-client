@@ -15,7 +15,7 @@
 
       <div id="poll-dialog-restaurants">
         <h3 id="rest-text">Restauranger:</h3> <br>
-        <p ng-repeat="restaurant in activePollCleaned.restaurants" ng-click="restaurant.id === restaurantIdUserHasVotedOn || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
+        <p ng-repeat="restaurant in activePollCleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.id === restaurantIdUserHasVotedOn || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
           <i class="material-icons md-24 thumb">thumb_up</i>
           <span>
             {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
@@ -38,7 +38,7 @@
     <!-- Trigger -->
      <p id="share-text">Dela omröstningen</p>
       <div id="clipvboard-field">
-        <button class="btn" ngclipboard data-clipboard-target="#vote-url-field" title="Kopiera röstlänk">
+        <button class="btn share" ngclipboard data-clipboard-target="#vote-url-field" title="Kopiera röstlänk">
             <i class="material-icons md-light copyButton">content_copy</i>
         </button>
         <!-- Så här kan man nå röstningslänken! -->
