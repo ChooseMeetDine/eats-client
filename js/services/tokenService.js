@@ -1,10 +1,10 @@
-app.factory('tokenService', ['$window','$http', function($window, $http) {
+app.factory('tokenService', ['$window', '$http', '__env', function($window, $http, __env) {
   var tokenService = {};
 
   tokenService.getAnonymousToken = function() {
     $http({
       method: 'GET',
-      url: 'http://128.199.48.244:7000/auth/anonymous'
+      url: __env.API_URL + '/auth/anonymous'
     }).then(function(response) {
       var token = response.data.token;
       $window.localStorage['userAnon'] = response.data.anon;
@@ -13,7 +13,7 @@ app.factory('tokenService', ['$window','$http', function($window, $http) {
       $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
       console.log(token);
       $window.location.reload();
-    }).catch (function errorCallback(response) {
+    }).catch(function errorCallback(response) {
       console.log("Error, could not get anonymous token!");
     });
   };
@@ -22,7 +22,7 @@ app.factory('tokenService', ['$window','$http', function($window, $http) {
   tokenService.testToken = function() {
     return $http({
       method: 'GET',
-      url: 'http://128.199.48.244:7000/polls'
+      url: __env.API_URL + '/polls'
     })
   }
 

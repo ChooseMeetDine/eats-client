@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>CMD</title>
     <meta charset="UTF-8">
@@ -60,6 +61,8 @@
     <!-- AngularJS App & Controllers & Views -->
     <script src="js/app.js"></script>
 
+    <script src="js/env.js"></script>
+
     <script src="js/controllers/appCtrl.js"></script>
     <script src="js/controllers/mapController.js"></script>
     <script src="js/controllers/showPoll.js"></script>
@@ -92,7 +95,7 @@
   </head>
 
   <body ng-controller="appCtrl" ng-app="app">
-   <!-- <div ng-include="'html/logotype.html'"></div> -->
+    <!-- <div ng-include="'html/logotype.html'"></div> -->
     <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
     <div ng-include="'html/profilepage.html'"></div>
     <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
@@ -109,4 +112,5 @@
 
     <div ng-include="'html/moreinfo.html'"></div>
   </body>
+
 </html>
