@@ -22,7 +22,6 @@ app.controller('addRestaurant', ['$scope', '$http', '$window', 'modeService','cr
       }
     }
     restaurant.categories = categories;
-
     $http({
       method: 'POST',
       url: 'http://128.199.48.244:7000/restaurants',

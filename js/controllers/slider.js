@@ -29,6 +29,6 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
             $mdSidenav('main').close(); 
         }
     }
-    
+   console.log($scope); 
   })
   

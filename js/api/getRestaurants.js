@@ -41,7 +41,7 @@ app.controller('getRestaurants', function($scope, $http, $window) {
             var id = restaurant.id;
             restaurantResult[id] = restaurantData;
         }
-        //console.log(restaurantResult);
+        console.log(restaurantResult);
         //calls marker function from maps.js to create rest.markers on map
         // placeMarker(restaurantResult);
         

@@ -125,6 +125,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     background: #424242;
     color: #FAFAFA;
     padding: 0;
+    overflow: hidden;
 }
 /*Header för dialogrutor*/
 .md-toolbar-tools{
@@ -393,10 +394,6 @@ input[type=checkbox]:checked + .checkboxImg {
 .infomenu{
     width: 500px;
 }
-/*Infoslider img width*/
-.infoimg{
-    width: 350px;
-}
 
 /*Add restaurant button for save restaurant*/
 .saveRestaurantButton{
@@ -459,5 +456,3 @@ input[type=checkbox]:checked + .checkboxImg {
             display:block;
     }
 }
-
-
