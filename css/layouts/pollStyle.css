@@ -12,7 +12,7 @@
     background-color: #f4f4f4;
     padding: 2%;
     border-radius: 7px;
-    box-shadow: 2px 2px 5px #212121
+    box-shadow: 2px 2px 5px #2c2c2c
 }
 
 .poll-dialog-vote-object:hover{
@@ -35,14 +35,41 @@
     margin-right: 5px;
 }
 
-.material-icons.copyButton{
-    color: #efefef;
-}
-
 .number-of-votes{
     float: right;
     padding-right: 10px;
     margin-top: 5px;
+}
+
+#share-text{
+    text-align: right;
+    margin: 0;
+    color: #bfbfbf;
+    font-size: 12px;
+}
+
+#clipvboard-field {
+    margin-bottom: 25px;
+}
+
+.btn {
+    border: 1px solid #909090;
+    float:right;
+    padding-bottom: 0px;
+    border-radius: 0;
+}
+
+#vote-url-field {
+    border: 1px 0px solid #909090;
+    float: right;
+    width: 40%;
+    height: 37px;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.material-icons.copyButton{
+    color: #ffffff;
 }
 
 #rest-text{
@@ -97,13 +124,5 @@
 
 #poll-dialog-user{
     float: left;
-    float: bottom;
-    color: #FFF;
     margin-right: 2%;
-}
-
-#poll-dialog-sharebutton{
-    padding: 8px;
-    background-color: #00b8d4;
-    float: right;
 }

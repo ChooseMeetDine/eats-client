@@ -1,23 +1,17 @@
 <md-dialog class="poll-dialog" ng-controller="showPoll" aria-label="addPoll" ng-cloak>
   <md-dialog-content layout-padding>
     <div class="md-dialog-content">
-
       <div id="poll-dialog-top">
         <h1 id="poll-dialog-name">{{active.data.attributes.name}}</h1>
+        
         <md-button ng-click="cancel()" aria-label="closeVoteWindow" id="close" class="md-icon-button md-primary">
           <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
         </md-button>
-        <md-button id="poll-dialog-settings" aria-label="voteSettings" class="md-icon-button md-primary">
-          <md-icon md-svg-src="images/icons/ic_settings_white_24px.svg"></md-icon>
-        </md-button>
-
+        
         <p id="poll-dialog-timeEnds" ng-show="now < active.data.expiresAsDateObj">
           [ Kl. {{active.data.attributes.expires | date: 'HH:mm'}} ]</p>
-
         <p id="poll-dialog-timeEnds" ng-show="now > active.data.expiresAsDateObj">Omröstningen är avslutad</p>
-
       </div>
-
 
       <div id="poll-dialog-restaurants">
         <h3 id="rest-text">Restauranger:</h3> <br>
@@ -27,29 +21,29 @@
             {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
           </span>
         </p>
-
         <!-- <p>ID: {{active}} </p>
                 <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.data.attributes.created}} </p>-->
       </div>
-
-      <!-- <div>
-        <p ng-repeat="vote in activePollCleaned.votes"><br>Användare: {{vote.user}} har röstat på {{vote.restaurant}}</p>
-      </div> -->
-
       <!--<p>Användare: </p>-->
       <hr>
       <div id="poll-dialog-bottom">
-        <p id="poll-dialog-user" ng-repeat="user in activePollCleaned.users">{{user.attributes.name}}</p>
-        <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
+        <div id="poll-dialog-user" ng-repeat="user in activePollCleaned.users">
+          <object data="images/icons/ic_account.png" type="image/png" title={{user.attributes.name}}>
+            <img src={{user.attrbutes.photo}}/>
+          </object>
+        </div>
       </div>
-    
-    <!-- Så här kan man nå röstningslänken! -->
-    <input id="foo" value={{activePollCleaned.voteLink}}>
+    <!-- {{user.attributes.name}} -->
     <!-- Trigger -->
-    <button class="btn" ngclipboard data-clipboard-target="#foo">
-        <md-icon class="material-icons md-light copyButton">content_copy</md-icon>
-    </button>
+     <p id="share-text">Dela omröstningen</p>
+      <div id="clipvboard-field">
+        <button class="btn" ngclipboard data-clipboard-target="#vote-url-field" title="Kopiera röstlänk">
+            <i class="material-icons md-light copyButton">content_copy</i>
+        </button>
+        <!-- Så här kan man nå röstningslänken! -->
+        <input id="vote-url-field" value={{activePollCleaned.voteLink}}>
+     </div>
       <div ng-if="!userIsParticipantInPoll && now < active.data.expiresAsDateObj">
         <p>Du är inte med i den här omröstningen, vill du gå med?</p>
         <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>

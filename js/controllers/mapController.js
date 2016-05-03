@@ -174,8 +174,4 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         }
     return rest;
   };
-//old geo search implementation, saved if we can implement in ang.leaflet
- /**geosearch = new L.Control.GeoSearch({
-    provider: new L.GeoSearch.Provider.Google()
-    }); **/
 }]);

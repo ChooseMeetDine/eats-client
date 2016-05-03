@@ -14,8 +14,7 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   $scope.now = new Date(new Date() + 20000);
 
   $scope.activePollCleaned = pollService.getActiveWithCleanedData();
-
-
+  console.log($scope.activePollCleaned);
   // TODO (eventuellt): 
   // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
   // --- Eller ska det räcka med att göra en POST på en restaurang man inte redan röstat på?
