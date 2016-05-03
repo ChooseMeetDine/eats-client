@@ -1,4 +1,4 @@
-app.controller('mapController', ['$scope', '$http', 'pollService', 'filterService', function($scope, $http, pollService, filterService) {
+app.controller('mapController', ['$scope', '$http', 'pollService', 'filterService', 'modeService', 'createRestaurantService', function($scope, $http, pollService, filterService, modeService, createRestaurantService) {
   var restaurantMarkers = [];
   var restaurants = {};
   var apiUrl = 'http://128.199.48.244:3000/restaurants';
@@ -8,12 +8,12 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   var mapId2 = 'beijar/cin5pab6g00sectnf9c96x1u2';
   var mapToken2 = 'pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q';
   var overlays = filterService.overlays;
-  
+
   angular.extend($scope, {
     center: {
       lat: 59.91,
       lng: 10.75,
-      zoom: 13,
+      zoom: 15,
       autoDiscover: true
     },
     markers: restaurantMarkers,
@@ -68,6 +68,14 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     });
   });
 
+  $scope.$on('leafletDirectiveMap.click', function(event, args){
+    if($scope.mode.active === 'CREATE_RESTAURANT') {
+      createRestaurantService.setClickedPosition(args.leafletEvent.latlng.lat, args.leafletEvent.latlng.lng);
+      modeService.setMode('DEFAULT');
+      $scope.dialogs.showAdvanced(args.leafletEvent, 'createRestaurant');
+    }
+  });
+
   var fetchRestaurants = function() {
     $http({
       method: 'GET',
@@ -80,7 +88,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     });
   }
 
-  //result data structure: {restaurantId:{all data for one restaurant}} 
+  //result data structure: {restaurantId:{all data for one restaurant}}
   var createMarkers = function(resultData) {
     var items = resultData.data;
 
@@ -101,7 +109,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
           categories: restaurant.relationships.categories
         }
       };
-      //console.log(attributes);
+      console.log(attributes);
       var marker = {
         lat: restaurant.attributes.lat,
         lng: restaurant.attributes.lng,
@@ -120,7 +128,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         },
         attributes: attributes,
       }
-      
+
       for(var i = 0; i < attributes.extra.categories.length; i++){
         //console.log(attributes.name);
         var markerCopy = angular.copy(marker);
@@ -129,17 +137,17 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         restaurantMarkers.push(markerCopy);
       }
       restaurants[restaurant.id] = attributes;
-      
-    }   
+
+    }
   };
-    
+
   fetchRestaurants();
-  
+
   //test function
   $scope.toggleKyckling = function(){
     $scope.layers.overlays[3].visible = false;
   };
-  
+
   $scope.addRestaurantToPoll = function(restaurantId) {
     pollService.addRestaurantToForm(restaurants[restaurantId]);
   };
@@ -158,7 +166,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         var object = data[i];
         for(j in object){
             //TODO: Create a check if key exist n object
-            if(object[j].id == "3"){
+            if(object[j].id == "11"){
                 rest = 'images/icons/cafe_marker.png';
                 break;
                 }

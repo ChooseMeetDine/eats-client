@@ -1,5 +1,7 @@
 app.controller('addRestaurant', function($scope, $http, $window) {
     var marker;
+        $scope.priceRate = 1;
+        $scope.rating = 1;
         $scope.lat;
         $scope.lng;
         $scope.cats = [
@@ -15,10 +17,11 @@ app.controller('addRestaurant', function($scope, $http, $window) {
         $scope.exists = function (cat, list) {
             return list.indexOf(cat) > -1;
         };
-    $scope.placeMarkerOnClick = function(){
+        
+        $scope.placeMarkerOnClick = function(){
                 map.once('click', function(e){
                     if(marker){
-                        map.removeLayer(marker);
+                        app.removeLayer(marker);
                     }
                     marker = L.marker(e.latlng).addTo(map);
 

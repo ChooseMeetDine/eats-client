@@ -10,35 +10,31 @@
    
             </div>
             
-        <!-- More info about the restaurant -->
+           <!-- Restaurant image -->
             <div id="infoimg">
             <md-content  layout-padding>
     
                     <md-list-item class="img-list-item"><img class="infoimg" src="{{ content.photo }}"></md-list-item>
             </div>
-                
+           <!-- Type of food images -->      
             <div id="label">
-                <div ng-repeat="category in content.extra.categories[0]">
-                    <img src="../images/icons/" + {{ category.id }} + ".png">
+                <div ng-repeat="category in content.extra.categories">
+                    {{ category }}
+                    <img ng-src="../images/icons/{{ category }}.png">
                 </div>
             </div>
             <br>
-                
+            <!-- More info about the restaurant -->     
             <div id="extrainfo">
             <md-list-item>{{ content.extra.info }}</md-list-item>
             </div>
-             <!-- Stars for rating        
+           
+                <!-- Stars for rating        
             <div id="rating"> 
                 <md-list-item>Restaurangen har fått {{ content.rating }} av 5 stjärnor i betyg</md-list-item>
             </div>
             --> 
-            <br>
-
-                
-            <div id="type">
-            
-            </div>
-
+             <br>
             </md-content>
         </div>
     </md-sidenav>

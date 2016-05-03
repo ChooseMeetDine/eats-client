@@ -242,6 +242,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     color:#FAFAFA!important;
     padding:10px;
     float: left;
+    margin-left: 2%;
 }
 
 /*-------------------FILTER MENU----------------------*/
@@ -254,10 +255,79 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 #filterMenuContent{
     margin: 20px;
 }
-/*Checkboxes*/
-#filterMenuChoices{
-    width: 100%;
-    margin-top: 20px;
+
+#filter_menu td{
+    width:25%;
+    margin:3.1% 4% 3.1% 4%;
+    padding:0;
+    display:block;
+    float:left;
+}
+.checkboxImg{
+    position:relative;
+    width:100%;
+    height:100%;   
+}
+
+md-checkbox.md-checked.normalCheckbox .md-icon {
+    background-color: rgb(0, 184, 212);
+}
+
+
+.textOverlay{
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:2;
+    border-radius: 50%;
+}
+.checkboxImg .text{
+    position:absolute;
+    z-index:3;
+    text-align:center;
+    top:40%;
+    width:100%;
+    display:none;
+}
+.checkboxImg:hover .textOverlay{
+    background-color:rgba(33, 33, 33, 0.5);
+}
+.checkboxImg:hover .text, .checkboxImg:hover .textOverlay{
+    display: block;
+    cursor:pointer;
+}
+
+input[type=checkbox] {
+    display:none;
+}
+input[type=checkbox] + .checkboxImg .textOverlay{
+    box-shadow: -1px -1px 1px red;
+}
+input[type=checkbox]:checked + .checkboxImg .textOverlay{
+    box-shadow: 1px 1px 1px #212121;
+}
+input[type=checkbox] + .checkboxImg {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding:0;
+}
+
+input[type=checkbox]:checked + .checkboxImg {
+    -webkit-filter: none; /* Chrome, Safari, Opera */
+    filter: none;
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding:0;
+}
+
+.checkboxImg .filterImg{
+    width:100%;
+    margin:0;
+    padding:0;
 }
 /*Filter menu star rating*/
 .star-rating {
@@ -279,6 +349,26 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     background: none;
     border-radius: 50%;
     zoom: 130%;
+}
+/*----------ACTIVE POLL-------------*/
+.md-button.md-raised {
+    color: #fff;
+    background-color: #00B8D4;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.md-button.md-raised:hover {
+    opacity: 0.7!important;
+    background-color: #00B8D4!important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+#activePollPosition{
+    position:absolute;
+    bottom:0px;
+    z-index:2;
+}
+#activePollPosition button{
+    padding: 10px;
+    margin: 2px;
 }
 /*Create poll button when hovering*/
 #createPollIcon:hover {
@@ -309,3 +399,51 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 .leaflet-control-attribution a{
     display: none!important;
 }
+
+
+
+/*ADD RESTAURANT*/
+.sliderTitle{
+    width:50%;
+}
+.slider{
+    width:40%;
+}
+.slider, .sliderTitle{
+    display:block;
+    float:left;
+    padding:0;
+}
+.slider:first-of-type{
+    margin-right:10%;
+}
+
+#placeMarker{
+    background:#FAFAFA;
+    color:#212121;
+}
+
+#submitRestaurant{
+    float:right;
+}
+
+/*Mobile Device*/
+@media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */ 
+}
+
+@media (max-width:481px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+    
+}
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { 
+/* everythig except big landscape tablets, laptops, and desktops */ 
+    .checkboxImg:hover .textOverlay{
+        display:none;
+    }
+    .checkboxImg .text{
+            display:block;
+    }
+}
+
+
