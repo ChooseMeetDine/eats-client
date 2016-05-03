@@ -1,40 +1,49 @@
 /**
  * Controller for showing polls
  */
-app.controller('showPoll', ['$scope', '$http', 'pollService', function($scope, $http, pollService) {
+app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$interval', '$window', function($scope, $http, pollService, tokenService, $interval, $window) {
+  $scope.isLoggedInAsUser = tokenService.isUserWithValidToken();
+  $scope.isLoggedInAsAnonymous = tokenService.isAnonymousWithValidToken();
+  $scope.isUserWithInvalidToken = tokenService.isUserWithInvalidToken();
+  $scope.username = tokenService.getTokenUserName();
+
   $scope.active = pollService.getActive();
 
-  $scope.getPollUsers = function() {
-    var completeUsers = [];
-    var users = $scope.active.data.relationships.users.data;
+  $scope.userIsParticipantInPoll = pollService.checkIfUserIsParticipantInActivePoll(tokenService.getUserId());
+  $scope.restaurantIdUserHasVotedOn = pollService.checkWhatRestaurantUserHasVotedOnInActivePoll(tokenService.getUserId());
+  $scope.now = new Date(new Date() + 20000);
 
-    for (var i = 0; i < users.length; i++) {
-      for (var j = 0; j < $scope.active.included.length; j++) {
-        if ($scope.active.included[j].id === users[i].id) {
-          completeUsers.push($scope.active.included[j]);
-        }
+  $scope.activePollCleaned = pollService.getActiveWithCleanedData();
+  // TODO (eventuellt): 
+  // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
+  // --- Eller ska det räcka med att göra en POST på en restaurang man inte redan röstat på?
+
+
+  // Updates the date every second to be able to compare to the expiration date of the poll
+  // Disables joining the poll when it has 10 seconds left (to let the user have time to log in if need be)
+  $interval(function() {
+    $scope.now = new Date(new Date().getTime() + 20000);
+  }, 1000);
+
+  $scope.vote = function(restaurant) {
+    $http({
+      method: 'POST',
+      url: 'http://128.199.48.244:7000/polls/' + $scope.activePollCleaned.id + '/votes',
+      headers: { 'Content-Type': 'application/json' },
+      data: {
+        restaurantId: restaurant
       }
-    }
-    return completeUsers;
-
+    }).then(function(response) {
+      alert('Bravo, du röstade! När detta händer ska realtidsuppdateringar visa din röst. Istället kommer sidan uppdateras när du klickat på OK (temporär lösning)!');
+      $window.location.reload();
+    }).catch(function(error) {
+      console.log('error');
+      console.log(error);
+    })
   };
 
-  $scope.getPollRestaurants = function() {
-    var completeRestaurants = [];
-    if(!$scope.active.data.relationships.restaurants){
-      return [];
-    }
-    var restaurants = $scope.active.data.relationships.restaurants.data;
-
-    for (var i = 0; i < restaurants.length; i++) {
-      for (var j = 0; j < $scope.active.included.length; j++) {
-        if ($scope.active.included[j].id === restaurants[i].id) {
-          completeRestaurants.push($scope.active.included[j]);
-        }
-      }
-    }
-    return completeRestaurants;
-
+  $scope.joinPoll = function()  {
+    $scope.swap('continueToPollAs');
   };
 
 }]);
