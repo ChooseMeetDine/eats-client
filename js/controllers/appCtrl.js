@@ -2,7 +2,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
   $scope.mode = modeService.getMode();
 
   $scope.parameterPollId = $location.search().poll // THIS THE THE POLL!
-  $scope.tokenStatus = tokenService.getTokenStatus();
+  $scope.tokenData = tokenService.getTokenData();
 
   // Holds all functions for mdDialog to be able to change popups from other controllers
   $scope.dialogs = {};
