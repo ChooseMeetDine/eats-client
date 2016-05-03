@@ -12,3 +12,6 @@ libs/grunt
 npm-debug.log*
 
 .DS_Store
+
+# Environment variables
+.env
