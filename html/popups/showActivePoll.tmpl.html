@@ -28,8 +28,8 @@
       <!--<p>Användare: </p>-->
       <hr>
       <div id="poll-dialog-bottom">
-        <div id="poll-dialog-user" ng-repeat="user in activePollCleaned.users">
-            <img fallback-src="images/icons/ic_account.png" ng-src="nopeurl"/>
+        <div class="poll-dialog-user" ng-repeat="user in activePollCleaned.users">
+            <img class="poll-user-img" title="{{user.attributes.name}}" fallback-src="images/icons/ic_account.png" ng-src="nopeurl"/>
         </div>
       </div>
     <!-- {{user.attributes.name}} -->
