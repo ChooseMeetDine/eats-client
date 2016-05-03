@@ -1,33 +1,53 @@
 <md-dialog class="poll-dialog" ng-controller="showPoll" aria-label="addPoll" ng-cloak>
-    <md-dialog-content layout-padding>
-            <div id="poll-dialog-top">
-                 <h3 id="poll-dialog-name">{{active.data.attributes.name}}</h3>
-                <md-button ng-click="cancel() " id="close" class="md-icon-button md-primary">
-                <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
-                </md-button>
+  <md-dialog-content layout-padding>
+    <div class="md-dialog-content">
+      <div id="poll-dialog-top">
+        <h1 id="poll-dialog-name">{{active.data.attributes.name}}</h1>
+        
+        <md-button ng-click="cancel()" aria-label="closeVoteWindow" id="close" class="md-icon-button md-primary">
+          <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
+        </md-button>
+        
+        <p id="poll-dialog-timeEnds" ng-show="now < active.data.expiresAsDateObj">
+          [ Kl. {{active.data.attributes.expires | date: 'HH:mm'}} ]</p>
+        <p id="poll-dialog-timeEnds" ng-show="now > active.data.expiresAsDateObj">Omröstningen är avslutad</p>
+      </div>
 
-                <md-button id="poll-dialog-settings" class="md-icon-button md-primary">
-                <md-icon md-svg-src="images/icons/ic_settings_white_24px.svg"></md-icon>
-                </md-button>
-
-                <p id="poll-dialog-timeEnds"><!--Slutar:--> {{active.data.attributes.expires | date: 'HH:mm'}}</p>
-            </div>
-            <div id="poll-dialog-restaurants">
-                <h4>Restauranger:</h4> <br>
-                <p>
-                <b ng-repeat="restaurant in getPollRestaurants()">{{restaurant.attributes.name}} <br/>
-                </b>
-                </p>
-               <!-- <p>ID: {{active}} </p>
+      <div id="poll-dialog-restaurants">
+        <h3 id="rest-text">Restauranger:</h3> <br>
+        <p ng-repeat="restaurant in activePollCleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.id === restaurantIdUserHasVotedOn || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.id === restaurantIdUserHasVotedOn}">
+          <i class="material-icons md-24 thumb">thumb_up</i>
+          <span>
+            {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
+          </span>
+        </p>
+        <!-- <p>ID: {{active}} </p>
                 <p>allowNewRestaurants: {{active.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.data.attributes.created}} </p>-->
-            </div>
-
-            <!--<p>Användare: </p>-->
-            <hr>
-            <div id="poll-dialog-bottom">
-            <p id="poll-dialog-user" ng-repeat="user in getPollUsers()">Namn: {{user.attributes.name}}</p>
-            <md-button id="poll-dialog-sharebutton" class="md-raised md-primary">Share</md-button>
-            </div>
-    </md-dialog-content>
+      </div>
+      <!--Användare:-->
+      <!-- TODO: DO A NULL CHECK IN DIRECTIVE -->
+      <hr>
+      <div id="poll-dialog-bottom">
+        <div class="poll-dialog-user" ng-repeat="user in activePollCleaned.users">
+            <img class="poll-user-img" title="{{user.attributes.name}}" fallback-src="images/icons/ic_account.png" ng-src="user.attributes.photo"/>
+        </div>
+      </div>
+    <!-- {{user.attributes.name}} -->
+    <!-- Trigger -->
+     <p id="share-text">Dela omröstningen</p>
+      <div id="clipvboard-field">
+        <button class="btn share" ngclipboard data-clipboard-target="#vote-url-field" title="Kopiera röstlänk">
+            <i class="material-icons md-light copyButton">content_copy</i>
+        </button>
+        <!-- Så här kan man nå röstningslänken! -->
+        <input id="vote-url-field" value={{activePollCleaned.voteLink}}>
+     </div>
+      <div ng-if="!userIsParticipantInPoll && now < active.data.expiresAsDateObj">
+        <p>Du är inte med i den här omröstningen, vill du gå med?</p>
+        <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
+        <md-button class="md-raised md-primary">Nej</md-button>
+      </div>
+    </div>
+  </md-dialog-content>
 </md-dialog>

@@ -1,59 +1,47 @@
 <md-content flex>
-    <div flex></div>
+  <div flex></div>
 </md-content>
 
 <!-- Main menu -->
 <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="main">
-    <md-toolbar class="md-theme-light md-accent">
-        <span>
+  <md-toolbar class="md-theme-light md-accent">
+    <span>
             <h1 class="md-toolbar-tools">Eats</h1>
         </span>
-    </md-toolbar>
-    <md-content id="main-meny-nav" ng-controller="authJwt" layout-padding>
-        <md-list ng-cloak layout-padding>
-            
-            <!-- Link to profile -->
-            <md-list-item href="#" ng-if="!access">
-                <p>{{ name }}</p>
-                <i class="material-icons">account_circle</i>
-            </md-list-item>
-            
-            <!-- Link to settings -->
-            <md-list-item href="#">
-                <p>Inställningar</p>
-                 <i class="material-icons">settings</i>
-            </md-list-item>
-            
-            <!-- Divider if needed -->
-            <hr ng-if="!access">
-            
-            <!-- Menu section create new poll and new group and add restaurant -->
-            <md-list-item ng-if="!access" ng-click="dialogs.showAdvanced($event, 'createpoll')">
-                <p>Skapa ny omröstning</p>
-                <i class="material-icons">add</i>
-            </md-list-item>
-            
-            <md-list-item ng-if="!access" ng-click="createPoll($event)">
-                <p>Skapa ny grupp</p>
-                <i class="material-icons">person_add</i>
-            </md-list-item>
-            
-            <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showAdvanced($event, 'addrestaurant'); ">
-                <p>Lägg till restaurant</p>
-                <i class="material-icons">add</i>
-            </md-list-item>
+  </md-toolbar>
+  <md-content id="main-meny-nav" ng-controller="mainMenu" layout-padding>
+    <md-list ng-cloak layout-padding>
+      <md-list-item class="linksInMainMenu" ng-if="isUserWithValidToken" href="#aboutModal" data-toggle="modal" data-target="#profilsida" md-expando>
+        <p>{{ tokenData.name }}</p>
+        <i class="material-icons">account_circle</i>
+      </md-list-item>
 
-            <hr>
-            
-            <!-- Login and log out buttons -->
-            <md-button ng-if="access" class="login md-raised" ng-click="dialogs.showTabDialog($event, 'login')">
-                Logga in / registrera dig
-            </md-button>
-            
-            <md-button ng-if="!access" ng-controller="loginUser" class="login md-raised" ng-click="logoutUser()">
-                Logga ut
-            </md-button>
+      <!-- Menu section create new poll and new group and add restaurant -->
+      <md-list-item ng-if="isUserWithValidToken" ng-click="dialogs.showAdvanced($event, 'createpoll')">
+        <p>Skapa ny omröstning</p>
+        <i class="material-icons">add</i>
+      </md-list-item>
+      <md-list-item ng-if="isUserWithValidToken" ng-click="createPoll($event)">
+        <p>Skapa ny grupp</p>
+        <i class="material-icons">person_add</i>
+      </md-list-item>
 
-        </md-list>
-    </md-content>
+      <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showAdvanced($event, 'addrestaurant');">
+        <p>Lägg till restaurant</p>
+        <i class="material-icons">add</i>
+      </md-list-item>
+
+      <hr>
+
+      <!-- Login and log out buttons -->
+      <md-button ng-if="!isUserWithValidToken" class="login md-raised" ng-click="dialogs.showTabDialog($event, 'login')">
+        Logga in / registrera dig
+      </md-button>
+
+      <md-button ng-if="isUserWithValidToken" class="login md-raised" ng-click="logoutUser()">
+        Logga ut
+      </md-button>
+
+    </md-list>
+  </md-content>
 </md-sidenav>
