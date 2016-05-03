@@ -1,4 +1,4 @@
-app.factory('tokenService', ['$window', '$http', function($window, $http) {
+app.factory('tokenService', ['$window', '$http', '__env', function($window, $http, __env) {
   var tokenService = {};
   var tokenData = {
     valid: false,
@@ -11,7 +11,7 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
   tokenService.getAnonymousToken = function() {
     return $http({
       method: 'GET',
-      url: 'http://128.199.48.244:7000/auth/anonymous'
+      url: __env.API_URL + '/auth/anonymous'
     }).then(function(response) {
       tokenData.valid = true;
 
@@ -35,7 +35,7 @@ app.factory('tokenService', ['$window', '$http', function($window, $http) {
 
     return $http({
         method: 'GET',
-        url: 'http://128.199.48.244:7000/polls'
+        url: __env.API_URL + '/polls'
       }).then(function() {
         console.log('Token is valid');
         tokenData.valid = true;

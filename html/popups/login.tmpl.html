@@ -1,17 +1,15 @@
-<md-dialog aria-label="Login">
+<md-dialog id="container" aria-label="Login">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h1>Logga in eller registrera dig</h1>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-        </md-button>
+
       </div>
     </md-toolbar>
 
-<md-dialog-content style="max-width:800px;max-height:810px; ">
+<md-dialog-content>
     <!-- First tab wich includes the "login" page with input forms and logos -->
-
+            <div id="login">
             <md-content class="md-padding">
               <label>Logga in</label>
                 <form name="login" ng-controller="loginUser" ng-submit="loginUser()">
@@ -27,13 +25,16 @@
                         <input ng-model="password" type="password">
                     </md-input-container>
                     <br>
-                    <input type="submit" value="Logga in">
+                    <input id="loginbutton" type="submit" value="Logga in">
                 </form>
             </md-content>
+            </div>
+
 
     <!-- Second tab wich includes the "register" page with input forms and logos -->
+    <div id="register">
+    <md-content class="md-padding">
     <label>Registrera dig</label>
-                <md-content class="md-padding">
                     <form name="register" ng-controller="addUser" ng-submit="regUser()">
                         <md-input-container>
                             <label>Namn</label>
@@ -52,9 +53,11 @@
                             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
                             <input ng-model="password" type="password">
                         </md-input-container>
+                        <br>
                         <input type="submit" value="Registrera">
                     </form>
                 </md-content>
+    </div>
 </md-dialog-content>
 
 

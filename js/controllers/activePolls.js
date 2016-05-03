@@ -1,5 +1,4 @@
-app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window', '$location', function($scope, pollService, $http, $q, $window, $location) {
-
+app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window', '$location', '__env', function($scope, pollService, $http, $q, $window, $location, __env) {
   $scope.polls = pollService.getAll();
   parameterPollId = $location.search().poll; // poll ID from URL
 
@@ -19,7 +18,7 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window'
 
     $http({
       methos: 'GET',
-      url: "http://128.199.48.244:7000/polls"
+      url: __env.API_URL + '/polls'
     }).then(function successCallback(response) {
 
       var pollRequests = [];
@@ -37,7 +36,7 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window'
   var getSinglePoll = function(pollId) {
     return $http({
       methos: 'GET',
-      url: "http://128.199.48.244:7000/polls/" + pollId
+      url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
       pollService.add(response.data);
     });

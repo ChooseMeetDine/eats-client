@@ -2,7 +2,7 @@
  * Controller for adding polls (POST /polls)
  */
 // app.controller('addPoll', function($scope, $http) {
-app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', function($scope, $http, pollService, modeService) {
+app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
@@ -22,7 +22,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
 
     $http({
         method: 'POST',
-        url: 'http://128.199.48.244:7000/polls',
+        url: __env.API_URL + '/polls',
         headers: {
           'Content-Type': 'application/json'
         },

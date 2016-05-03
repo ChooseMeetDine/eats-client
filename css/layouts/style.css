@@ -21,8 +21,6 @@ Cyan/Aqua       #18FFFF     24,255,255
 Cyan/Aqua-1     #00E5FF     0,229,255
 Pacific Blue    #00B8D4     0,184,212
 
-@import url("exempel.css")
-
 */
 
 /*FONTS*/
@@ -243,6 +241,10 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     padding:10px;
     float: left;
     margin-left: 2%;
+}
+
+#main-meny-nav{
+    padding:10px;
 }
 
 /*-------------------FILTER MENU----------------------*/

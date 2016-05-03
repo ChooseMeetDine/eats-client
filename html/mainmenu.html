@@ -15,19 +15,12 @@
         <p>{{ tokenData.name }}</p>
         <i class="material-icons">account_circle</i>
       </md-list-item>
-      <!-- Link to settings -->
-      <md-list-item href="#" class="linksInMainMenu">
-        <p>Inställningar</p>
-        <i class="material-icons">settings</i>
-      </md-list-item>
-      <!-- Divider if needed -->
-      <hr ng-if="isUserWithValidToken">
+
       <!-- Menu section create new poll and new group and add restaurant -->
       <md-list-item ng-if="isUserWithValidToken" ng-click="dialogs.showAdvanced($event, 'createpoll')">
         <p>Skapa ny omröstning</p>
         <i class="material-icons">add</i>
       </md-list-item>
-
       <md-list-item ng-if="isUserWithValidToken" ng-click="createPoll($event)">
         <p>Skapa ny grupp</p>
         <i class="material-icons">person_add</i>

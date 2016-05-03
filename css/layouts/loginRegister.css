@@ -1,0 +1,24 @@
+#register{
+float: right;
+display: inline-block;
+border-left: 1px solid #BDBDBD;
+padding-left: 10px;
+padding-right: 15px;
+    margin-top: 10px;
+}
+
+#login{
+display: inline-block;  
+float: left;
+margin-top: 10px;
+
+}
+
+#container{
+    
+background-color: white;
+}
+
+#loginbutton{
+
+}
