@@ -4,33 +4,32 @@
 }
 
 .leaflet-popup-content-wrapper{
-    background-color: #fafafa;
+    background-color: #bdbdbd;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip{
-    background-color: #fafafa;
+    background-color: #bdbdbd;
 }
 
 /*Popup content*/
 .leaflet-popup-content{
     padding-top: 0px !important;
-    background-color: #fafafa;
     border-radius: 10px;    
-    width: 250px;
+    width: 260px;
 }
 
 /*Popup images*/
 
 #image_content{
-    background-color: #bdbdbd;
-    border-radius: 5px;
+    background-color: #fefefe;
+    border-radius: 10px;
     padding: 10px;
     position: relative;
 }
 
 #image_content img{
     width: 240px;
-    max-height: 200px;
+    max-height: 180px;
     display: block;
     margin-left: auto;
     margin-right: auto;    
@@ -44,9 +43,10 @@
     
 }
 
-p span {
+#image_content span {
     position: absolute;
     bottom: 30px;
+    left: 13px;
     color: #fafafa; 
     letter-spacing: -1px;  
     background: rgba(97, 97, 97, 0.73);
@@ -79,11 +79,12 @@ p span {
     opacity: 0.7;
 }
 /*Create poll icon making the plus sign bigger*/
-#createPollIcons { 
+#createPollIcons {
+    z-index: 1;
     position: absolute;
     top: 70px;
     left: 90px;
     font-size: 6em;
-    color: #bdbdbd;
+    color: #fafafa;
     text-shadow: 1px 2px #818181;
 }
