@@ -8,7 +8,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   var mapToken2 = 'pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q';
   var overlays = filterService.overlays;
 
-  angular.extend($scope, {
+  leafletConfig = {
     center: {
       lat: 59.91,
       lng: 10.75,
@@ -29,19 +29,26 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       }
     },
     layers: {
-      overlays
-    },
-    events: {
-      map: {
-        enable: ['locationfound'],
-        logic: 'emit'
-      }
+      overlays: overlays
     },
     defaults: {
       zoomControlPosition: 'topright',
       locationControlPosition: 'topright',
-    },
-    controls: {
+    }
+  }
+
+  // Due to a Chrome error when trying to get user location over HTTP (instead of HTTPS)
+  // on the staging server, this code will evaluate __env-variables to determine if user location should
+  // be used or not
+  if (__env.USE_LOCATION) {
+    leafletConfig.events = {
+      map: {
+        enable: ['locationfound'],
+        logic: 'emit'
+      }
+    }
+
+    leafletConfig.controls = {
       custom: [
         L.control.locate({
           follow: true,
@@ -49,12 +56,24 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         })
       ]
     }
-  });
 
-  $scope.$on('leafletDirectiveMap.locationfound', function(event) {
+    $scope.$on('leafletDirectiveMap.locationfound', function(event) {
+      restaurantMarkers.push({
+        lat: $scope.center.lat,
+        lng: $scope.center.lng,
+        draggable: false,
+        icon: {
+          iconUrl: 'images/icons/you_marker.png',
+          iconSize: [24, 24], // size of the icon
+          iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
+        }
+      });
+    });
+  } else {
+    // If not using user location - default to Odd Hill coordinates in Malmö
     restaurantMarkers.push({
-      lat: $scope.center.lat,
-      lng: $scope.center.lng,
+      lat: 55.607335,
+      lng: 13.008678,
       draggable: false,
       icon: {
         iconUrl: 'images/icons/you_marker.png',
@@ -62,8 +81,12 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
       }
     });
-  });
+  }
 
+  // Adds the leaflet config object to $scope
+  angular.extend($scope, leafletConfig);
+
+  // Event listener for clicks on map
   $scope.$on('leafletDirectiveMap.click', function(event, args) {
     if ($scope.mode.active === 'CREATE_RESTAURANT') {
       createRestaurantService.setClickedPosition(args.leafletEvent.latlng.lat, args.leafletEvent.latlng.lng);
