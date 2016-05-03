@@ -4,11 +4,11 @@
 }
 
 .leaflet-popup-content-wrapper{
-    background-color: #bdbdbd;
+    background-color: #eeeeee;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip{
-    background-color: #bdbdbd;
+    background-color: #eeeeee;
 }
 
 /*Popup content*/
@@ -21,13 +21,13 @@
 /*Popup images*/
 
 #image_content{
-    background-color: #fefefe;
+    background-color: #eeeeee;
     border-radius: 10px;
-    padding: 10px;
     position: relative;
 }
 
 #image_content img{
+    margin-top: 10px;
     width: 240px;
     max-height: 180px;
     display: block;
@@ -45,46 +45,56 @@
 
 #image_content span {
     position: absolute;
-    bottom: 30px;
+    bottom: 2px;
     left: 13px;
     color: #fafafa; 
     letter-spacing: -1px;  
-    background: rgba(97, 97, 97, 0.73);
-    padding: 3px; 
-    font-size: 22px;
+    background: rgba(66, 66, 66, 0.73);
+    padding: 7px; 
+    font-size: 24px;
     max-width: 70%;
 }
 
 /*Rating stars*/
 
 #rating_stars{
-}
+    }
 
 
 /*Popup button that says mer info*/
-.trigger{
-    border: none;
-    font-size: 14px;
+
+#more_info_1{
+    z-index: 2;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    font-size: 5em;
+    color: #f5f5f5;
+    text-shadow: 1px 2px #616161;
 }
-/*Container for Popup button that says mer info*/
-#moreInfoButtonContent {
-    width: 140px;
-    text-align: right;
-    padding-top: 4px;
-    
+
+#more_info_2{
+    z-index: 1;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    font-size: 5em;
+    color: #424242;
+}
+
+
+/*Create poll icon making the plus sign bigger*/
+#add_to_poll {
+    z-index: 1;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 5em;
+    color: #00B8D4;
+    text-shadow: 1px 2px #818181;
 }
 
 /*Create poll button when hovering*/
-#createPollIcons:hover {
+#add_to_poll:hover {
     opacity: 0.7;
-}
-/*Create poll icon making the plus sign bigger*/
-#createPollIcons {
-    z-index: 1;
-    position: absolute;
-    top: 70px;
-    left: 90px;
-    font-size: 6em;
-    color: #fafafa;
-    text-shadow: 1px 2px #818181;
 }
