@@ -61,7 +61,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     mapConfig.center.autoDiscover = true;
   } else {
     // If not using user location - default to Odd Hill coordinates in Malmö
-    console.log('NOT USING USER LOCATION - marker on Odd Hill coords');
     restaurantMarkers.push({
       lat: 55.607335,
       lng: 13.008678,
@@ -72,6 +71,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
       }
     });
+    console.log('User marker created on map');
   }
 
   // Adds the leaflet config object to $scope
@@ -85,7 +85,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   // Event listener for location found
   // Draws a marker on map where location was found
   $scope.$on('leafletDirectiveMap.locationfound', function(event) {
-    console.log('LOCATION FOUND');
+    console.log('User location found');
     restaurantMarkers.push({
       lat: $scope.center.lat,
       lng: $scope.center.lng,
@@ -181,7 +181,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   //Ugly hack to decide marker type, TODO: redo to a leaflet solution
   //for dynamic marker icons
   function markerType(restaurantExtraData) {
-    //console.log(restaurantExtraData);
     var data = restaurantExtraData;
     var rest = 'images/icons/rest_marker.png';
     for (i in data) {
