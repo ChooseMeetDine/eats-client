@@ -1,7 +1,7 @@
 /**
  * Controller for showing polls
  */
-app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$interval', '$window', function($scope, $http, pollService, tokenService, $interval, $window) {
+app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$interval', '$window', '__env', function($scope, $http, pollService, tokenService, $interval, $window, __env) {
   $scope.isLoggedInAsUser = tokenService.isUserWithValidToken();
   $scope.isLoggedInAsAnonymous = tokenService.isAnonymousWithValidToken();
   $scope.isUserWithInvalidToken = tokenService.isUserWithInvalidToken();
@@ -28,7 +28,7 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   $scope.vote = function(restaurant) {
     $http({
       method: 'POST',
-      url: 'http://128.199.48.244:7000/polls/' + $scope.activePollCleaned.id + '/votes',
+      url: __env.API_URL + '/polls/' + $scope.activePollCleaned.id + '/votes',
       headers: { 'Content-Type': 'application/json' },
       data: {
         restaurantId: restaurant

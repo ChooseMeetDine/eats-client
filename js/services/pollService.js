@@ -1,4 +1,4 @@
-app.factory('pollService', ['$http', function($http) {
+app.factory('pollService', '__env', ['$http', function($http, __env) {
   var pollService = {};
 
   var pollMap = {};
@@ -60,7 +60,7 @@ app.factory('pollService', ['$http', function($http) {
   }
 
   pollService.add = function(poll) {
-    poll.data.voteLink = 'localhost:4444/#?poll=' + poll.data.id;
+    poll.data.voteLink = __env.CLIENT_URL + '?poll=' + poll.data.id;
     poll.data.expiresAsDateObj = new Date(poll.data.attributes.expires);
     pollMap[poll.data.id] = poll;
   }
@@ -161,7 +161,7 @@ app.factory('pollService', ['$http', function($http) {
   pollService.joinActivePoll = function() {
     return $http({
         method: 'Post',
-        url: 'http://128.199.48.244:7000/polls/' + active.data.id + '/users'
+        url: __env.API_URL + '/polls/' + active.data.id + '/users'
       }).then(function(response) {
         console.log('Joined poll');
       })
@@ -174,7 +174,7 @@ app.factory('pollService', ['$http', function($http) {
   pollService.getPollIdAndSetAsActive = function(pollId) {
     return $http({
       method: 'Get',
-      url: 'http://128.199.48.244:7000/polls/' + pollId
+      url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
       console.log('Joined poll');
       pollService.add(response.data);
