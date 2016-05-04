@@ -55,9 +55,8 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
         $window.location.reload();
       })
       .catch(function(err) {
-        console.log('Fel vid registrering av användare: ');
+        console.log('ERROR! Failed to register user.');
         console.log(err);
-        alert(err.data.error);
       });
   };
 }]);
