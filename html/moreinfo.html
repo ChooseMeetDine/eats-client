@@ -15,8 +15,8 @@
                <!-- Type of food images -->      
                 <div id="label">
                     <md-list-item ng-repeat="categories in restaurants" ng-if="content.id == categories.id">
-                        <span ng-repeat="category in categories.categories" class="moreInfoCategoryIcon">
-                            <img ng-if="!(category == '10' || category == '11')" ng-src="../images/icons/{{category}}.png">
+                        <span ng-repeat="category in categories.categories" ng-if="!(category == '10' || category == '11')" class="moreInfoCategoryIcon">
+                            <img ng-src="../images/icons/{{category}}.png">
                         </span>
                     </md-list-item>
                 </div>

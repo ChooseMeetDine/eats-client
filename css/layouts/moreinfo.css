@@ -12,11 +12,13 @@
 
 /*Infoslider img width*/
 #infoImgContainer{
+    position:relative;
     height:30vh;
     width:100%;
     margin:0;
     padding:0;
     overflow:hidden;
+    float:left;
 }
 #infoImg{
     position:relative;
