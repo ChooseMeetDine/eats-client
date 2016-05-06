@@ -45,8 +45,8 @@
 
 #image_content span {
     position: absolute;
-    bottom: 2px;
-    left: 13px;
+    bottom: 6px;
+    left: 18px;
     color: #fafafa; 
     letter-spacing: -1px;  
     background: rgba(66, 66, 66, 0.63);

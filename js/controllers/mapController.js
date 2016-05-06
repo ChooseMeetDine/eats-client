@@ -8,12 +8,15 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   var mapToken2 = 'pk.eyJ1IjoiYmVpamFyIiwiYSI6ImNpbjVvbm14OTAwc3N2cW0yNW9qcTJiOHAifQ.fqEQVqMhNvFDasEpkwzz0Q';
   var overlays = filterService.overlays;
 
-  leafletConfig = {
+
+  // ------------------------------- //
+  //        MAP CONFIGURATION        //
+  // ------------------------------- //
+  var mapConfig = {
     center: {
-      lat: 59.91,
-      lng: 10.75,
-      zoom: 15,
-      autoDiscover: true
+      lat: 55.607335,
+      lng: 13.008678,
+      zoom: 15
     },
     markers: restaurantMarkers,
     tiles: {
@@ -31,24 +34,17 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     layers: {
       overlays: overlays
     },
-    defaults: {
-      zoomControlPosition: 'topright',
-      locationControlPosition: 'topright',
-    }
-  }
-
-  // Due to a Chrome error when trying to get user location over HTTP (instead of HTTPS)
-  // on the staging server, this code will evaluate __env-variables to determine if user location should
-  // be used or not
-  if (__env.USE_LOCATION) {
-    leafletConfig.events = {
+    events: {
       map: {
         enable: ['locationfound'],
         logic: 'emit'
       }
-    }
-
-    leafletConfig.controls = {
+    },
+    defaults: {
+      zoomControlPosition: 'topright',
+      locationControlPosition: 'topright'
+    },
+    controls: {
       custom: [
         L.control.locate({
           follow: true,
@@ -56,19 +52,13 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         })
       ]
     }
+  }
 
-    $scope.$on('leafletDirectiveMap.locationfound', function(event) {
-      restaurantMarkers.push({
-        lat: $scope.center.lat,
-        lng: $scope.center.lng,
-        draggable: false,
-        icon: {
-          iconUrl: 'images/icons/you_marker.png',
-          iconSize: [24, 24], // size of the icon
-          iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
-        }
-      });
-    });
+  // Due to a Chrome error when trying to get user location over HTTP (instead of HTTPS)
+  // on the staging server, this code will evaluate __env-variables to determine if auto discover of 
+  // user location should be used or not
+  if (__env.USE_LOCATION) {
+    mapConfig.center.autoDiscover = true;
   } else {
     // If not using user location - default to Odd Hill coordinates in Malmö
     restaurantMarkers.push({
@@ -81,10 +71,32 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
       }
     });
+    console.log('User marker created on map');
   }
 
   // Adds the leaflet config object to $scope
-  angular.extend($scope, leafletConfig);
+  angular.extend($scope, mapConfig);
+
+
+  // ------------------------------- //
+  //       MAP EVENT LISTENERS       //
+  // ------------------------------- //
+
+  // Event listener for location found
+  // Draws a marker on map where location was found
+  $scope.$on('leafletDirectiveMap.locationfound', function(event) {
+    console.log('User location found');
+    restaurantMarkers.push({
+      lat: $scope.center.lat,
+      lng: $scope.center.lng,
+      draggable: false,
+      icon: {
+        iconUrl: 'images/icons/you_marker.png',
+        iconSize: [24, 24], // size of the icon
+        iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
+      }
+    });
+  });
 
   // Event listener for clicks on map
   $scope.$on('leafletDirectiveMap.click', function(event, args) {
@@ -95,6 +107,12 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     }
   });
 
+
+  // ------------------------------- //
+  //          CREATE MARKERS         //
+  // ------------------------------- //
+
+  // Fetches all restaurants from the API
   var fetchRestaurants = function() {
     $http({
       method: 'GET',
@@ -107,7 +125,8 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     });
   }
 
-  //result data structure: {restaurantId:{all data for one restaurant}}
+  // Creates one marker per restaurant, from the API-request
+  // Result data structure: {restaurantId:{all data for one restaurant}}
   var createMarkers = function(resultData) {
     var items = resultData.data;
 
@@ -159,20 +178,9 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     }
   };
 
-  fetchRestaurants();
-
-  $scope.addRestaurantToPoll = function(restaurantId) {
-    pollService.addRestaurantToForm(restaurants[restaurantId]);
-  };
-
-  $scope.openSlideMenu = function(restaurantId) {
-    angular.element(document.getElementById('moreInfoMenu')).scope().toggleMoreInfoMenu();
-    angular.element($('#moreInfoSlider')).scope().createInfoScopes(restaurants[restaurantId]);
-  };
   //Ugly hack to decide marker type, TODO: redo to a leaflet solution
   //for dynamic marker icons
   function markerType(restaurantExtraData) {
-    //console.log(restaurantExtraData);
     var data = restaurantExtraData;
     var rest = 'images/icons/rest_marker.png';
     for (i in data) {
@@ -186,5 +194,22 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       }
     }
     return rest;
+  };
+
+  // Fetches the restaurants and creates markers
+  fetchRestaurants();
+
+
+  // ------------------------------- //
+  //     OTHER $SCOPE FUNCTIONS      //
+  // ------------------------------- //
+
+  $scope.addRestaurantToPoll = function(restaurantId) {
+    pollService.addRestaurantToForm(restaurants[restaurantId]);
+  };
+
+  $scope.openSlideMenu = function(restaurantId) {
+    angular.element(document.getElementById('moreInfoMenu')).scope().toggleMoreInfoMenu();
+    angular.element($('#moreInfoSlider')).scope().createInfoScopes(restaurants[restaurantId]);
   };
 }]);

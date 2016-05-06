@@ -86,7 +86,7 @@ app.factory('tokenService', ['$window', '$http', '__env', function($window, $htt
   tokenService.login = function(user) {
     return $http({
         method: 'POST',
-        url: 'http://128.199.48.244:7000/auth',
+        url: __env.API_URL + '/auth',
         headers: { 'Content-Type': 'application/json' },
         data: user
       })
@@ -117,7 +117,7 @@ app.factory('tokenService', ['$window', '$http', '__env', function($window, $htt
   tokenService.register = function(userForRegister) {
     return $http({
         method: 'POST',
-        url: 'http://128.199.48.244:7000/users',
+        url: __env.API_URL + '/users',
         headers: { 'Content-Type': 'application/json' },
         data: userForRegister
       })
