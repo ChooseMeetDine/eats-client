@@ -157,7 +157,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
           iconSize: [52, 52],
           iconAnchor: [26, 52]
         },
-        message: "<div ng-include=\"\'html/marker.html\'\">",
+        message: "<span ng-include=\"\'html/marker.html\'\"></span>",
         draggable: false,
         getMessageScope: function() { // "gives" a scope to the template
           scope = $scope.$new();

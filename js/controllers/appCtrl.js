@@ -60,6 +60,10 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
     }
   }
 
+  // -------------------------------- //
+  //  TOKEN VALIDATION AND 'ROUTING'  //
+  // -------------------------------- //
+
   if (tokenService.getJwt() === undefined)  { // no token at all = first time on the site
     tokenService.getAnonymousToken()
       .then(function() {
@@ -69,102 +73,22 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       });
   } else {
     tokenService.validateToken() // token exists = has visited site before
-      .then(function() {
-        if (userFollowedPollLink) {
+      .then(function(tokenIsValid) {
+        if(!tokenIsValid && tokenService.getUserType() === 'anonymous'){ //User has invalid anonymous-token, get a new one
+          tokenService
+            .getAnonymousToken()
+            .then(function() {
+              if (userFollowedPollLink) {
+                showPollPopupFromLink();
+              }
+            });
+        } else if (userFollowedPollLink) {
           showPollPopupFromLink();
         }
         // TODO: HÄR KAN GÖRAS EN pollService.fetchAllPollsForUser ISTÄLLET FÖR ATT HA DET I showPoll-controllern..
       });
   }
 
-  // tokenService.validateToken()
-  //   .then(showPollPopupFromLink)
-  //   .catch(showPollPopupFromLink);
-
-
-
-
-
-  // tokenService
-  // .validateToken()
-  // .then(function() {
-  //   if(userFollowedPollLink){ //User followed poll-link and has a valid token
-  //     pollService
-  //       .isUserParticipantInPoll($scope.parameterPollId, tokenService.getUserId())
-  //       .then(function(userIsParticipant) { // userIsParticipant is true or false
-  //         if(!userIsParticipant){
-  //           console.log('You are logged in as ' + tokenService.getTokenUserName() + ' but you are not participating in this poll');
-  //           $scope.dialogs.showAdvanced(null, 'continueToPollAs'); //User is not in this poll, ask what he/she would like to continue as
-  //         } else {
-  //           console.log('You are logged in as ' + tokenService.getTokenUserName() + ' and you are a participant in this poll');
-  //         }
-  //       });
-  //   }
-  // }).catch(function() {
-  //   console.log('You do not have a valid token yet.')
-  //   if(userFollowedPollLink){ //User followed poll-link and has an invalid token that belongs to a registered user
-  //     $scope.dialogs.showAdvanced(null, 'continueAs');
-  //   } else {
-  //     tokenService.getAnonymousToken(); //User did not follow a poll-link and does not have a valid token
-  //   }
-  // });
-
-
-  // localStorage.getItem("userAnon") === null //Token finns inte
-  // var userFollowedPollLink = ($scope.parameterPollId); //votelänk användes
-  //
-  //
-  // var userHasTokenFromLastSession = (localStorage.getItem("userAnon") === null); //Använd tokenService
-  // var userFollowedPollLink = ($scope.parameterPollId);
-  //
-  // If(userHasTokenFromLastSession && userFollowedPollLink) {
-  //   validera token
-  //     om den är valid continueAs med alternativ att fortsätta som sig själv
-  //     annars bara continueAs (vanliga)
-  // }
-  // If(!userHasTokenFromLastSession && userFollowedPollLink)
-  //   continueAs (vill man logga in?) (samma som icke-valid token)
-  // If(userHasTokenFromLastSession && !userFollowedPollLink)
-  //   validera token
-  //     om invalid : skaffa anontoken
-  //
-  // If(!userHasTokenFromLastSession && !userFollowedPollLink)
-  //   skaffa anontoken
-  //
-  // hinta om att du inte är inloggad vid skapande av omröstning
-
-
-  //   if(!$scope.parameterPollId) {                                                           //User did not reach this webpage from a #?poll= adress
-  //     var anon = $window.localStorage['userAnon'];
-  //     if (localStorage.getItem("userAnon") !== null) {                                      //There is a token
-  //       tokenService.testToken()                                                            //Try to use the token to see if it's still valid
-  //       .then(function(response) {
-  //         tokenService.setTokenExists();
-  //         console.log('You are now logged in as ' + $window.localStorage['userName']);      //Token is valid
-  //       }).catch(function(response) {
-  //         tokenService.getAnonymousToken();                                                 //The token was not valid, get a new one
-  //       });
-  //     } else {                                                                              //There is no token, get one
-  //       console.log('You are not logged in, getting a token for you....');
-  //       tokenService.getAnonymousToken();
-  //     }
-  //   } else if (localStorage.getItem("userAnon") === null) {                                 //User reached this webpage from a #?poll= adress without having a token
-  //     $scope.dialogs.showAdvanced(null, 'continueAs');
-  //   } else  {                                                                               //User reached this webpage from a #?poll= adress and has a token
-  //     tokenService
-  //       .testToken()                                                                        //Try to use the token to see if it's still valid
-  //       .then(function() {
-  //         tokenService.setTokenExists();                                                                 //Token is valid
-  //         $http({                                                                           //Add this user to the poll
-  //           method: 'POST',
-  //           url: 'http://128.199.48.244:7000/polls/' + $scope.parameterPollId + '/users'
-  //         }).then(function(){
-  //           $window.location.reload();
-  //         }).catch(function(response) {
-  //           $scope.dialogs.showAdvanced(null, 'continueAs');
-  //         });
-  //       });
-  //   }
 }]);
 
 function DialogController($scope, $mdDialog) {

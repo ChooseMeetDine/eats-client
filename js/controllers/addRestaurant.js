@@ -16,13 +16,12 @@ app.controller('addRestaurant', ['$scope', '$http', '$window', 'modeService', 'c
       'lng': $scope.form.data.lng,
     }
     var categories = [];
-    for (let prop in $scope.form.data.categories) {
+    for (var prop in $scope.form.data.categories) {
       if ($scope.form.data.categories[prop]) {
         categories.push('' + (parseInt(prop) + 1));
       }
     }
     restaurant.categories = categories;
-
     $http({
       method: 'POST',
       url: __env.API_URL + '/restaurants',
