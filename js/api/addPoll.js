@@ -17,6 +17,11 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__e
    */
   $scope.regPoll = function() {
     var postBody = createPollPostBody();
+    if(!postBody.restaurants){
+      $scope.error = 'Du måste först lägga till restauranger';
+      return;
+    }
+
     $scope.error = null;
     $scope.loading = true;
 
@@ -79,14 +84,16 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__e
       }
     }
 
+    // NOTE: Bortkommenterad eftersom att detta inte längre behövs (länk finns nu)
     //Splits string at commas and trims away spaces
-    if (data.users) {
-      poll.users = data.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
-    }
+    // if (data.users) {
+    //   poll.users = data.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
+    // }
 
-    if (data.allowNewRestaurants) {
-      poll.allowNewRestaurants = data.allowNewRestaurants;
-    }
+    // NOTE: Bortkommenterad eftersom att det inte i dagsläget går att lägga till restauranger när omröstningen är skapad
+    // if (data.allowNewRestaurants) {
+    //   poll.allowNewRestaurants = data.allowNewRestaurants;
+    // }
     return poll;
   };
 
