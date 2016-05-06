@@ -22,7 +22,7 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window'
     }).then(function successCallback(response) {
 
       var pollRequests = [];
-      for (let i = 0; i < response.data.data.length; i++) {
+      for (var i = 0; i < response.data.data.length; i++) {
         pollRequests.push(getSinglePoll(response.data.data[i].id))
       }
 

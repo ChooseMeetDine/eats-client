@@ -74,7 +74,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__e
 
     if (data.restaurants) {
       poll.restaurants = [];
-      for (let i = 0; i < data.restaurants.length; i++) {
+      for (var i = 0; i < data.restaurants.length; i++) {
         poll.restaurants.push(data.restaurants[i].id);
       }
     }
