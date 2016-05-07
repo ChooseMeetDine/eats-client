@@ -18,7 +18,7 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
 
   // Updates the date every second to be able to compare to the expiration date of the poll
-  // Disables joining the poll when it has 10 seconds left (to let the user have time to log in if need be)
+  // Disables joining the poll when it has 20 seconds left (to let the user have time to log in if need be)
   $interval(function() {
     $scope.now = new Date(new Date().getTime() + 20000);
   }, 1000);
