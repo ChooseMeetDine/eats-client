@@ -7,37 +7,15 @@
     // Holds all functions for mdDialog to be able to change popups from other controllers
     $scope.dialogs = {};
 
-    $scope.dialogs.showAdvanced = function(ev, id) {
-      dialogOptions = {
-        controller: DialogController,
-        templateUrl: 'html/popups/' + id + '.tmpl.html',
-        parent: angular.element(document.body),
-        clickOutsideToClose: false,
-        fullscreen: useFullScreen,
-        onRemoving: pollService.clearActivePoll
-      }
-      if (ev) {
-        dialogOptions.targetEvent = ev;
-      }
-
-      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-      $mdDialog.show(dialogOptions)
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
-        });
-      $scope.$watch(function() {
-        return $mdMedia('xs') || $mdMedia('sm');
-      }, function(wantsFullScreen) {
-        $scope.customFullscreen = (wantsFullScreen === true);
-      });
-    };
-
-    // clearActivePollOnRemove is a boolean that determines if the active poll should be cleared when
+    // Shows a popup (mdDialog) on the screen
+    // 
+    // ev: $event-object, to make the popup animations move from where the user clicked
+    // id: string, the name of one of the popup templates in html/popups
+    // clickOutSideToClose: boolean, to control if popup should be allowed to close when clicking out side it
+    // clearActivePollOnRemove: boolean, that determines if the active poll should be cleared when
     // this popup is closed or not. Clearing activePoll is done to remove the poll-URL-parameter,
     // for example when closing an active poll popup, to make sure it wont be opened automaticly when the page is reloaded.
-    $scope.dialogs.showTabDialog = function(ev, id, clearActivePollOnRemove) {
+    $scope.dialogs.showPopup = function(ev, id, clickOutsideToClose, clearActivePollOnRemove) {
       var clearActivePoll = null;
       if (clearActivePollOnRemove) {
         clearActivePoll = pollService.clearActivePoll;
@@ -48,7 +26,7 @@
           templateUrl: 'html/popups/' + id + '.tmpl.html',
           parent: angular.element(document.body),
           targetEvent: ev,
-          clickOutsideToClose: true,
+          clickOutsideToClose: clickOutsideToClose,
           onRemoving: clearActivePoll
         })
         .then(function(answer) {
@@ -65,7 +43,7 @@
         pollService
           .getPollIdAndSetAsActive($scope.parameterPollId)
           .then(function() {
-            $scope.dialogs.showTabDialog(null, 'showActivePoll', true);
+            $scope.dialogs.showPopup(null, 'showActivePoll', true, true);
           });
       }
     }

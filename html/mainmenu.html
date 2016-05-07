@@ -17,7 +17,7 @@
       </md-list-item>
 
       <!-- Menu section create new poll and new group and add restaurant -->
-      <md-list-item ng-click="dialogs.showTabDialog($event, 'createpoll', false)">
+      <md-list-item ng-click="dialogs.showPopup($event, 'createpoll', true, false)">
         <p>Skapa ny omröstning</p>
         <i class="material-icons">add</i>
       </md-list-item>
@@ -26,7 +26,7 @@
         <i class="material-icons">person_add</i>
       </md-list-item>
 
-      <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showAdvanced($event, 'addrestaurant');">
+      <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showPopup($event, 'addrestaurant', false, false);">
         <p>Lägg till restaurang</p>
         <i class="material-icons">add</i>
       </md-list-item>
@@ -34,7 +34,7 @@
       <hr>
 
       <!-- Login and log out buttons -->
-      <md-button ng-if="!isUserWithValidToken" class="login md-raised" ng-click="dialogs.showTabDialog($event, 'login')">
+      <md-button ng-if="!isUserWithValidToken" class="login md-raised" ng-click="dialogs.showPopup($event, 'login', true, false)">
         Logga in / registrera dig
       </md-button>
 

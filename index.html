@@ -77,6 +77,7 @@
     <script src="js/controllers/slider.js"></script>
     <script src="js/controllers/continueToPollAs.js"></script>
     <script src="js/controllers/filterController.js"></script>
+    <script src="js/controllers/createPoll.js"></script>
 
 
     <script src="js/services/pollService.js"></script>
@@ -86,7 +87,6 @@
     <script src="js/services/tokenService.js"></script>
 
     <script src="js/api/getRestaurants.js"></script>
-    <script src="js/api/addPoll.js"></script>
     <script src="js/api/addUser.js"></script>
     <script src="js/api/loginUser.js"></script>
     <script src="js/api/addRestaurant.js"></script>
@@ -113,7 +113,7 @@
 
       <!-- Create poll button -->
       <div ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'">
-        <md-button id="createPollButton" ng-click="dialogs.showTabDialog($event, 'createpoll', false)">
+        <md-button id="createPollButton" ng-click="dialogs.showPopup($event, 'createpoll', true, false)">
           <i class="material-icons md-48" id="createPollIcon" title="Starta en ny omröstning">add_circle_outline</i>
         </md-button>
       </div>
@@ -127,7 +127,6 @@
       <!-- <div ng-include="'html/logotype.html'"></div> -->
       <div ng-controller="mapController">
         <leaflet center="center" markers="markers" layers="layers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
-        <!--<button type="button" class="btn btn-default" ng-click="toogleKyckling()" ng-disabled="true">Remove Hillshade Overlay</button>-->
       </div>
 
       <div ng-include="'html/moreinfo.html'"></div>

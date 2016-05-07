@@ -1,8 +1,8 @@
 /**
- * Controller for adding polls (POST /polls)
+ * Controller for creating polls (POST /polls)
  */
 // app.controller('addPoll', function($scope, $http) {
-app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
+app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
