@@ -110,7 +110,14 @@
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
       <div ng-include="'html/profilepage.html'"></div>
-      <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
+
+      <!-- Create poll button -->
+      <div ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'">
+        <md-button id="createPollButton" ng-click="dialogs.showTabDialog($event, 'createpoll', false)">
+          <i class="material-icons md-48" id="createPollIcon" title="Starta en ny omröstning">add_circle_outline</i>
+        </md-button>
+      </div>
+
       <div ng-include="'html/activepolls.html'"></div>
 
       <div ng-show="mode.active === 'ADD_RESTAURANTS_MODE'">
