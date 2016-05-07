@@ -29,9 +29,9 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__e
         data: postBody
       }).then(function(response) {
         $scope.clearForm();
-        response.data.data.attributes.expires = new Date(response.data.data.attributes.expires);
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
+
         $scope.swap('showActivePoll'); //Hide this popup and show active poll
         $scope.loading = false;
       })
