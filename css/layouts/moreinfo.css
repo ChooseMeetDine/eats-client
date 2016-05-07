@@ -1,0 +1,68 @@
+/*-------------MORE INFO ABOUT RESTAURANTS------------*/
+/*Infoslider with more info about restaurant*/
+#moreInfoSlider .md-no-proxy {
+    padding:0px!important;
+
+}
+/*Infoslider content width*/
+.infomenu{
+    width: 500px;
+
+}
+
+/*Infoslider img width*/
+#infoImgContainer{
+    position:relative;
+    height:30vh;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    float:left;
+}
+#infoImg{
+    position:relative;
+    width: 100%;
+    float:left;
+    
+}
+
+
+md-list-item{
+    color: white;
+    padding: 10px;
+}
+
+#restaurantname{
+    text-align: center;    
+    background-color: white;
+}
+
+#label{
+    position:relative;
+    float:left;
+    background-color: #00B8D4;
+    margin:0;
+    padding:0;
+}
+
+.moreInfoCategoryIcon{    
+    width:10%;
+    margin:2.5%;
+    float:left;
+    display:block;    
+}
+
+.moreInfoCategoryIcon img{
+    width: 100%;
+}
+
+#extrainfo{
+    position:relative;
+    padding: 10px;
+    float:left;
+}
+
+#moreInfoMenu{
+    overflow:hidden;
+}

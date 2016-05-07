@@ -2,15 +2,16 @@
   <md-dialog-content layout-padding>
     <div class="md-dialog-content">
       <div id="poll-dialog-top">
-        <h1 id="poll-dialog-name">{{active.raw.data.attributes.name}}</h1>
-
         <md-button ng-click="cancel()" aria-label="closeVoteWindow" id="close" class="md-icon-button md-primary">
           <md-icon md-svg-src="images/icons/ic_close_white_24px.svg"></md-icon>
         </md-button>
 
-        <p id="poll-dialog-timeEnds" ng-show="now < active.raw.data.expiresAsDateObj">
-          [ Kl. {{active.raw.data.attributes.expires | date: 'HH:mm'}} ]</p>
-        <p id="poll-dialog-timeEnds" ng-show="now > active.raw.data.expiresAsDateObj">Omröstningen är avslutad</p>
+        <p id="poll-dialog-timeEnds" ng-show="now < active.data.expiresAsDateObj">
+          [ Kl. {{active.data.attributes.expires | date: 'HH:mm'}} ]</p>
+        <p id="poll-dialog-timeEnds" ng-show="now > active.data.expiresAsDateObj">Omröstningen är avslutad</p>
+
+        <h1 id="poll-dialog-name">{{active.raw.data.attributes.name}}</h1>
+
       </div>
 
       <div id="poll-dialog-restaurants">

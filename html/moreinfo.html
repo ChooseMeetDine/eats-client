@@ -2,19 +2,28 @@
     <div flex></div>
     <md-sidenav class="md-sidenav-left md-whiteframe-4dp infomenu" md-component-id="info">
         <div id="moreInfoSlider">
-            
             <!-- Name of restaurant -->
-            <md-toolbar class="md-theme-light">
+            <div id="restaurantname">
                 <h1 class="md-toolbar-tools">{{ content.name }}</h1>
-            </md-toolbar>
+            </div>
             
-            <!-- More info about the restaurant -->
-            <md-content  layout-padding>
-                <md-list>
-                    <md-list-item><img class="infoimg" src="{{ content.photo }}"></md-list-item>
+           <!-- Restaurant image -->
+            <md-content ng-controller="getCategory" layout-padding>
+                <div id="infoImgContainer">
+                    <img id="infoImg" fallback-src="images/icons/1.png" ng-src="{{ content.photo }}">
+                </div>
+               <!-- Type of food images -->      
+                <div id="label">
+                    <md-list-item ng-repeat="categories in restaurants" ng-if="content.id == categories.id">
+                        <span ng-repeat="category in categories.categories" ng-if="!(category == '10' || category == '11')" class="moreInfoCategoryIcon">
+                            <img ng-src="../images/icons/{{category}}.png">
+                        </span>
+                    </md-list-item>
+                </div>
+                <!-- More info about the restaurant -->     
+                <div id="extrainfo">
                     <md-list-item>{{ content.extra.info }}</md-list-item>
-                    <md-list-item>Restaurangen har fått {{ content.rating }} av 5 stjärnor i betyg</md-list-item>
-                </md-list>
+                </div>
             </md-content>
         </div>
     </md-sidenav>
