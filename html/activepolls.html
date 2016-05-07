@@ -1,7 +1,7 @@
 <div ng-controller="activePolls">
   <div id="activePollPosition">
-    <md-button class="md-raised" ng-repeat="poll in polls | expired" ng-click="switchActivePoll(poll);dialogs.showTabDialog($event, 'showActivePoll')">
-        {{poll.data.attributes.name}}
+    <md-button class="md-raised" ng-repeat="poll in polls | expired" ng-click="switchActivePoll(poll);dialogs.showTabDialog($event, 'showActivePoll', true)">
+      {{poll.data.attributes.name}}
     </md-button>
   </div>
 </div>

@@ -17,11 +17,11 @@
       </md-list-item>
 
       <!-- Menu section create new poll and new group and add restaurant -->
-      <md-list-item ng-click="dialogs.showAdvanced($event, 'createpoll')">
+      <md-list-item ng-click="dialogs.showTabDialog($event, 'createpoll', false)">
         <p>Skapa ny omröstning</p>
         <i class="material-icons">add</i>
       </md-list-item>
-      <md-list-item ng-if="isUserWithValidToken" ng-click="createPoll($event)">
+      <md-list-item ng-if="isUserWithValidToken" ng-click="">
         <p>Skapa ny grupp</p>
         <i class="material-icons">person_add</i>
       </md-list-item>

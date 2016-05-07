@@ -1,4 +1,4 @@
-app.factory('pollService', ['$http', '__env', 'tokenService', function($http, __env, tokenService) {
+app.factory('pollService', ['$http', '__env', 'tokenService', '$location', function($http, __env, tokenService, $location) {
   var pollService = {};
 
   var pollMap = {};
@@ -64,6 +64,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', function($http, __
     active.raw = pollMap[id];
     active.cleaned = createCleanPollFromId(id);
     makeSocketListenOnPollId(id);
+    $location.search('poll', id);
   }
 
   var makeSocketListenOnPollId = function(pollId) {
@@ -72,6 +73,12 @@ app.factory('pollService', ['$http', '__env', 'tokenService', function($http, __
       pollService.add(data);
       pollService.setActiveId(pollId);
     });
+  }
+
+  pollService.clearActivePoll = function() {
+    active.raw = {};
+    active.cleaned = {};
+    $location.search('poll', null);
   }
 
   pollService.add = function(poll) {
@@ -97,7 +104,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', function($http, __
         method: 'Post',
         url: __env.API_URL + '/polls/' + active.raw.data.id + '/users'
       }).then(function(response) {
-        console.log('Joined poll');
+        console.log('Joined poll ' + active.raw.data.id);
       })
       .catch(function(err)  {
         console.log('ERROR! Failed to send request to add user to poll');
@@ -110,7 +117,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', function($http, __
       method: 'Get',
       url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
-      console.log('Joined poll');
+      console.log('Joined poll ' + pollId);
       pollService.add(response.data);
       pollService.setActiveId(pollId);
 
