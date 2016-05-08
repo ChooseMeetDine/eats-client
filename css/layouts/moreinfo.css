@@ -41,13 +41,13 @@ md-list-item{
 #label{
     position:relative;
     float:left;
-    background-color: #00B8D4;
+    background-color: #616161;
     margin:0;
     padding:0;
 }
 
 .moreInfoCategoryIcon{    
-    width:10%;
+    max-width:20%;
     margin:2.5%;
     float:left;
     display:block;    
