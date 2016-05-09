@@ -461,7 +461,12 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
     }
 }
 
-@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+    */ 
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+}
 @media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
 @media (max-width:1025px) { 
 /* everythig except big landscape tablets, laptops, and desktops */ 
