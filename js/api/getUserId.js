@@ -10,9 +10,11 @@ app.controller('getUserId', ['$scope', '$http', '__env', function($scope, $http,
       method: 'GET',
       url: link
     }).then(function successCallback(response) {
-      $scope.data = response;
+      $scope.data = response.data;
       console.log(response.data);
     }, function errorCallback(response) {
       console.log("error");
     });
-}}]);
+  }
+getUserId(localStorage.getItem("userId"))
+}]);

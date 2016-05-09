@@ -1,24 +1,45 @@
 #register{
-float: right;
-display: inline-block;
-border-left: 1px solid #BDBDBD;
-padding-left: 10px;
-padding-right: 15px;
+    float: right;
+    display: inline-block;
+    border-left: 1px solid #BDBDBD;
+    padding-left: 10px;
+    padding-right: 15px;
     margin-top: 10px;
+    background-color: #fafafa;
+}
+
+#register_form{
+    background-color: #fafafa;
 }
 
 #login{
-display: inline-block;  
-float: left;
-margin-top: 10px;
+    display: inline-block;  
+    float: left;
+    margin-top: 10px;
+}
+
+#login_form{
+    background-color: #fafafa;
 
 }
 
 #container{
-    width: auto;
-    background-color: white;
+    background-color: #fafafa;
+    font-weight: bold;     
 }
 
-#loginbutton{
+#login_button{
+    background-color: #00B8D4;
+}
+
+#register_button{
+    background-color: #00B8D4;
+    
+}
+
+
+#cancel_login-register{
+    background-color: #ffffff;
+    color: #616161;
 
 }
