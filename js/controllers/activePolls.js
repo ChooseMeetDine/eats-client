@@ -1,6 +1,13 @@
-app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window', '$location', '__env', function($scope, pollService, $http, $q, $window, $location, __env) {
+app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window', '$location', '__env', '$interval', function($scope, pollService, $http, $q, $window, $location, __env, $interval) {
   $scope.polls = pollService.getAll();
   parameterPollId = $location.search().poll; // poll ID from URL
+
+  $scope.now = new Date();
+
+  // Updates the date every second to be able to compare to the expiration date of the poll
+  $interval(function() {
+    $scope.now = new Date();
+  }, 1000);
 
   $scope.switchActivePoll = function(poll) {
     pollService.setActiveId(poll.data.id);
