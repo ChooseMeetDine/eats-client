@@ -1,5 +1,7 @@
 # eats-client
-Public repository for the Eats client
+This is the product of a student project (Eats) at Malmö Högskola consisting of 10 students (software engineers and information architects). The goal of this project is a prototype web page that allows users to vote for a restaurant for today's lunch or dinner. A simple yet effective way of reducing conflicts and brawls in offices and teams around Sweden.
+
+This client is dependent on the [eats-api](https://github.com/ChooseMeetDine/eats-api)
 
 ### How to start
 Clone the repo to your web server folder and make sure you have installed npm and bower on your computer.
