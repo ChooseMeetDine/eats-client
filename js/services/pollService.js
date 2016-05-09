@@ -1,11 +1,16 @@
-app.factory('pollService', ['$http', '__env', function($http, __env) {
+app.factory('pollService', ['$http', '__env', 'tokenService', '$location', function($http, __env, tokenService, $location) {
   var pollService = {};
 
   var pollMap = {};
-  var active = {};
+  var active = {
+    raw: {},
+    cleaned: {},
+  };
   var form = {
     data: {}
   };
+
+  var socket = io.connect(__env.API_URL);
 
   pollService.setFormData = function(formData) {
     form.data = formData;
@@ -56,7 +61,26 @@ app.factory('pollService', ['$http', '__env', function($http, __env) {
   };
 
   pollService.setActiveId = function(id) {
-    active = pollMap[id];
+    active.raw = pollMap[id];
+    active.cleaned = createCleanPollFromId(id);
+    makeSocketListenOnPollId(id);
+    $location.search('poll', id);
+  }
+
+  var makeSocketListenOnPollId = function(pollId) {
+    console.log('SocketIO: listening on poll id: ' + pollId);
+    socket.on(pollId, function(data) {
+      pollService.add(data);
+      if (pollId === active.raw.data.id) { // update the current active poll if it is showing on the screen
+        pollService.setActiveId(pollId);
+      }
+    });
+  }
+
+  pollService.clearActivePoll = function() {
+    active.raw = {};
+    active.cleaned = {};
+    $location.search('poll', null);
   }
 
   pollService.add = function(poll) {
@@ -69,66 +93,6 @@ app.factory('pollService', ['$http', '__env', function($http, __env) {
     return active;
   }
 
-
-  pollService.getActiveWithCleanedData = function()  {
-    var cleanedActive = {
-      id: active.data.id,
-      voteLink: active.data.voteLink,
-      users: [],
-      restaurants: [],
-      votes: []
-    };
-
-    // Extract user data
-    var activeUsers = active.data.relationships.users.data;
-    for (var i = 0; i < activeUsers.length; i++) {
-      for (var j = 0; j < active.included.length; j++) {
-        if (active.included[j].id === activeUsers[i].id) {
-          cleanedActive.users.push(active.included[j]);
-        }
-      }
-    }
-
-    // Extract restaurant data
-    if (!active.data.relationships.restaurants) { //Prevents error when poll is created without restaurants
-      cleanedActive.restaurants = [];
-    } else {
-      var activeRestaurants = active.data.relationships.restaurants.data;
-      for (var i = 0; i < activeRestaurants.length; i++) {
-        for (var j = 0; j < active.included.length; j++) {
-          if (active.included[j].id === activeRestaurants[i].id) {
-            var restaurant = active.included[j];
-            restaurant.votes = [];
-            cleanedActive.restaurants.push(restaurant);
-          }
-        }
-      }
-    }
-
-    // Extract vote data
-    for (var i = 0; i < active.included.length; i++) {
-      if (active.included[i].type === 'vote') {
-        cleanedActive.votes.push({
-          id: active.included[i].id,
-          user: active.included[i].relationships.user.data.id,
-          restaurant: active.included[i].relationships.restaurant.data.id
-        });
-
-        // Add vote to vote array in restaurant
-        for (var j = 0; j < cleanedActive.restaurants.length; j++) {
-          if (cleanedActive.restaurants[j].id === active.included[i].relationships.restaurant.data.id) {
-            cleanedActive.restaurants[j].votes.push({
-              id: active.included[i].id,
-              user: active.included[i].relationships.user.data.id
-            })
-          }
-        };
-      }
-    }
-
-    return cleanedActive;
-  }
-
   pollService.getWithId = function(id) {
     return pollMap[id];
   }
@@ -137,37 +101,16 @@ app.factory('pollService', ['$http', '__env', function($http, __env) {
     return pollMap;
   }
 
-  pollService.checkIfUserIsParticipantInActivePoll = function(userId) {
-    var allUsers = active.data.relationships.users.data;
-    for (var i = 0; i < allUsers.length; i++) {
-      if (userId === allUsers[i].id) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  pollService.checkWhatRestaurantUserHasVotedOnInActivePoll = function(userId) {
-    console.log(active);
-    var included = active.included;
-    for (var i = 0; i < included.length; i++) {
-      if (included[i].type === 'vote' && included[i].relationships.user.data.id === userId) {
-        return included[i].relationships.restaurant.data.id;
-      }
-    }
-    return null;
-  }
-
   pollService.joinActivePoll = function() {
     return $http({
         method: 'Post',
-        url: __env.API_URL + '/polls/' + active.data.id + '/users'
+        url: __env.API_URL + '/polls/' + active.raw.data.id + '/users'
       }).then(function(response) {
-        console.log('Joined poll');
+        console.log('Joined poll ' + active.raw.data.id);
       })
       .catch(function(err)  {
+        console.log('ERROR! Failed to send request to add user to poll');
         console.log(err);
-        alert(err);
       });
   }
 
@@ -176,11 +119,96 @@ app.factory('pollService', ['$http', '__env', function($http, __env) {
       method: 'Get',
       url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
-      console.log('Joined poll');
+      console.log('Joined poll ' + pollId);
       pollService.add(response.data);
-      active = pollMap[pollId];
+      pollService.setActiveId(pollId);
+
       return pollId;
     });
+  }
+
+  // Returns a "cleaned" poll, which is a poll-object that is more suitable to use 
+  // in the HTML. The function takes relevant data from "included" and puts it in their own top level key.
+  // For example: each restaurant is located in the included-array, the function finds the restaurants and creates a
+  // new restaurant-array which is easier for the HTML to go through.
+  // 
+  // The function also adds some extra shortcut keys, "userIsParticipantInPoll" for example.
+  var createCleanPollFromId = function(pollId)  {
+    var currentUserId = tokenService.getUserId();
+
+    var raw = pollMap[pollId];
+
+    var cleaned = {
+      id: raw.data.id,
+      voteLink: raw.data.voteLink,
+      users: [],
+      restaurants: [],
+      votes: [],
+      userIsParticipantInPoll: false
+    };
+
+    // Extract user data
+    var rawUsers = raw.data.relationships.users.data;
+    for (var i = 0; i < rawUsers.length; i++) {
+      for (var j = 0; j < raw.included.length; j++) {
+        if (raw.included[j].id === rawUsers[i].id) {
+          cleaned.users.push(raw.included[j]);
+        }
+
+        if (currentUserId === raw.included[j].id) {
+          cleaned.userIsParticipantInPoll = true;
+        }
+      }
+    }
+
+    // Extract restaurant data
+    if (!raw.data.relationships.restaurants) { //Prevents error when poll is created without restaurants
+      cleaned.restaurants = [];
+    } else {
+      var rawRestaurants = raw.data.relationships.restaurants.data;
+      for (var i = 0; i < rawRestaurants.length; i++) {
+        for (var j = 0; j < raw.included.length; j++) {
+          if (raw.included[j].id === rawRestaurants[i].id) {
+            var restaurant = raw.included[j];
+            restaurant.votes = [];
+            cleaned.restaurants.push(restaurant);
+          }
+        }
+      }
+    }
+
+    // Extract vote data
+    for (var i = 0; i < raw.included.length; i++) {
+      if (raw.included[i].type === 'vote') {
+        cleaned.votes.push({
+          id: raw.included[i].id,
+          user: raw.included[i].relationships.user.data.id,
+          restaurant: raw.included[i].relationships.restaurant.data.id
+        });
+
+        var thisVoteBelongsToCurrentUser = false;
+        if (currentUserId === raw.included[i].relationships.user.data.id) {
+          thisVoteBelongsToCurrentUser = true;
+        }
+
+        // Add vote to vote array in restaurant
+        for (var j = 0; j < cleaned.restaurants.length; j++) {
+          if (cleaned.restaurants[j].id === raw.included[i].relationships.restaurant.data.id) {
+            cleaned.restaurants[j].votes.push({
+              id: raw.included[i].id,
+              user: raw.included[i].relationships.user.data.id
+            });
+
+            // If user voted on this restaurant, mark it
+            if (thisVoteBelongsToCurrentUser) {
+              cleaned.restaurants[j].userVotedOnThisRestaurant = true;
+            }
+          }
+        };
+      }
+    }
+
+    return cleaned;
   }
 
   return pollService;

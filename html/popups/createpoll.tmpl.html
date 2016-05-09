@@ -1,7 +1,7 @@
 <!-- <md-dialog ng-controller="authJwt" aria-label="addPoll" ng-cloak> -->
 <md-dialog aria-label="addPoll" ng-cloak>
 
-  <div ng-controller="addPoll">
+  <div ng-controller="createPoll">
 
     <md-toolbar id="toolbar">
       <div class="md-toolbar-tools">
@@ -17,7 +17,7 @@
 
         <!--Shows error from POST-request, resets at every atempt -->
 
-        <div class="md-warn " ng-show="error ">Det gick dåligt!<br>{{error}}</div>
+        <div class="md-warn " ng-show="error "<strong>Hoppsan!</strong> <br>{{error}}</div>
 
         <form name="addPoll " ng-submit="regPoll()">
 
@@ -40,22 +40,26 @@
               <select ng-model="form.data.minute" ng-options="n for n in [] | range:0:55:5"></select>
             </md-input-container>
           </div>
-          <p>Omröstningen avslutas: <strong>{{form.data.hour}}:{{form.data.minute}}</strong></p>
+          <p>Omröstningen avslutas idag kl: <strong>{{form.data.hour}}:{{form.data.minute}}</strong></p>
 
-          <!--        Lägg till användare i omröstningen              -->
+          <!--   DEPRECATED - fanns fram tills länken fungerade
+
+              Lägg till användare i omröstningen
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
               <label>Lägg till användare med id</label>
               <input ng-model="form.data.users " type="text " value="userId ">
             </md-input-container>
-          </div>
+          </div> -->
 
           <!--        Checkbox för "Endast jag får lägga till restauranger"              -->
 
-          <div layout-gt-xs="row ">
+              <!-- NOTE: eftersom att det inte går lägga till restauranger efter att omröstningen är skapad (än) så behöver inte denna finnas  -->
+
+          <!-- <div layout-gt-xs="row ">
             <md-checkbox class="checkboxpermission" value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
-          </div>
+          </div> -->
 
           <!--        Alla restauranger som läggs in"              -->
 

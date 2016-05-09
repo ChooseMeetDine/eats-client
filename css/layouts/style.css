@@ -31,7 +31,7 @@ Pacific Blue    #00B8D4     0,184,212
 }
 
 html,body,p{
-    font-family: open sans, arial;
+    font-family: lane, open sans, arial;
 }
 
 /* RESETS: md-button., md-list */
@@ -79,7 +79,7 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 /*Inputfält, väljer font och färg */
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: open sans, arial;
+    font-family: lane, open sans, arial;
     margin-bottom: 2px;
 }
 /*Popup content wrapper*/
@@ -289,6 +289,7 @@ input[type=checkbox] + .filterCheckboxImg {
     height:100%;
     display:inline-block;
     padding:0;
+    text-transform: lowercase;
 }
 
 input[type=checkbox]:checked + .filterCheckboxImg {
@@ -320,11 +321,10 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     padding: 0;
     z-index: 2;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 2%;
+    right: 2%;
     background: none;
     border-radius: 50%;
-    zoom: 130%;
 }
 /*----------ACTIVE POLL-------------*/
 .md-button.md-raised {
@@ -334,7 +334,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 }
 .md-button.md-raised:hover {
     opacity: 0.7!important;
-    background-color: #00B8D4!important;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 #activePollPosition{
@@ -352,7 +351,7 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 }
 /*Create poll icon making the plus sign bigger*/
 #createPollIcon {
-    font-size: 6em;
+    font-size: 7em;
     color: #00B8D4;
     text-shadow: 1px 2px #818181;    
 }
