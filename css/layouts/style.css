@@ -147,6 +147,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 /*Styling all buttons*/
 .md-button{
     padding:10px;
+    font-weight: bold;
 }
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
 .actionbutton{
@@ -439,12 +440,39 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
 
 /*Mobile Device*/
 @media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
+    md-sidenav {
+        width: calc(100% - 100px);
+        min-width: calc(100% - 60px);
+        max-width: calc(100% - 60px);
+    }
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 2em;
+    }
 }
 
-@media (max-width:481px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-
+@media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    md-sidenav {
+        width: calc(100% - 100px);
+        min-width: calc(100% - 100px);
+        max-width: calc(100% - 56px);
+    }
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 2em;
+    }
 }
-@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+    */
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+}
 @media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
 @media (max-width:1025px) {
 /* everythig except big landscape tablets, laptops, and desktops */
