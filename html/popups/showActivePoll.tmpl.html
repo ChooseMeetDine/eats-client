@@ -31,7 +31,9 @@
       <hr>
       <div id="poll-dialog-bottom">
         <div class="poll-dialog-user" ng-repeat="user in active.cleaned.users">
-          <img class="poll-user-img" title="{{user.attributes.name}}" fallback-src="images/icons/ic_account.png" ng-src="user.attributes.photo" />
+          <img class="poll-user-img" title="{{user.attributes.name}}" ng-src="images/icons/ic_account.png" />
+          <!-- TODO: Use code below if users ever get profile pictures -->
+          <!-- <img class="poll-user-img" title="{{user.attributes.name}}" fallback-src="images/icons/ic_account.png" ng-src="{{user.attributes.photo}}" /> -->
         </div>
       </div>
       <!-- {{user.attributes.name}} -->
