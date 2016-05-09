@@ -3,11 +3,13 @@
 #clear{   
     background-color: #ffffff;
     color: #616161;
+    font-weight: bold;
 }
 
 #addrest{   
     background-color: #ffffff;
-    color: #616161;    
+    color: #616161;
+    font-weight: bold;
 }
 /*Skapa eller avbryt skapning av omröstning*/
 #cancel{   
@@ -16,15 +18,16 @@
     margin-top: 30px;
     margin-bottom: 0px;
     color: #616161;
+    font-weight: bold;
 }
 
-#addpoll{
-    background-color: #00B8D4;
+#addpoll{   
     margin-top: 30px;
     float: right;
     margin-left: 10px;
     background-color: #00B8D4;
     color: #fafafa;
+    font-weight: bold;
 }
 
 #add{
@@ -71,7 +74,8 @@ select{
     font-size: 16px;
     height: 34px;
     background-color: #bdbdbd;
-    color: #fafafa;    
+    color: #fafafa;
+    font-weight: bold;
 }
 
 
