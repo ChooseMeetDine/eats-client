@@ -7,7 +7,7 @@
         </md-button>
 
         <p id="poll-dialog-timeEnds" ng-show="now < active.raw.data.expiresAsDateObj">
-          [ Kl. {{active.data.attributes.expires | date: 'HH:mm'}} ]</p>
+          [ Kl. {{active.raw.data.attributes.expires | date: 'HH:mm'}} ]</p>
         <p id="poll-dialog-timeEnds" ng-show="now > active.raw.data.expiresAsDateObj">Omröstningen är avslutad</p>
 
         <h1 id="poll-dialog-name">{{active.raw.data.attributes.name}}</h1>
