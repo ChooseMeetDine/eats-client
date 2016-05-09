@@ -17,7 +17,7 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
    */
   $scope.regPoll = function() {
     var postBody = createPollPostBody();
-    if(!postBody.restaurants){
+    if (!postBody.restaurants) {
       $scope.error = 'Du måste först lägga till restauranger';
       return;
     }
@@ -37,7 +37,7 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
 
-        $scope.swap('showActivePoll'); //Hide this popup and show active poll
+        $scope.swap('showActivePoll', true, false); //Hide this popup and show active poll
         $scope.loading = false;
       })
       .catch(function(err) {

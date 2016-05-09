@@ -40,7 +40,6 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   };
 
   $scope.joinPoll = function()  {
-    $scope.swap('continueToPollAs');
+    $scope.swap('continueToPollAs', true, false);
   };
-
 }]);

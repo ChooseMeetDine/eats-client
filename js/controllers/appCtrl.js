@@ -43,7 +43,7 @@
         pollService
           .getPollIdAndSetAsActive($scope.parameterPollId)
           .then(function() {
-            $scope.dialogs.showPopup(null, 'showActivePoll', true, true);
+            $scope.dialogs.showPopup(null, 'showActivePoll', true, false);
           });
       }
     }
@@ -51,7 +51,7 @@
     // -------------------------------- //
     //  TOKEN VALIDATION AND 'ROUTING'  //
     // -------------------------------- //
-    if (tokenService.getJwt() === undefined)  { // no token at all = first time on the site
+    if (tokenService.getJwt() === undefined) { // no token at all = first time on the site
       tokenService.getAnonymousToken()
         .then(function() {
           if (userFollowedPollLink) {
@@ -60,8 +60,16 @@
         });
     } else {
       tokenService.validateToken() // token exists = has visited site before
-        .then(function() {
-          if (userFollowedPollLink) {
+        .then(function(tokenIsValid) {
+          if (!tokenIsValid && tokenService.getUserType() === 'anonymous') { //User has invalid anonymous-token, get a new one
+            tokenService
+              .getAnonymousToken()
+              .then(function() {
+                if (userFollowedPollLink) {
+                  showPollPopupFromLink();
+                }
+              });
+          } else if (userFollowedPollLink) {
             showPollPopupFromLink();
           }
           // TODO: HÄR KAN GÖRAS EN pollService.fetchAllPollsForUser ISTÄLLET FÖR ATT HA DET I showPoll-controllern..
@@ -73,13 +81,18 @@
     $scope.hide = function() {
       $mdDialog.hide();
     };
-    $scope.show = function(id) {
+    $scope.show = function(id, clickOutsideToClose, clearActivePollOnRemove) {
+      var clearActivePoll = null;
+      if (clearActivePollOnRemove) {
+        clearActivePoll = pollService.clearActivePoll;
+      }
+
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'html/popups/' + id + '.tmpl.html',
         parent: angular.element(document.body),
-        clickOutsideToClose: true,
-        onRemoving: pollService.clearActivePoll
+        clickOutsideToClose: clickOutsideToClose,
+        onRemoving: clearActivePoll
       });
     };
     $scope.cancel = function() {
@@ -88,8 +101,8 @@
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
-    $scope.swap = function(id) {
+    $scope.swap = function(id, clickOutsideToClose, clearActivePollOnRemove) {
       $scope.hide();
-      $scope.show(id);
+      $scope.show(id, clickOutsideToClose, clearActivePollOnRemove);
     };
   }
