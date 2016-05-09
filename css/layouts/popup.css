@@ -1,0 +1,136 @@
+/*POPUP WINDOW*/
+.leaflet-popup{
+    margin-bottom: 45px;
+}
+
+.leaflet-popup-content-wrapper{
+    background-color: #E0E0E0;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+    background-color: #E0E0E0;
+}
+
+/*Popup content*/
+.leaflet-popup-content{
+    padding-top: 0px !important;
+    border-radius: 10px;    
+    width: 260px;
+}
+
+/*Popup images*/
+
+#image_content{
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    position: relative;
+}
+
+#image_content img{
+    margin-top: 10px;
+    width: 240px;
+    max-height: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+    border-radius: 5px;
+}
+
+
+/*Restaurant name*/
+#image_content p{
+    color: #fafafa;
+    
+}
+
+#image_content span {
+    position: absolute;
+    bottom: 6px;
+    left: 18px;
+    color: #fafafa; 
+    letter-spacing: -1px;  
+    background: rgba(66, 66, 66, 0.63);
+    padding: 7px; 
+    font-size: 24px;
+    max-width: 70%;
+}
+
+/*Rating stars*/
+
+/*
+#rating_stars{
+    z-index: 2;
+    bottom: 190px;
+    left: 20px;
+    position: absolute;
+    }
+*/
+
+
+/*Popup button that opens "more info" menu*/
+
+#more_info_1{
+    z-index: 2;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    font-size: 4em;
+    color: #f5f5f5;
+}
+
+/*Icon background*/
+#more_info_2{
+    z-index: 1;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    font-size: 4em;
+    color: #424242;
+}
+
+
+/*Button for adding  restaurant to poll*/
+#add_to_poll_1 {
+    z-index: 2;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 5em;
+    color: #00B8D4;
+    text-shadow: 1px 2px #818181;
+}
+
+/*Icon background*/
+#add_to_poll_2 {
+    z-index: 1;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 5em;
+    color: #E0E0E0;
+    text-shadow: 1px 2px #818181;
+}
+
+/*Create poll button when hovering*/
+#add_to_poll_1:hover {
+    opacity: 0.7;
+}
+
+/*Tillagda restauranger i omröstningen*/
+
+#added_restaurants{
+    background-color: rgba(158, 158, 158, 0.9);
+    position:absolute;
+    border-radius: 10px;
+    top:20px;
+    left:820px;
+    z-index:10;
+    padding:20px;
+    max-width:380px;
+}
+
+.md-chip md-readonly{
+    background-color: green;
+    box-sizing: border-box;
+
+}

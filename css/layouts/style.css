@@ -1,17 +1,38 @@
+/*
+Author: CMD 
+Description: Eats helps you decide where to go and eat lunch.
+Version: 1.0
+Tags: Eats, CMD, Choose Meet Dine
+
+Colors
+Alabaster       #FAFAFA     250,250,250
+Wild Sand       #F5F5F5     245,245,245
+Gallery         #EEEEEE     238,238,238
+Mercury         #E0E0E0     224,224,224
+Silver          #BDBDBD     189,189,189
+Silver Chalice  #9E9E9E     158,158,158
+Boulder         #757575     117,117,117
+Dove Gray       #616161     97,97,97
+Mine Shaft      #424242     66,66,66
+Mine Shaft-1    #212121     33,33,33
+
+Anakiwa         #84FFFF     132,255,255
+Cyan/Aqua       #18FFFF     24,255,255
+Cyan/Aqua-1     #00E5FF     0,229,255
+Pacific Blue    #00B8D4     0,184,212
+
+*/
+
 /*FONTS*/
 @font-face {
-    font-family: aileron;
-    font-weight: bold;
-    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+    font-family: lane;
+    src: url("/css/fonts/lane/LANENAR_.ttf")
         format("opentype");
 }
 
-@font-face {
-    font-family: borg;
-    src: url("/css/fonts/borg/Borg.ttf")
-        format("opentype");
+html,body,p{
+    font-family: open sans, arial;
 }
-
 
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
@@ -20,76 +41,131 @@
     min-width:0;
     min-height:0;
     line-height:normal;
-    font-family: aileron, open sans, arial;
 }
-
 /*HTML,BODY*/
-html,body {
+html,body{
     height: 100%;
     overflow-x: hidden;
-    font-family: aileron, open sans, arial;
     font-size: 14px;
 }
+h1{
+    font-size: 55px;
+    font-family: lane, open sans, arial;
+}
+/*Forms*/
+form{
+    padding:5px;
+}
 
+form input{
+    background: #00b8d4;
+    border: none;
+    border-radius: 2px;
+    color: #FAFAFA;
+    padding:10px;
+}
+/*Color toolbars*/
 /*Dialogruta*/
-
 md-dialog{
     background-color: #FAFAFA;
     max-height: 92%;
     width: 500px;
+    color: #212121;
 }
-
-/*Header för dialogrutor*/
-
-.md-toolbar-tools{
-    font-family: borg, aileron, open sans, arial;
-    font-size: 42px;
-    background-color: #616161;
-    padding: 2%;    
-}
-
-h1{
-    font-size: 55px;
-    font-family: borg;
-    
-}
-
 /*Färg vid klickad checkbox */
-
-
 md-checkbox.md-checked.checkboxpermission .md-icon {
  background-color: #00B8D4;
 }
-
 /*Inputfält, väljer font och färg */
-
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: Aileron;
+    font-family: open sans, arial;
     margin-bottom: 2px;
-}   
+}
+/*Popup content wrapper*/
+leaflet-popup-content-wrapper{
+    border:none!important;
+}
+/*Menu content*/
+md-sidenav{
+    background: #424242;
+    display:block;
+    height:100vh;
+    z-index: 3;
+    overflow: hidden;
+    padding-top: 44px;
+}
+md-sidenav .md-toolbar-tools{
+    background: #757575;
+    color: #FAFAFA;
+    max-height: 100px!important;
+    height: 70px;
+}
+md-sidenav .material-icons{
+    color:#FAFAFA;
+}
+md-sidenav hr{
+    border-color: #424242;
+}
 
+md-backdrop.md-sidenav-backdrop{
+    z-index:2;
+}
+md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
+    padding-left: 0px;
+}
+/*Color backgrounds*/
+.md-content, .layout-padding{
+    background: #424242;
+    color: #FAFAFA;
+    padding: 0;
+    overflow: hidden;
+}
+/*Header för dialogrutor*/
+.md-toolbar-tools{
+    font-family: lane;
+    font-size: 36px;
+    background-color: #616161;
+    padding: 2%;    
+}
+/*Logotype div container*/
+#logotype{
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*Logotype img*/
+#logoEats{
+    width:200px;
+}
+/*Styling all buttons*/
+.md-button{
+    padding:10px;
+}  
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
-
 .actionbutton{
     background-color: #00B8D4;
     color: #fafafa;
 }
-
 /*MAP*/
 #map {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 100%;
     z-index: 0;    
 }
 
-/*LEAFLET BAR*/
+#main-meny-nav{
+    padding: 2px;
+}
+/*--------------------LEAFLET STUFF-------------------*/
 /*Zoom and show me where I am buttons*/
 .leaflet-bar{
+    zoom: 130%;
     border:none;
     border-radius: 0px;
     -webkit-box-shadow: none;
@@ -105,58 +181,46 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     text-align: -webkit-center;
     border:none;
 }
+/*Show me where I am icon*/
 .leaflet-control-locate a{
     padding:2px;
 }
 
-/*MAIN MENU & FILTER MENU*/
+/*---------------MAIN MENU & FILTER MENU-------------*/
 /*Buttons*/
 #menubuttons{
+    background:#424242;
+    color: #FAFAFA;
     position: absolute;
     top: 0;
     left: 0;
-    background: #FAFAFA;
     z-index: 4;
 }
+   
 .menubutton{
-    font-size: 160%;
+    font-size: 180%;
     border-radius: 0px;
     padding:5px 10px;
     float: left;
 }
 
-/*Menu content*/
-md-sidenav{
-    display:block;
-    height:100vh;
-    z-index: 3;
-    padding-top:40px;
-    overflow: hidden;
+.menubutton:hover{
+    background: #212121;
 }
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
-}
-
-/*MAIN MENU*/
-/*Main menu links to profile and settings*/
-.linksInMainMenu{
-    padding-left:20px!important;
-    padding-right:20px!important;
-    margin-top:10px!important;
-    cursor:pointer;
-}
-.linksInMainMenu:hover{
-    background-color:#EEEEEE;
+/*Login or register button i main menu*/
+.login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
+    float: left;
+    margin-left: 2%;
 }
 
-/*LOGIN*/
-/*Login button i main menu*/
-.login{
-    width:50%;
-    height:30px;
+#main-meny-nav{
+    padding:10px;
 }
 
-/*FILTER MENU*/
+/*-------------------FILTER MENU----------------------*/
 /*Filter menu undertitles*/
 .filter-undertitle {
     font-size: 14px;
@@ -167,12 +231,79 @@ md-backdrop.md-sidenav-backdrop{
     margin: 20px;
 }
 
-/*Checkboxes*/
-#filterMenuChoices{
-    width: 100%;
-    margin-top: 20px;
+#filter_menu td{
+    width:25%;
+    margin:3.1% 4% 3.1% 4%;
+    padding:0;
+    display:block;
+    float:left;
+}
+.checkboxImg{
+    position:relative;
+    width:100%;
+    height:100%;   
 }
 
+md-checkbox.md-checked.normalCheckbox .md-icon {
+    background-color: rgb(0, 184, 212);
+}
+
+
+.textOverlay{
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:2;
+    border-radius: 50%;
+}
+.checkboxImg .text{
+    position:absolute;
+    z-index:3;
+    text-align:center;
+    top:40%;
+    width:100%;
+    display:none;
+}
+.checkboxImg:hover .textOverlay{
+    background-color:rgba(33, 33, 33, 0.5);
+}
+.checkboxImg:hover .text, .checkboxImg:hover .textOverlay{
+    display: block;
+    cursor:pointer;
+}
+
+input[type=checkbox] {
+    display:none;
+}
+input[type=checkbox] + .checkboxImg .textOverlay{
+    box-shadow: -1px -1px 1px #212121;
+}
+input[type=checkbox]:checked + .checkboxImg .textOverlay{
+    box-shadow: 1px 1px 1px #212121;
+}
+input[type=checkbox] + .checkboxImg {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding:0;
+}
+
+input[type=checkbox]:checked + .checkboxImg {
+    -webkit-filter: none; /* Chrome, Safari, Opera */
+    filter: none;
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding:0;
+}
+
+.checkboxImg .filterImg{
+    width:100%;
+    margin:0;
+    padding:0;
+}
 /*Filter menu star rating*/
 .star-rating {
     line-height: 32px;
@@ -181,17 +312,37 @@ md-backdrop.md-sidenav-backdrop{
     padding: 10px;
     margin: 10px;
 }
-
-/*CREATE POLL*/
+/*--------------------CREATE POLL---------------------*/
 /*Create poll button*/
 #createPollButton {
-    padding:0;
+    color: #212121;
+    padding: 0;
     z-index: 2;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 2%;
+    right: 2%;
     background: none;
     border-radius: 50%;
+}
+/*----------ACTIVE POLL-------------*/
+.md-button.md-raised {
+    color: #fff;
+    background-color: #00B8D4;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.md-button.md-raised:hover {
+    opacity: 0.7!important;
+    background-color: #00B8D4!important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+#activePollPosition{
+    position:absolute;
+    bottom:0px;
+    z-index:2;
+}
+#activePollPosition button{
+    padding: 10px;
+    margin: 2px;
 }
 /*Create poll button when hovering*/
 #createPollIcon:hover {
@@ -199,41 +350,14 @@ md-backdrop.md-sidenav-backdrop{
 }
 /*Create poll icon making the plus sign bigger*/
 #createPollIcon {
-    font-size: 6em;
+    font-size: 7em;
     color: #00B8D4;
-    text-shadow: 1px 2px #818181;
-    
+    text-shadow: 1px 2px #818181;    
 }
-
-/*POPUP*/
-/*Popup content wrapper*/
-leaflet-popup-content-wrapper{
-    border:none!important;
+.md-dialog-content {
+    color: #212121;
 }
-
-/*Popup content*/
-.leaflet-popup-content{
-    padding-top: 0px !important;
-    width: 160px;
-    padding: 10px;
-}
-/*Popup images*/
-.leaflet-popup-content img{   
-    width: 140px;
-}
-/*Popup button that says mer info*/
-.leaflet-popup-content .trigger{
-    border: none;
-    font-size: 14px;
-}
-/*Container for Popup button that says mer info*/
-#moreInfoButtonContent {
-    width: 140px;
-    text-align: right;
-    padding-top: 4px;
-}
-
-/*MORE INFO ABOUT RESTAURANTS*/
+/*-------------MORE INFO ABOUT RESTAURANTS------------*/
 /*Infoslider with more info about restaurant*/
 #moreInfoSlider .md-no-proxy {
     padding:10px!important;
@@ -241,10 +365,6 @@ leaflet-popup-content-wrapper{
 /*Infoslider content width*/
 .infomenu{
     width: 500px;
-}
-/*Infoslider img width*/
-.infoimg{
-    width: 350px;
 }
 
 /*Add restaurant button for save restaurant*/
@@ -254,7 +374,6 @@ leaflet-popup-content-wrapper{
     bottom: 100px;
     z-index:2;
 }
-
 /*hide md-dialog-container*/
 .display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
     display: none !important;
@@ -262,4 +381,71 @@ leaflet-popup-content-wrapper{
 /*hide link to leaflet*/
 .leaflet-control-attribution a{
     display: none!important;
+}
+
+
+
+/*ADD RESTAURANT*/
+.sliderTitle{
+    width:50%;
+}
+.slider{
+    width:40%;
+}
+.slider, .sliderTitle{
+    display:block;
+    float:left;
+    padding:0;
+}
+.slider:first-of-type{
+    margin-right:10%;
+}
+
+#placeMarker{
+    background:#FAFAFA;
+    color:#212121;
+}
+
+#submitRestaurant{
+    float:right;
+}
+
+#category_checkboxes td{
+    width:100px;
+    height:100px;
+    background:red;
+    margin:5px;
+}
+input[type=checkbox] + .addRestaurantCheckboxImg {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    width:10%;
+    height:10%;
+    padding:0;
+}
+
+input[type=checkbox]:checked + .addRestaurantCheckboxImg {
+    -webkit-filter: none; /* Chrome, Safari, Opera */
+    filter: none;
+    width:10%;
+    height:10%;
+    padding:0;
+}
+/*Mobile Device*/
+@media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */ 
+}
+
+@media (max-width:481px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+    
+}
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (max-width:1025px) { 
+/* everythig except big landscape tablets, laptops, and desktops */ 
+    .checkboxImg:hover .textOverlay{
+        display:none;
+    }
+    .checkboxImg .text{
+            display:block;
+    }
 }

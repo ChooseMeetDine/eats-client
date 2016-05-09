@@ -1,28 +1,28 @@
-app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window', function($scope, pollService, $http, $q, $window) {
-
+app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window', '$location', '__env', function($scope, pollService, $http, $q, $window, $location, __env) {
   $scope.polls = pollService.getAll();
+  parameterPollId = $location.search().poll; // poll ID from URL
 
   $scope.switchActivePoll = function(poll) {
-      pollService.setActiveId(poll.data.id);
+    pollService.setActiveId(poll.data.id);
   }
 
-  var getPolls = function(){
+  var getPolls = function() {
     var currentDate = new Date();
     $scope.displayDate = currentDate.getTime();
 
     var voteMap = {};
-        voteMap.user = [];
-        voteMap.restaurant = [];
-        voteMap.vote = [];
-        voteMap.group = [];
+    voteMap.user = [];
+    voteMap.restaurant = [];
+    voteMap.vote = [];
+    voteMap.group = [];
 
     $http({
-        methos: 'GET',
-        url:"http://128.199.48.244:7000/polls"
+      methos: 'GET',
+      url: __env.API_URL + '/polls'
     }).then(function successCallback(response) {
 
       var pollRequests = [];
-      for (let i = 0; i < response.data.data.length; i++) {
+      for (var i = 0; i < response.data.data.length; i++) {
         pollRequests.push(getSinglePoll(response.data.data[i].id))
       }
 
@@ -33,10 +33,10 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q','$window',
     });
   };
 
-  var getSinglePoll = function(pollId){
+  var getSinglePoll = function(pollId) {
     return $http({
       methos: 'GET',
-      url:"http://128.199.48.244:7000/polls/" + pollId
+      url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
       pollService.add(response.data);
     });

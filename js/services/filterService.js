@@ -11,7 +11,7 @@ app.factory('filterService', function(){
           }
         },
         2:{
-          name: 'Grill',
+          name: 'Snabbmat',
           type: 'group',
           visible: true,
           layerParams:{
@@ -76,6 +76,14 @@ app.factory('filterService', function(){
         },
         10:{
           name: 'Other',
+          type: 'group',
+          visible: true,
+          layerParams:{
+            showOnSelector: false
+          }
+        },
+        11:{
+          name: 'Café',
           type: 'group',
           visible: true,
           layerParams:{

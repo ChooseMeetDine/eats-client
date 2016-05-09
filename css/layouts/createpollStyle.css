@@ -1,9 +1,3 @@
-/*Knappar*/
-
-.md-raised{
-    padding: 5px;
-}
-
 /*Lägg till restauranger*/
 
 #clear{   
@@ -29,6 +23,8 @@
     margin-top: 30px;
     float: right;
     margin-left: 10px;
+    background-color: #00B8D4;
+    color: #fafafa;
 }
 
 #add{

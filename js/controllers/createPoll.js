@@ -1,13 +1,13 @@
 /**
- * Controller for adding polls (POST /polls)
+ * Controller for creating polls (POST /polls)
  */
 // app.controller('addPoll', function($scope, $http) {
-app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', function($scope, $http, pollService, modeService) {
+app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
-  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour:'12'; //initialize values if not set
-  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute:'00'; //initialize values if not set
+  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : '12'; //initialize values if not set
+  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : '00'; //initialize values if not set
 
   /**
    * 1. Creates POST-body
@@ -17,22 +17,27 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
    */
   $scope.regPoll = function() {
     var postBody = createPollPostBody();
+    if (!postBody.restaurants) {
+      $scope.error = 'Du måste först lägga till restauranger';
+      return;
+    }
+
     $scope.error = null;
     $scope.loading = true;
 
     $http({
         method: 'POST',
-        url: 'http://128.199.48.244:7000/polls',
+        url: __env.API_URL + '/polls',
         headers: {
           'Content-Type': 'application/json'
         },
         data: postBody
       }).then(function(response) {
         $scope.clearForm();
-        response.data.data.attributes.exipres = new Date (response.data.data.attributes.exipres);
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
-        $scope.swap('showActivePoll'); //Hide this popup and show active poll
+
+        $scope.swap('showActivePoll', true, false); //Hide this popup and show active poll
         $scope.loading = false;
       })
       .catch(function(err) {
@@ -74,19 +79,21 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', func
 
     if (data.restaurants) {
       poll.restaurants = [];
-      for (let i = 0; i < data.restaurants.length; i++) {
+      for (var i = 0; i < data.restaurants.length; i++) {
         poll.restaurants.push(data.restaurants[i].id);
       }
     }
 
+    // NOTE: Bortkommenterad eftersom att detta inte längre behövs (länk finns nu)
     //Splits string at commas and trims away spaces
-    if (data.users) {
-      poll.users = data.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
-    }
+    // if (data.users) {
+    //   poll.users = data.users.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
+    // }
 
-    if (data.allowNewRestaurants) {
-      poll.allowNewRestaurants = data.allowNewRestaurants;
-    }
+    // NOTE: Bortkommenterad eftersom att det inte i dagsläget går att lägga till restauranger när omröstningen är skapad
+    // if (data.allowNewRestaurants) {
+    //   poll.allowNewRestaurants = data.allowNewRestaurants;
+    // }
     return poll;
   };
 
