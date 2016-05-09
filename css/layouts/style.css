@@ -411,18 +411,15 @@ input[type=checkbox]:checked + .filterCheckboxImg {
         min-width: calc(100% - 100px);
         max-width: calc(100% - 56px);
     }
-    .md-toolbar-tools {
-        font-size: 1em;
-    }
-    #poll-dialog-name {
-        font-size: 2em;
-    }
 }
 
 @media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
     */
     .md-toolbar-tools {
         font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 3em;
     }
 }
 @media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
@@ -432,6 +429,8 @@ input[type=checkbox]:checked + .filterCheckboxImg {
         display:none;
     }
     .checkboxImg .text{
+            font-size: 1.2em;
             display:block;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 }
