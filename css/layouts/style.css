@@ -1,5 +1,5 @@
 /*
-Author: CMD 
+Author: CMD
 Description: Eats helps you decide where to go and eat lunch.
 Version: 1.0
 Tags: Eats, CMD, Choose Meet Dine
@@ -32,6 +32,11 @@ Pacific Blue    #00B8D4     0,184,212
 
 html,body,p{
     font-family: lane, open sans, arial;
+}
+
+.expiredPoll {
+  background-color: #424242 !important;
+  color: #fafafa !important;
 }
 
 /* RESETS: md-button., md-list */
@@ -126,7 +131,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     font-family: lane;
     font-size: 36px;
     background-color: #616161;
-    padding: 2%;    
+    padding: 2%;
 }
 /*Logotype div container*/
 #logotype{
@@ -143,7 +148,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 .md-button{
     padding:10px;
     font-weight: bold;
-}  
+}
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
 .actionbutton{
     background-color: #00B8D4;
@@ -157,7 +162,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     right: 0;
     bottom: 0;
     height: 100%;
-    z-index: 0;    
+    z-index: 0;
 }
 
 #main-meny-nav{
@@ -197,7 +202,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     left: 0;
     z-index: 4;
 }
-   
+
 .menubutton{
     font-size: 180%;
     border-radius: 0px;
@@ -239,10 +244,10 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     display:block;
     float:left;
 }
-.checkboxImg{
+.filterCheckboxImg{
     position:relative;
     width:100%;
-    height:100%;   
+    height:100%;
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
@@ -254,10 +259,9 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
     position:absolute;
     height:100%;
     width:100%;
-    z-index:2;
     border-radius: 50%;
 }
-.checkboxImg .text{
+.filterCheckboxImg .text{
     position:absolute;
     z-index:3;
     text-align:center;
@@ -265,10 +269,12 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
     width:100%;
     display:none;
 }
-.checkboxImg:hover .textOverlay{
+.filterCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .textOverlay{
     background-color:rgba(33, 33, 33, 0.5);
+    z-index:2;
+
 }
-.checkboxImg:hover .text, .checkboxImg:hover .textOverlay{
+.filterCheckboxImg:hover .textOverlay,.filterCheckboxImg:hover .text, .createRestaurantCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .text{
     display: block;
     cursor:pointer;
 }
@@ -276,13 +282,13 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
 input[type=checkbox] {
     display:none;
 }
-input[type=checkbox] + .checkboxImg .textOverlay{
+input[type=checkbox] + .filterCheckboxImg .textOverlay{
     box-shadow: -1px -1px 1px #212121;
 }
-input[type=checkbox]:checked + .checkboxImg .textOverlay{
+input[type=checkbox]:checked + .filterCheckboxImg .textOverlay{
     box-shadow: 1px 1px 1px #212121;
 }
-input[type=checkbox] + .checkboxImg {
+input[type=checkbox] + .filterCheckboxImg {
     -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
     filter: grayscale(100%);
     width:100%;
@@ -292,7 +298,7 @@ input[type=checkbox] + .checkboxImg {
     text-transform: lowercase;
 }
 
-input[type=checkbox]:checked + .checkboxImg {
+input[type=checkbox]:checked + .filterCheckboxImg {
     -webkit-filter: none; /* Chrome, Safari, Opera */
     filter: none;
     width:100%;
@@ -301,7 +307,7 @@ input[type=checkbox]:checked + .checkboxImg {
     padding:0;
 }
 
-.checkboxImg .filterImg{
+.filterCheckboxImg .filterImg{
     width:100%;
     margin:0;
     padding:0;
@@ -353,7 +359,7 @@ input[type=checkbox]:checked + .checkboxImg {
 #createPollIcon {
     font-size: 7em;
     color: #00B8D4;
-    text-shadow: 1px 2px #818181;    
+    text-shadow: 1px 2px #818181;
 }
 .md-dialog-content {
     color: #212121;
@@ -384,54 +390,6 @@ input[type=checkbox]:checked + .checkboxImg {
     display: none!important;
 }
 
-
-
-/*ADD RESTAURANT*/
-.sliderTitle{
-    width:50%;
-}
-.slider{
-    width:40%;
-}
-.slider, .sliderTitle{
-    display:block;
-    float:left;
-    padding:0;
-}
-.slider:first-of-type{
-    margin-right:10%;
-}
-
-#placeMarker{
-    background:#FAFAFA;
-    color:#212121;
-}
-
-#submitRestaurant{
-    float:right;
-}
-
-#category_checkboxes td{
-    width:100px;
-    height:100px;
-    background:red;
-    margin:5px;
-}
-input[type=checkbox] + .addRestaurantCheckboxImg {
-    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-    filter: grayscale(100%);
-    width:10%;
-    height:10%;
-    padding:0;
-}
-
-input[type=checkbox]:checked + .addRestaurantCheckboxImg {
-    -webkit-filter: none; /* Chrome, Safari, Opera */
-    filter: none;
-    width:10%;
-    height:10%;
-    padding:0;
-}
 /*Mobile Device*/
 @media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
     md-sidenav {
@@ -447,7 +405,7 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
     }
 }
 
-@media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+@media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     md-sidenav {
         width: calc(100% - 100px);
         min-width: calc(100% - 100px);
@@ -456,7 +414,7 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
 }
 
 @media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
-    */ 
+    */
     .md-toolbar-tools {
         font-size: 1em;
     }
@@ -465,8 +423,8 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
     }
 }
 @media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (max-width:1025px) { 
-/* everythig except big landscape tablets, laptops, and desktops */ 
+@media (max-width:1025px) {
+/* everythig except big landscape tablets, laptops, and desktops */
     .checkboxImg:hover .textOverlay{
         display:none;
     }

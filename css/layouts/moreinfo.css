@@ -7,13 +7,12 @@
 /*Infoslider content width*/
 .infomenu{
     width: 500px;
-
 }
 
 /*Infoslider img width*/
 #infoImgContainer{
     position:relative;
-    height:30vh;
+    max-height:35vh;
     width:100%;
     margin:0;
     padding:0;
@@ -23,10 +22,8 @@
 #infoImg{
     position:relative;
     width: 100%;
-    float:left;
-    
+    float:left;  
 }
-
 
 md-list-item{
     color: white;
@@ -35,31 +32,33 @@ md-list-item{
 
 #restaurantname{
     text-align: center;    
-    background-color: white;
 }
 
-#label{
-    position:relative;
+#moreInfoLabel{
     float:left;
-    background-color: #00B8D4;
-    margin:0;
+    background-color:#757575;
     padding:0;
+    margin:0;
+    max-width:400px;
+    overflow:hidden;
 }
 
-.moreInfoCategoryIcon{    
-    width:10%;
-    margin:2.5%;
+.moreInfoCategoryIcon{
+    max-width: 12%;
     float:left;
-    display:block;    
+    margin: 1% 2% 1% 2%;
+    
 }
 
 .moreInfoCategoryIcon img{
     width: 100%;
+    float:left;
+    
 }
 
 #extrainfo{
     position:relative;
-    padding: 10px;
+    padding: 20px 40px 20px 40px;
     float:left;
 }
 
