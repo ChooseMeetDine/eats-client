@@ -71,6 +71,9 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     console.log('SocketIO: listening on poll id: ' + pollId);
     socket.on(pollId, function(data) {
       pollService.add(data);
+      if (pollId === active.raw.data.id) { // update the current active poll if it is showing on the screen
+        pollService.setActiveId(pollId);
+      }
     });
   }
 
