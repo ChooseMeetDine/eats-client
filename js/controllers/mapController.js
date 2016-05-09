@@ -43,8 +43,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     },
     defaults: {
       zoomControlPosition: 'topright',
-      locationControlPosition: 'topright',
-      tap: true
+      locationControlPosition: 'topright'
     },
     controls: {
       custom: [
@@ -87,7 +86,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   // Event listener for location found
   // Draws a marker on map where location was found
   $scope.$on('leafletDirectiveMap.locationfound', function(event) {
-    if(!userMarker) {
+    if (!userMarker) {
       userMarker = {
         lat: $scope.center.lat,
         lng: $scope.center.lng,
@@ -108,7 +107,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   // Event listener for clicks on map
   $scope.$on('leafletDirectiveMap.click', function(event, args) {
     if ($scope.mode.active === 'CREATE_RESTAURANT') {
-      if(!createRestaurantMarker) {
+      if (!createRestaurantMarker) {
         createRestaurantMarker = {
           lat: args.leafletEvent.latlng.lat,
           lng: args.leafletEvent.latlng.lng,
