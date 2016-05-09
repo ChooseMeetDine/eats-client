@@ -142,6 +142,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 /*Styling all buttons*/
 .md-button{
     padding:10px;
+    font-weight: bold;
 }  
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
 .actionbutton{
