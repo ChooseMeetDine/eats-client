@@ -450,3 +450,7 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
             display:block;
     }
 }
+/*LOADING PROGRESS BAR*/
+md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
+    background-color: #00B8D4;
+}
