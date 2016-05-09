@@ -1,14 +1,22 @@
 /*ADD RESTAURANT*/
-.addRestaurantPopup{
-    color:#FAFAFA;
-}
-.slider{
+#ratingslider{
     margin:20px 0 0 0;
+}
+#ratingslider .md-thumb:after, #ratingslider .md-track{
+    background-color: rgb(0, 184, 212) !important;
+    border-color: rgb(0, 184, 212) !important;
+}
+#ratingslider .md-focus-thumb, #ratingslider .md-focus-ring, #ratingslider .md-sign {
+    background-color: rgb(0, 184, 212);
+}
+#ratingslider .md-sign:after{
+    border-top-color: rgb(0, 184, 212);
 }
 
 #placeMarker{
     background:#FAFAFA;
-    color:#212121;
+    color:#616161;
+    font-weight: bold;
 }
 
 #submitRestaurant{
@@ -19,12 +27,12 @@
     width:20%;
     float:left;
 }
-.addRestaurantCheckboxImg{
+.createRestaurantCheckboxImg{
     position:relative;
     width:100%;
     height:100%;   
 }
-.addRestaurantCheckboxImg .text{
+.createRestaurantCheckboxImg .text{
     position:absolute;
     z-index:3;
     text-align:center;
@@ -33,14 +41,14 @@
     display:none;
     color:white;
 }
-.addRestaurantCheckboxImg img{
+.createRestaurantCheckboxImg img{
     position:relative;
     padding:0;
     margin:0;
     width:100%;
 }
 
-input[type=checkbox] + .addRestaurantCheckboxImg {
+input[type=checkbox] + .createRestaurantCheckboxImg {
     -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
     filter: grayscale(100%);
     width:100%;
@@ -48,7 +56,7 @@ input[type=checkbox] + .addRestaurantCheckboxImg {
     box-shadow: 
 }
 
-input[type=checkbox]:checked + .addRestaurantCheckboxImg {
+input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     -webkit-filter: none; /* Chrome, Safari, Opera */
     filter: none;
     width:100%;

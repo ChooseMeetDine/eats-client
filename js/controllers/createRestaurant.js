@@ -1,11 +1,9 @@
-app.controller('addRestaurant', ['$scope', '$http', '$window', 'modeService', 'createRestaurantService', '__env', function($scope, $http, $window, modeService, createRestaurantService, __env) {
-
+app.controller('createRestaurant', ['$scope', '$http', '$window', 'modeService', 'createRestaurantService', '__env', function($scope, $http, $window, modeService, createRestaurantService, __env) {
   $scope.form = createRestaurantService.getForm();
   $scope.getLocationOnMap = function() {
     modeService.setMode('CREATE_RESTAURANT');
     $scope.hide();
   };
-  
     $scope.regRest = function() {
     var restaurant = {
       'name': $scope.form.data.name,
