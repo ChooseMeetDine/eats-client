@@ -319,11 +319,10 @@ input[type=checkbox]:checked + .checkboxImg {
     padding: 0;
     z-index: 2;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 2%;
+    right: 2%;
     background: none;
     border-radius: 50%;
-    zoom: 130%;
 }
 /*----------ACTIVE POLL-------------*/
 .md-button.md-raised {
@@ -351,7 +350,7 @@ input[type=checkbox]:checked + .checkboxImg {
 }
 /*Create poll icon making the plus sign bigger*/
 #createPollIcon {
-    font-size: 6em;
+    font-size: 7em;
     color: #00B8D4;
     text-shadow: 1px 2px #818181;    
 }

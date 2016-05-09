@@ -42,7 +42,8 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     },
     defaults: {
       zoomControlPosition: 'topright',
-      locationControlPosition: 'topright'
+      locationControlPosition: 'topright',
+      tap: true
     },
     controls: {
       custom: [

@@ -42,7 +42,10 @@ app.factory('tokenService', ['$window', '$http', '__env', function($window, $htt
         return true;
       })
       .catch(function(err) {
-        console.log(err);
+        //If invalid token, clear tokendata but save userType and userName
+        //that can be used to see who was logged in before
+        $window.localStorage.removeItem('jwtToken');
+        $window.localStorage.removeItem('userId');
         return false;
       });
   }

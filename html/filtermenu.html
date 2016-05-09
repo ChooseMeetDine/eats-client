@@ -3,25 +3,14 @@
     
     <!-- Menu title -->
     <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Filter</h1>
+        <h1 class="md-toolbar-tools">Filtrera</h1>
     </md-toolbar>
+    
+    <!-- Filter Menu content -->
     <md-content layout-padding>
-    <!-- Filter Menu -->
     <div ng-controller="filterController">
-    <!-- Types of filter -->
-        <div>
-            <span class="filter-undertitle">		
-                Typ av mat:
-            </span>
             <md-list ng-cloak>
             </md-list>    
-            <!--
-            <table>
-                <tr ng-repeat="row in rows">
-                    <td ng-repeat="checkbox in checkboxes">{{ checkbox }}</td>
-                </tr>
-            </table>
-            -->
             <table id="filter_menu" style="width:100%">
                 <tr>
                     <td>
@@ -108,7 +97,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
     </div>
     </md-content>
 </md-sidenav>
