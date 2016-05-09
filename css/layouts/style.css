@@ -31,7 +31,7 @@ Pacific Blue    #00B8D4     0,184,212
 }
 
 html,body,p{
-    font-family: open sans, arial;
+    font-family: lane, open sans, arial;
 }
 
 /* RESETS: md-button., md-list */
@@ -79,7 +79,7 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 /*Inputfält, väljer font och färg */
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: open sans, arial;
+    font-family: lane, open sans, arial;
     margin-bottom: 2px;
 }
 /*Popup content wrapper*/
@@ -332,7 +332,6 @@ input[type=checkbox]:checked + .checkboxImg {
 }
 .md-button.md-raised:hover {
     opacity: 0.7!important;
-    background-color: #00B8D4!important;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 #activePollPosition{
