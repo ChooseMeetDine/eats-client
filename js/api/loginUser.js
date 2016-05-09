@@ -13,6 +13,6 @@ app.controller('loginUser', ['$scope', '$window', 'tokenService', function($scop
 
   $scope.logoutUser = function() {
     tokenService.logout();
-    $scope.dialogs.showAdvanced(null, 'continueToPollAs');
+    $scope.dialogs.showPopup(null, 'continueToPollAs', false, false);
   }
 }]);

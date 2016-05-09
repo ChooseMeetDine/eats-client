@@ -124,7 +124,7 @@
     border-radius: 10px;
     top:20px;
     left:65%;
-    z-index:10;
+    z-index:-1;
     padding:20px;
     max-width:380px;
 }

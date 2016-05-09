@@ -104,7 +104,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     if ($scope.mode.active === 'CREATE_RESTAURANT') {
       createRestaurantService.setClickedPosition(args.leafletEvent.latlng.lat, args.leafletEvent.latlng.lng);
       modeService.setMode('DEFAULT');
-      $scope.dialogs.showAdvanced(args.leafletEvent, 'createRestaurant');
+      $scope.dialogs.showPopup(args.leafletEvent, 'createRestaurant', false, false);
     }
   });
 
