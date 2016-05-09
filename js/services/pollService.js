@@ -71,7 +71,6 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     console.log('SocketIO: listening on poll id: ' + pollId);
     socket.on(pollId, function(data) {
       pollService.add(data);
-      pollService.setActiveId(pollId);
     });
   }
 
