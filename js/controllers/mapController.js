@@ -37,7 +37,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     },
     events: {
       map: {
-        enable: ['locationfound'],
+        enable: ['locationfound', 'popupopen'],
         logic: 'emit'
       }
     },
@@ -128,6 +128,12 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       modeService.setMode('DEFAULT');
       $scope.dialogs.showPopup(args.leafletEvent, 'createRestaurant', false, false);
     }
+  });
+
+  // Event listener for clicks on markers - centers map on marker
+  $scope.$on('leafletDirectiveMap.popupopen', function(event, args) {
+    $scope.center.lat = args.leafletEvent.popup._latlng.lat;
+    $scope.center.lng = args.leafletEvent.popup._latlng.lng;
   });
 
 
