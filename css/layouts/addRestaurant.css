@@ -1,11 +1,57 @@
-#bottom{
-
+/*ADD RESTAURANT*/
+.addRestaurantPopup{
+    color:#FAFAFA;
 }
-
-#submitRestaurant{
-margin-left: 5px;
+.slider{
+    margin:20px 0 0 0;
 }
 
 #placeMarker{
-
+    background:#FAFAFA;
+    color:#212121;
 }
+
+#submitRestaurant{
+    float:right;
+    margin-left: 5px;
+}
+#category_checkboxes td{
+    width:20%;
+    float:left;
+}
+.addRestaurantCheckboxImg{
+    position:relative;
+    width:100%;
+    height:100%;   
+}
+.addRestaurantCheckboxImg .text{
+    position:absolute;
+    z-index:3;
+    text-align:center;
+    top:40%;
+    width:100%;
+    display:none;
+    color:white;
+}
+.addRestaurantCheckboxImg img{
+    position:relative;
+    padding:0;
+    margin:0;
+    width:100%;
+}
+
+input[type=checkbox] + .addRestaurantCheckboxImg {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    width:100%;
+    padding:0;
+    box-shadow: 
+}
+
+input[type=checkbox]:checked + .addRestaurantCheckboxImg {
+    -webkit-filter: none; /* Chrome, Safari, Opera */
+    filter: none;
+    width:100%;
+    padding:0;
+}
+

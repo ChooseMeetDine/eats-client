@@ -10,81 +10,14 @@
     
     <md-dialog-content>
         <div class="md-dialog-content">
-            <form name="addRestaurant" ng-submit="regRestaurant()"> 
+            <form name="addRestaurant" ng-submit="regRest()"> 
                 <md-input-container class="md-block">
                         <label>Restaurangnamn</label>
-                        <input ng-model="name" type="text" value="name" required>
+                        <input ng-model="form.data.name" type="text" value="name" required>
                 </md-input-container>
                 <md-input-container class="md-block">
                         <label>Info</label>
-                        <input ng-model="info" type="text" value="info" required>
-                </md-input-container>
-                <md-input-container class="md-block">
-                <table id="category_checkboxes">
-                <tr>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="sushi"/>
-                        <label class="addRestaurantCheckboxImg" for="sushi">
-                            <img class="addRestaurantFilterImg" src="../images/icons/1.png">
-                        </label>
-                        
-                    </td>
-                </tr>
-                    <!--<td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="fastfood"/>
-                        <label class="addRestaurantCheckboxImg" for="fastfood">
-                            <img class="addRestaurantFilterImg" src="../images/icons/2.png">
-                        </label>
-                    </td>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="burgers"/>
-                        <label class="addRestaurantCheckboxImg" for="burgers">
-                            <img class="addRestaurantFilterImg" src="../images/icons/3.png">
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="vegetarian"/>
-                        <label class="addRestaurantCheckboxImg" for="vegetarian">
-                            <img class="addRestaurantFilterImg" src="../images/icons/4.png">
-                        </label>
-                    </td>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="salad"/>
-                        <label class="addRestaurantCheckboxImg" for="salad">
-                            <img class="addRestaurantFilterImg" src="../images/icons/5.png">
-                        </label>
-                    </td>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="pizza"/>
-                        <label class="addRestaurantCheckboxImg" for="pizza">
-                            <img class="addRestaurantFilterImg" src="../images/icons/6.png">
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="indian"/>
-                        <label class="addRestaurantCheckboxImg" for="indian">
-                            <img class="addRestaurantFilterImg" src="../images/icons/7.png" alt="indiskt">
-                        </label>
-                    </td>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="italian"/>
-                        <label class="addRestaurantCheckboxImg" for="italian">
-                            <img class="addRestaurantFilterImg" src="../images/icons/8.png">
-                        </label>
-                    </td>
-                    <td>
-                        <input type='checkbox' checked="checked" name='thing' value='valuable' id="thai"/>
-                        <label class="addRestaurantCheckboxImg" for="thai">
-                            <img class="addRestaurantFilterImg" src="../images/icons/9.png">
-                        </label>
-                    </td>
-                </tr>-->
-
-            </table>
+                        <input ng-model="form.data.info" type="text" value="info" required>
                 </md-input-container>
                 <div>
                     <div>  
@@ -92,11 +25,101 @@
                             Betyg:
                         </span>
                     </div>
-                    <md-slider class="slider" ng-model="rating" md-discrete step="1" min="1" max="5" aria-label="rating" required>
+                    <md-slider class="slider" ng-model="form.data.rating" md-discrete step="1" min="1" max="5" aria-label="rating" required>
                     </md-slider>
                 </div>
+                <table id="category_checkboxes">
+                <tr>
+                    <!--<td ng-repeat="category in categories">
+                        <input type='checkbox' name='thing' value='valuable' id="add{{category}}" class="category" aria-label="{{category}}"/>
+                        <label class="addRestaurantCheckboxImg" for="add{{category}}">
+                            <img class="addRestaurantFilterImg" src="../images/icons/{{category}}.png">
+                        </label>
+                        
+                    </td>-->
+                    
+                    <td>
+                        <input type='checkbox' name='thing' value='valuable' id="addSushi" ng-model="form.data.categories[0]">
+                        <label class="addRestaurantCheckboxImg" for="addSushi">
+                            <span class="textOverlay"></span>
+                            <p class="text">Sushi</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/1.png">
+                        </label>
+                        
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addFastfood" ng-model="form.data.categories[1]">
+                        <label class="addRestaurantCheckboxImg" for="addFastfood">
+                            <span class="textOverlay"></span>
+                            <p class="text">Snabbmat</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/2.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addBurgers" ng-model="form.data.categories[2]">
+                        <label class="addRestaurantCheckboxImg" for="addBurgers">
+                            <span class="textOverlay"></span>
+                            <p class="text">Hamburgare</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/3.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addVegetarian" ng-model="form.data.categories[3]">
+                        <label class="addRestaurantCheckboxImg" for="addVegetarian">
+                            <span class="textOverlay"></span>
+                            <p class="text">Vegetariskt</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/4.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addSalad" ng-model="form.data.categories[4]">
+                        <label class="addRestaurantCheckboxImg" for="addSalad">
+                            <span class="textOverlay"></span>
+                            <p class="text">Sallad</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/5.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addPizza" ng-model="form.data.categories[5]">
+                        <label class="addRestaurantCheckboxImg" for="addPizza">
+                            <span class="textOverlay"></span>
+                            <p class="text">Pizza</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/6.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addIndian" ng-model="form.data.categories[6]">
+                        <label class="addRestaurantCheckboxImg" for="addIndian">
+                            <span class="textOverlay"></span>
+                            <p class="text">Indiskt</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/7.png" alt="indiskt">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addItalian" ng-model="form.data.categories[7]">
+                        <label class="addRestaurantCheckboxImg" for="addItalian">
+                            <span class="textOverlay"></span>
+                            <p class="text">Italienskt</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/8.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addThai" ng-model="form.data.categories[8]">
+                        <label class="addRestaurantCheckboxImg" for="addThai">
+                            <span class="textOverlay"></span>
+                            <p class="text">Thai</p>
+                            <img class="addRestaurantFilterImg" src="../images/icons/9.png">
+                        </label>
+                    </td>
+                </tr>
+            </table>
+                
+                <md-input-container class="md-block">
+                        <label>Länk till bild</label>
+                        <input ng-model="form.data.photo" type="text" value="photo" required>
+                </md-input-container>
                <div id="bottom">
-                 <md-button class="md-raised md-primary" id="placeMarker" ng-click="hidePopup(); showAddButton(); placeMarkerOnClick();">Välj plats på kartan</md-button>
+                 <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap()">Välj plats på kartan</md-button>
                 <!--<input ng-model="photo" type="file" value="Ladda upp bild" required>-->
                 <input id="submitRestaurant" type="submit" value="Lägg till restaurang">
                 </div>
