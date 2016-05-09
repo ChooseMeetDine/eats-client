@@ -1,0 +1,24 @@
+<md-dialog id="container" aria-label="Login">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h1>Pofilsida</h1>
+        <span flex></span>
+
+      </div>
+    </md-toolbar>
+
+<md-dialog-content>
+    <!-- First tab wich includes the "login" page with input forms and logos -->
+            <div id="profil">
+            <md-content ng-controller="getUserId" class="md-padding">
+                <p>{{getUserId(10)}}</p>
+                <p>{{data}}</p>
+            </md-content>
+            </div>
+</md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()">
+        Avbryt
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

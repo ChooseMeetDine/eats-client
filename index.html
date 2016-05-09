@@ -87,6 +87,8 @@
     <script src="js/api/addUser.js"></script>
     <script src="js/api/loginUser.js"></script>
     <script src="js/api/addRestaurant.js"></script>
+    <script src="js/api/getUserInformation.js"></script>
+    <script src="js/api/getUserId.js"></script>
 
     <script src="js/filters.js"></script>
 
@@ -108,7 +110,6 @@
 
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
-      <div ng-include="'html/profilepage.html'"></div>
       <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
       <div ng-include="'html/activepolls.html'"></div>
 
