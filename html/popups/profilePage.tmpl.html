@@ -1,0 +1,31 @@
+<md-dialog id="container" ng-controller="getUserId" aria-label="Login">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h1>Profilsida - {{data.data.attributes.name}}</h1>
+        <span flex></span>
+
+      </div>
+    </md-toolbar>
+
+<div id="content">
+<md-dialog-content>
+    <!-- First tab wich includes the "login" page with input forms and logos -->
+            <div id="profil">
+            <md-content  class="md-padding">
+                <div id="profilePic">
+                    <i class="material-icons md-150">account_circle</i>
+                </div>
+                <div id="profileInfo">
+                    <p>Namn: {{data.data.attributes.name}}</p>
+                    <p>E-mail: {{data.data.attributes.email}}</p>
+                </div>
+            </md-content>
+            </div>
+</md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()">
+        Avbryt
+      </md-button>
+    </md-dialog-actions>
+</div>
+</md-dialog>

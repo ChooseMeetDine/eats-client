@@ -16,9 +16,10 @@ app.factory('createRestaurantService', function(){
     form.data = {};
   };
 
-  createRestaurantService.setClickedPosition = function(lat, lng) {
-    form.data.lat = lat;
-    form.data.lng = lng;
+  createRestaurantService.setClickedPosition = function(marker) {
+    /*form.data.lat = lat;
+    form.data.lng = lng;*/
+    form.data.marker = marker;
   }
 
   return createRestaurantService;

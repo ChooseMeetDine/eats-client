@@ -1,0 +1,96 @@
+/*ADD RESTAURANT*/
+#ratingslider{
+    margin:20px 0 0 0;
+}
+#ratingslider .md-thumb:after, #ratingslider .md-track{
+    background-color: rgb(0, 184, 212) !important;
+    border-color: rgb(0, 184, 212) !important;
+}
+#ratingslider .md-focus-thumb, #ratingslider .md-focus-ring, #ratingslider .md-sign {
+    background-color: rgb(0, 184, 212);
+}
+#ratingslider .md-sign:after{
+    border-top-color: rgb(0, 184, 212);
+}
+
+#placeMarker{
+    background:#FAFAFA;
+    color:#616161;
+    font-weight: bold;
+}
+
+#submitRestaurant{
+    float:right;
+    margin-left: 5px;
+}
+#category_checkboxes td{
+    width:20%;
+    float:left;
+}
+.createRestaurantCheckboxImg{
+    position:relative;
+    width:100%;
+    height:100%;   
+}
+.createRestaurantCheckboxImg .text{
+    position:absolute;
+    z-index:3;
+    text-align:center;
+    top:40%;
+    width:100%;
+    display:none;
+    color:white;
+}
+.createRestaurantCheckboxImg img{
+    position:relative;
+    padding:0;
+    margin:0;
+    width:100%;
+}
+
+input[type=checkbox] + .createRestaurantCheckboxImg {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    width:100%;
+    padding:0;
+    box-shadow: 
+}
+
+input[type=checkbox]:checked + .createRestaurantCheckboxImg {
+    -webkit-filter: none; /* Chrome, Safari, Opera */
+    filter: none;
+    width:100%;
+    padding:0;
+}
+
+#createRestaurantPopup{
+    background:#FAFAFA;
+    margin:0 0 0 20px;
+    padding: 15px;
+    font-weight: bold;
+    width:200px;
+    border-radius: 10px;
+    text-align: center;
+}
+#createRestaurantPopup button{
+    width: 120px;
+    background:#00B8D4;
+    color:#FAFAFA;
+    padding: 0;
+    margin: 0 25px 0 25px;
+    border-radius: 3px;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration:none;
+    font-weight: normal;
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+#createRestaurantPopup button:hover{
+    opacity: 0.7;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0 ,0.26);
+}
+

@@ -11,8 +11,8 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.now = new Date(new Date() + 20000);
 
-  // $scope.activePollCleaned = pollService.getActiveWithCleanedData();
-  // TODO (eventuellt): 
+
+  // TODO (eventuellt):
   // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
   // --- Eller ska det räcka med att göra en POST på en restaurang man inte redan röstat på?
 
@@ -24,19 +24,21 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   }, 1000);
 
   $scope.vote = function(restaurant) {
-    $http({
-      method: 'POST',
-      url: __env.API_URL + '/polls/' + $scope.active.cleaned.id + '/votes',
-      headers: { 'Content-Type': 'application/json' },
-      data: {
-        restaurantId: restaurant
-      }
-    }).then(function(response) {
-      console.log('User voted on a restaurant');
-    }).catch(function(error) {
-      console.log('error');
-      console.log(error);
-    })
+    if($scope.now < $scope.active.raw.data.expiresAsDateObj){
+      $http({
+        method: 'POST',
+        url: __env.API_URL + '/polls/' + $scope.active.cleaned.id + '/votes',
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+          restaurantId: restaurant
+        }
+      }).then(function(response) {
+        console.log('User voted on a restaurant');
+      }).catch(function(error) {
+        console.log('error');
+        console.log(error);
+      })
+    }
   };
 
   $scope.joinPoll = function()  {
