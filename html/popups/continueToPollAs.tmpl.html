@@ -1,12 +1,9 @@
 <!-- This is the main window for login and register -->
-<md-dialog aria-label="Login">
+<md-dialog id="continue_dialog" aria-label="Login">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>Hur vill du fortsätta?</h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="cancel()">
-        <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-      </md-button>
     </div>
   </md-toolbar>
 
@@ -15,15 +12,8 @@
   <md-dialog-actions layout="row">
  
        <div ng-controller="continueToPollAs">
-     
-
-          <md-button id="continue_as_user" class="md-raised md-primary"  ng-click="continueAsUser()" class="md-raised">
-            Fortsätt som {{username}}
-          </md-button>
-
                
-               
-               <md-button  ng-if="isUserWithInvalidToken" class="md-raised md-primary" > Du är inte längre inloggad som {{username}} </md-button>
+<!--               <md-button  ng-if="isUserWithInvalidToken" class="md-raised md-primary" > Du är inte längre inloggad som {{username}} </md-button>-->
                
                          <md-button id="anonymous_button" ng-click="continueAsAnonymous()" class="md-raised md-primary"> Fortsätt som anonym </md-button>
       </div>
@@ -51,6 +41,14 @@
           <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Fel användarnamn eller lösenord</p>
         </form>
+        
+        
+
+          <md-button id="continue_as_user" class="md-raised md-primary"  ng-click="continueAsUser()" class="md-raised">
+            Fortsätt som {{username}}
+          </md-button>
+        
+        
       </md-content>
     </div>
 
@@ -85,13 +83,4 @@
     </div>
   </md-dialog-content>
 
-
-  <!-- Cancel buttons for sending the form and closing the window-->
-
-
-  <md-dialog-actions layout="row">
-    <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
-      Avbryt
-    </md-button>
-  </md-dialog-actions>
 </md-dialog>

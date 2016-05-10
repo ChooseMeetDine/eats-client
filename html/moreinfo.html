@@ -10,7 +10,7 @@
            <!-- Restaurant image -->
             <md-content ng-controller="getCategory" layout-padding>
                 <div id="infoImgContainer">
-                    <img id="infoImg" fallback-src="images/icons/1.png" ng-src="{{ content.photo }}">
+                    <img id="infoImg" fallback-src="images/moreinfo_grey.svg" ng-src="{{ content.photo }}">
                 </div>
                <!-- Type of food images -->      
                 <md-list id="moreInfoLabel" ng-repeat="categories in restaurants" ng-if="content.id == categories.id">

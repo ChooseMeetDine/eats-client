@@ -1,7 +1,7 @@
 /*Dialogfönster för registrera eller logga in*/
 #container{
     background-color: #fafafa;
-    font-weight: bold;     
+    font-weight: bold;
 }
 
 /*Header för logga in och registrera*/
@@ -30,7 +30,7 @@
     background-color: #fafafa;
 }
 
-/*Logga in sm användare*/
+/*Logga in som användare*/
 
 #login{
     display: inline-block;  
@@ -56,21 +56,27 @@
 
 }
 
+/*"Fortsätt som" dialog ruta*/
 
+
+#continue_dialog{
+}
+
+/*Fortsätt som inloggad användare*/
 #continue_as_user{
     background-color: #fafafa;
     color: #616161;
-    right: 10px;
 }
 
 #continue_as_user:hover{
     background-color: #00B8D4;
     color: #fafafa;
 }
-
+/*Fortsätt som anonym */
 #anonymous_button{
     background-color: #fafafa;
     color: #616161;
+    float: left;
 }
 
 
