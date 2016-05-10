@@ -1,3 +1,16 @@
+/*Dialogfönster för registrera eller logga in*/
+#container{
+    background-color: #fafafa;
+    font-weight: bold;     
+}
+
+/*Header för logga in och registrera*/
+
+.login-register_header{
+    font-size: 2em;
+}
+/*Registrera användare*/
+
 #register{
     float: right;
     display: inline-block;
@@ -8,9 +21,16 @@
     background-color: #fafafa;
 }
 
+#register_button{
+    background-color: #00B8D4;
+    
+}
+
 #register_form{
     background-color: #fafafa;
 }
+
+/*Logga in sm användare*/
 
 #login{
     display: inline-block;  
@@ -23,20 +43,12 @@
 
 }
 
-#container{
-    background-color: #fafafa;
-    font-weight: bold;     
-}
-
 #login_button{
     background-color: #00B8D4;
 }
 
-#register_button{
-    background-color: #00B8D4;
-    
-}
 
+/*Avbryt aktivitet*/
 
 #cancel_login-register{
     background-color: #ffffff;
@@ -44,9 +56,23 @@
 
 }
 
-.login-register_header{
-    font-size: 2em;
+
+#continue_as_user{
+    background-color: #fafafa;
+    color: #616161;
+    right: 10px;
 }
+
+#continue_as_user:hover{
+    background-color: #00B8D4;
+    color: #fafafa;
+}
+
+#anonymous_button{
+    background-color: #fafafa;
+    color: #616161;
+}
+
 
 @media (max-width:535px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #register {
