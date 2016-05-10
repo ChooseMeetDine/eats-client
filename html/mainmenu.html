@@ -11,7 +11,7 @@
   </md-toolbar>
   <md-content id="main-meny-nav" ng-controller="mainMenu" layout-padding>
     <md-list ng-cloak layout-padding>
-      <md-list-item class="linksInMainMenu" ng-if="isUserWithValidToken" href="#aboutModal" data-toggle="modal" data-target="#profilsida" md-expando>
+      <md-list-item class="linksInMainMenu" ng-if="isUserWithValidToken" ng-click="dialogs.showPopup($event, 'profilePage', true, false)" data-target="#profilsida" md-expando>
         <p>{{ tokenData.name }}</p>
         <i class="material-icons">account_circle</i>
       </md-list-item>
@@ -25,8 +25,7 @@
         <p>Skapa ny grupp</p>
         <i class="material-icons">person_add</i>
       </md-list-item>
-
-      <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showPopup($event, 'addrestaurant', false, false);">
+      <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showPopup($event, 'createRestaurant', true, false);">
         <p>Lägg till restaurang</p>
         <i class="material-icons">add</i>
       </md-list-item>
@@ -41,7 +40,6 @@
       <md-button ng-if="isUserWithValidToken" class="login md-raised" ng-click="logoutUser()">
         Logga ut
       </md-button>
-
     </md-list>
   </md-content>
 </md-sidenav>
