@@ -109,11 +109,11 @@
                         <label>Länk till bild</label>
                         <input ng-model="form.data.photo" type="text" value="photo" required>
                 </md-input-container>
-                <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap()">Välj plats på kartan</md-button>
+                <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap(); hide();">Välj plats på kartan</md-button>
                 <div id="bottom">
                     <!--<input ng-model="photo" type="file" value="Ladda upp bild" required>-->
                     <md-button id="submitrestaurant" class="md-raised md-primary" type="submit "> Lägg till restaurang </md-button>
-                    <md-button id="cancel" class="md-raised md-primary" ng-click="cancel() ">Avbryt</md-button>
+                    <md-button id="cancel" class="md-raised md-primary" ng-click="cancel()">Avbryt</md-button>
                 </div>
             </form>            
         </div>
