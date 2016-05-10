@@ -1,0 +1,21 @@
+<section id="moreInfoMenu" ng-controller="slideMenu">
+    <div flex></div>
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp infomenu" md-component-id="info">
+        <div id="moreInfoSlider">
+            
+            <!-- Name of restaurant -->
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">{{ content.name }}</h1>
+            </md-toolbar>
+            
+            <!-- More info about the restaurant -->
+            <md-content  layout-padding>
+                <md-list>
+                    <md-list-item><img class="infoimg" src="{{ content.photo }}"></md-list-item>
+                    <md-list-item>{{ content.extra.info }}</md-list-item>
+                    <md-list-item>Restaurangen har fått {{ content.rating }} av 5 stjärnor i betyg</md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+    </md-sidenav>
+</section>

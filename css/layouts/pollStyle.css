@@ -1,0 +1,138 @@
+.poll-dialog{
+    background-color:rgb(97, 97, 97);
+    max-width: 500px;
+}
+
+#poll-dialog-restaurants{
+    color: #FFF;
+}
+
+.poll-dialog-vote-object{
+    color: #2f2f2f;
+    background-color: #f4f4f4;
+    padding: 2%;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px #2c2c2c
+}
+
+.poll-dialog-vote-object:hover{
+    background-color: #b0e88d;
+}
+
+.poll-dialoge-vote-object-has-vote{
+    background-color: #c7efae;
+    box-shadow: inset 0 1px 5px #000;
+    cursor: default;
+}
+
+.poll-dialoge-vote-object-has-vote:hover{
+    background-color: #c7efae;
+}
+
+.poll-dialog-vote-object:active{
+    position: relative;
+    top: 1px;
+}
+
+.material-icons.thumb{
+    color: #616161;
+    margin-right: 5px;
+}
+
+.number-of-votes{
+    float: right;
+    padding-right: 10px;
+    margin-top: 5px;
+}
+
+#share-text{
+    text-align: right;
+    margin: 0;
+    color: #bfbfbf;
+    font-size: 12px;
+}
+
+#clipvboard-field {
+    margin-bottom: 25px;
+}
+
+.btn.share {
+    border: 1px solid #909090;
+    float:right;
+    padding-bottom: 0px;
+    border-radius: 0;
+}
+
+#vote-url-field {
+    border: 1px 0px solid #909090;
+    float: right;
+    width: 40%;
+    height: 37px;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.material-icons.copyButton{
+    color: #ffffff;
+}
+
+#rest-text{
+    margin: 0;
+}
+
+#content-dialog{
+    padding: 5px;
+}
+
+#poll-dialog-top{
+    width: 100%;    
+    margin-bottom: 30px;
+    overflow:hidden;
+}
+
+#poll-dialog-name{
+    margin-top:0;
+    float: left;
+    color: #FFF;
+}
+
+#poll-dialog-timeEnds{
+    display: inline-block;
+    float: right;
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#poll-dialog-settings{
+    border-top:0;
+    float: right;
+    padding: 0;
+    margin-right: 0;
+}
+
+#close{
+    border-top:0;
+    float: right;
+    padding: 0;
+    margin-left: 0;  
+}
+
+#poll-dialog-bottom{
+    width: 100%;    
+    margin: 0;
+    overflow:hidden;
+    padding-bottom: 5px;
+}
+
+.poll-dialog-user{
+    float: left;
+    margin-right: 2%;
+}
+
+.poll-user-img{
+    border-radius: 50%;
+    max-height: 32px;
+    max-width: 32px
+}

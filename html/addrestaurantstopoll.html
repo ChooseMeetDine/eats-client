@@ -1,0 +1,15 @@
+<div id="added_restaurants" ng-controller="addRestaurantsToPoll">
+    <h3>Restauranger i omröstningen</h3>
+    <p>Tryck på klar när du har lagt in samtliga restauranger du vill ha i omröstningen</p>
+    <form name="addPoll" ng-submit="done()">
+        <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
+            <md-chip-template id="restaurant_name_chip" ng-click="remove($chip)">
+                {{$chip.name}} x
+            </md-chip-template>
+        </md-chips>
+
+        <div layout-gt-sm="row ">
+            <md-button class="md-raised" type="button" ng-click="done()"> Klar! </md-button>
+        </div>
+    </form>
+</div>

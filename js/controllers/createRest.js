@@ -1,14 +1,15 @@
 app.controller('createRest', function($scope, $mdDialog, $mdMedia) {
   $scope.showAdvanced = function(ev) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'pages/templates/createRestaurant.tmpl.html',
+      templateUrl: 'html/popups/createRestaurant.tmpl.html',
       parent: angular.element(document.body),
       targetEvent: ev,
-      clickOutsideToClose:true,
+      clickOutsideToClose: true,
       fullscreen: useFullScreen
-    })};
+    })
+  };
 });
 
 function DialogController($scope, $mdDialog) {
