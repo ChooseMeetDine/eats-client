@@ -85,7 +85,7 @@ app.factory('filterService', function(){
         11:{
           name: 'Café',
           type: 'group',
-          visible: true,
+          visible: false,
           layerParams:{
             showOnSelector: false
           }

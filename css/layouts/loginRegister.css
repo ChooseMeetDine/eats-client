@@ -43,3 +43,35 @@
     color: #616161;
 
 }
+
+.login-register_header{
+    font-size: 2em;
+}
+
+@media (max-width:535px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    #register {
+        float: left;
+        width: 90%;
+    }
+    #register_form{
+        width: 100%;
+}
+
+    #register_button{
+        float: right;
+        
+}
+    #login{
+        width: 90%;
+
+}
+    #login_form{
+        width: 100%;
+}
+    #login_button{
+        float: right;
+}
+    .login-register_header{
+        font-size: 2em;
+    }
+       
