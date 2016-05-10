@@ -5,7 +5,7 @@
     <title>Let's Eats!</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    
     <!-- Angular -->
     <script src="libs/bower/lib/angular/angular.js"></script>
 
@@ -30,6 +30,7 @@
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.css' rel='stylesheet' />
+    <script src="libs/bower/lib/Leaflet.label/dist/leaflet.label.js"></script>
 
     <!-- Angular Leaflet Directive -->
     <script src="libs/angular-leaflet-directive.min.js"></script>
@@ -56,6 +57,9 @@
             <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
             <![endif]-->
 
+    <!-- SocketIO -->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
     <!-- AngularJS App & Controllers & Views -->
     <script src="js/app.js"></script>
 
@@ -68,13 +72,14 @@
     <script src="js/controllers/showPoll.js"></script>
     <script src="js/controllers/activePolls.js"></script>
     <script src="js/controllers/addRestaurantsToPoll.js"></script>
-    <script src="js/controllers/addRestaurant.js"></script>
+    <script src="js/controllers/createRestaurant.js"></script>
     <script src="js/controllers/mainMenu.js"></script>
     <script src="js/controllers/profilePage.js"></script>
     <script src="js/controllers/slider.js"></script>
     <script src="js/controllers/continueToPollAs.js"></script>
     <script src="js/controllers/filterController.js"></script>
-
+    <script src="js/controllers/createPoll.js"></script>
+    <script src="js/controllers/getCategory.js"></script>
 
     <script src="js/services/pollService.js"></script>
     <script src="js/services/modeService.js"></script>
@@ -82,11 +87,10 @@
     <script src="js/services/filterService.js"></script>
     <script src="js/services/tokenService.js"></script>
 
-    <script src="js/api/getRestaurants.js"></script>
-    <script src="js/api/addPoll.js"></script>
     <script src="js/api/addUser.js"></script>
     <script src="js/api/loginUser.js"></script>
-    <script src="js/api/addRestaurant.js"></script>
+    <script src="js/api/getUserInformation.js"></script>
+    <script src="js/api/getUserId.js"></script>
 
     <script src="js/filters.js"></script>
 
@@ -95,7 +99,10 @@
     <link rel="stylesheet" type="text/css" href="css/layouts/ratingStyle.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/pollStyle.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/createpollStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/layouts/moreinfo.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/loginRegister.css">
+    <link rel="stylesheet" type="text/css" href="css/layouts/profilePage.css">
+    <link rel="stylesheet" type="text/css" href="css/layouts/createRestaurant.css">
   </head>
   <link rel="stylesheet" type="text/css" href="css/layouts/popup.css">
 
@@ -106,8 +113,13 @@
 
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
-      <div ng-include="'html/profilepage.html'"></div>
-      <div ng-include="'html/votepage.html'" ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'"></div>
+      <!-- Create poll button -->
+      <div ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'">
+        <md-button id="createPollButton" ng-click="dialogs.showPopup($event, 'createpoll', true, false)">
+          <i class="material-icons md-48" id="createPollIcon" title="Starta en ny omröstning">add_circle_outline</i>
+        </md-button>
+      </div>
+
       <div ng-include="'html/activepolls.html'"></div>
 
       <div ng-show="mode.active === 'ADD_RESTAURANTS_MODE'">
@@ -117,7 +129,6 @@
       <!-- <div ng-include="'html/logotype.html'"></div> -->
       <div ng-controller="mapController">
         <leaflet center="center" markers="markers" layers="layers" defaults="defaults" controls="controls" tiles="tiles" style="position:absolute; height: 100%; width: 100%"></leaflet>
-        <!--<button type="button" class="btn btn-default" ng-click="toogleKyckling()" ng-disabled="true">Remove Hillshade Overlay</button>-->
       </div>
 
       <div ng-include="'html/moreinfo.html'"></div>

@@ -3,10 +3,10 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
     $scope.toggleFilterMenu = buildToggler('filter');
     $scope.toggleMoreInfoMenu = buildToggler('info');
     $scope.toggleAddRestaurant = addRestaurantToggler();
-    
+
     $scope.createInfoScopes = function(restaurant){
       $scope.content = restaurant;
-    }       
+    }
 
     function buildToggler(navID) {
       return function() {
@@ -16,7 +16,7 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
             $mdSidenav('filter').close();
             $mdSidenav('info').close();
           }else if(navID == 'filter'){
-            $mdSidenav('main').close(); 
+            $mdSidenav('main').close();
             $mdSidenav('info').close();
           }else{
             $mdSidenav('main').close();
@@ -26,9 +26,7 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
     }
     function addRestaurantToggler() {
         return function() {
-            $mdSidenav('main').close(); 
+            $mdSidenav('main').close();
         }
     }
-    
-  })
-  
+});
