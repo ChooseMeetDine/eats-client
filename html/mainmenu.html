@@ -36,10 +36,10 @@
       <md-button ng-if="!isUserWithValidToken" class="login md-raised" ng-click="dialogs.showPopup($event, 'login', true, false)">
         Logga in / registrera dig
       </md-button>
-
       <md-button ng-if="isUserWithValidToken" class="login md-raised" ng-click="logoutUser()">
         Logga ut
       </md-button>
     </md-list>
+    
   </md-content>
 </md-sidenav>

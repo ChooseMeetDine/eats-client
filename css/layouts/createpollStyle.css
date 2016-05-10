@@ -94,3 +94,27 @@ select option{
 md-input-container.md-block {
     margin-bottom: 5px;
 }
+
+
+/*Vill du gå med i omröstningen?*/
+
+
+#join{
+    color: #FAFAFA;
+    
+
+}
+
+#joinpoll_button{
+    background-color: #00B8D4;
+    padding-right: 15px;
+    padding-left: 10px;
+
+    text-align: center;
+        
+}
+
+#dont_join_poll_button{
+    background-color: #FAFAFA;
+    color: black;
+}
