@@ -9,41 +9,39 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.active = pollService.getActive();
 
-  $scope.userIsParticipantInPoll = pollService.checkIfUserIsParticipantInActivePoll(tokenService.getUserId());
-  $scope.restaurantIdUserHasVotedOn = pollService.checkWhatRestaurantUserHasVotedOnInActivePoll(tokenService.getUserId());
   $scope.now = new Date(new Date() + 20000);
 
-  $scope.activePollCleaned = pollService.getActiveWithCleanedData();
-  // TODO (eventuellt): 
+
+  // TODO (eventuellt):
   // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
   // --- Eller ska det räcka med att göra en POST på en restaurang man inte redan röstat på?
 
 
   // Updates the date every second to be able to compare to the expiration date of the poll
-  // Disables joining the poll when it has 10 seconds left (to let the user have time to log in if need be)
+  // Disables joining the poll when it has 20 seconds left (to let the user have time to log in if need be)
   $interval(function() {
     $scope.now = new Date(new Date().getTime() + 20000);
   }, 1000);
 
   $scope.vote = function(restaurant) {
-    $http({
-      method: 'POST',
-      url: __env.API_URL + '/polls/' + $scope.activePollCleaned.id + '/votes',
-      headers: { 'Content-Type': 'application/json' },
-      data: {
-        restaurantId: restaurant
-      }
-    }).then(function(response) {
-      alert('Bravo, du röstade! När detta händer ska realtidsuppdateringar visa din röst. Istället kommer sidan uppdateras när du klickat på OK (temporär lösning)!');
-      $window.location.reload();
-    }).catch(function(error) {
-      console.log('error');
-      console.log(error);
-    })
+    if($scope.now < $scope.active.raw.data.expiresAsDateObj){
+      $http({
+        method: 'POST',
+        url: __env.API_URL + '/polls/' + $scope.active.cleaned.id + '/votes',
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+          restaurantId: restaurant
+        }
+      }).then(function(response) {
+        console.log('User voted on a restaurant');
+      }).catch(function(error) {
+        console.log('error');
+        console.log(error);
+      })
+    }
   };
 
   $scope.joinPoll = function()  {
-    $scope.swap('continueToPollAs');
+    $scope.swap('continueToPollAs', true, false);
   };
-
 }]);

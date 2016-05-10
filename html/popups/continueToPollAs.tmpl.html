@@ -37,7 +37,6 @@
         </md-dialog-actions>
       </md-content>
 
-
       <!-- First tab wich includes the "login" page with input forms and logos -->
       <md-content class="md-padding">
         <label>Logga in</label>
@@ -53,6 +52,9 @@
             <input ng-model="password" type="password">
           </md-input-container>
           <input type="submit" value="Logga in">
+
+          <p ng-if=loginStatus.error>Fel användarnamn eller lösenord</p>
+
         </form>
       </md-content>
 
@@ -76,6 +78,9 @@
             <input ng-model="password" type="password">
           </md-input-container>
           <input type="submit" value="Registrera">
+
+          <p ng-if="regStatus.error">Gick inte att registrera användaren.</p>
+
         </form>
       </md-content>
   </md-dialog-content>

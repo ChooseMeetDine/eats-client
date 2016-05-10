@@ -1,8 +1,8 @@
 /**
- * Controller for adding polls (POST /polls)
+ * Controller for creating polls (POST /polls)
  */
 // app.controller('addPoll', function($scope, $http) {
-app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
+app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';
@@ -17,7 +17,7 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__e
    */
   $scope.regPoll = function() {
     var postBody = createPollPostBody();
-    if(!postBody.restaurants){
+    if (!postBody.restaurants) {
       $scope.error = 'Du måste först lägga till restauranger';
       return;
     }
@@ -34,10 +34,10 @@ app.controller('addPoll', ['$scope', '$http', 'pollService', 'modeService', '__e
         data: postBody
       }).then(function(response) {
         $scope.clearForm();
-        response.data.data.attributes.expires = new Date(response.data.data.attributes.expires);
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
-        $scope.swap('showActivePoll'); //Hide this popup and show active poll
+
+        $scope.swap('showActivePoll', true, false); //Hide this popup and show active poll
         $scope.loading = false;
       })
       .catch(function(err) {
