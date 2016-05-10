@@ -2,11 +2,11 @@
   <div id="activePollPosition" layout="row">
     <div class="buttonAndPopupContainer
 " ng-repeat="poll in polls | activeAndRecentlyExpired">
-      <div class="emptyExpiredPollPopup" ng-class="{'expiredPollPopup bounce animated': (poll.data.hasExpired && !poll.data.userHasSeenExpiredPopup)}">Avslutad!</div>
+      <div class="emptyExpiredPollPopup" ng-class="{'expiredPollPopup bounce animated': (poll.raw.data.hasExpired && !poll.raw.data.userHasSeenExpiredPopup)}">Avslutad!</div>
 
       <md-button class="md-raised activePollButton
-" ng-class="{'expiredPoll': (poll.data.hasExpired)}" ng-click="switchActivePoll(poll);dialogs.showPopup($event, 'showActivePoll', true, true)">
-        {{poll.data.attributes.name}}
+" ng-class="{'expiredPoll': (poll.raw.data.hasExpired)}" ng-click="switchActivePoll(poll);dialogs.showPopup($event, 'showActivePoll', true, true)">
+        {{poll.raw.data.attributes.name}}
       </md-button>
     </div>
   </div>

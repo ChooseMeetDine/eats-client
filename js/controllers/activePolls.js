@@ -26,11 +26,11 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window'
   };
 
   $scope.switchActivePoll = function(poll) {
-    if (poll.data.hasExpired) {
-      poll.data.userHasSeenExpiredPopup = true;
+    if (poll.raw.data.hasExpired) {
+      poll.raw.data.userHasSeenExpiredPopup = true;
     }
 
-    pollService.setActiveId(poll.data.id);
+    pollService.setActiveId(poll.raw.data.id);
   }
 
   var getPolls = function() {
