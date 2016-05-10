@@ -31,6 +31,7 @@ Pacific Blue    #00B8D4     0,184,212
 }
 
 html,body,p{
+    font-weight: bold;
     font-family: lane, open sans, arial;
 }
 
@@ -80,6 +81,7 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: lane, open sans, arial;
+    font-weight: bold;
     margin-bottom: 2px;
 }
 /*Popup content wrapper*/
