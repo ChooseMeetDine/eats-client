@@ -86,8 +86,21 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
   pollService.add = function(poll) {
     poll.data.voteLink = __env.CLIENT_URL + '?poll=' + poll.data.id;
     poll.data.expiresAsDateObj = new Date(poll.data.attributes.expires);
+    poll.data.userHasSeenExpiredPopup = false;
+    setHasExpired(poll);
+
     pollMap[poll.data.id] = poll;
   }
+
+  var setHasExpired = function(poll) {
+    if (new Date() > poll.data.expiresAsDateObj)  {
+      poll.data.hasExpired = true;
+    } else {
+      setTimeout(function() {
+        poll.data.hasExpired = true;
+      }, poll.data.expiresAsDateObj - new Date() - 20000);
+    }
+  };
 
   pollService.getActive = function() {
     return active;

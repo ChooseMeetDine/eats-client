@@ -17,7 +17,7 @@
 
         <!--Shows error from POST-request, resets at every atempt -->
 
-        <div class="md-warn " ng-show="error "<strong>Hoppsan!</strong> <br>{{error}}</div>
+        <div class="md-warn " ng-show="error " <strong>Hoppsan!</strong> <br>{{error}}</div>
 
         <form name="addPoll " ng-submit="regPoll()">
 
@@ -37,7 +37,7 @@
               <label id="hourlabel">Timme</label>
               <select id="hourselect" ng-model="form.data.hour" ng-options="n for n in [] | range:0:23:1"></select>
               <label id="minutelabel">Minut</label>
-              <select ng-model="form.data.minute" ng-options="n for n in [] | range:0:55:5"></select>
+              <select ng-model="form.data.minute" ng-options="n for n in [] | range:0:55:1"></select>
             </md-input-container>
           </div>
           <p>Omröstningen avslutas idag kl: <strong>{{form.data.hour}}:{{form.data.minute}}</strong></p>
@@ -55,7 +55,7 @@
 
           <!--        Checkbox för "Endast jag får lägga till restauranger"              -->
 
-              <!-- NOTE: eftersom att det inte går lägga till restauranger efter att omröstningen är skapad (än) så behöver inte denna finnas  -->
+          <!-- NOTE: eftersom att det inte går lägga till restauranger efter att omröstningen är skapad (än) så behöver inte denna finnas  -->
 
           <!-- <div layout-gt-xs="row ">
             <md-checkbox class="checkboxpermission" value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>
