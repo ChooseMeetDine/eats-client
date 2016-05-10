@@ -1,7 +1,10 @@
 <div ng-controller="activePolls">
-  <div id="activePollPosition">
-    <md-button class="md-raised" ng-class="{'expiredPoll': (now > poll.data.expiresAsDateObj)}" ng-repeat="poll in polls | activeAndRecentlyExpired" ng-click="switchActivePoll(poll);dialogs.showPopup($event, 'showActivePoll', true, true)">
-      {{poll.data.attributes.name}}
-    </md-button>
+  <div id="activePollPosition"   layout="row">
+    <span ng-repeat="poll in polls | activeAndRecentlyExpired">
+      <div id="expiredPoll" ng-if="(now > poll.data.expiresAsDateObj)">Avslutad! </div>
+      <md-button class="md-raised" ng-class="{'expiredPoll': (now > poll.data.expiresAsDateObj)}" ng-click="switchActivePoll(poll);dialogs.showPopup($event, 'showActivePoll', true, true)">
+        {{poll.data.attributes.name}}
+      </md-button>
+    </div>
   </div>
 </div>

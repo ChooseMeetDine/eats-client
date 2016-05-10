@@ -363,6 +363,14 @@ input[type=checkbox]:checked + .checkboxImg {
 .md-dialog-content {
     color: #212121;
 }
+
+#expiredPoll {
+  border: 10px solid transparent;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: red;
+}
+
 /*-------------MORE INFO ABOUT RESTAURANTS------------*/
 /*Infoslider with more info about restaurant*/
 #moreInfoSlider .md-no-proxy {
