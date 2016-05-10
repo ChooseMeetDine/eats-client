@@ -1,0 +1,16 @@
+/*MD-Icons*/
+.material-icons.md-150{ 
+    font-size: 150px;
+}
+#profilePic{
+    width:100%;
+    text-align: center;
+}
+#profileInfo{
+    font-size: 1em;
+    line-height: 1em;
+    margin:auto;
+    width:50%;
+    border-top: 1px solid #212121;
+    padding: 20px;
+}

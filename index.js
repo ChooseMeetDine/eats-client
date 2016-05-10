@@ -1,8 +1,11 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 
 app.use(express.static(__dirname));
 
-app.listen(4444, function() {
-  console.log('Server for Angular client listening on port 4444!');
+var port = process.env.PORT || 4444;
+
+app.listen(port, function() {
+  console.log('Server for Angular client listening on port ' + port + '!');
 });

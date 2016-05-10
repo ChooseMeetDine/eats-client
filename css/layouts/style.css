@@ -1,5 +1,5 @@
 /*
-Author: CMD 
+Author: CMD
 Description: Eats helps you decide where to go and eat lunch.
 Version: 1.0
 Tags: Eats, CMD, Choose Meet Dine
@@ -21,23 +21,25 @@ Cyan/Aqua       #18FFFF     24,255,255
 Cyan/Aqua-1     #00E5FF     0,229,255
 Pacific Blue    #00B8D4     0,184,212
 
-@import url("exempel.css")
-
 */
 
 /*FONTS*/
 @font-face {
-    font-family: aileron;
-    font-weight: bold;
-    src: url("/css/fonts/aileron/Aileron-SemiBold.otf")
+    font-family: lane;
+    src: url("/css/fonts/lane/LANENAR_.ttf")
         format("opentype");
 }
 
-@font-face {
-    font-family: borg;
-    src: url("/css/fonts/borg/Borg.ttf")
-        format("opentype");
+html,body,p{
+    font-weight: bold;
+    font-family: lane, open sans, arial;
 }
+
+.expiredPoll {
+  background-color: #424242 !important;
+  color: #fafafa !important;
+}
+
 /* RESETS: md-button., md-list */
 .md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
     margin:0;
@@ -45,18 +47,16 @@ Pacific Blue    #00B8D4     0,184,212
     min-width:0;
     min-height:0;
     line-height:normal;
-    font-family: aileron, open sans, arial;
 }
 /*HTML,BODY*/
 html,body{
     height: 100%;
     overflow-x: hidden;
-    font-family: aileron, open sans, arial;
     font-size: 14px;
 }
 h1{
     font-size: 55px;
-    font-family: borg;    
+    font-family: lane, open sans, arial;
 }
 /*Forms*/
 form{
@@ -85,7 +85,8 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 /*Inputfält, väljer font och färg */
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: Aileron;
+    font-family: lane, open sans, arial;
+    font-weight: bold;
     margin-bottom: 2px;
 }
 /*Popup content wrapper*/
@@ -125,29 +126,43 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     background: #424242;
     color: #FAFAFA;
     padding: 0;
+    overflow: hidden;
 }
 /*Header för dialogrutor*/
 .md-toolbar-tools{
-    font-family: borg, aileron, open sans, arial;
-    font-size: 42px;
+    font-family: lane;
+    font-size: 36px;
     background-color: #616161;
-    padding: 2%;    
+    padding: 2%;
 }
-/*Logotype div container*/
-#logotype{
-    position: fixed;
-    z-index: 999;
-    left: 50%;
-    transform: translateX(-50%);
+/*Footer*/
+footer{
+    text-align: center;
+    opacity: 0.8;
+    position: absolute;
+    bottom:0;
+    color:#FAFAFA;
+    padding:10px;
+    border-top:solid #FAFAFA 1px;
 }
 /*Logotype img*/
 #logoEats{
-    width:200px;
+    width:100px;
+    left: 30%;
 }
+footer a{
+    color:#FAFAFA;
+}
+footer a:hover{
+    color:#00B8D4;
+    text-decoration:none;
+}
+    
 /*Styling all buttons*/
 .md-button{
     padding:10px;
-}  
+    font-weight: bold;
+}
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
 .actionbutton{
     background-color: #00B8D4;
@@ -161,7 +176,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     right: 0;
     bottom: 0;
     height: 100%;
-    z-index: 0;    
+    z-index: 0;
 }
 
 #main-meny-nav{
@@ -190,31 +205,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
 .leaflet-control-locate a{
     padding:2px;
 }
-/*POPUP*/
-.leaflet-popup{
-    margin-bottom: 45px;
-}
-/*Popup content*/
-.leaflet-popup-content{
-    padding-top: 0px !important;
-    width: 160px;
-    padding: 10px;
-}
-/*Popup images*/
-.leaflet-popup-content img{   
-    width: 140px;
-}
-/*Popup button that says mer info*/
-.leaflet-popup-content .trigger{
-    border: none;
-    font-size: 14px;
-}
-/*Container for Popup button that says mer info*/
-#moreInfoButtonContent {
-    width: 140px;
-    text-align: right;
-    padding-top: 4px;
-}
+
 /*---------------MAIN MENU & FILTER MENU-------------*/
 /*Buttons*/
 #menubuttons{
@@ -225,7 +216,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     left: 0;
     z-index: 4;
 }
-   
+
 .menubutton{
     font-size: 180%;
     border-radius: 0px;
@@ -243,6 +234,11 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     padding:10px;
     float: left;
     margin-left: 2%;
+    margin-top: 20px;
+}
+
+#main-meny-nav{
+    padding:10px;
 }
 
 /*-------------------FILTER MENU----------------------*/
@@ -263,25 +259,23 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     display:block;
     float:left;
 }
-.checkboxImg{
+.filterCheckboxImg{
     position:relative;
     width:100%;
-    height:100%;   
+    height:100%;
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
     background-color: rgb(0, 184, 212);
 }
 
-
 .textOverlay{
     position:absolute;
     height:100%;
     width:100%;
-    z-index:2;
     border-radius: 50%;
 }
-.checkboxImg .text{
+.filterCheckboxImg .text{
     position:absolute;
     z-index:3;
     text-align:center;
@@ -289,10 +283,12 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
     width:100%;
     display:none;
 }
-.checkboxImg:hover .textOverlay{
+.filterCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .textOverlay{
     background-color:rgba(33, 33, 33, 0.5);
+    z-index:2;
+
 }
-.checkboxImg:hover .text, .checkboxImg:hover .textOverlay{
+.filterCheckboxImg:hover .textOverlay,.filterCheckboxImg:hover .text, .createRestaurantCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .text{
     display: block;
     cursor:pointer;
 }
@@ -300,31 +296,32 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
 input[type=checkbox] {
     display:none;
 }
-input[type=checkbox] + .checkboxImg .textOverlay{
-    box-shadow: -1px -1px 1px red;
+input[type=checkbox] + .filterCheckboxImg .textOverlay{
+    box-shadow: -1px -1px 1px #212121;
 }
-input[type=checkbox]:checked + .checkboxImg .textOverlay{
+input[type=checkbox]:checked + .filterCheckboxImg .textOverlay{
     box-shadow: 1px 1px 1px #212121;
 }
-input[type=checkbox] + .checkboxImg {
+input[type=checkbox] + .filterCheckboxImg {
     -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
     filter: grayscale(100%);
     width:100%;
     height:100%;
     display:inline-block;
     padding:0;
+    text-transform: lowercase;
 }
 
-input[type=checkbox]:checked + .checkboxImg {
+input[type=checkbox]:checked + .filterCheckboxImg {
     -webkit-filter: none; /* Chrome, Safari, Opera */
     filter: none;
-    width:100%;
-    height:100%;
+    width:101%;
+    height:101%;
     display:inline-block;
     padding:0;
 }
 
-.checkboxImg .filterImg{
+.filterCheckboxImg .filterImg{
     width:100%;
     margin:0;
     padding:0;
@@ -344,11 +341,10 @@ input[type=checkbox]:checked + .checkboxImg {
     padding: 0;
     z-index: 2;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 2%;
+    right: 2%;
     background: none;
     border-radius: 50%;
-    zoom: 130%;
 }
 /*----------ACTIVE POLL-------------*/
 .md-button.md-raised {
@@ -358,7 +354,6 @@ input[type=checkbox]:checked + .checkboxImg {
 }
 .md-button.md-raised:hover {
     opacity: 0.7!important;
-    background-color: #00B8D4!important;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 #activePollPosition{
@@ -376,10 +371,9 @@ input[type=checkbox]:checked + .checkboxImg {
 }
 /*Create poll icon making the plus sign bigger*/
 #createPollIcon {
-    font-size: 6em;
+    font-size: 7em;
     color: #00B8D4;
     text-shadow: 1px 2px #818181;
-    
 }
 .md-dialog-content {
     color: #212121;
@@ -392,10 +386,6 @@ input[type=checkbox]:checked + .checkboxImg {
 /*Infoslider content width*/
 .infomenu{
     width: 500px;
-}
-/*Infoslider img width*/
-.infoimg{
-    width: 350px;
 }
 
 /*Add restaurant button for save restaurant*/
@@ -414,50 +404,48 @@ input[type=checkbox]:checked + .checkboxImg {
     display: none!important;
 }
 
-
-
-/*ADD RESTAURANT*/
-.sliderTitle{
-    width:50%;
-}
-.slider{
-    width:40%;
-}
-.slider, .sliderTitle{
-    display:block;
-    float:left;
-    padding:0;
-}
-.slider:first-of-type{
-    margin-right:10%;
-}
-
-#placeMarker{
-    background:#FAFAFA;
-    color:#212121;
-}
-
-#submitRestaurant{
-    float:right;
-}
-
 /*Mobile Device*/
-@media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */ 
+@media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
+    md-sidenav {
+        width: calc(100% - 100px);
+        min-width: calc(100% - 60px);
+        max-width: calc(100% - 60px);
+    }
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 2em;
+    }
 }
 
-@media (max-width:481px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
-    
+
+@media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    md-sidenav {
+        width: calc(100% - 100px);
+        min-width: calc(100% - 100px);
+        max-width: calc(100% - 56px);
+    }
 }
-@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+    */
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 3em;
+    }
+}
 @media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (max-width:1025px) { 
-/* everythig except big landscape tablets, laptops, and desktops */ 
+@media (max-width:1025px) {
+/* everythig except big landscape tablets, laptops, and desktops */
     .checkboxImg:hover .textOverlay{
         display:none;
     }
     .checkboxImg .text{
+            font-size: 1.2em;
             display:block;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 }
-
-

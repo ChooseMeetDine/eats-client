@@ -1,38 +1,27 @@
-app.controller('loginUser', function($scope, $http, $window) {
-        $scope.loginUser = function (){
-            user = {
-            'email' : $scope.email,
-            'password' : $scope.password
-            };
-            
-            $http({
-                method: 'POST',
-                url: 'http://128.199.48.244:7000/auth',
-                headers: {'Content-Type': 'application/json'},
-                data: user
-            }).then(function successCallback(response){
-                
-                var userData = response.data;
-             
-                var message = response.data.message;
-                $window.localStorage['userAnon'] = userData.anon;
-                $window.localStorage['userName'] = userData.name;
-                $window.localStorage['jwtToken'] = userData.token;
-                
-                $window.location.reload();
-            }, function errorCallback(){
-                console.log('error');
-            });            
-        };
-    
-        $scope.logoutUser = function(){
-            $window.localStorage.removeItem('jwtToken');
-            $window.localStorage.removeItem('userAnon');
-            $window.localStorage.removeItem('userName');
-            $window.location.reload();
-        }
-        
-});
+app.controller('loginUser', ['$scope', '$window', 'tokenService', function($scope, $window, tokenService) {
+  $scope.loginStatus = {
+    error: false
+  };
 
+  $scope.loginUser = function() {
+    $scope.test = false;
+    var user = {
+      'email': $scope.email,
+      'password': $scope.password
+    };
 
+    tokenService.login(user)
+      .then(function() {
+        $scope.loginStatus.error = false;
+        $window.location.reload();
+      })
+      .catch(function(err) {
+        $scope.loginStatus.error = true;
+      });
+  };
 
+  $scope.logoutUser = function() {
+    tokenService.logout();
+    $scope.dialogs.showPopup(null, 'continueToPollAs', false, false);
+  }
+}]);
