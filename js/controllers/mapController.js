@@ -160,6 +160,11 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
 
     for (var k in items) {
       var restaurant = items[k];
+
+      if(!restaurant.relationships.categories){ //Skip all restaurants without categories
+        continue;
+      }
+
       var attributes = {
         id: restaurant.id,
         name: restaurant.attributes.name,
