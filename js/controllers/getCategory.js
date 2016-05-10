@@ -32,7 +32,7 @@ app.controller('getCategory', function($scope, $http, $window) {
             }
             categoryResult.push(restaurantCategories);
         }
-        console.log(categoryResult);
+        //console.log(categoryResult);
         $scope.restaurants = categoryResult;
         
     }
