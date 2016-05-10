@@ -135,14 +135,29 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     background-color: #616161;
     padding: 2%;
 }
-/*Logotype div container*/
-#logotype{
+/*Footer*/
+footer{
+    text-align: center;
+    opacity: 0.8;
+    position: absolute;
     bottom:0;
+    color:#FAFAFA;
+    padding:10px;
+    border-top:solid #FAFAFA 1px;
 }
 /*Logotype img*/
 #logoEats{
     width:100px;
+    left: 30%;
 }
+footer a{
+    color:#FAFAFA;
+}
+footer a:hover{
+    color:#00B8D4;
+    text-decoration:none;
+}
+    
 /*Styling all buttons*/
 .md-button{
     padding:10px;
@@ -219,6 +234,7 @@ md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
     padding:10px;
     float: left;
     margin-left: 2%;
+    margin-top: 20px;
 }
 
 #main-meny-nav{

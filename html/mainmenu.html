@@ -30,7 +30,7 @@
                 <i class="material-icons">add</i>
             </md-list-item>
             
-            <hr>
+            
 
             <!-- Login and log out buttons -->
             <md-button ng-if="!isUserWithValidToken" class="login md-raised" ng-click="dialogs.showPopup($event, 'login', true, false)">
@@ -42,7 +42,10 @@
             </md-button>
         </md-list>
     </md-content>
-    <div id="logotype">
+    <footer>
+        <p>Eats är en betatjänst skapad av CMD</p> 
+        <p>Amanda, Andreas, David, Elias, Gustav, Jenny, Marcus, Musse, Natalia och Patrik.</p>
+        <p><a href="http://128.199.48.244:7000/" target="_blank">API dokumentation</a></p> 
         <img src="/images/logo_white.png" id="logoEats" title="EATS logotype"/>
-    </div>
+    </footer>
 </md-sidenav>
