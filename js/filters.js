@@ -14,6 +14,22 @@ app.filter('expired', function() {
 });
 
 
+app.filter('activeAndRecentlyExpired', function() {
+    return function(polls) {
+        var filtered = [];
+        var in1Hour = new Date(new Date().getTime() - 3600000);
+        for (var index in polls) {
+            var poll = polls[index];
+            var expires = new Date(poll.data.attributes.expires);
+            if (expires > in1Hour) {
+                filtered.push(poll);
+            }
+        }
+        return filtered;
+    };
+});
+
+
 app.filter('range', function() {
   return function(input, min, max, step) {
     min = parseInt(min); //Make string input int

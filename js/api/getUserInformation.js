@@ -27,5 +27,4 @@ app.controller('getUserInformation', ['$scope', '$http', '__env', function($scop
     }
     console.log(userResult);
   }
-
 }]);

@@ -1,11 +1,11 @@
-app.controller('getCategory', function($scope, $http, $window) {    
+app.controller('getCategory', function($scope, $http, $window) {
     var start = new Date().getTime();
-    //result data structure: {restaurantId:{all data for one restaurant}} 
-    var categoryResult = [];    
+    //result data structure: {restaurantId:{all data for one restaurant}}
+    var categoryResult = [];
     var link = 'http://128.199.48.244:7000/restaurants';
-    
+
     getCategory(link);
-    
+
     function getCategory(url){
         var link = url;
         $http({
@@ -18,13 +18,13 @@ app.controller('getCategory', function($scope, $http, $window) {
            console.log("Error, cannot load restaurants!");
         });
     }
-        
+
     function resultCategory(resultData){
         var items = resultData.data;
         for(var item in items){
             var restaurant = items[item];
             var restaurantCategories = {
-                id : restaurant.id, 
+                id : restaurant.id,
                 categories : []
             }
             for(var i = 0; i < restaurant.relationships.categories.length; i++){
@@ -32,8 +32,8 @@ app.controller('getCategory', function($scope, $http, $window) {
             }
             categoryResult.push(restaurantCategories);
         }
-        //console.log(categoryResult);
+
         $scope.restaurants = categoryResult;
-        
+
     }
 });

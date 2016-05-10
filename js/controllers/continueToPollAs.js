@@ -5,6 +5,14 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
   $scope.username = tokenService.getTokenUserName();
   $scope.parameterPollId = $location.search().poll // THIS THE THE POLL!
 
+  $scope.loginStatus = {
+    error: false
+  };
+
+  $scope.regStatus = {
+    error: false
+  };
+
   $scope.continueAsAnonymous = function() {
     if (!$scope.isLoggedInAsAnonymous) {
       tokenService.getAnonymousToken()
@@ -34,9 +42,11 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
     tokenService.login(user)
       .then(pollService.joinActivePoll)
       .then(function() {
+        $scope.loginStatus.error = false;
         $window.location.reload();
       })
       .catch(function(err) {
+        $scope.loginStatus.error = true;
         console.log('Fel vid inloggning av användare: ');
         console.log(err);
       });
@@ -52,12 +62,13 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
     tokenService.register(user)
       .then(pollService.joinActivePoll)
       .then(function() {
+        $scope.regStatus.error = false;
         $window.location.reload();
       })
       .catch(function(err) {
-        console.log('Fel vid registrering av användare: ');
+        $scope.regStatus.error = true;
+        console.log('ERROR! Failed to register user.');
         console.log(err);
-        alert(err.data.error);
       });
   };
 }]);
