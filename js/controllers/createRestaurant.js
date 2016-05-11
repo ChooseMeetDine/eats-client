@@ -3,6 +3,7 @@ app.controller('createRestaurant', ['$scope', '$http', '$window', 'modeService',
   $scope.getLocationOnMap = function() {
     modeService.setMode('CREATE_RESTAURANT');
   };
+    $scope.form.data.rating = 1; 
     $scope.regRest = function() {
     var restaurant = {
       'name': $scope.form.data.name,

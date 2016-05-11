@@ -44,16 +44,23 @@
           <md-input-container>
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
-            <input ng-model="email" type="email">
+            <input ng-model="email" type="email" name="email" required>
+            <div ng-messages="login.email.$error" ng-if="login.email.$dirty">
+              <div ng-message="required">Du måste fylla i en E-mail!</div>
+            </div>
           </md-input-container> <br>
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
-            <input ng-model="password" type="password">
+            <input ng-model="password" type="password" name="password" minlength="6" required>
+            <div ng-messages="login.password.$error" ng-if="login.password.$dirty">
+              <div ng-message="required">Du måste fylla i ett Lösenord!</div>
+              <div ng-message="minlength">Lösenordet är för kort!</div>
+            </div>  
           </md-input-container>
           <input type="submit" value="Logga in">
 
-          <p ng-if=loginStatus.error>Fel användarnamn eller lösenord</p>
+            <p ng-if=loginStatus.error>Felaktigt E-mail eller Lösenord!</p>
 
         </form>
       </md-content>
@@ -65,27 +72,38 @@
           <md-input-container>
             <label>Namn</label>
             <md-icon md-svg-src="images/icons/ic_person_24px.svg"></md-icon>
-            <input ng-model="name" type="text">
+            <input ng-model="name" type="text" name="name" md-maxlength="20" minlength="2" required>
+            <div ng-messages="register.name.$error" ng-if="register.name.$dirty">
+              <div ng-message="required">Du måste fylla i ett Namn!</div>
+              <div ng-message="md-maxlength">Namnet får max vara 20 bokstäver!</div>
+              <div ng-message="minlength">Namnet är för kort!</div>
+            </div> 
           </md-input-container> <br>
           <md-input-container>
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
-            <input ng-model="email" type="email">
+            <input ng-model="email" type="email" name="email" required>
+            <div ng-messages="register.email.$error" ng-if="register.email.$dirty">
+              <div ng-message="required">Du måste fylla i en Email!</div>
+            </div> 
           </md-input-container> <br>
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
-            <input ng-model="password" type="password">
+            <input ng-model="password" type="password" name="password" minlength="6" required>
+             <div ng-messages="register.password.$error" ng-if="register.password.$dirty">
+              <div ng-message="required">Du måste fylla i ett Lösenord!</div>
+              <div ng-message="minlength">Lösenordet är för kort!</div>
+            </div>
           </md-input-container>
           <input type="submit" value="Registrera">
 
-          <p ng-if="regStatus.error">Gick inte att registrera användaren.</p>
+          <p ng-if="regStatus.error">Det gick inte att registrera användaren. Försök igen!</p>
 
         </form>
       </md-content>
-  </md-dialog-content>
-
   </div>
+</md-dialog-content>
 
 
 
