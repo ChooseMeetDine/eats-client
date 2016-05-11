@@ -51,6 +51,9 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         L.control.locate({
           follow: true,
           position: 'topright'
+        }),
+          L.Control.geocoder({
+            position: 'topright'
         })
       ]
     }
