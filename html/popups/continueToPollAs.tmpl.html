@@ -1,101 +1,86 @@
 <!-- This is the main window for login and register -->
-<md-dialog aria-label="Login">
+<md-dialog id="continue_dialog" aria-label="Login">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>Hur vill du fortsätta?</h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="cancel()">
-        <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-      </md-button>
     </div>
   </md-toolbar>
 
 
-  <md-dialog-content style="max-width:800px;max-height:810px; ">
+  <md-dialog-content>
+  <md-dialog-actions layout="row">
+ 
+       <div ng-controller="continueToPollAs">
+               
+<!--               <md-button  ng-if="isUserWithInvalidToken" class="md-raised md-primary" > Du är inte längre inloggad som {{username}} </md-button>-->
+               
+                         <md-button id="anonymous_button" ng-click="continueAsAnonymous()" class="md-raised md-primary"> Fortsätt som anonym </md-button>
+      </div>
 
-    <div ng-controller="continueToPollAs">
-
-      <md-content class="md-padding" ng-if="isUserWithInvalidToken">
-        <md-dialog-actions layout="row">
-          Du är inte längre inloggad som {{username}}
-        </md-dialog-actions>
-      </md-content>
-
-      <md-content class="md-padding">
-        <md-dialog-actions layout="row">
-          <md-button ng-click="continueAsAnonymous()" class="md-raised">
-            Fortsätt som anonym
-          </md-button>
-        </md-dialog-actions>
-      </md-content>
-
-      <md-content class="md-padding" ng-if="isLoggedInAsUser">
-        <md-dialog-actions layout="row">
-          <md-button ng-click="continueAsUser()" class="md-raised">
-            Fortsätt som {{username}}
-          </md-button>
-        </md-dialog-actions>
-      </md-content>
-
+  </md-dialog-actions>
+            
+      
       <!-- First tab wich includes the "login" page with input forms and logos -->
-      <md-content class="md-padding">
-        <label>Logga in</label>
-        <form name="login" ng-submit="loginUserAndContinue()">
+    <div id="login">
+      <md-content id="login_form" class="md-padding">
+        <label class="login-register_header">Logga in</label>
+        <form name="login" ng-controller="loginUser" ng-submit="loginUser()">
           <md-input-container>
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email">
-          </md-input-container> <br>
+          </md-input-container>
+          <br>
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password">
           </md-input-container>
-          <input type="submit" value="Logga in">
-
+          <br>
+          <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Fel användarnamn eller lösenord</p>
-
         </form>
-      </md-content>
+        
+        
 
-      <!-- Second tab wich includes the "register" page with input forms and logos -->
-      <label>Registrera dig</label>
-      <md-content class="md-padding">
-        <form name="register" ng-submit="registerUserAndContinue()">
+          <md-button id="continue_as_user" class="md-raised md-primary"  ng-click="continueAsUser()" class="md-raised">
+            Fortsätt som {{username}}
+          </md-button>
+        
+        
+      </md-content>
+    </div>
+
+
+    <!-- Second tab wich includes the "register" page with input forms and logos -->
+    <div id="register">
+      <md-content id="register_form" class="md-padding">
+        <label class="login-register_header">Registrera dig</label>
+        <form name="register" ng-controller="addUser" ng-submit="regUser()">
           <md-input-container>
             <label>Namn</label>
             <md-icon md-svg-src="images/icons/ic_person_24px.svg"></md-icon>
             <input ng-model="name" type="text">
-          </md-input-container> <br>
+          </md-input-container>
+          <br>
           <md-input-container>
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email">
-          </md-input-container> <br>
+          </md-input-container>
+          <br>
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password">
           </md-input-container>
-          <input type="submit" value="Registrera">
-
+          <br>
+          <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
           <p ng-if="regStatus.error">Gick inte att registrera användaren.</p>
-
         </form>
       </md-content>
+    </div>
   </md-dialog-content>
 
-  </div>
-
-
-
-
-  <!-- OK and Cancel buttons for sending the form and closing the window-->
-
-
-  <md-dialog-actions layout="row">
-    <md-button ng-click="cancel()">
-      Avbryt
-    </md-button>
-  </md-dialog-actions>
 </md-dialog>
