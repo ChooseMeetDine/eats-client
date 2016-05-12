@@ -18,6 +18,7 @@
 
 .leaflet-control-geocoder a:hover, .leaflet-control-geocoder .leaflet-control-geocoder-icon:hover {
 	display: inline-block;
+    background-color: #fafafa;
 }
 
 .leaflet-control-geocoder-form {
