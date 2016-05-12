@@ -1,98 +1,121 @@
-<md-dialog aria-label="addRestaurant" ng-cloak>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <h1>Lägg till ny restaurang</h1>
-      <span flex></span>
-    </div>
-  </md-toolbar>
-
-  <md-dialog-content layout-padding>
-    <div ng-controller="addRestaurant" class="md-dialog-content">
-
-      <div class="md-warn" ng-show="error ">Det gick dåligt!
-        <br>{{error}}</div>
-      <form name="addRestaurant" ng-submit="regRest()">
-
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Namn</label>
-            <input ng-model="form.data.name" type="text" value="" />
-          </md-input-container>
+<md-dialog  ng-controller="createRestaurant" class="createRestaurantPopup" aria-label="addPoll"  ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">  
+                <h1>Lägg till restaurang </h1>
+                <span flex></span>
+            </div>
+            
+        </md-toolbar>
+    
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form name="createRestaurant" ng-submit="regRest()"> 
+                <md-input-container class="md-block">
+                        <label>Restaurangnamn</label>
+                        <input ng-model="form.data.name" type="text" value="name" required>
+                </md-input-container>
+                <md-input-container class="md-block">
+                        <label>Info</label>                
+                        <textarea ng-model="form.data.info" type="text" value="info" md-maxlength="600" rows="5" md-select-on-focus></textarea>
+                </md-input-container>
+                <div>
+                    <div>  
+                        <span class="sliderTitle">
+                            Betyg:
+                        </span>
+                    </div>
+                    <md-slider id="ratingslider" ng-model="form.data.rating" md-discrete step="1" min="1" max="5" aria-label="rating" required>
+                    </md-slider>
+                </div>
+                <table id="category_checkboxes">
+                <tr>                    
+                    <td>
+                        <input type='checkbox' name='thing' value='valuable' id="addSushi" ng-model="form.data.categories[0]">
+                        <label class="createRestaurantCheckboxImg" for="addSushi">
+                            <span class="textOverlay"></span>
+                            <p class="text">Sushi</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/1.png">
+                        </label>
+                        
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addFastfood" ng-model="form.data.categories[1]">
+                        <label class="createRestaurantCheckboxImg" for="addFastfood">
+                            <span class="textOverlay"></span>
+                            <p class="text">Snabbmat</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/2.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addBurgers" ng-model="form.data.categories[2]">
+                        <label class="createRestaurantCheckboxImg" for="addBurgers">
+                            <span class="textOverlay"></span>
+                            <p class="text">Hamburgare</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/3.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addVegetarian" ng-model="form.data.categories[3]">
+                        <label class="createRestaurantCheckboxImg" for="addVegetarian">
+                            <span class="textOverlay"></span>
+                            <p class="text">Vegetariskt</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/4.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addSalad" ng-model="form.data.categories[4]">
+                        <label class="createRestaurantCheckboxImg" for="addSalad">
+                            <span class="textOverlay"></span>
+                            <p class="text">Sallad</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/5.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addPizza" ng-model="form.data.categories[5]">
+                        <label class="createRestaurantCheckboxImg" for="addPizza">
+                            <span class="textOverlay"></span>
+                            <p class="text">Pizza</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/6.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addIndian" ng-model="form.data.categories[6]">
+                        <label class="createRestaurantCheckboxImg" for="addIndian">
+                            <span class="textOverlay"></span>
+                            <p class="text">Indiskt</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/7.png" alt="indiskt">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addItalian" ng-model="form.data.categories[7]">
+                        <label class="createRestaurantCheckboxImg" for="addItalian">
+                            <span class="textOverlay"></span>
+                            <p class="text">Italienskt</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/8.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox'  name='thing' value='valuable' id="addThai" ng-model="form.data.categories[8]">
+                        <label class="createRestaurantCheckboxImg" for="addThai">
+                            <span class="textOverlay"></span>
+                            <p class="text">Thai</p>
+                            <img class="createRestaurantFilterImg" src="../images/icons/9.png">
+                        </label>
+                    </td>
+                </tr>
+            </table>
+                
+                <md-input-container class="md-block">
+                        <label>Länk till bild</label>
+                        <input ng-model="form.data.photo" type="text" value="photo" required>
+                </md-input-container>
+                <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap(); hide();">Välj plats på kartan</md-button>
+                <div id="bottom">
+                    <!--<input ng-model="photo" type="file" value="Ladda upp bild" required>-->
+                    <md-button id="submitrestaurant" class="md-raised md-primary" type="submit "> Lägg till restaurang </md-button>
+                    <md-button id="cancel" class="md-raised md-primary" ng-click="cancel()">Avbryt</md-button>
+                </div>
+            </form>            
         </div>
-
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Adress</label>
-            <input ng-model="form.data.adress" type="text" value="" />
-            <md-button class="md-raised md-primary" ng-click="getLocationOnMap()">
-              Lägg till adress från kartan
-            </md-button>
-          </md-input-container>
-        </div>
-
-
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Telefon</label>
-            <input ng-model="form.data.phone" type="text" value="" />
-          </md-input-container>
-        </div>
-
-        <div layout-gt-sm="row">
-          <p>Betyg</p>
-          <md-radio-group ng-model="form.data.rating" layout="row">
-            <md-radio-button value="1">1</md-radio-button>
-            <md-radio-button value="2">2</md-radio-button>
-            <md-radio-button value="3">3</md-radio-button>
-            <md-radio-button value="4">4</md-radio-button>
-            <md-radio-button value="5">5</md-radio-button>
-          </md-radio-group>
-        </div>
-        <div layout-gt-sm="row">
-          <p>Kategori</p>
-          <table id="filter_menu" style="width:100%">
-              <tr>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[0]">Sushi</md-checkbox></td>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[1]">Snabbmat</md-checkbox></td>
-              </tr>
-              <tr>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[2]">Hamburgare</md-checkbox></td>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[3]">Vegetariskt</md-checkbox></td>
-              </tr>
-              <tr>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[4]">Sallad</md-checkbox></td>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[5]">Pizza</md-checkbox></td>
-              </tr>
-              <tr>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[6]">Indiskt</md-checkbox></td>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[7]">Italienskt</md-checkbox></td>
-              </tr>
-              <tr>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[8]">Thailändskt</md-checkbox></td>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[9]">Övrigt</md-checkbox></td>
-              </tr>
-              <tr>
-                  <td><md-checkbox class="md-primary" ng-model="form.data.categories[10]">Cafe</md-checkbox></td>
-              </tr>
-          </table>
-        </div>
-  </md-dialog-content>
-
-  <div layout-gt-sm="row">
-
-    <md-dialog-actions layout="row">
-      <md-button class="md-raised md-primary" type="submit">
-        Spara
-      </md-button>
-      <md-button class="md-raised md-primary" ng-click="cancel()">
-        Avbryt
-      </md-button>
-    </md-dialog-actions>
-
-
-
-  </div>
-  </form>
-  </div>
-
+    </md-dialog-content>
 </md-dialog>

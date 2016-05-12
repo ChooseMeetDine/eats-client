@@ -3,9 +3,9 @@
 
   <div ng-controller="createPoll">
 
-    <md-toolbar id="toolbar">
+    <md-toolbar>
       <div class="md-toolbar-tools">
-        <h1 id="dialogheader" ng-hide="loading">Lägg till omröstning</h1>
+        <h1 ng-hide="loading">Skapa ny omröstning</h1>
         <span flex></span>
       </div>
     </md-toolbar>
@@ -17,7 +17,7 @@
 
         <!--Shows error from POST-request, resets at every atempt -->
 
-        <div class="md-warn " ng-show="error "<strong>Hoppsan!</strong> <br>{{error}}</div>
+        <div class="md-warn " ng-show="error "><strong> Hoppsan!</strong> <br>{{error}}</div>
 
         <form name="addPoll " ng-submit="regPoll()">
 

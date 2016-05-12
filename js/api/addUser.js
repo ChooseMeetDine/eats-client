@@ -1,4 +1,8 @@
 app.controller('addUser', ['$scope', '$http', '__env', 'tokenService', '$window', function($scope, $http, __env, tokenService, $window) {
+  $scope.regStatus = {
+    error: false
+  };
+
   $scope.regUser = function() {
     var user = {
       'name': $scope.name,
@@ -22,14 +26,17 @@ app.controller('addUser', ['$scope', '$http', '__env', 'tokenService', '$window'
         tokenService.login(user)
           .then(function() {
             console.log('User logged in');
+            $scope.regStatus.error = false;
             $window.location.reload();
           })
           .catch(function(err) {
+            $scope.regStatus.error = true;
             console.log('User log in failed after registration!');
           });
 
       })
       .catch(function() {
+        $scope.regStatus.error = true;
         console.log('User registration failed!');
       });
   };
