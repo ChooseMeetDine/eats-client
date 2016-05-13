@@ -14,5 +14,5 @@ npm-debug.log*
 .DS_Store
 
 # Environment variables 
-env.js
+js/env.js
 .env
