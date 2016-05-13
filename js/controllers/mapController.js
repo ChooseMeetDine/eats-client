@@ -51,7 +51,18 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         L.control.locate({
           follow: true,
           position: 'topright'
-        })
+        }),
+          L.Control.geocoder({
+            position: 'topright'
+//        }),
+//          L.Routing.control({
+//            position: 'bottomleft',              
+//              waypoints: [
+//                  L.latLng(55.607335, 13.008678)
+//              ],
+//              routeWhileDragging: true,
+//              geocoder: L.Control.Geocoder.nominatim()
+          })
       ]
     }
   }
