@@ -20,7 +20,6 @@
               <div ng-message="required">Du måste fylla i en E-mail!</div>
             </div>
           </md-input-container>
-          <br>
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
@@ -30,7 +29,6 @@
               <div ng-message="minlength">Lösenordet är för kort!</div>
             </div>  
           </md-input-container>
-          <br>
           <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Felaktigt E-mail eller Lösenord!</p>
         </form>
@@ -53,7 +51,6 @@
               <div ng-message="minlength">Namnet är för kort!</div>
             </div> 
           </md-input-container>
-          <br>
           <md-input-container>
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
@@ -62,7 +59,6 @@
               <div ng-message="required">Du måste fylla i en Email!</div>
             </div> 
           </md-input-container>
-          <br>
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
@@ -72,7 +68,6 @@
               <div ng-message="minlength">Lösenordet är för kort!</div>
             </div>
           </md-input-container>
-          <br>
           <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
           <p ng-if="regStatus.error">Det gick inte att registrera användaren. Försök igen!</p>
         </form>
