@@ -19,12 +19,16 @@
 
         <div class="md-warn " ng-show="error "><strong> Hoppsan!</strong> <br>{{error}}</div>
 
-        <form name="addPoll " ng-submit="regPoll()">
+        <form name="addPoll " ng-submit="regPoll()" novalidate>
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
               <label>Ange namn för omröstning</label>
-              <input id="lunchname" ng-model="form.data.name " type="text " value="name" ng-required="true">
+              <input id="lunchname" ng-model="form.data.name " type="text " value="name" name="pollName" md-maxlength="65" required>
+              <div ng-messages="addPoll.pollName.$error" ng-if="addPoll.pollName.$dirty">
+                  <div ng-message="required">Du måste fylla i ett Namn för omröstningen!</div>
+                  <div ng-message="md-maxlength">Namnet får max vara 65 bokstäver!</div>
+              </div>
             </md-input-container>
           </div>
 

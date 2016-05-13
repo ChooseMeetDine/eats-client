@@ -404,6 +404,11 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     display: none!important;
 }
 
+
+/*Error*/
+#regError{
+    width:200px;
+}
 /*Mobile Device*/
 @media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
     md-sidenav {
