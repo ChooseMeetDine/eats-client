@@ -1,6 +1,6 @@
 app.controller('filterController', ['$scope', 'filterService', function($scope, filterService){
     //Sets all checbox to true separately
-    $scope.truthy = [true, true, true, true, true, true, true, true, true, true];
+    $scope.truthy = [true, true, true, true, true, true, true, true, true, true, true, true, true, true];
     //Category array with te purpose of determinating if category has been clicked.
     categoryClicked = [];
     
@@ -24,7 +24,13 @@ app.controller('filterController', ['$scope', 'filterService', function($scope, 
             categoryClicked.push(categoryId);//push category
             
             for(var i = 0; i < $scope.truthy.length; i++){
-                    filterService.toggleFilter(i+1);
+                if(i === 10) {
+                    
+                }else{
+                    filterService.toggleFilter(i+1);    
+                }   
+                
+                    
             }
         }
     }
