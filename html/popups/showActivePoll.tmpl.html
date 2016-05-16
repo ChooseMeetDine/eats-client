@@ -16,10 +16,10 @@
       </div>
       <div id="poll-dialog-restaurants">
         <h3 id="rest-text">Restauranger:</h3> <br>
-        <p ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant}">
+        <p ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant, winningRestaurant: restaurant.winner}">
           <i class="material-icons md-24 thumb">thumb_up</i>
           <span>
-            {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
+            {{restaurant.attributes.name}}<span ng-if="restaurant.winner">Vinnare!</span><span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
           </span>
         </p>
         <!-- <p>ID: {{active}} </p>
