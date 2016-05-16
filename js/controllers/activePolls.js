@@ -7,23 +7,6 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window'
     $scope.now = new Date();
   }, 1000);
 
-  //For each poll that has not exipred when page is loaded, set a timeout that shows a popup when poll has exipred
-  var showPopupWhenPollExipres = function(poll) {
-    if ($scope.now < poll.data.expiresAsDateObj) {
-
-      // setTimeout(function() {
-      //   var active = pollService.getActive();
-      //   if (!active.raw.data || active.raw.data.id !== poll.data.id) {
-      //     pollService.setActiveId(poll.data.id);
-      //     console.log(poll.data.id)
-      //     $scope.dialogs.showPopup(null, 'showActivePoll', true, true);
-      //   }
-      // }, 10);
-
-
-      // }, poll.data.expiresAsDateObj - new Date());
-    }
-  };
 
   $scope.switchActivePoll = function(poll) {
     if (poll.raw.data.hasExpired) {
@@ -66,8 +49,6 @@ app.controller('activePolls', ['$scope', 'pollService', '$http', '$q', '$window'
       url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
       pollService.add(response.data);
-      showPopupWhenPollExipres(response.data);
-
     });
   };
 

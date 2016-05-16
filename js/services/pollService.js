@@ -235,6 +235,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
 
             // If user voted on this restaurant, mark it
             if (thisVoteBelongsToCurrentUser) {
+              cleaned.userHasVoted = true;
               cleaned.restaurants[j].userVotedOnThisRestaurant = true;
             }
           }

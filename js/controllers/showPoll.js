@@ -9,7 +9,6 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.active = pollService.getActive();
 
-  // $scope.now = new Date(new Date() + 20000);
   $scope.now = new Date();
 
 

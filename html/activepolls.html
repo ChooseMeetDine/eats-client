@@ -4,8 +4,7 @@
 " ng-repeat="poll in polls | activeAndRecentlyExpired">
       <div class="emptyExpiredPollPopup" ng-class="{'expiredPollPopup bounce animated': (poll.raw.data.hasExpired && !poll.raw.data.userHasSeenExpiredPopup)}">Avslutad!</div>
 
-      <md-button class="md-raised activePollButton
-" ng-class="{'expiredPoll': (poll.raw.data.hasExpired)}" ng-click="switchActivePoll(poll);dialogs.showPopup($event, 'showActivePoll', true, true)">
+      <md-button class="md-raised activePollButton" ng-class="{'expiredPoll': (poll.raw.data.hasExpired)}" ng-click="switchActivePoll(poll);dialogs.showPopup($event, 'showActivePoll', true, true)">
         {{poll.raw.data.attributes.name}}
       </md-button>
     </div>
