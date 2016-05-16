@@ -15,7 +15,7 @@
                 <tr>
                     <td>
                         <input type='checkbox' ng-model="truthy[0]" ng-change="toggle(1)" checked="checked" name='thing' value='valuable' id="sushi"/>
-                        <label class="checkboxImg" for="sushi">
+                        <label class="filterCheckboxImg" for="sushi">
                             <span class="textOverlay"></span>
                             <p class="text">Sushi</p>
                             <img class="filterImg" src="../images/icons/1.png">
@@ -24,15 +24,15 @@
                     </td>
                     <td>
                         <input type='checkbox' ng-model="truthy[1]" ng-change="toggle(2)" checked="checked" name='thing' value='valuable' id="fastfood"/>
-                        <label class="checkboxImg" for="fastfood">
+                        <label class="filterCheckboxImg" for="fastfood">
                             <span class="textOverlay"></span>
                             <p class="text">Snabbmat</p>
                             <img class="filterImg" src="../images/icons/2.png">
                         </label>
                     </td>
                     <td>
-                        <input type='checkbox' ng-model="truthy[2]" ng-change="toggle(3)" checked="checked" name='thing' value='valuable' id="burgers"/>
-                        <label class="checkboxImg" for="burgers">
+                        <input type='checkbox' ng-model="truthy[2]" ng-change="toggle(3)" checked="checked" name='thing' value='valuable' id="hamburgers"/>
+                        <label class="filterCheckboxImg" for="hamburgers">
                             <span class="textOverlay"></span>
                             <p class="text">Hamburgare</p>
                             <img class="filterImg" src="../images/icons/3.png">
@@ -42,7 +42,7 @@
                 <tr>
                     <td>
                         <input type='checkbox' ng-model="truthy[3]" ng-change="toggle(4)" checked="checked" name='thing' value='valuable' id="vegetarian"/>
-                        <label class="checkboxImg" for="vegetarian">
+                        <label class="filterCheckboxImg" for="vegetarian">
                             <span class="textOverlay"></span>
                             <p class="text">Vegetariskt</p>
                             <img class="filterImg" src="../images/icons/4.png">
@@ -50,7 +50,7 @@
                     </td>
                     <td>
                         <input type='checkbox' ng-model="truthy[4]" ng-change="toggle(5)" checked="checked" name='thing' value='valuable' id="salad"/>
-                        <label class="checkboxImg" for="salad">
+                        <label class="filterCheckboxImg" for="salad">
                             <span class="textOverlay"></span>
                             <p class="text">Sallad</p>
                             <img class="filterImg" src="../images/icons/5.png">
@@ -58,7 +58,7 @@
                     </td>
                     <td>
                         <input type='checkbox' ng-model="truthy[5]" ng-change="toggle(6)" checked="checked" name='thing' value='valuable' id="pizza"/>
-                        <label class="checkboxImg" for="pizza">
+                        <label class="filterCheckboxImg" for="pizza">
                             <span class="textOverlay"></span>
                             <p class="text">Pizza</p>
                             <img class="filterImg" src="../images/icons/6.png">
@@ -68,26 +68,52 @@
                 <tr>
                     <td>
                         <input type='checkbox' ng-model="truthy[6]" ng-change="toggle(7)" checked="checked" name='thing' value='valuable' id="indian"/>
-                        <label class="checkboxImg" for="indian">
+                        <label class="filterCheckboxImg" for="indian">
                             <span class="textOverlay"></span>
                             <p class="text">Indiskt</p>
                             <img class="filterImg" src="../images/icons/7.png" alt="indiskt">
                         </label>
                     </td>
                     <td>
-                        <input type='checkbox' ng-model="truthy[7]" ng-change="toggle(8)" checked="checked" name='thing' value='valuable' id="italian"/>
-                        <label class="checkboxImg" for="italian">
+                        <input type='checkbox' ng-model="truthy[7]" ng-change="toggle(8)" checked="checked" name='thing' value='valuable' id="pasta"/>
+                        <label class="filterCheckboxImg" for="pasta">
                             <span class="textOverlay"></span>
-                            <p class="text">Italienskt</p>
+                            <p class="text">Pasta</p>
                             <img class="filterImg" src="../images/icons/8.png">
                         </label>
                     </td>
                     <td>
-                        <input type='checkbox' ng-model="truthy[8]" ng-change="toggle(9)" checked="checked" name='thing' value='valuable' id="thai"/>
-                        <label class="checkboxImg" for="thai">
+                        <input type='checkbox' ng-model="truthy[8]" ng-change="toggle(9)" checked="checked" name='thing' value='valuable' id="asian"/>
+                        <label class="filterCheckboxImg" for="asian">
                             <span class="textOverlay"></span>
-                            <p class="text">Thailändskt</p>
+                            <p class="text">Asiatiskt</p>
                             <img class="filterImg" src="../images/icons/9.png">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[11]" ng-change="toggle(12)" checked="checked" name='thing' value='valuable' id="meat"/>
+                        <label class="filterCheckboxImg" for="meat">
+                            <span class="textOverlay"></span>
+                            <p class="text">Kött</p>
+                            <img class="filterImg" src="../images/icons/12.png" alt="indiskt">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[12]" ng-change="toggle(13)" checked="checked" name='thing' value='valuable' id="seafood"/>
+                        <label class="filterCheckboxImg" for="seafood">
+                            <span class="textOverlay"></span>
+                            <p class="text">Fisk</p>
+                            <img class="filterImg" src="../images/icons/13.png">
+                        </label>
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model="truthy[13]" ng-change="toggle(14)" checked="checked" name='thing' value='valuable' id="mexican"/>
+                        <label class="filterCheckboxImg" for="mexican">
+                            <span class="textOverlay"></span>
+                            <p class="text">Mexikanskt</p>
+                            <img class="filterImg" src="../images/icons/14.png">
                         </label>
                     </td>
                 </tr>

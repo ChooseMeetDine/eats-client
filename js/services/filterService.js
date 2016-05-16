@@ -11,7 +11,7 @@ app.factory('filterService', function(){
           }
         },
         2:{
-          name: 'Snabbmat',
+          name: 'Fastfood',
           type: 'group',
           visible: true,
           layerParams:{
@@ -19,7 +19,7 @@ app.factory('filterService', function(){
           }
         },
         3:{
-          name: 'Hamburger',
+          name: 'Hamburgers',
           type: 'group',
           visible: true,
           layerParams:{
@@ -59,7 +59,7 @@ app.factory('filterService', function(){
           }
         },
         8:{
-          name: 'Italian',
+          name: 'Pasta',
           type: 'group',
           visible: true,
           layerParams:{
@@ -67,7 +67,31 @@ app.factory('filterService', function(){
           }
         },
         9:{
-          name: 'Thai',
+          name: 'Asian',
+          type: 'group',
+          visible: true,
+          layerParams:{
+            showOnSelector: false
+          }
+        },
+        12:{
+          name: 'Meat',
+          type: 'group',
+          visible: true,
+          layerParams:{
+            showOnSelector: false
+          }
+        },
+        13:{
+          name: 'Seafood',
+          type: 'group',
+          visible: true,
+          layerParams:{
+            showOnSelector: false
+          }
+        },
+        14:{
+          name: 'Mexican',
           type: 'group',
           visible: true,
           layerParams:{
@@ -85,7 +109,7 @@ app.factory('filterService', function(){
         11:{
           name: 'Café',
           type: 'group',
-          visible: true,
+          visible: false,
           layerParams:{
             showOnSelector: false
           }

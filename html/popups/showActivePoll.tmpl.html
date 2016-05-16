@@ -47,9 +47,9 @@
         <input id="vote-url-field" value={{active.cleaned.voteLink}}>
       </div>
       <div ng-if="!active.cleaned.userIsParticipantInPoll && !active.raw.data.hasExpired">
-        <p>Du är inte med i den här omröstningen, vill du gå med?</p>
-        <md-button class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
-        <md-button class="md-raised md-primary">Nej</md-button>
+        <p id="join">Du är inte med i den här omröstningen, vill du gå med?</p>
+        <md-button id="joinpoll_button" class="md-raised md-primary" ng-click="joinPoll()">Ja</md-button>
+        <md-button id="dont_join_poll_button" class="md-raised md-primary">Nej</md-button>
       </div>
     </div>
   </md-dialog-content>

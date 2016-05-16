@@ -21,7 +21,8 @@
     "angular-bootstrap": "^1.1.2",
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.3",
-    "ngclipboard": "^1.1.1"
+    "ngclipboard": "^1.1.1",
+    "Leaflet.label": "^0.2.1"
   },
   "install": {
     "path": "libs/bower/lib"

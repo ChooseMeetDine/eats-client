@@ -31,10 +31,9 @@ Pacific Blue    #00B8D4     0,184,212
   src: url("/css/fonts/lane/LANENAR_.ttf") format("opentype");
 }
 
-html,
-body,
-p {
-  font-family: lane, open sans, arial;
+html,body,p{
+    font-weight: bold;
+    font-family: lane, open sans, arial;
 }
 
 .expiredPoll {
@@ -112,9 +111,10 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 /*Inputfält, väljer font och färg */
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
-  border-color: #00B8D4;
-  font-family: lane, open sans, arial;
-  margin-bottom: 2px;
+    border-color: #00B8D4;
+    font-family: lane, open sans, arial;
+    font-weight: bold;
+    margin-bottom: 2px;
 }
 
 
@@ -181,24 +181,31 @@ md-list-item.md-no-proxy.md-button {
   padding: 2%;
 }
 
-
-/*Logotype div container*/
-
-#logotype {
-  position: fixed;
-  z-index: 999;
-  left: 50%;
-  transform: translateX(-50%);
+/*Footer*/
+footer{
+    text-align: center;
+    opacity: 0.8;
+    position: absolute;
+    bottom:0;
+    color:#FAFAFA;
+    padding:10px;
+    border-top:solid #FAFAFA 1px;
 }
 
 
 /*Logotype img*/
-
-#logoEats {
-  width: 200px;
+#logoEats{
+    width:100px;
+    left: 30%;
 }
-
-
+footer a{
+    color:#FAFAFA;
+}
+footer a:hover{
+    color:#00B8D4;
+    text-decoration:none;
+}
+    
 /*Styling all buttons*/
 
 .md-button {
@@ -298,14 +305,13 @@ md-list-item.md-no-proxy.md-button {
 
 
 /*Login or register button i main menu*/
-
-.login,
-.logout {
-  background: #00b8d4!important;
-  color: #FAFAFA!important;
-  padding: 10px;
-  float: left;
-  margin-left: 2%;
+.login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 20px;
 }
 
 #main-meny-nav {
@@ -337,81 +343,73 @@ md-list-item.md-no-proxy.md-button {
   display: block;
   float: left;
 }
-
-.checkboxImg {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.filterCheckboxImg{
+    position:relative;
+    width:100%;
+    height:100%;
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
   background-color: rgb(0, 184, 212);
 }
 
-.textOverlay {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  border-radius: 50%;
+.textOverlay{
+    position:absolute;
+    height:100%;
+    width:100%;
+    border-radius: 50%;
 }
-
-.checkboxImg .text {
-  position: absolute;
-  z-index: 3;
-  text-align: center;
-  top: 40%;
-  width: 100%;
-  display: none;
+.filterCheckboxImg .text{
+    position:absolute;
+    z-index:3;
+    text-align:center;
+    top:40%;
+    width:100%;
+    display:none;
 }
+.filterCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .textOverlay{
+    background-color:rgba(33, 33, 33, 0.5);
+    z-index:2;
 
-.checkboxImg:hover .textOverlay {
-  background-color: rgba(33, 33, 33, 0.5);
 }
-
-.checkboxImg:hover .text,
-.checkboxImg:hover .textOverlay {
-  display: block;
-  cursor: pointer;
+.filterCheckboxImg:hover .textOverlay,.filterCheckboxImg:hover .text, .createRestaurantCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .text{
+    display: block;
+    cursor:pointer;
 }
 
 input[type=checkbox] {
   display: none;
 }
 
-input[type=checkbox] + .checkboxImg .textOverlay {
-  box-shadow: -1px -1px 1px #212121;
+input[type=checkbox] + .filterCheckboxImg .textOverlay{
+    box-shadow: -1px -1px 1px #212121;
+}
+input[type=checkbox]:checked + .filterCheckboxImg .textOverlay{
+    box-shadow: 1px 1px 1px #212121;
+}
+input[type=checkbox] + .filterCheckboxImg {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding:0;
+    text-transform: lowercase;
 }
 
-input[type=checkbox]:checked + .checkboxImg .textOverlay {
-  box-shadow: 1px 1px 1px #212121;
+input[type=checkbox]:checked + .filterCheckboxImg {
+    -webkit-filter: none; /* Chrome, Safari, Opera */
+    filter: none;
+    width:101%;
+    height:101%;
+    display:inline-block;
+    padding:0;
 }
 
-input[type=checkbox] + .checkboxImg {
-  -webkit-filter: grayscale(100%);
-  /* Chrome, Safari, Opera */
-  filter: grayscale(100%);
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-  padding: 0;
-  text-transform: lowercase;
-}
-
-input[type=checkbox]:checked + .checkboxImg {
-  -webkit-filter: none;
-  /* Chrome, Safari, Opera */
-  filter: none;
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-  padding: 0;
-}
-
-.checkboxImg .filterImg {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.filterCheckboxImg .filterImg{
+    width:100%;
+    margin:0;
+    padding:0;
 }
 
 
@@ -588,101 +586,42 @@ input[type=checkbox]:checked + .checkboxImg {
   display: none!important;
 }
 
-
-/*ADD RESTAURANT*/
-
-.sliderTitle {
-  width: 50%;
+/*Error*/
+#regError{
+    width:200px;
 }
-
-.slider {
-  width: 40%;
-}
-
-.slider,
-.sliderTitle {
-  display: block;
-  float: left;
-  padding: 0;
-}
-
-.slider:first-of-type {
-  margin-right: 10%;
-}
-
-#placeMarker {
-  background: #FAFAFA;
-  color: #212121;
-}
-
-#submitRestaurant {
-  float: right;
-}
-
-#category_checkboxes td {
-  width: 100px;
-  height: 100px;
-  background: red;
-  margin: 5px;
-}
-
-input[type=checkbox] + .addRestaurantCheckboxImg {
-  -webkit-filter: grayscale(100%);
-  /* Chrome, Safari, Opera */
-  filter: grayscale(100%);
-  width: 10%;
-  height: 10%;
-  padding: 0;
-}
-
-input[type=checkbox]:checked + .addRestaurantCheckboxImg {
-  -webkit-filter: none;
-  /* Chrome, Safari, Opera */
-  filter: none;
-  width: 10%;
-  height: 10%;
-  padding: 0;
-}
-
-
 /*Mobile Device*/
-
-@media (max-width:320px) {
-  /* everythig except smartphones, iPhone, portrait 480x320 phones */
-  md-sidenav {
-    width: calc(100% - 100px);
-    min-width: calc(100% - 60px);
-    max-width: calc(100% - 60px);
-  }
-  .md-toolbar-tools {
-    font-size: 1em;
-  }
-  #poll-dialog-name {
-    font-size: 2em;
-  }
+@media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
+    md-sidenav {
+        width: calc(100% - 100px);
+        min-width: calc(100% - 60px);
+        max-width: calc(100% - 60px);
+    }
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 2em;
+    }
 }
 
-@media (max-width:456px) {
-  /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-  md-sidenav {
-    width: calc(100% - 100px);
-    min-width: calc(100% - 100px);
-    max-width: calc(100% - 56px);
-  }
-  .md-toolbar-tools {
-    font-size: 1em;
-  }
-  #poll-dialog-name {
-    font-size: 2em;
-  }
+
+@media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    md-sidenav {
+        width: calc(100% - 100px);
+        min-width: calc(100% - 100px);
+        max-width: calc(100% - 56px);
+    }
 }
 
-@media (max-width:641px) {
-  /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
     */
-  .md-toolbar-tools {
-    font-size: 1em;
-  }
+    .md-toolbar-tools {
+        font-size: 1em;
+    }
+    #poll-dialog-name {
+        font-size: 3em;
+    }
 }
 
 @media (max-width:961px) {
@@ -690,11 +629,13 @@ input[type=checkbox]:checked + .addRestaurantCheckboxImg {
 }
 
 @media (max-width:1025px) {
-  /* everythig except big landscape tablets, laptops, and desktops */
-  .checkboxImg:hover .textOverlay {
-    display: none;
-  }
-  .checkboxImg .text {
-    display: block;
-  }
+/* everythig except big landscape tablets, laptops, and desktops */
+    .checkboxImg:hover .textOverlay{
+        display:none;
+    }
+    .checkboxImg .text{
+            font-size: 1.2em;
+            display:block;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
 }

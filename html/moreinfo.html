@@ -10,16 +10,14 @@
            <!-- Restaurant image -->
             <md-content ng-controller="getCategory" layout-padding>
                 <div id="infoImgContainer">
-                    <img id="infoImg" fallback-src="images/icons/1.png" ng-src="{{ content.photo }}">
+                    <img id="infoImg" onerror="this.src='../images/moreinfo_grey.svg'" ng-src="{{ content.photo }}">
                 </div>
                <!-- Type of food images -->      
-                <div id="label">
-                    <md-list-item ng-repeat="categories in restaurants" ng-if="content.id == categories.id">
-                        <span ng-repeat="category in categories.categories" ng-if="!(category == '10' || category == '11')" class="moreInfoCategoryIcon">
-                            <img ng-src="../images/icons/{{category}}.png">
-                        </span>
+                <md-list id="moreInfoLabel" ng-repeat="categories in restaurants" ng-if="content.id == categories.id">
+                    <md-list-item ng-repeat="category in categories.categories" ng-if="!(category == '10' || category == '11')" class="moreInfoCategoryIcon">
+                        <img ng-src="../images/icons/{{category}}.png">
                     </md-list-item>
-                </div>
+                </md-list>
                 <!-- More info about the restaurant -->     
                 <div id="extrainfo">
                     <md-list-item>{{ content.extra.info }}</md-list-item>

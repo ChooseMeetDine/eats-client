@@ -5,7 +5,8 @@
     <title>Let's Eats!</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <link rel="icon" href="/images/icons/faviconn.ico">
+    
     <!-- Angular -->
     <script src="libs/bower/lib/angular/angular.js"></script>
 
@@ -30,6 +31,18 @@
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.css' rel='stylesheet' />
+    <script src="libs/bower/lib/Leaflet.label/dist/leaflet.label.js"></script>
+    <link rel="stylesheet" href="/js/geocoder/Control.Geocoder.css" />
+    <script src="/js/geocoder/Control.Geocoder.js"></script>
+
+   
+<!--   Vägbeskrivning
+
+    <link rel="stylesheet" href="/js/routing/leaflet-routing-machine.css" />
+    <script src="/js/routing/leaflet-routing-machine.js"></script>
+-->
+
+
 
     <!-- Angular Leaflet Directive -->
     <script src="libs/angular-leaflet-directive.min.js"></script>
@@ -71,7 +84,7 @@
     <script src="js/controllers/showPoll.js"></script>
     <script src="js/controllers/activePolls.js"></script>
     <script src="js/controllers/addRestaurantsToPoll.js"></script>
-    <script src="js/controllers/addRestaurant.js"></script>
+    <script src="js/controllers/createRestaurant.js"></script>
     <script src="js/controllers/mainMenu.js"></script>
     <script src="js/controllers/profilePage.js"></script>
     <script src="js/controllers/slider.js"></script>
@@ -88,7 +101,8 @@
 
     <script src="js/api/addUser.js"></script>
     <script src="js/api/loginUser.js"></script>
-    <script src="js/api/addRestaurant.js"></script>
+    <script src="js/api/getUserInformation.js"></script>
+    <script src="js/api/getUserId.js"></script>
 
     <script src="js/filters.js"></script>
 
@@ -101,6 +115,8 @@
     <link rel="stylesheet" type="text/css" href="css/layouts/loginRegister.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/addRestaurant.css">
     <link rel="stylesheet" type="text/css" href="css/other/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/layouts/profilePage.css">
+    <link rel="stylesheet" type="text/css" href="css/layouts/createRestaurant.css">
   </head>
   <link rel="stylesheet" type="text/css" href="css/layouts/popup.css">
 
@@ -111,8 +127,6 @@
 
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
-      <div ng-include="'html/profilepage.html'"></div>
-
       <!-- Create poll button -->
       <div ng-hide="mode.active === 'ADD_RESTAURANTS_MODE'">
         <md-button id="createPollButton" ng-click="dialogs.showPopup($event, 'createpoll', true, false)">
