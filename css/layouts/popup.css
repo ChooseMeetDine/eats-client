@@ -86,6 +86,14 @@
     color: #f5f5f5;
 }
 
+#more_info_1:focus {
+    outline: 0;
+}
+
+#more_info_1:hover {
+    opacity: 0.9;
+}
+
 /*Icon background*/
 #more_info_2{
     z-index: 1;

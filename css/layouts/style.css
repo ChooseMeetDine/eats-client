@@ -21,18 +21,35 @@ Cyan/Aqua       #18FFFF     24,255,255
 Cyan/Aqua-1     #00E5FF     0,229,255
 Pacific Blue    #00B8D4     0,184,212
 
+
+Filterikoner har egen färg i sin bakgrundsfärg...
+Darkslategrey   #364e5c     54,78,92
 */
 
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: #EEEEEE;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: #616161;
+}
 
 /*FONTS*/
-
 @font-face {
-  font-family: lane;
-  src: url("/css/fonts/lane/LANENAR_.ttf") format("opentype");
+    font-family: lane;
+    src: url("/css/fonts/raleway/Raleway-Thin.ttf")
+        format("opentype");
 }
 
 html,body,p{
-    font-weight: bold;
     font-family: lane, open sans, arial;
 }
 
@@ -54,9 +71,7 @@ md-list-item,
 
 
 /*HTML,BODY*/
-
-html,
-body {
+html,body{
   height: 100%;
   overflow-x: hidden;
   font-size: 14px;
@@ -108,7 +123,6 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: lane, open sans, arial;
-    font-weight: bold;
     margin-bottom: 2px;
 }
 
@@ -121,6 +135,22 @@ leaflet-popup-content-wrapper {
 
 
 /*Menu content*/
+<<<<<<< HEAD
+md-sidenav{
+    background: #424242;
+    display:block;
+    height:100vh;
+    z-index: 3;
+    padding-top: 44px;
+}
+md-sidenav .md-toolbar-tools{
+    background: #757575;
+    color: #FAFAFA;
+    max-height: 100px!important;
+    height: 70px;
+}
+md-sidenav .material-icons{
+    color:#FAFAFA;
 
 md-sidenav {
   background: #424242;
@@ -255,6 +285,15 @@ footer a:hover{
 .leaflet-control-zoom-out {
   color: transparent!important;
 }
+/*
+.leaflet-control-zoom-out {
+  box-shadow: 1px 0px 5px 0 rgba(0,0,0,.26);
+}*/
+
+.leaflet-control-zoom {
+  box-shadow: 1px 0 5px 0 rgba(0,0,0,.26);
+}
+
 
 
 /*Show me where I am button container*/
@@ -265,6 +304,24 @@ footer a:hover{
   border: none;
 }
 
+.leaflet-control-locate  {
+    box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.leaflet-control-geocoder {
+box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.leaflet-control-geocoder-icon {
+  background-image: url(/images/icons/mag_from_font.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 66%;
+}
+
+.leaflet-control-geocoder, .leaflet-control-geocoder-form input, .leaflet-control-geocoder a, .leaflet-control-geocoder .leaflet-control-geocoder-icon {
+  background-color: white;
+}
 
 /*Show me where I am icon*/
 
@@ -285,11 +342,12 @@ footer a:hover{
   top: 0;
   left: 0;
   z-index: 4;
+  border-radius: 3px;
+  box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 }
 
 .menubutton {
   font-size: 180%;
-  border-radius: 0px;
   padding: 5px 10px;
   float: left;
 }
@@ -345,7 +403,11 @@ footer a:hover{
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
-  background-color: rgb(0, 184, 212);
+    background-color: #364e5c;
+}
+md-checkbox.md-checked.normalCheckbox {
+    text-transform: uppercase;
+    background-color: #364e5c;
 }
 
 .textOverlay{
