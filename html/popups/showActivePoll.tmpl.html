@@ -1,5 +1,5 @@
 <md-dialog class="poll-dialog" ng-controller="showPoll" aria-label="addPoll" ng-cloak>
-
+<md-progress-linear md-diameter="150" ng-class="{'hide-keep-space': !loading}" md-mode="query" class="poll-progress"></md-progress-linear>
   <md-dialog-content layout-padding>
     <div class="md-dialog-content">
       <div id="poll-dialog-top">
@@ -16,7 +16,7 @@
       </div>
       <div id="poll-dialog-restaurants">
         <h3 id="rest-text">Restauranger:</h3> <br>
-        <div ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant, 'poll-dialoge-vote-object-has-won': restaurant.winner, 'no-pointer': (active.raw.data.hasExpired || active.cleaned.userHasVoted)}">
+        <div ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant, 'poll-dialoge-vote-object-has-won': restaurant.winner, 'no-pointer': (active.raw.data.hasExpired || active.cleaned.userHasVoted || !active.cleaned.userIsParticipantInPoll)}">
 
               <i ng-if="!restaurant.winner" ng-class="{'hide-keep-space':active.cleaned.userHasVoted}" class="material-icons md-24 thumb">thumb_up</i>
               <i ng-if="restaurant.winner" class="material-icons md-24 stars">stars</i>

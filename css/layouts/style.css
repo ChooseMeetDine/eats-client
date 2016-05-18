@@ -36,11 +36,6 @@ html,body,p{
     font-family: lane, open sans, arial;
 }
 
-.expiredPoll {
-  background-color: #424242 !important;
-  color: #fafafa !important;
-}
-
 
 /* RESETS: md-button., md-list */
 
@@ -536,6 +531,10 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   color:#FAFAFA!important;
 }
 
+.expiredPoll {
+  background-color: #424242 !important;
+  color: #fafafa !important;
+}
 
 /*-------------MORE INFO ABOUT RESTAURANTS------------*/
 
