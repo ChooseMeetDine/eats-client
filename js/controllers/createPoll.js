@@ -37,7 +37,7 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
         pollService.add(response.data); //Add poll to shared service
         pollService.setActiveId(response.data.data.id); //set poll as active
 
-        $scope.swap('showActivePoll', true, false); //Hide this popup and show active poll
+        $scope.swap('showActivePoll', true, true); //Hide this popup and show active poll
         $scope.loading = false;
       })
       .catch(function(err) {

@@ -537,6 +537,8 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   min-width: 100px;
   bottom: 0px;
   pointer-events: auto;
+  background: #00b8d4!important;
+  color:#FAFAFA!important;
 }
 
 
