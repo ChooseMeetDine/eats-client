@@ -153,7 +153,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
       method: 'Get',
       url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
-      console.log('Joined poll ' + pollId);
+      console.log('Adds poll and set it as active: ' + pollId);
       pollService.add(response.data);
       pollService.setActiveId(pollId);
 
