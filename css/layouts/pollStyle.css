@@ -1,5 +1,5 @@
 .poll-dialog {
-    background-color: rgb(97, 97, 97);
+    background-color: #424242;
     max-width: 500px;
 }
 
@@ -23,8 +23,6 @@
 
 .poll-dialoge-vote-object-has-vote {
     background-color: #c7efae;
-    box-shadow: inset 0 1px 5px #000;
-    cursor: default;
 }
 
 .poll-dialoge-vote-object-has-vote:hover {
@@ -41,6 +39,10 @@
 .poll-dialog-vote-object:active {
     position: relative;
     top: 1px;
+}
+
+.poll-dialog-vote-object:focus {
+    outline:0;
 }
 
 .hide-keep-space {
@@ -178,4 +180,12 @@
     border-radius: 50%;
     max-height: 32px;
     max-width: 32px
+}
+
+.poll-progress .md-container {
+    background-color: #424242!important;
+}
+
+.poll-progress .md-bar {
+    background-color: #f4f4f4!important;
 }

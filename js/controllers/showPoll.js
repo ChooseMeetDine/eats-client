@@ -11,6 +11,7 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.now = new Date();
 
+  $scope.loading = false;
 
   // TODO (eventuellt):
   // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
@@ -27,6 +28,7 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.vote = function(restaurant) {
     if ($scope.now < $scope.active.raw.data.expiresAsDateObj) {
+      $scope.loading = true;      
       $http({
         method: 'POST',
         url: __env.API_URL + '/polls/' + $scope.active.cleaned.id + '/votes',
@@ -35,8 +37,10 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
           restaurantId: restaurant
         }
       }).then(function(response) {
+        $scope.loading = false; 
         console.log('User voted on a restaurant');
       }).catch(function(error) {
+        $scope.loading = false; 
         console.log('error');
         console.log(error);
       })
