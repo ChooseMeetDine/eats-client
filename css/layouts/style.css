@@ -53,63 +53,89 @@ html,body,p{
     font-family: lane, open sans, arial;
 }
 
-.expiredPoll {
-  background-color: #424242 !important;
-  color: #fafafa !important;
-}
 
 /* RESETS: md-button., md-list */
-.md-button, md-list-item .md-list-item-inner, md-list-item, .md-subheader-inner, .leaflet-popup-content, .leaflet-popup-content-wrappe{
-    margin:0;
-    padding:0;
-    min-width:0;
-    min-height:0;
-    line-height:normal;
-}
-/*HTML,BODY*/
-html,body{
-    height: 100%;
-    font-size: 14px;
-}
-h1{
-    font-size: 55px;
-    font-family: lane, open sans, arial;
-}
-/*Forms*/
-form{
-    padding:5px;
+
+.md-button,
+md-list-item .md-list-item-inner,
+md-list-item,
+.md-subheader-inner,
+.leaflet-popup-content,
+.leaflet-popup-content-wrappe {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  line-height: normal;
 }
 
-form input{
-    background: #00b8d4;
-    border: none;
-    border-radius: 2px;
-    color: #FAFAFA;
-    padding:10px;
+
+/*HTML,BODY*/
+html,body{
+  height: 100%;
+  overflow-x: hidden;
+  font-size: 14px;
 }
+
+h1 {
+  font-size: 55px;
+  font-family: lane, open sans, arial;
+}
+
+
+/*Forms*/
+
+form {
+  padding: 5px;
+}
+
+form input {
+  background: #00b8d4;
+  border: none;
+  border-radius: 2px;
+  color: #FAFAFA;
+  padding: 10px;
+}
+
+
 /*Color toolbars*/
+
+
 /*Dialogruta*/
-md-dialog{
-    background-color: #FAFAFA;
-    max-height: 92%;
-    width: 500px;
-    color: #212121;
+
+md-dialog {
+  background-color: #FAFAFA;
+  max-height: 92%;
+  width: 500px;
+  color: #212121;
 }
+
+
 /*Färg vid klickad checkbox */
+
 md-checkbox.md-checked.checkboxpermission .md-icon {
- background-color: #00B8D4;
+  background-color: #00B8D4;
 }
+
+
 /*Inputfält, väljer font och färg */
+
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: lane, open sans, arial;
     margin-bottom: 2px;
 }
+
+
 /*Popup content wrapper*/
-leaflet-popup-content-wrapper{
-    border:none!important;
+
+leaflet-popup-content-wrapper {
+  border: none!important;
 }
+
+
 /*Menu content*/
+<<<<<<< HEAD
 md-sidenav{
     background: #424242;
     display:block;
@@ -125,31 +151,61 @@ md-sidenav .md-toolbar-tools{
 }
 md-sidenav .material-icons{
     color:#FAFAFA;
-}
-md-sidenav hr{
-    border-color: #424242;
+
+md-sidenav {
+  background: #424242;
+  display: block;
+  height: 100vh;
+  z-index: 3;
+  overflow: hidden;
+  padding-top: 44px;
 }
 
-md-backdrop.md-sidenav-backdrop{
-    z-index:2;
+md-sidenav .md-toolbar-tools {
+  background: #757575;
+  color: #FAFAFA;
+  max-height: 100px!important;
+  height: 70px;
 }
-md-list-item .md-no-style.md-button, md-list-item.md-no-proxy.md-button {
-    padding-left: 0px;
+
+md-sidenav .material-icons {
+  color: #FAFAFA;
 }
+
+md-sidenav hr {
+  border-color: #424242;
+}
+
+md-backdrop.md-sidenav-backdrop {
+  z-index: 2;
+}
+
+md-list-item .md-no-style.md-button,
+md-list-item.md-no-proxy.md-button {
+  padding-left: 0px;
+}
+
+
 /*Color backgrounds*/
-.md-content, .layout-padding{
-    background: #424242;
-    color: #FAFAFA;
-    padding: 0;
-    overflow: hidden;
+
+.md-content,
+.layout-padding {
+  background: #424242;
+  color: #FAFAFA;
+  padding: 0;
+  overflow: hidden;
 }
+
+
 /*Header för dialogrutor*/
-.md-toolbar-tools{
-    font-family: lane;
-    font-size: 36px;
-    background-color: #616161;
-    padding: 2%;
+
+.md-toolbar-tools {
+  font-family: lane;
+  font-size: 36px;
+  background-color: #616161;
+  padding: 2%;
 }
+
 /*Footer*/
 footer{
     text-align: center;
@@ -160,6 +216,8 @@ footer{
     padding:10px;
     border-top:solid #FAFAFA 1px;
 }
+
+
 /*Logotype img*/
 #logoEats{
     width:100px;
@@ -174,74 +232,131 @@ footer a:hover{
 }
     
 /*Styling all buttons*/
-.md-button{
-    padding:10px;
-    font-weight: bold;
-}
-/*Aktiveringsknappar, exemeplvis för att SKAPA något*/
-.actionbutton{
-    background-color: #00B8D4;
-    color: #fafafa;
-}
-/*MAP*/
-#map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    z-index: 0;
+
+.md-button {
+  padding: 10px;
+  font-weight: bold;
 }
 
-#main-meny-nav{
-    padding: 2px;
+
+/*Aktiveringsknappar, exemeplvis för att SKAPA något*/
+
+.actionbutton {
+  background-color: #00B8D4;
+  color: #fafafa;
 }
+
+
+/*MAP*/
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+#main-meny-nav {
+  padding: 2px;
+}
+
+
 /*--------------------LEAFLET STUFF-------------------*/
+
+
 /*Zoom and show me where I am buttons*/
-.leaflet-bar{
-    zoom: 130%;
-    border:none;
-    border-radius: 0px;
-    -webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+
+.leaflet-bar {
+  zoom: 130%;
+  border: none;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
+
+
 /*Zoom in and zoom out controls */
-.leaflet-control-zoom-in, .leaflet-control-zoom-out{
-    color:transparent!important;
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  color: transparent!important;
 }
+/*
+.leaflet-control-zoom-out {
+  box-shadow: 1px 0px 5px 0 rgba(0,0,0,.26);
+}*/
+
+.leaflet-control-zoom {
+  box-shadow: 1px 0 5px 0 rgba(0,0,0,.26);
+}
+
+
+
 /*Show me where I am button container*/
-.leaflet-bar a, .leaflet-bar a:hover{
-    text-align: -webkit-center;
-    border:none;
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  text-align: -webkit-center;
+  border: none;
 }
+
+.leaflet-control-locate  {
+    box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.leaflet-control-geocoder {
+box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.leaflet-control-geocoder-icon {
+  background-image: url(/images/icons/mag_from_font.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 66%;
+}
+
+.leaflet-control-geocoder, .leaflet-control-geocoder-form input, .leaflet-control-geocoder a, .leaflet-control-geocoder .leaflet-control-geocoder-icon {
+  background-color: white;
+}
+
 /*Show me where I am icon*/
-.leaflet-control-locate a{
-    padding:2px;
+
+.leaflet-control-locate a {
+  padding: 2px;
 }
+
 
 /*---------------MAIN MENU & FILTER MENU-------------*/
+
+
 /*Buttons*/
-#menubuttons{
-    background:#424242;
-    color: #FAFAFA;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 4;
+
+#menubuttons {
+  background: #424242;
+  color: #FAFAFA;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  border-radius: 3px;
+  box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 }
 
-.menubutton{
-    font-size: 180%;
-    border-radius: 0px;
-    padding:5px 10px;
-    float: left;
+.menubutton {
+  font-size: 180%;
+  padding: 5px 10px;
+  float: left;
 }
 
-.menubutton:hover{
-    background: #212121;
+.menubutton:hover {
+  background: #212121;
 }
+
+
 /*Login or register button i main menu*/
 .login, .logout{
     background: #00b8d4!important;
@@ -252,27 +367,34 @@ footer a:hover{
     margin-top: 20px;
 }
 
-#main-meny-nav{
-    padding:10px;
+#main-meny-nav {
+  padding: 10px;
 }
+
 
 /*-------------------FILTER MENU----------------------*/
+
+
 /*Filter menu undertitles*/
+
 .filter-undertitle {
-    font-size: 14px;
-    padding: 10px;
-}
-/*First undertitle in filter menu*/
-#filterMenuContent{
-    margin: 20px;
+  font-size: 14px;
+  padding: 10px;
 }
 
-#filter_menu td{
-    width:25%;
-    margin:3.1% 4% 3.1% 4%;
-    padding:0;
-    display:block;
-    float:left;
+
+/*First undertitle in filter menu*/
+
+#filterMenuContent {
+  margin: 20px;
+}
+
+#filter_menu td {
+  width: 25%;
+  margin: 3.1% 4% 3.1% 4%;
+  padding: 0;
+  display: block;
+  float: left;
 }
 .filterCheckboxImg{
     position:relative;
@@ -285,6 +407,7 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
 }
 md-checkbox.md-checked.normalCheckbox {
     text-transform: uppercase;
+    background-color: #364e5c;
 }
 
 .textOverlay{
@@ -301,19 +424,17 @@ md-checkbox.md-checked.normalCheckbox {
     width:100%;
     display:none;
 }
-.filterCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .textOverlay{
-    background-color:rgba(33, 33, 33, 0.5);
-    z-index:2;
-
+.filterCheckboxImg:hover .text{
+    display:block;
 }
-.filterCheckboxImg:hover .textOverlay,.filterCheckboxImg:hover .text, .createRestaurantCheckboxImg:hover .textOverlay, .createRestaurantCheckboxImg:hover .text{
-    display: block;
-    cursor:pointer;
+.filterCheckboxImg:hover .textOverlay{
+    background-color:rgba(33, 33, 33, 0.5);
 }
 
 input[type=checkbox] {
-    display:none;
+  display: none;
 }
+
 input[type=checkbox] + .filterCheckboxImg .textOverlay{
     box-shadow: -1px -1px 1px #212121;
 }
@@ -333,8 +454,8 @@ input[type=checkbox] + .filterCheckboxImg {
 input[type=checkbox]:checked + .filterCheckboxImg {
     -webkit-filter: none; /* Chrome, Safari, Opera */
     filter: none;
-    width:101%;
-    height:101%;
+    width:100%;
+    height:100%;
     display:inline-block;
     padding:0;
 }
@@ -344,84 +465,189 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     margin:0;
     padding:0;
 }
+
+
 /*Filter menu star rating*/
+
 .star-rating {
-    line-height: 32px;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 10px;
-    margin: 10px;
+  line-height: 32px;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
 }
+
+
 /*--------------------CREATE POLL---------------------*/
+
+
 /*Create poll button*/
+
 #createPollButton {
-    color: #212121;
-    padding: 0;
-    z-index: 2;
-    position: absolute;
-    bottom: 2%;
-    right: 2%;
-    background: none;
-    border-radius: 50%;
+  color: #212121;
+  padding: 0;
+  z-index: 2;
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  background: none;
+  border-radius: 50%;
 }
+
+
 /*----------ACTIVE POLL-------------*/
+
 .md-button.md-raised {
-    color: #fff;
-    background-color: #00B8D4;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  color: #fff;
+  background-color: #00B8D4;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
+
 .md-button.md-raised:hover {
-    opacity: 0.7!important;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  opacity: 0.7!important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-#activePollPosition{
-    position:absolute;
-    bottom:0px;
-    z-index:2;
+
+#activePollPosition {
+  position: absolute;
+  bottom: 0px;
+  z-index: 2;
+  pointer-events: none;
 }
-#activePollPosition button{
-    padding: 10px;
-    margin: 2px;
+
+#activePollPosition button {
+  padding: 10px;
+  margin: 2px;
 }
+
+
 /*Create poll button when hovering*/
+
 #createPollIcon:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
+
+
 /*Create poll icon making the plus sign bigger*/
+
 #createPollIcon {
-    font-size: 7em;
-    color: #00B8D4;
-    text-shadow: 1px 2px #818181;
+  font-size: 7em;
+  color: #00B8D4;
+  text-shadow: 1px 2px #818181;
 }
+
 .md-dialog-content {
-    color: #212121;
+  color: #212121;
 }
+
+.buttonAndPopupContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.emptyExpiredPollPopup {
+  bottom: 100px;
+  width: 80px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: block;
+  visibility: hidden;
+  position: relative;
+  bottom: 8px;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.expiredPollPopup {
+  background: #757575;
+  color: #FFFFFF;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.expiredPollPopup:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #757575;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+.activePollButton {
+  min-width: 100px;
+  bottom: 0px;
+  pointer-events: auto;
+  background: #00b8d4!important;
+  color:#FAFAFA!important;
+}
+#dialogError{
+    color:rgb(186,51,0);
+}
+
+.expiredPoll {
+  background-color: #424242 !important;
+  color: #fafafa !important;
+}
+
 /*-------------MORE INFO ABOUT RESTAURANTS------------*/
+
+
 /*Infoslider with more info about restaurant*/
+
 #moreInfoSlider .md-no-proxy {
-    padding:10px!important;
+  padding: 10px!important;
 }
+
+
 /*Infoslider content width*/
-.infomenu{
-    width: 500px;
+
+.infomenu {
+  width: 500px;
 }
+
 
 /*Add restaurant button for save restaurant*/
-.saveRestaurantButton{
-    position:absolute;
-    right: 20px;
-    bottom: 100px;
-    z-index:2;
-}
-/*hide md-dialog-container*/
-.display-none-md-dialog-container, .display-none-md-dialog-backdrop, .display-none-md-scroll-mask, .display-none-addRestaurantPopup{
-    display: none !important;
-}
-/*hide link to leaflet*/
-.leaflet-control-attribution a{
-    display: none!important;
+
+.saveRestaurantButton {
+  position: absolute;
+  right: 20px;
+  bottom: 100px;
+  z-index: 2;
 }
 
+
+/*hide md-dialog-container*/
+
+.display-none-md-dialog-container,
+.display-none-md-dialog-backdrop,
+.display-none-md-scroll-mask,
+.display-none-addRestaurantPopup {
+  display: none !important;
+}
+
+
+/*hide link to leaflet*/
+
+.leaflet-control-attribution a {
+  display: none!important;
+}
 
 /*Error*/
 #regError{
@@ -460,15 +686,21 @@ input[type=checkbox]:checked + .filterCheckboxImg {
         font-size: 3em;
     }
 }
-@media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */ }
+
+@media (max-width:961px) {
+  /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
 @media (max-width:1025px) {
 /* everythig except big landscape tablets, laptops, and desktops */
-    .checkboxImg:hover .textOverlay{
-        display:none;
-    }
-    .checkboxImg .text{
+
+    .filterCheckboxImg .text{
             font-size: 1.2em;
-            display:block;
+            display:none;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
+}
+/*LOADING PROGRESS BAR*/
+md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
+    background-color: #00B8D4;
 }

@@ -21,8 +21,10 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
           $window.location.reload();
         });
     } else {
-      pollService.joinActivePoll();
-      $window.location.reload();
+      pollService.joinActivePoll()
+      .then(function(){
+        $window.location.reload();
+      });
     }
   };
 

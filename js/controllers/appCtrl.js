@@ -12,28 +12,27 @@
     // ev: $event-object, to make the popup animations move from where the user clicked
     // id: string, the name of one of the popup templates in html/popups
     // clickOutSideToClose: boolean, to control if popup should be allowed to close when clicking out side it
-    // clearActivePollOnRemove: boolean, that determines if the active poll should be cleared when
-    // this popup is closed or not. Clearing activePoll is done to remove the poll-URL-parameter,
+    // clearActivePollOnCancel: boolean, that determines if the active poll should be cleared when
+    // this popup is cancelled or not. Clearing activePoll is done to remove the poll-URL-parameter,
     // for example when closing an active poll popup, to make sure it wont be opened automaticly when the page is reloaded.
-    $scope.dialogs.showPopup = function(ev, id, clickOutsideToClose, clearActivePollOnRemove) {
-      var clearActivePoll = null;
-      if (clearActivePollOnRemove) {
-        clearActivePoll = pollService.clearActivePoll;
-      }
-
+    $scope.dialogs.showPopup = function(ev, id, clickOutsideToClose, clearActivePollOnCancel) {
       $mdDialog.show({
           controller: DialogController,
           templateUrl: 'html/popups/' + id + '.tmpl.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: clickOutsideToClose,
-          onRemoving: clearActivePoll
         })
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
-        });
+        .then(function(){
+          console.log('Dialog was hidden');
+        })
+        .catch(function(){
+        // This code will run if the dialog is "cancelled", i.e. user clicked on Cancel/X or outside the dialog
+        if(clearActivePollOnCancel) {
+            pollService.clearActivePoll();
+          }
+        console.log('Dialog was cancelled');
+      });
     };
 
     var userFollowedPollLink = ($scope.parameterPollId); //votelänk användes
@@ -43,7 +42,7 @@
         pollService
           .getPollIdAndSetAsActive($scope.parameterPollId)
           .then(function() {
-            $scope.dialogs.showPopup(null, 'showActivePoll', true, false);
+            $scope.dialogs.showPopup(null, 'showActivePoll', true, true);
           });
       }
     }
@@ -81,18 +80,22 @@
     $scope.hide = function() {
       $mdDialog.hide();
     };
-    $scope.show = function(id, clickOutsideToClose, clearActivePollOnRemove) {
-      var clearActivePoll = null;
-      if (clearActivePollOnRemove) {
-        clearActivePoll = pollService.clearActivePoll;
-      }
-
+    $scope.show = function(id, clickOutsideToClose, clearActivePollOnCancel) {
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'html/popups/' + id + '.tmpl.html',
         parent: angular.element(document.body),
         clickOutsideToClose: clickOutsideToClose,
-        onRemoving: clearActivePoll
+      })
+      .then(function(){
+        console.log('Dialog was hidden');
+      })
+      .catch(function(){
+        // This code will run if the dialog is "cancelled", i.e. user clicked on Cancel/X or outside the dialog
+        if(clearActivePollOnCancel) {
+            pollService.clearActivePoll();
+          }
+        console.log('Dialog was cancelled');
       });
     };
     $scope.cancel = function() {
@@ -101,8 +104,8 @@
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
-    $scope.swap = function(id, clickOutsideToClose, clearActivePollOnRemove) {
+    $scope.swap = function(id, clickOutsideToClose, clearActivePollOnCancel) {
       $scope.hide();
-      $scope.show(id, clickOutsideToClose, clearActivePollOnRemove);
+      $scope.show(id, clickOutsideToClose, clearActivePollOnCancel);
     };
   }
