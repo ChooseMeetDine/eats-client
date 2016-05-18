@@ -43,7 +43,6 @@ html,body,p{
 
 
 /* RESETS: md-button., md-list */
-
 .md-button,
 md-list-item .md-list-item-inner,
 md-list-item,
@@ -73,7 +72,6 @@ h1 {
 
 
 /*Forms*/
-
 form {
   padding: 5px;
 }
@@ -91,7 +89,6 @@ form input {
 
 
 /*Dialogruta*/
-
 md-dialog {
   background-color: #FAFAFA;
   max-height: 92%;
@@ -101,14 +98,12 @@ md-dialog {
 
 
 /*Färg vid klickad checkbox */
-
 md-checkbox.md-checked.checkboxpermission .md-icon {
   background-color: #00B8D4;
 }
 
 
 /*Inputfält, väljer font och färg */
-
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: raleway, open sans, arial;
@@ -117,14 +112,12 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
 
 
 /*Popup content wrapper*/
-
 leaflet-popup-content-wrapper {
   border: none!important;
 }
 
 
 /*Menu content*/
-
 md-sidenav {
   background: #424242;
   display: block;
@@ -160,7 +153,6 @@ md-list-item.md-no-proxy.md-button {
 
 
 /*Color backgrounds*/
-
 .md-content,
 .layout-padding {
   background: #424242;
@@ -213,7 +205,6 @@ footer a:hover{
 
 
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
-
 .actionbutton {
   background-color: #00B8D4;
   color: #fafafa;
@@ -221,7 +212,6 @@ footer a:hover{
 
 
 /*MAP*/
-
 #map {
   position: absolute;
   top: 0;
@@ -241,7 +231,6 @@ footer a:hover{
 
 
 /*Zoom and show me where I am buttons*/
-
 .leaflet-bar {
   zoom: 130%;
   border: none;
@@ -253,7 +242,6 @@ footer a:hover{
 
 
 /*Zoom in and zoom out controls */
-
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
   color: transparent!important;
@@ -270,7 +258,6 @@ footer a:hover{
 
 
 /*Show me where I am button container*/
-
 .leaflet-bar a,
 .leaflet-bar a:hover {
   text-align: -webkit-center;
@@ -307,7 +294,6 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 
 
 /*Buttons*/
-
 #menubuttons {
   background: #424242;
   color: #FAFAFA;
@@ -349,7 +335,6 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 
 
 /*Filter menu undertitles*/
-
 .filter-undertitle {
   font-size: 14px;
   padding: 10px;
@@ -357,7 +342,6 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 
 
 /*First undertitle in filter menu*/
-
 #filterMenuContent {
   margin: 20px;
 }
@@ -376,7 +360,7 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
-  background-color: rgb(0, 184, 212);
+  background-color: #364e5c;
 }
 
 .textOverlay{
@@ -437,7 +421,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*Filter menu star rating*/
-
 .star-rating {
   line-height: 32px;
   font-size: 2em;
@@ -451,7 +434,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*Create poll button*/
-
 #createPollButton {
   color: #212121;
   padding: 0;
@@ -489,16 +471,12 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   margin: 2px;
 }
 
-
 /*Create poll button when hovering*/
-
 #createPollIcon:hover {
   opacity: 0.7;
 }
 
-
 /*Create poll icon making the plus sign bigger*/
-
 #createPollIcon {
   font-size: 7em;
   color: #00B8D4;
@@ -579,21 +557,16 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*Infoslider with more info about restaurant*/
-
 #moreInfoSlider .md-no-proxy {
   padding: 10px!important;
 }
 
-
 /*Infoslider content width*/
-
 .infomenu {
   width: 500px;
 }
 
-
 /*Add restaurant button for save restaurant*/
-
 .saveRestaurantButton {
   position: absolute;
   right: 20px;
@@ -601,9 +574,7 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   z-index: 2;
 }
 
-
 /*hide md-dialog-container*/
-
 .display-none-md-dialog-container,
 .display-none-md-dialog-backdrop,
 .display-none-md-scroll-mask,
@@ -613,7 +584,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*hide link to leaflet*/
-
 .leaflet-control-attribution a {
   display: none!important;
 }
@@ -622,7 +592,8 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 #regError{
     width:200px;
 }
-/*Mobile Device*/
+
+/*--------------------------------------MEDIA QUERIES---------------------------------------*/
 @media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
     md-sidenav {
         width: calc(100% - 100px);
@@ -637,7 +608,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     }
 }
 
-
 @media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     md-sidenav {
         width: calc(100% - 100px);
@@ -646,8 +616,7 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     }
 }
 
-@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
-    */
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
     .md-toolbar-tools {
         font-size: 1em;
     }
@@ -656,19 +625,12 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     }
 }
 
-@media (max-width:961px) {
-  /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */
 }
 
-@media (max-width:1025px) {
-/* everythig except big landscape tablets, laptops, and desktops */
-
-    .filterCheckboxImg .text{
-            font-size: 1.2em;
-            display:none;
-            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    }
+@media (max-width:1025px) { /* everythig except big landscape tablets, laptops, and desktops */
 }
+
 /*LOADING PROGRESS BAR*/
 md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
     background-color: #00B8D4;
