@@ -9,6 +9,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   var overlays = filterService.overlays;
   var userMarker;
   var createRestaurantMarker;
+  var createRestaurantMarkerNew;
 
   // ------------------------------- //
   //        MAP CONFIGURATION        //
@@ -50,7 +51,18 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         L.control.locate({
           follow: true,
           position: 'topright'
-        })
+        }),
+          L.Control.geocoder({
+            position: 'topright'
+//        }),
+//          L.Routing.control({
+//            position: 'bottomleft',              
+//              waypoints: [
+//                  L.latLng(55.607335, 13.008678)
+//              ],
+//              routeWhileDragging: true,
+//              geocoder: L.Control.Geocoder.nominatim()
+          })
       ]
     }
   }
@@ -111,24 +123,52 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         createRestaurantMarker = {
           lat: args.leafletEvent.latlng.lat,
           lng: args.leafletEvent.latlng.lng,
-          draggable: false,
+          draggable: true,
+          focus: true,
+          id: "CREATE_RESTAURANT_MARKER",
+          /*message: "<span ng-include=\"\'html/createRestaurantMarker.html\'\"></span>",*/
           icon: {
             iconUrl: 'images/icons/create_restaurant_marker.png',
             iconSize: [24, 24], // size of the icon
-            iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
+            iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
+          },
+          label:{
+              message: "<span ng-include=\"\'html/createRestaurantMarker.html\'\"></span>",
+              options: {
+                  noHide: true
+              }
+          },
+          getLabelScope: function(){return $scope}
           }
-        };
         restaurantMarkers.push(createRestaurantMarker);
-      } else {
-        createRestaurantMarker.lat = args.leafletEvent.latlng.lat;
-        createRestaurantMarker.lng = args.leafletEvent.latlng.lng;
+      }else{
+          restaurantMarkers.pop(createRestaurantMarker);
+          restaurantMarkers.push(createRestaurantMarker);
+          createRestaurantMarker.lat = args.leafletEvent.latlng.lat;
+          createRestaurantMarker.lng = args.leafletEvent.latlng.lng;
       }
-      createRestaurantService.setClickedPosition(args.leafletEvent.latlng.lat, args.leafletEvent.latlng.lng);
-      modeService.setMode('DEFAULT');
-      $scope.dialogs.showPopup(args.leafletEvent, 'createRestaurant', false, false);
+      createRestaurantService.setClickedPosition(createRestaurantMarker);
+      $scope.center.lat = args.leafletEvent.latlng.lat;
+      $scope.center.lng = args.leafletEvent.latlng.lng;
+      modeService.setMode('DEFAULT');      
+      
     }
   });
-
+  $scope.$on('leafletDirectiveMarker.dragend', function(e, args){
+        console.log(args);
+        if(args.model.id === "CREATE_RESTAURANT_MARKER"){
+            console.log(args.model.id);
+            console.log(args.model.lat);
+            console.log(args.model.lng);
+            createRestaurantMarker.lat = args.model.lat;
+            createRestaurantMarker.lng = args.model.lng;
+            $scope.center.lat = args.model.lat;
+            $scope.center.lng = args.model.lng;
+        }
+       });
+  $scope.deleteMarker = function(){
+      restaurantMarkers.pop(createRestaurantMarker);
+  }
   // Event listener for clicks on markers - centers map on marker
   $scope.$on('leafletDirectiveMap.popupopen', function(event, args) {
     $scope.center.lat = args.leafletEvent.popup._latlng.lat;
@@ -160,6 +200,11 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
 
     for (var k in items) {
       var restaurant = items[k];
+
+      if(!restaurant.relationships.categories){ //Skip all restaurants without categories
+        continue;
+      }
+
       var attributes = {
         id: restaurant.id,
         name: restaurant.attributes.name,

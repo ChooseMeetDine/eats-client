@@ -9,7 +9,7 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.active = pollService.getActive();
 
-  $scope.now = new Date(new Date() + 20000);
+  $scope.now = new Date();
 
 
   // TODO (eventuellt):
@@ -20,11 +20,13 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
   // Updates the date every second to be able to compare to the expiration date of the poll
   // Disables joining the poll when it has 20 seconds left (to let the user have time to log in if need be)
   $interval(function() {
-    $scope.now = new Date(new Date().getTime() + 20000);
+    $scope.now = new Date();
   }, 1000);
 
+
+
   $scope.vote = function(restaurant) {
-    if($scope.now < $scope.active.raw.data.expiresAsDateObj){
+    if ($scope.now < $scope.active.raw.data.expiresAsDateObj) {
       $http({
         method: 'POST',
         url: __env.API_URL + '/polls/' + $scope.active.cleaned.id + '/votes',

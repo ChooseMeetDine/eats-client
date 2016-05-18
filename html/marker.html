@@ -7,12 +7,12 @@
  	    	
     <!-- image, restaurant name and more info button (down right corner button) -->
 	<div id="image_content">
-        <img ng-src="{{photo}}">	
+        <img onerror="this.src='../images/popuplogo.svg'" ng-src="{{photo}}">	
         <h1><span>{{name}}</span></h1>        	
         <i ng-click="openSlideMenu(id)" class="material-icons md-48" id="more_info_1" title="Mer info om restaurang">info</i>
         <i ng-click="openSlideMenu(id)" class="material-icons md-48" id="more_info_2" title="Marker fin">brightness_1</i>
         
-<!--           <span id="rating_stars" class="rating-static rating-{{rating}}"></span>    		                    -->
+<!--           <p id="rating_stars" class="rating-static rating-{{rating}}"></p>    		                    -->
             
     </div>
 </div>

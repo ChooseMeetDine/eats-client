@@ -5,7 +5,7 @@
 
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h1 ng-hide="loading">Lägg till omröstning</h1>
+        <h1 ng-hide="loading">Skapa ny omröstning</h1>
         <span flex></span>
       </div>
     </md-toolbar>
@@ -19,12 +19,16 @@
 
         <div class="md-warn " ng-show="error "><strong> Hoppsan!</strong> <br>{{error}}</div>
 
-        <form name="addPoll " ng-submit="regPoll()">
+        <form name="addPoll " ng-submit="regPoll()" novalidate>
 
           <div layout-gt-sm="row ">
             <md-input-container class="md-block " flex-gt-sm>
               <label>Ange namn för omröstning</label>
-              <input id="lunchname" ng-model="form.data.name " type="text " value="name" ng-required="true">
+              <input id="lunchname" ng-model="form.data.name " type="text " value="name" name="pollName" md-maxlength="65" required>
+              <div ng-messages="addPoll.pollName.$error" ng-if="addPoll.pollName.$dirty">
+                  <div ng-message="required">Du måste fylla i ett Namn för omröstningen!</div>
+                  <div ng-message="md-maxlength">Namnet får max vara 65 bokstäver!</div>
+              </div>
             </md-input-container>
           </div>
 
@@ -55,7 +59,7 @@
 
           <!--        Checkbox för "Endast jag får lägga till restauranger"              -->
 
-              <!-- NOTE: eftersom att det inte går lägga till restauranger efter att omröstningen är skapad (än) så behöver inte denna finnas  -->
+          <!-- NOTE: eftersom att det inte går lägga till restauranger efter att omröstningen är skapad (än) så behöver inte denna finnas  -->
 
           <!-- <div layout-gt-xs="row ">
             <md-checkbox class="checkboxpermission" value="allowNewRestaurants " ng-model="form.data.allowNewRestaurants ">Endast jag får lägga till restauranger</md-checkbox>

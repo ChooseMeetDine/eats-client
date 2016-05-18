@@ -61,8 +61,8 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
   };
 
   pollService.setActiveId = function(id) {
-    active.raw = pollMap[id];
-    active.cleaned = createCleanPollFromId(id);
+    active.raw = pollMap[id].raw;
+    active.cleaned = pollMap[id].cleaned;
     makeSocketListenOnPollId(id);
     $location.search('poll', id);
   }
@@ -86,15 +86,49 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
   pollService.add = function(poll) {
     poll.data.voteLink = __env.CLIENT_URL + '?poll=' + poll.data.id;
     poll.data.expiresAsDateObj = new Date(poll.data.attributes.expires);
-    pollMap[poll.data.id] = poll;
+    poll.data.userHasSeenExpiredPopup = false;
+
+    pollMap[poll.data.id] = {};
+    pollMap[poll.data.id].raw = poll;
+    pollMap[poll.data.id].cleaned = createCleanPollFromId(poll.data.id);
+
+    setHasExpiredAndSetWinner(poll);
+  }
+
+  var setHasExpiredAndSetWinner = function(poll) {
+    if (new Date() > poll.data.expiresAsDateObj)  {
+      poll.data.hasExpired = true;
+      setWinner(poll);
+    } else {
+      setTimeout(function() {
+        poll.data.hasExpired = true;
+        setWinner(poll);
+      }, poll.data.expiresAsDateObj - new Date() - 20000);
+    }
+  };
+
+  // Sets winner=true for the restaurants with the most votes
+  var setWinner = function(poll) {
+    var restaurantsInCleaned = pollMap[poll.data.id].cleaned.restaurants;
+    var mostVotes = 0;
+
+    // Find most number of votes for a restaurant
+    for (var i = restaurantsInCleaned.length - 1; i >= 0; i--) {
+      if (restaurantsInCleaned[i].votes.length > mostVotes) {
+        mostVotes = restaurantsInCleaned[i].votes.length;
+      }
+    }
+
+    // Set winner = true if a restaurant has the top number of votes (more than one winner can exist)
+    for (var j = restaurantsInCleaned.length - 1; j >= 0; j--) {
+      if (restaurantsInCleaned[j].votes.length === mostVotes) {
+        restaurantsInCleaned[j].winner = true;
+      }
+    }
   }
 
   pollService.getActive = function() {
     return active;
-  }
-
-  pollService.getWithId = function(id) {
-    return pollMap[id];
   }
 
   pollService.getAll = function() {
@@ -127,16 +161,16 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     });
   }
 
-  // Returns a "cleaned" poll, which is a poll-object that is more suitable to use 
+  // Returns a "cleaned" poll, which is a poll-object that is more suitable to use
   // in the HTML. The function takes relevant data from "included" and puts it in their own top level key.
   // For example: each restaurant is located in the included-array, the function finds the restaurants and creates a
   // new restaurant-array which is easier for the HTML to go through.
-  // 
+  //
   // The function also adds some extra shortcut keys, "userIsParticipantInPoll" for example.
   var createCleanPollFromId = function(pollId)  {
     var currentUserId = tokenService.getUserId();
 
-    var raw = pollMap[pollId];
+    var raw = pollMap[pollId].raw;
 
     var cleaned = {
       id: raw.data.id,
@@ -201,6 +235,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
 
             // If user voted on this restaurant, mark it
             if (thisVoteBelongsToCurrentUser) {
+              cleaned.userHasVoted = true;
               cleaned.restaurants[j].userVotedOnThisRestaurant = true;
             }
           }

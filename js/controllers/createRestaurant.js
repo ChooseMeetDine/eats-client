@@ -2,15 +2,15 @@ app.controller('createRestaurant', ['$scope', '$http', '$window', 'modeService',
   $scope.form = createRestaurantService.getForm();
   $scope.getLocationOnMap = function() {
     modeService.setMode('CREATE_RESTAURANT');
-    $scope.hide();
   };
+    $scope.form.data.rating = 1; 
     $scope.regRest = function() {
     var restaurant = {
       'name': $scope.form.data.name,
       'rating': $scope.form.data.rating,
       'info': $scope.form.data.info,
-      'lat': $scope.form.data.lat,
-      'lng': $scope.form.data.lng,
+      'lat': $scope.form.data.marker.lat,
+      'lng': $scope.form.data.marker.lng,
       'photo': $scope.form.data.photo
     }
     

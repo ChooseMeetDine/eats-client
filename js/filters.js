@@ -4,7 +4,7 @@ app.filter('expired', function() {
         var now = new Date();
         for (var index in polls) {
             var poll = polls[index];
-            var expires = new Date(poll.data.attributes.expires);
+            var expires = new Date(poll.raw.data.attributes.expires);
             if (expires > now) {
                 filtered.push(poll);
             }
@@ -20,7 +20,7 @@ app.filter('activeAndRecentlyExpired', function() {
         var in1Hour = new Date(new Date().getTime() - 3600000);
         for (var index in polls) {
             var poll = polls[index];
-            var expires = new Date(poll.data.attributes.expires);
+            var expires = new Date(poll.raw.data.attributes.expires);
             if (expires > in1Hour) {
                 filtered.push(poll);
             }
