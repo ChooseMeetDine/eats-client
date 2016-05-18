@@ -113,6 +113,7 @@
     <link rel="stylesheet" type="text/css" href="css/layouts/createpollStyle.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/moreinfo.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/loginRegister.css">
+    <link rel="stylesheet" type="text/css" href="css/other/animate.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/profilePage.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/createRestaurant.css">
   </head>
@@ -120,9 +121,8 @@
 
   <body ng-controller="appCtrl" ng-app="app">
     <div ng-if="!tokenData.valid" layout="row" layout-sm="column" layout-align="space-around">
-      <md-progress-circular md-diameter="150" md-mode="indeterminate"></md-progress-circular>
+      <md-progress-linear md-diameter="150" md-mode="determinate"></md-progress-linear>
     </div>
-
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
       <!-- Create poll button -->
