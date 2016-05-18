@@ -367,7 +367,12 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
     width:100%;
     display:none;
 }
-
+.filterCheckboxImg:hover .text{
+    display:block;
+}
+.filterCheckboxImg:hover .textOverlay{
+    background-color:rgba(33, 33, 33, 0.5);
+}
 
 input[type=checkbox] {
   display: none;
