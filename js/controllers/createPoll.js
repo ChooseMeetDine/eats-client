@@ -18,7 +18,7 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
   $scope.regPoll = function() {
     var postBody = createPollPostBody();
     if (!postBody.restaurants) {
-      $scope.error = 'Du måste först lägga till restauranger';
+      $scope.error = 'Du måste fylla i alla fält!';
       return;
     }
 
