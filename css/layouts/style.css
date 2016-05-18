@@ -21,6 +21,9 @@ Cyan/Aqua       #18FFFF     24,255,255
 Cyan/Aqua-1     #00E5FF     0,229,255
 Pacific Blue    #00B8D4     0,184,212
 
+
+Filterikoner har egen färg i sin bakgrundsfärg...
+Darkslategrey   #364e5c     54,78,92
 */
 
 
@@ -32,7 +35,6 @@ Pacific Blue    #00B8D4     0,184,212
 }
 
 html,body,p{
-    font-weight: bold;
     font-family: lane, open sans, arial;
 }
 
@@ -54,7 +56,6 @@ md-list-item,
 
 
 /*HTML,BODY*/
-
 html,
 body {
   height: 100%;
@@ -108,7 +109,6 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: lane, open sans, arial;
-    font-weight: bold;
     margin-bottom: 2px;
 }
 
