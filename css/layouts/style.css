@@ -27,15 +27,18 @@ Darkslategrey   #364e5c     54,78,92
 */
 
 
-/*FONTS*/
-
+/*FONTS heading and paragraph*/
 @font-face {
-  font-family: lane;
-  src: url("/css/fonts/lane/LANENAR_.ttf") format("opentype");
+  font-family: raleway-thin;
+  src: url("/css/fonts/raleway/Raleway-Thin.ttf") format("opentype");
+}
+@font-face {
+  font-family: raleway;
+  src: url("/css/fonts/raleway/Raleway-Medium.ttf") format("opentype");
 }
 
 html,body,p{
-    font-family: lane, open sans, arial;
+    font-family: raleway, open sans, arial;
 }
 
 
@@ -65,7 +68,7 @@ body {
 
 h1 {
   font-size: 55px;
-  font-family: lane, open sans, arial;
+  font-family: raleway-thin, open sans, arial;
 }
 
 
@@ -108,7 +111,7 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: lane, open sans, arial;
+    font-family: raleway, open sans, arial;
     margin-bottom: 2px;
 }
 
@@ -170,7 +173,7 @@ md-list-item.md-no-proxy.md-button {
 /*Header för dialogrutor*/
 
 .md-toolbar-tools {
-  font-family: lane;
+  font-family: raleway-thin;
   font-size: 36px;
   background-color: #616161;
   padding: 2%;
