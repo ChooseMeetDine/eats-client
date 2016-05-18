@@ -16,14 +16,13 @@
       </div>
       <div id="poll-dialog-restaurants">
         <h3 id="rest-text">Restauranger:</h3> <br>
-        <p ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant, 'poll-dialoge-vote-object-has-won': restaurant.winner, 'no-pointer': active.raw.data.hasExpired}">
+        <div ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant, 'poll-dialoge-vote-object-has-won': restaurant.winner, 'no-pointer': active.raw.data.hasExpired}">
 
-          <span>
             <i ng-if="!restaurant.winner" ng-class="{'hide-keep-space':active.cleaned.userHasVoted}" class="material-icons md-24 thumb">thumb_up</i>
             <i ng-if="restaurant.winner" class="material-icons md-24 stars">stars</i>
-            {{restaurant.attributes.name}}<span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
-          </span>
-        </p>
+            <span class="restaurant-name">{{restaurant.attributes.name}}</span>
+            <span class=number-of-votes> Röster: {{restaurant.votes.length}}</span>
+        </div>
         <!-- <p>ID: {{active}} </p>
                 <p>allowNewRestaurants: {{active.raw.data.attributes.allowNewRestaurants}} </p>
                 <p>created: {{active.raw.data.attributes.created}} </p>-->
