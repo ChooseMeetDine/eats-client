@@ -3,11 +3,16 @@
  */
 // app.controller('addPoll', function($scope, $http) {
 app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
+  var date = new Date();
+  var hour = date.getHours();
+  $scope.hour = hour;
+  var minute = date.getMinutes();
+  $scope.minute = 5 * Math.ceil( minute / 5 );
   $scope.form = pollService.getForm();
   $scope.loading = false;
-  $scope.error = '';
-  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : '12'; //initialize values if not set
-  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : '00'; //initialize values if not set
+  $scope.error = '';    
+  $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : String(hour); //initialize values if not set
+  $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : String(5 * Math.ceil( minute / 5 )); //initialize values if not set
 
   /**
    * 1. Creates POST-body
@@ -57,7 +62,7 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
 
   $scope.clearForm = function() {
     pollService.clearForm();
-    $scope.form.data.hour = '12';
+    $scope.form.data.hour = date.getHours();
     $scope.form.data.minute = '00';
   };
 

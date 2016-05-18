@@ -540,6 +540,9 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   background: #00b8d4!important;
   color:#FAFAFA!important;
 }
+#dialogError{
+    color:rgb(186,51,0);
+}
 
 
 /*-------------MORE INFO ABOUT RESTAURANTS------------*/
