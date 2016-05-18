@@ -21,17 +21,35 @@ Cyan/Aqua       #18FFFF     24,255,255
 Cyan/Aqua-1     #00E5FF     0,229,255
 Pacific Blue    #00B8D4     0,184,212
 
+
+Filterikoner har egen färg i sin bakgrundsfärg...
+Darkslategrey   #364e5c     54,78,92
 */
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: #EEEEEE;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: #616161;
+}
 
 /*FONTS*/
 @font-face {
     font-family: lane;
-    src: url("/css/fonts/lane/LANENAR_.ttf")
+    src: url("/css/fonts/raleway/Raleway-Thin.ttf")
         format("opentype");
 }
 
 html,body,p{
-    font-weight: bold;
     font-family: lane, open sans, arial;
 }
 
@@ -51,7 +69,6 @@ html,body,p{
 /*HTML,BODY*/
 html,body{
     height: 100%;
-    overflow-x: hidden;
     font-size: 14px;
 }
 h1{
@@ -86,7 +103,6 @@ md-checkbox.md-checked.checkboxpermission .md-icon {
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
     font-family: lane, open sans, arial;
-    font-weight: bold;
     margin-bottom: 2px;
 }
 /*Popup content wrapper*/
@@ -99,7 +115,6 @@ md-sidenav{
     display:block;
     height:100vh;
     z-index: 3;
-    overflow: hidden;
     padding-top: 44px;
 }
 md-sidenav .md-toolbar-tools{
@@ -266,7 +281,10 @@ footer a:hover{
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
-    background-color: rgb(0, 184, 212);
+    background-color: #364e5c;
+}
+md-checkbox.md-checked.normalCheckbox {
+    text-transform: uppercase;
 }
 
 .textOverlay{
