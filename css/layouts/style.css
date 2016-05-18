@@ -280,7 +280,9 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 }
 
 .leaflet-control-geocoder, .leaflet-control-geocoder-form input, .leaflet-control-geocoder a, .leaflet-control-geocoder .leaflet-control-geocoder-icon {
-  background-color: white;
+    background-color: white;
+    font-family: raleway;
+    overflow: hidden;
 }
 
 /*Show me where I am icon*/
