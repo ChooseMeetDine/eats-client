@@ -43,7 +43,7 @@
         pollService
           .getPollIdAndSetAsActive($scope.parameterPollId)
           .then(function() {
-            $scope.dialogs.showPopup(null, 'showActivePoll', true, false);
+            $scope.dialogs.showPopup(null, 'showActivePoll', true, true);
           });
       }
     }
