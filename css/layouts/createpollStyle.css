@@ -76,6 +76,7 @@ select{
     background-color: #bdbdbd;
     color: #fafafa;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
