@@ -210,9 +210,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       restaurants[restaurant.id] = attributes;
 
     }
-
-    console.log($scope);
-  };
+ };
 
   //Ugly hack to decide marker type, TODO: redo to a leaflet solution
   //for dynamic marker icons

@@ -41,13 +41,13 @@ app.factory('tokenService', ['$window', '$http', '__env', function($window, $htt
    */
   tokenService.validateToken = function() {
     $http.defaults.headers.common['x-access-token'] = $window.localStorage['jwtToken'];
-    console.log('Validating token for ' + $window.localStorage['userName'] + '... ');
+    //console.log('Validating token for ' + $window.localStorage['userName'] + '... ');
 
     return $http({
         method: 'GET',
         url: __env.API_URL + '/polls'
       }).then(function() {
-        console.log('Token is valid');
+        //console.log('Token is valid');
         tokenData.valid = true;
         return true;
       })
