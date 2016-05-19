@@ -1,4 +1,4 @@
-<md-dialog  ng-controller="createRestaurant" class="createRestaurantPopup" aria-label="addPoll"  ng-cloak>
+<md-dialog  ng-controller="createRestaurant" class="createRestaurantDialog" aria-label="addPoll"  ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">  
                 <h1>Lägg till restaurang </h1>
@@ -9,17 +9,20 @@
     
     <md-dialog-content>
         <div class="md-dialog-content">
-            <form name="createRestaurant" ng-submit="regRest()" novalidate> 
+            <form name="createRestaurant" ng-submit="regRest()" novalidate>
+                <!-- Start Right Content -->
+                <div id="left-content">
                 <md-input-container class="md-block">
                         <label>Restaurangnamn</label>
-                        <input ng-model="form.data.name" type="text" value="name" name="restaurantName" required>
+                        <input ng-model="form.data.name" md-maxlength="20" type="text" value="name" name="restaurantName" required>
                         <div ng-messages="createRestaurant.restaurantName.$error" ng-if="createRestaurant.restaurantName.$dirty">
                             <div ng-message="required">Du måste fylla i ett Namn för restaurangen!</div>
+                            <div ng-message="md-maxlength">Namnet får max vara 20 tecken!</div>
                         </div>
                 </md-input-container>
                 <md-input-container class="md-block">
                         <label>Info</label>                
-                        <textarea ng-model="form.data.info" type="text" name="info" value="info" md-maxlength="600" rows="5" md-select-on-focus required></textarea>
+                        <textarea ng-model="form.data.info" type="text" name="info" value="info" md-maxlength="600" rows="15" cols="50" md-select-on-focus required></textarea>
                         <div ng-messages="createRestaurant.info.$error" ng-if="createRestaurant.info.$dirty">
                             <div ng-message="required">Du måste fylla i Information om restaurangen!</div>
                             <div ng-message="md-maxlength">Informationen får max vara 600 tecken!</div>
@@ -34,7 +37,27 @@
                     <md-slider id="ratingslider" ng-model="form.data.rating" md-discrete step="1" min="1" max="5" aria-label="rating" required>
                     </md-slider>
                 </div>
+            <table id="cafe_check">
+                <th>Lägg till som Café?</th>
+                <tr>
+                    <td>
+                        <input id="yes-cafe" type="checkbox"  name="cafecheck" ng-model="form.data.categories[10]" required><label class="addrestcheck" for="yes-cafe">Ja</label>
+                    </td>
+                </tr>
+            </table>
+                <md-input-container class="md-block">
+                        <label>Länk till bild</label>
+                        <input ng-model="form.data.photo" type="text" value="photo" name="photo" pattern="[-a-zA-Z0-9@:%._\+~#=/]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*).(?:jpg|png)$" required>
+                        <div ng-messages="createRestaurant.photo.$error" ng-if="createRestaurant.photo.$dirty">
+                            <div ng-message="required">Du måste fylla i en länk!</div>
+                            <div ng-message="pattern">Du måste fylla i en bildlänk som slutar med JPG- eller PNG!</div>
+                        </div>
+                </md-input-container>
+                </div>
+                <!-- Start Left Content -->
+                <div id="right-content">
                 <table id="category_checkboxes">
+                <th>Kategori:</th>
                 <tr>                    
                     <td>
                         <input type='checkbox' name='thing' value='valuable' id="addSushi" ng-model="form.data.categories[0]">
@@ -61,6 +84,8 @@
                             <img class="createRestaurantFilterImg" src="../images/icons/3.png">
                         </label>
                     </td>
+                    </tr>
+                    <tr>
                     <td>
                         <input type='checkbox'  name='thing' value='valuable' id="addVegetarian" ng-model="form.data.categories[3]">
                         <label class="createRestaurantCheckboxImg" for="addVegetarian">
@@ -85,6 +110,8 @@
                             <img class="createRestaurantFilterImg" src="../images/icons/6.png">
                         </label>
                     </td>
+                    </tr>
+                    <tr>
                     <td>
                         <input type='checkbox'  name='thing' value='valuable' id="addIndian" ng-model="form.data.categories[6]">
                         <label class="createRestaurantCheckboxImg" for="addIndian">
@@ -109,6 +136,8 @@
                             <img class="createRestaurantFilterImg" src="../images/icons/9.png">
                         </label>
                     </td>
+                    </tr>
+                    <tr>
                     <td>
                         <input type='checkbox'  name='thing' value='valuable' id="addMeat" ng-model="form.data.categories[11]">
                         <label class="createRestaurantCheckboxImg" for="addMeat">
@@ -135,20 +164,16 @@
                     </td>
                 </tr>
             </table>
-                
-                <md-input-container class="md-block">
-                        <label>Länk till bild</label>
-                        <input ng-model="form.data.photo" type="text" value="photo" name="photo" pattern="(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|png)$" required>
-                        <div ng-messages="createRestaurant.photo.$error" ng-if="createRestaurant.photo.$dirty">
-                            <div ng-message="required">Du måste fylla i en länk!</div>
-                            <div ng-message="pattern">Du måste fylla i en länk till en JPG- eller PNG-bild!</div>
-                        </div>
-                </md-input-container>
+            <div id="othercheckbox">
+                <input id="other" type="checkbox"  name="othercheck" ng-model="form.data.categories[9]" required>
+                <label class="addrestcheck" for="other">Övrig mat</label>
+            </div>
+            </div>
+            <div id="bottom">
                 <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap(); hide();">Välj plats på kartan</md-button>
-                <div id="bottom">
-                    <md-button id="submitrestaurant" class="md-raised md-primary" type="submit "> Lägg till restaurang </md-button>
-                    <md-button id="cancel" class="md-raised md-primary" ng-click="cancel()">Avbryt</md-button>
-                </div>
+                <md-button id="submitrestaurant" class="md-raised md-primary" type="submit "> Lägg till restaurang </md-button>
+                <md-button id="cancelCreateRestaurant" class="md-raised md-primary" ng-click="cancel()">Avbryt</md-button>
+            </div>
             </form>            
         </div>
     </md-dialog-content>

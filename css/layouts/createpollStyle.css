@@ -21,7 +21,7 @@
     font-weight: bold;
 }
 
-#addpoll, #submitrestaurant{   
+#addpoll{   
     margin-top: 30px;
     float: right;
     margin-left: 10px;
@@ -76,6 +76,7 @@ select{
     background-color: #bdbdbd;
     color: #fafafa;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
