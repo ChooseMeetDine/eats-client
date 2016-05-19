@@ -618,6 +618,17 @@ md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
     #poll-dialog-name {
         font-size: 2em;
     }
+    
+    .login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 20px;
+    max-width:120px;
+}
+
 }
 
 @media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
@@ -636,6 +647,7 @@ md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
         font-size: 3em;
     }
 }
+
 
 @media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */
 }
