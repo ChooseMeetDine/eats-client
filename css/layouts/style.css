@@ -115,8 +115,12 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     font-family: raleway, open sans, arial;
     margin-bottom: 2px;
 }
-
-
+.md-input-focused label{
+    color: #00B8D4 !important;
+}
+.md-input-invalid label{
+    color: #ba3300 !important;
+}
 /*Popup content wrapper*/
 leaflet-popup-content-wrapper {
   border: none!important;
@@ -573,7 +577,7 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   color:#FAFAFA!important;
 }
 #dialogError{
-    color:rgb(186,51,0);
+    color:#ba3300;
 }
 
 .expiredPoll {
