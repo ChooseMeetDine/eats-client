@@ -195,7 +195,7 @@ footer a:hover{
     color:#00B8D4;
     text-decoration:none;
 }
-    
+
 /*Styling all buttons*/
 
 .md-button {
@@ -255,7 +255,9 @@ footer a:hover{
   box-shadow: 1px 0 5px 0 rgba(0,0,0,.26);
 }
 
-
+.fa-spinner {
+  margin-right: 4px;
+}
 
 /*Show me where I am button container*/
 .leaflet-bar a,
