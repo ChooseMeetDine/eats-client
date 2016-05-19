@@ -51,7 +51,7 @@
     //  TOKEN VALIDATION AND 'ROUTING'  //
     // -------------------------------- //
     if (tokenService.getJwt() === undefined) { // no token at all = first time on the site
-      tokenService.getAnonymousToken()
+    tokenService.getAnonymousToken()
         .then(function() {
           if (userFollowedPollLink) {
             showPollPopupFromLink();

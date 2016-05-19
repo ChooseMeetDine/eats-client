@@ -13,19 +13,13 @@
     border-top-color: rgb(0, 184, 212);
 }
 
-#placeMarker{
-    background:#FAFAFA;
-    color:#616161;
-    font-weight: bold;
-}
 
-#submitRestaurant{
-    float:right;
-    margin-left: 5px;
-}
+
+
 #category_checkboxes td{
-    width:16.5%;
+    width:23%;
     float:left;
+    margin:5%;
 }
 .createRestaurantCheckboxImg{
     position:relative;
@@ -63,14 +57,17 @@ input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     padding:0;
 }
 
+.createRestaurantDialog{
+    width:800px;
+}
 #createRestaurantPopup{
     background:#FAFAFA;
     margin:0 0 0 20px;
     padding: 15px;
     font-weight: bold;
-    width:200px;
     border-radius: 10px;
     text-align: center;
+    z-index: 99;
 }
 #createRestaurantPopup button{
     width: 120px;
@@ -94,3 +91,137 @@ input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0 ,0.26);
 }
 
+#left-content{
+    width:65%;
+    padding-left:5%;
+    float:left;
+}
+#right-content{
+    width:30%;
+    float:right;
+}
+#cafe_radio{
+    padding:10px;
+    font-size: 14px;
+    line-height:14px;
+}
+#cafe_radio th{
+    width:90%;
+    float:left;
+    padding:10px 0 10px 0;
+}
+#cafe_radio tr{
+    width:100%;
+    float:left;
+}
+#cafe_radio td{
+    width:100%;
+    float:left;
+}
+
+input[type=checkbox] + .addrestcheck:before{
+  height:20px;
+  width:20px;
+  margin:0 10px 0 0;
+  content: " ";
+  display:inline-block;
+  border:1px solid #777;
+}
+input[type=checkbox]:checked + .addrestcheck:before{
+  background:#00B8D4;
+}
+
+input[type=checkbox] + .addrestcheck:before{
+  border-radius:2px;
+}
+
+#othercheckbox{
+    margin:5% 0 0 10%;
+    width:90%;
+}
+
+#bottom{
+    width:100%;
+}
+#placeMarker{
+    background:#FAFAFA;
+    color:#616161;
+    font-weight: bold;
+    display:block;
+    float:left;
+    margin-left:10px;
+}
+#submitrestaurant{
+    background-color: #00B8D4;
+    color: #fafafa;
+    font-weight: bold;
+    display:inline-block;
+    float:right;
+}
+#cancelCreateRestaurant{
+    background-color: #ffffff;
+    position:relative;
+    display:inline-block;
+    float:right;
+    color: #616161;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+@media (max-width:1000px){
+    #left-content, #right-content{
+        width:95%;
+        float:left;
+        padding-left: 5%;
+    }
+    #category_checkboxes tr:first-child{
+        width:100%;
+        float:left;
+    }
+    #category_checkboxes tr{
+        width:50%;
+        float:left;
+    }
+    #category_checkboxes td{
+        width: 30%;
+        margin:1.5%;
+    }
+    #othercheckbox{
+    margin:5% 0 0 0;
+    width:100%;
+}
+}
+
+@media (max-width:500px){
+    #left-content, #right-content{
+        width:90%;
+        padding-right:0;
+        padding-left:5%;
+        float:left;
+    }
+    #category_checkboxes tr:first-child{
+        width:100%;
+        float:left;
+    }
+    #category_checkboxes tr{
+        width:100%;
+        float:left;
+    }
+    #category_checkboxes td{
+        width: 30%;
+        margin:1.6%;
+    }
+    #bottom{
+        float:left;
+    }
+    #placeMarker, #submitrestaurant, #cancelCreateRestaurant{
+        float:left;
+        display:block;
+        width:100%;
+        margin:0 0 10px 0; 
+    }
+    #cancelCreateRestaurant{
+        margin: 10px 0 0 0;
+    }
+    
+}
