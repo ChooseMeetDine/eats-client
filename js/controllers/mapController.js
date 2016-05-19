@@ -20,7 +20,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       lng: 12.999229431152344,
       zoom: 14
     },
-    markers: restaurantMarkers,
+    markers: restaurantMarkers, //Markers shown on map
     tiles: {
       name: 'Mapbox',
       url: 'https://api.mapbox.com/styles/v1/{mapid}/tiles/{z}/{x}/{y}?access_token={apikey}',
@@ -40,7 +40,7 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       zoomControlPosition: 'topright',
       locationControlPosition: 'topright'
     },
-    controls: {
+    controls: { //Controlls in top right corner
       custom: [
         L.control.locate({
           follow: false,
@@ -79,6 +79,8 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
 
   // Event listener for clicks on map
   $scope.$on('leafletDirectiveMap.click', function(event, args) {
+
+    // If CREATE_RESTAURANT-mode is active, create a marker where user clicks and send the data to createRestaurantService
     if ($scope.mode.active === 'CREATE_RESTAURANT') {
       if (!createRestaurantMarker) {
         createRestaurantMarker = {
@@ -111,25 +113,26 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       createRestaurantService.setClickedPosition(createRestaurantMarker);
       $scope.center.lat = args.leafletEvent.latlng.lat;
       $scope.center.lng = args.leafletEvent.latlng.lng;
-      modeService.setMode('DEFAULT');      
-      
+      modeService.setMode('DEFAULT');
+
     }
   });
+
+  // Update position of marker where user tries to create a restaurant when user drags it
   $scope.$on('leafletDirectiveMarker.dragend', function(e, args){
-        console.log(args);
-        if(args.model.id === "CREATE_RESTAURANT_MARKER"){
-            console.log(args.model.id);
-            console.log(args.model.lat);
-            console.log(args.model.lng);
-            createRestaurantMarker.lat = args.model.lat;
-            createRestaurantMarker.lng = args.model.lng;
-            $scope.center.lat = args.model.lat;
-            $scope.center.lng = args.model.lng;
-        }
-       });
+    if(args.model.id === "CREATE_RESTAURANT_MARKER"){
+        createRestaurantMarker.lat = args.model.lat;
+        createRestaurantMarker.lng = args.model.lng;
+        $scope.center.lat = args.model.lat;
+        $scope.center.lng = args.model.lng;
+    }
+  });
+
+  // Deletes createRestaurantMarker
   $scope.deleteMarker = function(){
       restaurantMarkers.pop(createRestaurantMarker);
   }
+
   // Event listener for clicks on markers - centers map on marker
   $scope.$on('leafletDirectiveMap.popupopen', function(event, args) {
     $scope.center.lat = args.leafletEvent.popup._latlng.lat;

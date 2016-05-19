@@ -5,7 +5,7 @@
 
 .leaflet-popup-content-wrapper{
     background-color: #E0E0E0;
-    font-family: lane, arial, sans-serif;
+    font-family: raleway-thin, arial, sans-serif;
     font-size: 1.5em;
     color: #424242;
     font-weight: bold;
@@ -70,17 +70,18 @@
     letter-spacing: -1px;  
     background: rgba(66, 66, 66, 0.73);
     padding: 3px;
-    padding-right: 28px;
+    padding-right: 23px;
+    padding-bottom: 8px;
     font-size: 22px;
     max-width: 40%;
     text-align: left;
-    font-family: lane;
+    font-family: raleway-thin
 }
 
 #rating i{
     position: absolute;
-    left: 42px;
-    top: 1px;
+    left: 54px;
+    top: 2px;
 }
 /*Popup button that opens "more info" menu*/
 #more_info_1{
@@ -205,7 +206,7 @@
     font-size: 19px;
     max-width: 40%;
     text-align: left;
-    font-family: lane;    
+    font-family: raleway-thin;    
 }  
 #rating i{
     position: absolute;
