@@ -2,6 +2,8 @@ var app = angular.module('app', ['ui.bootstrap', 'ngMaterial', 'ngMessages', 'le
 app.config(function($logProvider){
   $logProvider.debugEnabled(false);
 });
+
+//This enables mobile usage of this site
 app.config(function( $mdGestureProvider ) {
   $mdGestureProvider.skipClickHijack();
 });
