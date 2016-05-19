@@ -1,25 +1,35 @@
+/**
+ * Service for getting, joining and storing polls
+ */
 app.factory('pollService', ['$http', '__env', 'tokenService', '$location', function($http, __env, tokenService, $location) {
   var pollService = {};
 
-  var pollMap = {};
+  var pollMap = {}; //Contains all polls
   var active = {
-    raw: {},
-    cleaned: {},
+    raw: {}, //raw data from API
+    cleaned: {}, //Altered data, easier to use at times
   };
   var form = {
-    data: {}
+    data: {} //Form data from createPoll.js
   };
 
   var socket = io.connect(__env.API_URL);
 
+  //Set form data to save and share when createPoll.js is inactive
   pollService.setFormData = function(formData) {
     form.data = formData;
   };
 
+  //returns form with data
   pollService.getForm = function() {
     return form;
   };
 
+  /**
+   * Adds restaurant to the form if it does not already exist in the form
+   * @param  {[type]} restaurant [description]
+   * @return true if the restaurant was added to the form, otherwise false
+   */
   pollService.addRestaurantToForm = function(restaurant) {
     if (!form.data.restaurants) {
       form.data.restaurants = [];
@@ -38,6 +48,10 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     return false;
   };
 
+  /**
+   * Removes restaurant from form
+   * @return true if removed, otherwise false
+   */
   pollService.removeRestaurantFromForm = function(restaurant) {
     if (!form.data.restaurants) {
       return false;
@@ -56,17 +70,20 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     return true;
   };
 
+  //Clears formData
   pollService.clearForm = function() {
     form.data = {};
   };
 
+  //Set active poll using poll ID
   pollService.setActiveId = function(id) {
-    active.raw = pollMap[id];
-    active.cleaned = createCleanPollFromId(id);
+    active.raw = pollMap[id].raw;
+    active.cleaned = pollMap[id].cleaned;
     makeSocketListenOnPollId(id);
     $location.search('poll', id);
   }
 
+  //Makes SocketIO listen for updates for the pollID-parameter
   var makeSocketListenOnPollId = function(pollId) {
     console.log('SocketIO: listening on poll id: ' + pollId);
     socket.on(pollId, function(data) {
@@ -77,30 +94,75 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     });
   }
 
+  //Clear active poll
   pollService.clearActivePoll = function() {
     active.raw = {};
     active.cleaned = {};
     $location.search('poll', null);
   }
 
+  /**
+   * Add a poll to the pollMap and create cleaned version of the data
+   */
   pollService.add = function(poll) {
     poll.data.voteLink = __env.CLIENT_URL + '?poll=' + poll.data.id;
     poll.data.expiresAsDateObj = new Date(poll.data.attributes.expires);
-    pollMap[poll.data.id] = poll;
+    poll.data.userHasSeenExpiredPopup = false;
+
+    pollMap[poll.data.id] = {};
+    pollMap[poll.data.id].raw = poll;
+    pollMap[poll.data.id].cleaned = createCleanPollFromId(poll.data.id);
+
+    setHasExpiredAndSetWinner(poll);
   }
 
+  /**
+   * Adds the variable hasExipred to the poll from parameter and sets it as winner
+   * if the poll is expired and the restaurant has won
+   */
+  var setHasExpiredAndSetWinner = function(poll) {
+    if (new Date() > poll.data.expiresAsDateObj)  {
+      poll.data.hasExpired = true;
+      setWinner(poll);
+    } else {
+      setTimeout(function() {
+        poll.data.hasExpired = true;
+        setWinner(poll);
+      }, poll.data.expiresAsDateObj - new Date() - 20000);
+    }
+  };
+
+  // Sets winner=true for the restaurants with the most votes
+  var setWinner = function(poll) {
+    var restaurantsInCleaned = pollMap[poll.data.id].cleaned.restaurants;
+    var mostVotes = 0;
+
+    // Find most number of votes for a restaurant
+    for (var i = restaurantsInCleaned.length - 1; i >= 0; i--) {
+      if (restaurantsInCleaned[i].votes.length > mostVotes) {
+        mostVotes = restaurantsInCleaned[i].votes.length;
+      }
+    }
+
+    // Set winner = true if a restaurant has the top number of votes (more than one winner can exist)
+    for (var j = restaurantsInCleaned.length - 1; j >= 0; j--) {
+      if (restaurantsInCleaned[j].votes.length === mostVotes) {
+        restaurantsInCleaned[j].winner = true;
+      }
+    }
+  }
+
+  //Returns active poll
   pollService.getActive = function() {
     return active;
   }
 
-  pollService.getWithId = function(id) {
-    return pollMap[id];
-  }
-
+  //Returns pollMap
   pollService.getAll = function() {
     return pollMap;
   }
 
+  //Sends request to API to let the user join the active poll
   pollService.joinActivePoll = function() {
     return $http({
         method: 'Post',
@@ -114,12 +176,13 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
       });
   }
 
+  //Sends GET-request for a poll and sets that poll as active
   pollService.getPollIdAndSetAsActive = function(pollId) {
     return $http({
       method: 'Get',
       url: __env.API_URL + '/polls/' + pollId
     }).then(function(response) {
-      console.log('Joined poll ' + pollId);
+      console.log('Adds poll and set it as active: ' + pollId);
       pollService.add(response.data);
       pollService.setActiveId(pollId);
 
@@ -127,16 +190,16 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
     });
   }
 
-  // Returns a "cleaned" poll, which is a poll-object that is more suitable to use 
+  // Returns a "cleaned" poll, which is a poll-object that is more suitable to use
   // in the HTML. The function takes relevant data from "included" and puts it in their own top level key.
   // For example: each restaurant is located in the included-array, the function finds the restaurants and creates a
   // new restaurant-array which is easier for the HTML to go through.
-  // 
+  //
   // The function also adds some extra shortcut keys, "userIsParticipantInPoll" for example.
   var createCleanPollFromId = function(pollId)  {
     var currentUserId = tokenService.getUserId();
 
-    var raw = pollMap[pollId];
+    var raw = pollMap[pollId].raw;
 
     var cleaned = {
       id: raw.data.id,
@@ -201,6 +264,7 @@ app.factory('pollService', ['$http', '__env', 'tokenService', '$location', funct
 
             // If user voted on this restaurant, mark it
             if (thisVoteBelongsToCurrentUser) {
+              cleaned.userHasVoted = true;
               cleaned.restaurants[j].userVotedOnThisRestaurant = true;
             }
           }

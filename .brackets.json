@@ -1,0 +1,5 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/wampserver/www/eats-client/libs/bower/lib/jquery/src/./var/support.js"
+    ]
+}

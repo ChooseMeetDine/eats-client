@@ -1,3 +1,6 @@
+/**
+ * Controller for the menu that slides in from the left
+ */
 app.controller('slideMenu', function ($scope, $mdSidenav) {
     $scope.toggleMainMenu = buildToggler('main');
     $scope.toggleFilterMenu = buildToggler('filter');
@@ -5,7 +8,7 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
     $scope.toggleAddRestaurant = addRestaurantToggler();
 
     $scope.createInfoScopes = function(restaurant){
-      $scope.content = restaurant;
+      $scope.restaurant = restaurant;
     }
 
     function buildToggler(navID) {
@@ -24,6 +27,7 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
           }
       }
     }
+
     function addRestaurantToggler() {
         return function() {
             $mdSidenav('main').close();

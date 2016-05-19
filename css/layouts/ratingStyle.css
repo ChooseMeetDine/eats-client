@@ -2,16 +2,16 @@
   width: 60px;
   height: 16px;
   display: block;
-  background: url('http://s32.postimg.org/67lxxw2vl/star_ratings.png') 0 0 no-repeat;
+  background: url('/images/icons/star_ratings.png') 0 0 no-repeat;
 }
 /* ops */
 .rating-5 { background-position: 0 0; }
-.rating-4 { background-position: -12px 0; } 
+.rating-4 { background-position: -12px 0; }
 .rating-3 { background-position: -24px 0; }
 .rating-2 { background-position: -36px 0; }
 .rating-1 { background-position: -48px 0; }
 .rating-0 { background-position: -60px 0; }
- 
+
 .rating-05  { background-position: -48px -16px; }
 .rating-15 { background-position: -36px -16px; }
 .rating-25 { background-position: -24px -16px; }

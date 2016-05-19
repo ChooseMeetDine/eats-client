@@ -1,5 +1,5 @@
 /**
- * Controller for showing polls
+ * Controller for showing the active poll in a dialog
  */
 app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$interval', '$window', '__env', function($scope, $http, pollService, tokenService, $interval, $window, __env) {
   $scope.isLoggedInAsUser = tokenService.isUserWithValidToken();
@@ -9,22 +9,19 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
 
   $scope.active = pollService.getActive();
 
-  $scope.now = new Date(new Date() + 20000);
+  $scope.now = new Date();
 
-
-  // TODO (eventuellt):
-  // - fixa så att man kan ändra sin röst om man redan har röstat (är PUT på en vote implementerat?)
-  // --- Eller ska det räcka med att göra en POST på en restaurang man inte redan röstat på?
-
+  $scope.loading = false; //Shows loading-bar when true
 
   // Updates the date every second to be able to compare to the expiration date of the poll
-  // Disables joining the poll when it has 20 seconds left (to let the user have time to log in if need be)
   $interval(function() {
-    $scope.now = new Date(new Date().getTime() + 20000);
+    $scope.now = new Date();
   }, 1000);
 
+  // Posts vote to API, update is received through sockets
   $scope.vote = function(restaurant) {
-    if($scope.now < $scope.active.raw.data.expiresAsDateObj){
+    if ($scope.now < $scope.active.raw.data.expiresAsDateObj) {
+      $scope.loading = true;
       $http({
         method: 'POST',
         url: __env.API_URL + '/polls/' + $scope.active.cleaned.id + '/votes',
@@ -33,15 +30,19 @@ app.controller('showPoll', ['$scope', '$http', 'pollService', 'tokenService', '$
           restaurantId: restaurant
         }
       }).then(function(response) {
+        $scope.loading = false;
         console.log('User voted on a restaurant');
       }).catch(function(error) {
+        $scope.loading = false;
         console.log('error');
         console.log(error);
       })
     }
   };
 
+  // Shows continueToPollAs so that the user can choose how to continue
   $scope.joinPoll = function()  {
-    $scope.swap('continueToPollAs', true, false);
+    $scope.hide();
+    $scope.show('continueToPollAs', true, false);
   };
 }]);

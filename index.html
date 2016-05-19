@@ -5,6 +5,7 @@
     <title>Let's Eats!</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="/images/icons/faviconn.ico">
 
     <!-- Angular -->
     <script src="libs/bower/lib/angular/angular.js"></script>
@@ -30,6 +31,18 @@
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-zoomslider/v0.7.0/L.Control.Zoomslider.css' rel='stylesheet' />
+    <script src="libs/bower/lib/Leaflet.label/dist/leaflet.label.js"></script>
+    <link rel="stylesheet" href="/js/geocoder/Control.Geocoder.css" />
+    <script src="/js/geocoder/Control.Geocoder.js"></script>
+
+
+<!--   Vägbeskrivning
+
+    <link rel="stylesheet" href="/js/routing/leaflet-routing-machine.css" />
+    <script src="/js/routing/leaflet-routing-machine.js"></script>
+-->
+
+
 
     <!-- Angular Leaflet Directive -->
     <script src="libs/angular-leaflet-directive.min.js"></script>
@@ -88,7 +101,6 @@
 
     <script src="js/api/addUser.js"></script>
     <script src="js/api/loginUser.js"></script>
-    <script src="js/api/getUserInformation.js"></script>
     <script src="js/api/getUserId.js"></script>
 
     <script src="js/filters.js"></script>
@@ -100,6 +112,7 @@
     <link rel="stylesheet" type="text/css" href="css/layouts/createpollStyle.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/moreinfo.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/loginRegister.css">
+    <link rel="stylesheet" type="text/css" href="css/other/animate.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/profilePage.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/createRestaurant.css">
   </head>
@@ -107,9 +120,8 @@
 
   <body ng-controller="appCtrl" ng-app="app">
     <div ng-if="!tokenData.valid" layout="row" layout-sm="column" layout-align="space-around">
-      <md-progress-circular md-diameter="150" md-mode="indeterminate"></md-progress-circular>
+      <md-progress-linear md-diameter="150" md-mode="determinate"></md-progress-linear>
     </div>
-
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
       <!-- Create poll button -->

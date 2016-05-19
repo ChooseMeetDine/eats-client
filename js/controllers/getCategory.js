@@ -1,25 +1,24 @@
-app.controller('getCategory', function($scope, $http, $window) {
-    var start = new Date().getTime();
-    //result data structure: {restaurantId:{all data for one restaurant}}
-    var categoryResult = [];
-    var link = 'http://128.199.48.244:7000/restaurants';
+/**
+ * Controller for categories in moreInfo tab
+ */
+app.controller('getCategory', ['$scope', '$http', '$window', '__env', function($scope, $http, $window, __env) {
+    $scope.restaurants = [];
 
-    getCategory(link);
-
-    function getCategory(url){
-        var link = url;
+    getRestaurantsAndCategories();
+    //Get the restaurant and it's categories
+    function getRestaurantsAndCategories(){
         $http({
             method: 'GET',
-            url: link,
-            /*headers: {'x-access-token' : $window.localStorage['jwtToken']}*/
-        }).then(function successCallback(response) {
-            resultCategory(response.data);
-        }, function errorCallback(response) {
+            url: __env.API_URL + '/restaurants',
+        }).then(function(response) {
+            extractCategoriesFromRestaurants(response.data);
+        }).catch(function(error) {
            console.log("Error, cannot load restaurants!");
         });
     }
 
-    function resultCategory(resultData){
+    // Extracts the categories from restaurants in resultData
+    function extractCategoriesFromRestaurants(resultData){
         var items = resultData.data;
         for(var item in items){
             var restaurant = items[item];
@@ -30,10 +29,7 @@ app.controller('getCategory', function($scope, $http, $window) {
             for(var i = 0; i < restaurant.relationships.categories.length; i++){
                 restaurantCategories.categories.push(restaurant.relationships.categories[i].data.id);
             }
-            categoryResult.push(restaurantCategories);
+            $scope.restaurants.push(restaurantCategories);
         }
-
-        $scope.restaurants = categoryResult;
-
     }
-});
+}]);
