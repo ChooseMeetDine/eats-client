@@ -73,7 +73,7 @@
           <!--        Lägga till restaurang knapp"              -->
 
           <div id="add">
-            <md-button id="addrest" class="md-raised md-primary" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till restauranger</md-button>
+            <md-button id="addrest" class="md-raised md-primary" type="button " value="addRestaurants" ng-click="addRestaurants()">Lägg till dina förslag</md-button>
 
             <md-button id="clear" class="md-raised md-primary" ng-click="clearForm() ">Rensa</md-button>
           </div>
@@ -86,7 +86,7 @@
 
           </div>
         </form>
-          <div id="dialogError" ng-show="error">Omröstningen måste ha "Namn", "Restauranger" och sluta {{hour}}:{{minute}} eller senare!</div>
+          <div id="dialogError" ng-show="error">Omröstningen måste ha ett namn, förslag på plats och kan inte avslutas tidigare än kl. {{hour}}:{{minute}}!</div>
       </div>
     </md-dialog-content>
 
