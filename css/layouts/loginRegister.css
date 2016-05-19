@@ -1,3 +1,9 @@
+#login{
+    float: left;
+    display:block;
+    width:50%;
+}
+
 /*Dialogfönster för registrera eller logga in*/
 #container{
     background-color: #fafafa;
@@ -13,14 +19,23 @@
 
 #register{
     float: right;
-    display: inline-block;
-    border-left: 1px solid #BDBDBD;
-    padding-left: 10px;
-    padding-right: 15px;
-    margin-top: 10px;
+    display:block;
     background-color: #fafafa;
+    width:50%;
 }
 
+#loginemail, #loginpassword, #regname, #regemail, #regpassword{
+    width: 100%;
+}
+
+#register_form{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-left: 1px solid #616161;
+    background-color: #fafafa;
+    width:100%;
+}
 #register_button{
     background-color: #00B8D4;
     
@@ -40,12 +55,27 @@
 
 #login_form{
     background-color: #fafafa;
+    width:100%;
+}
 
+#container{
+    background-color: #fafafa;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 #login_button{
+    min-width: 50%;
     background-color: #00B8D4;
 }
+
+#register_button{
+    background-color: #00B8D4;
+    min-width: 50%;
+    float: right;
+    margin-bottom: 5px;
+}
+
 
 
 /*Avbryt aktivitet*/
@@ -53,6 +83,8 @@
 #cancel_login-register{
     background-color: #ffffff;
     color: #616161;
+    float:right;
+    clear: both;
 
 }
 
@@ -62,6 +94,15 @@
 #continue_dialog{
 }
 
+.continueToPoll{
+    background-color: #fafafa;
+    float: left;
+}
+
+#continueButton{
+    margin-top: 0px;
+    background-color:#00B8D4;
+}
 /*Fortsätt som inloggad användare*/
 #continue_as_user{
     background-color: #fafafa;
@@ -77,8 +118,8 @@
     background-color: #fafafa;
     color: #616161;
     float: left;
+    margin-top:10px;
 }
-
 
 @media (max-width:535px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #register {
