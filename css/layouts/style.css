@@ -290,6 +290,9 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 .leaflet-control-locate a {
   padding: 2px;
 }
+.leaflet-control-locate.active a {
+  color: #FC8428;
+}
 
 
 /*---------------MAIN MENU & FILTER MENU-------------*/
