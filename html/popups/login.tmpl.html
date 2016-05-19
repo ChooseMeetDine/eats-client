@@ -12,18 +12,17 @@
       <md-content id="login_form" class="md-padding">
         <label class="login-register_header">Logga in</label>
         <form name="login" ng-controller="loginUser" ng-submit="loginUser()">
-          <md-input-container>
+          <md-input-container id="loginemail">
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email">
           </md-input-container>
-          <br>
-          <md-input-container>
+          <md-input-container id="loginpassword">
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password">
           </md-input-container>
-          <br>
+
           <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Fel användarnamn eller lösenord</p>
         </form>
@@ -36,24 +35,24 @@
       <md-content id="register_form" class="md-padding">
         <label class="login-register_header">Registrera dig</label>
         <form name="register" ng-controller="addUser" ng-submit="regUser()">
-          <md-input-container>
+          <md-input-container id="regname">
             <label>Namn</label>
             <md-icon md-svg-src="images/icons/ic_person_24px.svg"></md-icon>
             <input ng-model="name" type="text">
           </md-input-container>
-          <br>
-          <md-input-container>
+
+          <md-input-container id="regemail">
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email">
           </md-input-container>
-          <br>
-          <md-input-container>
+
+          <md-input-container id="regpassword">
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password">
           </md-input-container>
-          <br>
+
           <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
           <p ng-if="regStatus.error">Gick inte att registrera användaren.</p>
         </form>
@@ -63,8 +62,6 @@
 
 
   <!-- Cancel buttons for sending the form and closing the window-->
-
-
   <md-dialog-actions layout="row">
     <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
       Avbryt
