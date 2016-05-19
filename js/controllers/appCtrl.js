@@ -31,7 +31,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       })
       .catch(function(){
       // This code will run if the dialog is "cancelled", i.e. user clicked on Cancel/X or outside the dialog
-      if(clearActivePollOnCancel) {
+      if(clearActivePollOnCancel) {
           pollService.clearActivePoll();
         }
       console.log('Dialog was cancelled');
@@ -108,7 +108,7 @@ function DialogController($scope, $mdDialog, pollService) {
     })
     .catch(function(){
       // This code will run if the dialog is "cancelled", i.e. user clicked on Cancel/X or outside the dialog
-      if(clearActivePollOnCancel) {
+      if(clearActivePollOnCancel) {
           pollService.clearActivePoll();
         }
       console.log('Dialog was cancelled');
