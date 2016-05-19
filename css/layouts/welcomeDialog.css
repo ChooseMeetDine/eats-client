@@ -1,0 +1,135 @@
+/* Styling for the welcome Screen - first time users*/
+
+/*Dialog wrapper*/
+#welcomeBackground{
+    position: absolute;
+    margin: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.6;
+}
+
+
+#welcomeContent{
+    position: absolute;
+    z-index: 999;
+    background-color: #FFF;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    max-width: 700px;
+    width: 60%;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+#welcomeContent:hover{
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+#welcomeHeader{
+    text-align: center;
+    font-weight: bold;
+    color: #696969;
+    padding-bottom: 10px;
+}
+
+#eats{
+    color: #78afab;
+}
+
+#main{
+  margin: 40px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333333;
+}
+
+#welcomeFooter{
+    position: absolute;
+    bottom: 0;
+    padding: 30px;
+    left: 20%;
+    right: 20%;
+}
+
+.md-raised{
+    padding: 20px 12px 20px 12px;
+    width: 120px;
+}
+
+#welcomeLogin{
+    float:left;
+}
+
+#welcomeGuest{
+    float:right;
+}
+
+#welcomeLogin:hover, #welcomeGuest:hover{
+    background-color: #00B8D4;
+}
+
+.leaflet-tile, .leaflet-marker-icon, .leaflet-bar, #menubuttons{
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+}
+
+#createPollIcon{
+    display: none;
+}
+
+.arrow{
+    display: none;
+}
+
+
+/* MEDIA QUERYS FOR DIFFERENT SCREEN SIZES */
+@media (max-width:900px){
+    #welcomeFooter{
+        width: 80%;
+        left: 10%;
+        right: 10%;
+    }
+    #main{
+        margin: 30px;
+    }
+    #welcomeContent{
+        height: 400px;
+    }    
+}
+
+@media (max-width:750px){
+    #welcomeContent{
+        width: 80%;
+        height: 490px;
+    }
+}
+
+@media (max-width:632px) {
+    #welcomeFooter{
+        width: 80%;
+        left: 10%;
+        right: 10%;
+        padding: 15px;
+    }
+    #welcomeContent{
+        height: 460px;
+    }
+    #welcomeHeader{
+        padding-bottom: 0px;
+    }
+}
+
+@media (max-width:432px){
+    #welcomeFooter{
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
