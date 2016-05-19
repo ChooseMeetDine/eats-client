@@ -1,7 +1,7 @@
 <md-dialog  ng-controller="createRestaurant" class="createRestaurantDialog" aria-label="addPoll"  ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">  
-                <h1>Lägg till restaurang </h1>
+                <h1>Lägg till restaurang eller café</h1>
                 <span flex></span>
             </div>
             
@@ -13,25 +13,25 @@
                 <!-- Start Right Content -->
                 <div id="left-content">
                 <md-input-container class="md-block">
-                        <label>Restaurangnamn</label>
+                        <label>Namn</label>
                         <input ng-model="form.data.name" md-maxlength="20" type="text" value="name" name="restaurantName" required>
                         <div ng-messages="createRestaurant.restaurantName.$error" ng-if="createRestaurant.restaurantName.$dirty">
-                            <div ng-message="required">Du måste fylla i ett Namn för restaurangen!</div>
-                            <div ng-message="md-maxlength">Namnet får max vara 20 tecken!</div>
+                            <div ng-message="required">Du har väl inte glömt namnet? Skriv det här.</div>
+                            <div ng-message="md-maxlength">Hoppsan! Inte längre än 20 tecken.</div>
                         </div>
                 </md-input-container>
                 <md-input-container class="md-block">
-                        <label>Info</label>                
+                        <label>Skriv lite intressant info, tryck enter för radbrytning.</label>                
                         <textarea ng-model="form.data.info" type="text" name="info" value="info" md-maxlength="600" rows="15" cols="50" md-select-on-focus required></textarea>
                         <div ng-messages="createRestaurant.info.$error" ng-if="createRestaurant.info.$dirty">
-                            <div ng-message="required">Du måste fylla i Information om restaurangen!</div>
-                            <div ng-message="md-maxlength">Informationen får max vara 600 tecken!</div>
+                            <div ng-message="required">Nej, vi vill veta mer! Skriv info här.</div>
+                            <div ng-message="md-maxlength">Ojoj! Informationen får inte vara längre än 600 tecken!</div>
                         </div>
                 </md-input-container>
                 <div>
                     <div>  
                         <span class="sliderTitle">
-                            Betyg:
+                            Ange betyg
                         </span>
                     </div>
                     <md-slider id="ratingslider" ng-model="form.data.rating" md-discrete step="1" min="1" max="5" aria-label="rating" required>
@@ -49,22 +49,22 @@
                         <label>Länk till bild</label>
                         <input ng-model="form.data.photo" type="text" value="photo" name="photo" pattern="[-a-zA-Z0-9@:%._\+~#=/]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*).(?:jpg|png)$" required>
                         <div ng-messages="createRestaurant.photo.$error" ng-if="createRestaurant.photo.$dirty">
-                            <div ng-message="required">Du måste fylla i en länk!</div>
-                            <div ng-message="pattern">Du måste fylla i en bildlänk som slutar med JPG- eller PNG!</div>
+                            <div ng-message="required">Jo, vi vill ha en bild. Klistra in en bildlänk här.</div>
+                            <div ng-message="pattern">Bildlänken måste vara en .JPG eller en .PNG!</div>
                         </div>
                 </md-input-container>
                 </div>
                 <!-- Start Left Content -->
                 <div id="right-content">
                 <table id="category_checkboxes">
-                <th>Kategori:</th>
+                <th>Ange kategori</th>
                 <tr>                    
                     <td>
                         <input type='checkbox' name='thing' value='valuable' id="addSushi" ng-model="form.data.categories[0]">
                         <label class="createRestaurantCheckboxImg" for="addSushi">
                             <span class="textOverlay"></span>
                             <p class="text">Sushi</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/1.png">
+                            <img class="createRestaurantFilterImg" title="sushi" src="../images/icons/1.png">
                         </label>
                         
                     </td>
@@ -73,7 +73,7 @@
                         <label class="createRestaurantCheckboxImg" for="addFastfood">
                             <span class="textOverlay"></span>
                             <p class="text">Snabbmat</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/2.png">
+                            <img class="createRestaurantFilterImg" title="snabbmat" src="../images/icons/2.png">
                         </label>
                     </td>
                     <td>
@@ -81,7 +81,7 @@
                         <label class="createRestaurantCheckboxImg" for="addBurgers">
                             <span class="textOverlay"></span>
                             <p class="text">Hamburgare</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/3.png">
+                            <img class="createRestaurantFilterImg" title="hamburgare" src="../images/icons/3.png">
                         </label>
                     </td>
                     </tr>
@@ -91,7 +91,7 @@
                         <label class="createRestaurantCheckboxImg" for="addVegetarian">
                             <span class="textOverlay"></span>
                             <p class="text">Vegetariskt</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/4.png">
+                            <img class="createRestaurantFilterImg" title="vegetariskt" src="../images/icons/4.png">
                         </label>
                     </td>
                     <td>
@@ -99,7 +99,7 @@
                         <label class="createRestaurantCheckboxImg" for="addSalad">
                             <span class="textOverlay"></span>
                             <p class="text">Sallad</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/5.png">
+                            <img class="createRestaurantFilterImg" title="sallad" src="../images/icons/5.png">
                         </label>
                     </td>
                     <td>
@@ -107,7 +107,7 @@
                         <label class="createRestaurantCheckboxImg" for="addPizza">
                             <span class="textOverlay"></span>
                             <p class="text">Pizza</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/6.png">
+                            <img class="createRestaurantFilterImg" title="pizza" src="../images/icons/6.png">
                         </label>
                     </td>
                     </tr>
@@ -117,15 +117,15 @@
                         <label class="createRestaurantCheckboxImg" for="addIndian">
                             <span class="textOverlay"></span>
                             <p class="text">Indiskt</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/7.png" alt="indiskt">
+                            <img class="createRestaurantFilterImg" title="indiskt" src="../images/icons/7.png" alt="indiskt">
                         </label>
                     </td>
                     <td>
                         <input type='checkbox'  name='thing' value='valuable' id="addPasta" ng-model="form.data.categories[7]">
                         <label class="createRestaurantCheckboxImg" for="addPasta">
                             <span class="textOverlay"></span>
-                            <p class="text">Italienskt</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/8.png">
+                            <p class="text">Pasta</p>
+                            <img class="createRestaurantFilterImg" title="pasta" src="../images/icons/8.png">
                         </label>
                     </td>
                     <td>
@@ -133,7 +133,7 @@
                         <label class="createRestaurantCheckboxImg" for="addAsian">
                             <span class="textOverlay"></span>
                             <p class="text">Asiatiskt</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/9.png">
+                            <img class="createRestaurantFilterImg" title="asiatiskt" src="../images/icons/9.png">
                         </label>
                     </td>
                     </tr>
@@ -143,7 +143,7 @@
                         <label class="createRestaurantCheckboxImg" for="addMeat">
                             <span class="textOverlay"></span>
                             <p class="text">Kött</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/12.png">
+                            <img class="createRestaurantFilterImg" title="kött" src="../images/icons/12.png">
                         </label>
                     </td>
                     <td>
@@ -151,7 +151,7 @@
                         <label class="createRestaurantCheckboxImg" for="addSeafood">
                             <span class="textOverlay"></span>
                             <p class="text">Fisk</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/13.png">
+                            <img class="createRestaurantFilterImg" title="fisk" src="../images/icons/13.png">
                         </label>
                     </td>
                     <td>
@@ -159,20 +159,20 @@
                         <label class="createRestaurantCheckboxImg" for="addMexican">
                             <span class="textOverlay"></span>
                             <p class="text">Mexikanskt</p>
-                            <img class="createRestaurantFilterImg" src="../images/icons/14.png">
+                            <img class="createRestaurantFilterImg" title="mexikanskt" src="../images/icons/14.png">
                         </label>
                     </td>
                 </tr>
             </table>
             <div id="othercheckbox">
                 <input id="other" type="checkbox"  name="othercheck" ng-model="form.data.categories[9]" required>
-                <label class="addrestcheck" for="other">Övrig mat</label>
+                <label class="addrestcheck" for="other">Annan kategori</label>
             </div>
             </div>
             <div id="bottom">
-                <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap(); hide();">Välj plats på kartan</md-button>
-                <md-button id="submitrestaurant" class="md-raised md-primary" type="submit "> Lägg till restaurang </md-button>
-                <md-button id="cancelCreateRestaurant" class="md-raised md-primary" ng-click="cancel()">Avbryt</md-button>
+                <md-button class="md-raised md-primary" id="placeMarker" ng-click="getLocationOnMap(); hide();"> Välj plats på kartan </md-button>
+                <md-button id="submitrestaurant" class="md-raised md-primary" type="submit "> Lägg till! </md-button>
+                <md-button id="cancelCreateRestaurant" class="md-raised md-primary" ng-click="cancel()"> Avbryt </md-button>
             </div>
             </form>            
         </div>
