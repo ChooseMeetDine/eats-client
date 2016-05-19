@@ -24,7 +24,7 @@
               <label>Ange namn för omröstning t.ex. "Eats äter lunch"</label>
               <input id="lunchname" ng-model="form.data.name " type="text " value="name" name="pollName" md-maxlength="65" required>
               <div ng-messages="addPoll.pollName.$error" ng-if="addPoll.pollName.$dirty">
-                  <div ng-message="required">Omröstningen måste ju ha ett namn. Skriv något fyndigt här.</div>
+                  <div ng-message="required">Ojdå! Omröstningen måste ju ha ett namn. Skriv något fyndigt här.</div>
                   <div ng-message="md-maxlength">Nä, inte ett namn med fler än 65 bokstäver!</div>
               </div>
             </md-input-container>
