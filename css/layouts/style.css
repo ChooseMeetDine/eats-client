@@ -235,7 +235,6 @@ footer a:hover{
 .leaflet-bar {
   zoom: 130%;
   border: none;
-  border-radius: 0px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -322,6 +321,10 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
   background: #212121;
 }
 
+/*removes padding in the list-item that we don't want*/
+md-list-item .md-no-style, md-list-item.md-no-proxy {
+    padding:0px;
+}
 
 /*Login or register button i main menu*/
 .login, .logout{
@@ -336,6 +339,22 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 #main-meny-nav {
   padding: 10px;
 }
+
+#linkAndLogo {
+    text-align: center;
+    display: block;
+    bottom: 20px;
+    position: fixed;
+    left: 26%;
+}
+#linkAndLogo a, a:focus{
+    color: #FAFAFA;
+    text-decoration: none;
+}
+#linkAndLogo a:hover{
+    color: #00b8d4;
+}
+
 
 
 /*-------------------FILTER MENU----------------------*/
@@ -607,6 +626,13 @@ md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
     background-color: #00B8D4;
 }
 
+/*styling the popup with all the restaurants that's being added to the poll*/
+md-chips .md-chips{
+    font-family: raleway;
+    box-shadow: 0 0px;
+}
+
+
 /*--------------------------------------MEDIA QUERIES---------------------------------------*/
 @media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
     md-sidenav {
@@ -655,4 +681,10 @@ md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
 }
 
 @media (max-width:1025px) { /* everythig except big landscape tablets, laptops, and desktops */
+}
+
+@media (max-height:430px) {
+    #linkAndLogo {
+    display: none;
+    }
 }
