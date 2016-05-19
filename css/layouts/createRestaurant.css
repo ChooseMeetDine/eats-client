@@ -150,6 +150,10 @@ input[type=checkbox] + .addrestcheck:before{
     width:100%;
 }
 
+
+#other, #yes-cafe, .addrestcheck, #category_checkboxes img, #ratingslider{
+    cursor:pointer;
+}
 /*PLACE RESTAURANT BUTTON*/
 #placeMarker{
     background:#FAFAFA;
