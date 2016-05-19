@@ -1,3 +1,6 @@
+/**
+ * Controller for the dialog that is shown when a user wants to join a poll
+ */
 app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window', 'pollService', '$location', function($scope, $http, tokenService, $window, pollService, $location) {
   $scope.isLoggedInAsUser = tokenService.isUserWithValidToken();
   $scope.isLoggedInAsAnonymous = tokenService.isAnonymousWithValidToken();
@@ -13,6 +16,9 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
     error: false
   };
 
+  /**
+   * Join the poll as anonymous, either with existing token or by getting a new one.
+   */
   $scope.continueAsAnonymous = function() {
     if (!$scope.isLoggedInAsAnonymous) {
       tokenService.getAnonymousToken()
@@ -28,6 +34,9 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
     }
   };
 
+  /**
+   * Join the poll as the logged in user
+   */
   $scope.continueAsUser = function() {
     pollService.joinActivePoll()
       .then(function() {
@@ -35,6 +44,9 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
       });
   }
 
+  /**
+   * Join poll by logging in as a user
+   */
   $scope.loginUserAndContinue = function() {
     var user = {
       'email': $scope.email,
@@ -54,6 +66,9 @@ app.controller('continueToPollAs', ['$scope', '$http', 'tokenService', '$window'
       });
   };
 
+  /**
+   * Join poll by registering a new user
+   */
   $scope.registerUserAndContinue = function() {
     var user = {
       'email': $scope.email,

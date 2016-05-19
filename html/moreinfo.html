@@ -4,16 +4,18 @@
         <div id="moreInfoSlider">
             <!-- Name of restaurant -->
             <div id="restaurantname">
-                <h1 class="md-toolbar-tools">{{ content.name }}</h1>
+                <h1 class="md-toolbar-tools">{{ restaurant.name }}</h1>
             </div>
 
            <!-- Restaurant image -->
             <md-content ng-controller="getCategory" layout-padding>
                 <div id="infoImgContainer">
-                    <img id="infoImg" onerror="this.src='../images/moreinfo_grey.svg'" ng-src="{{ content.photo }}">
+                    <img id="infoImg" onerror="this.src='../images/moreinfo_grey.svg'" ng-src="{{ restaurant.photo }}">
                 </div>
                <!-- Type of food images -->
-                <md-list id="moreInfoLabel" ng-repeat="categories in restaurants" ng-if="content.id == categories.id">
+
+
+                <md-list id="moreInfoLabel" ng-repeat="categories in restaurants" ng-if="restaurant.id == categories.id">
                     <md-list-item ng-repeat="category in categories.categories" ng-if="!(category == '10' || category == '11')" class="moreInfoCategoryIcon">
                         <img ng-src="../images/icons/{{category}}.png">
                     </md-list-item>
@@ -21,9 +23,9 @@
                 <!-- More info about the restaurant -->
                 <div id="extrainfo">
                     <md-list-item>
-                        <p style="white-space: pre-wrap;">{{ content.extra.info }} </p>
+                        <p style="white-space: pre-wrap;">{{ restaurant.extra.info }} </p>
                     </md-list-item>
-                    <!-- <p id="rating_stars" class="rating-static rating-{{content.extra.rating}}"></p>    	 -->
+                    <!-- <p id="rating_stars" class="rating-static rating-{{restaurant.extra.rating}}"></p>    	 -->
                 </div>
             </md-content>
         </div>
