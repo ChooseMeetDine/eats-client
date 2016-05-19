@@ -1,6 +1,10 @@
+/**
+ * Service for filtering restaurants on the map
+ */
+
 app.factory('filterService', function(){
     var filterService = {};
-    
+
     filterService.overlays = {
         1:{
           name: 'Sushi',
@@ -115,10 +119,10 @@ app.factory('filterService', function(){
           }
         }
       };
-      
+
       filterService.toggleFilter = function(categoryId){
           filterService.overlays[categoryId].visible = !filterService.overlays[categoryId].visible;
       }
-    
+
     return filterService;
 });
