@@ -27,20 +27,22 @@ Darkslategrey   #364e5c     54,78,92
 */
 
 
-/*FONTS*/
-
+/*FONTS heading and paragraph*/
 @font-face {
-  font-family: lane;
-  src: url("/css/fonts/lane/LANENAR_.ttf") format("opentype");
+  font-family: raleway-thin;
+  src: url("/css/fonts/raleway/Raleway-Thin.ttf") format("opentype");
+}
+@font-face {
+  font-family: raleway;
+  src: url("/css/fonts/raleway/Raleway-Medium.ttf") format("opentype");
 }
 
 html,body,p{
-    font-family: lane, open sans, arial;
+    font-family: raleway, open sans, arial;
 }
 
 
 /* RESETS: md-button., md-list */
-
 .md-button,
 md-list-item .md-list-item-inner,
 md-list-item,
@@ -65,12 +67,15 @@ body {
 
 h1 {
   font-size: 55px;
-  font-family: lane, open sans, arial;
+  font-family: raleway-thin, open sans, arial;
 }
 
+/*Hiding scrollbar but still able to scroll*/
+::-webkit-scrollbar {
+    width: 0px;
+}
 
 /*Forms*/
-
 form {
   padding: 5px;
 }
@@ -88,46 +93,46 @@ form input {
 
 
 /*Dialogruta*/
-
 md-dialog {
   background-color: #FAFAFA;
   max-height: 92%;
   width: 500px;
   color: #212121;
 }
-
+.md-dialog-container{
+    z-index:1000;
+}
 
 /*Färg vid klickad checkbox */
-
 md-checkbox.md-checked.checkboxpermission .md-icon {
   background-color: #00B8D4;
 }
 
 
 /*Inputfält, väljer font och färg */
-
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #00B8D4;
-    font-family: lane, open sans, arial;
+    font-family: raleway, open sans, arial;
     margin-bottom: 2px;
 }
-
-
+.md-input-focused label{
+    color: #00B8D4 !important;
+}
+.md-input-invalid label{
+    color: #ba3300 !important;
+}
 /*Popup content wrapper*/
-
 leaflet-popup-content-wrapper {
   border: none!important;
 }
 
 
 /*Menu content*/
-
 md-sidenav {
   background: #424242;
   display: block;
   height: 100vh;
   z-index: 3;
-  overflow: hidden;
   padding-top: 44px;
 }
 
@@ -157,20 +162,17 @@ md-list-item.md-no-proxy.md-button {
 
 
 /*Color backgrounds*/
-
 .md-content,
 .layout-padding {
   background: #424242;
   color: #FAFAFA;
   padding: 0;
-  overflow: hidden;
 }
 
 
 /*Header för dialogrutor*/
-
 .md-toolbar-tools {
-  font-family: lane;
+  font-family: raleway-thin;
   font-size: 36px;
   background-color: #616161;
   padding: 2%;
@@ -184,9 +186,7 @@ footer{
     bottom:0;
     color:#FAFAFA;
     padding:10px;
-    border-top:solid #FAFAFA 1px;
 }
-
 
 /*Logotype img*/
 #logoEats{
@@ -200,7 +200,7 @@ footer a:hover{
     color:#00B8D4;
     text-decoration:none;
 }
-    
+
 /*Styling all buttons*/
 
 .md-button {
@@ -210,7 +210,6 @@ footer a:hover{
 
 
 /*Aktiveringsknappar, exemeplvis för att SKAPA något*/
-
 .actionbutton {
   background-color: #00B8D4;
   color: #fafafa;
@@ -218,7 +217,6 @@ footer a:hover{
 
 
 /*MAP*/
-
 #map {
   position: absolute;
   top: 0;
@@ -238,19 +236,17 @@ footer a:hover{
 
 
 /*Zoom and show me where I am buttons*/
-
 .leaflet-bar {
   zoom: 130%;
   border: none;
-  border-radius: 0px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  z-index:10;
 }
 
 
 /*Zoom in and zoom out controls */
-
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
   color: transparent!important;
@@ -264,10 +260,11 @@ footer a:hover{
   box-shadow: 1px 0 5px 0 rgba(0,0,0,.26);
 }
 
-
+.fa-spinner {
+  margin-right: 4px;
+}
 
 /*Show me where I am button container*/
-
 .leaflet-bar a,
 .leaflet-bar a:hover {
   text-align: -webkit-center;
@@ -290,21 +287,23 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 }
 
 .leaflet-control-geocoder, .leaflet-control-geocoder-form input, .leaflet-control-geocoder a, .leaflet-control-geocoder .leaflet-control-geocoder-icon {
-  background-color: white;
+    background-color: white;
+    font-family: raleway;
+    overflow: hidden;
 }
 
 /*Show me where I am icon*/
-
 .leaflet-control-locate a {
   padding: 2px;
+}
+.leaflet-control-locate.active a {
+  color: #FC8428;
 }
 
 
 /*---------------MAIN MENU & FILTER MENU-------------*/
 
-
 /*Buttons*/
-
 #menubuttons {
   background: #424242;
   color: #FAFAFA;
@@ -326,6 +325,10 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
   background: #212121;
 }
 
+/*removes padding in the list-item that we don't want*/
+md-list-item .md-no-style, md-list-item.md-no-proxy {
+    padding:0px;
+}
 
 /*Login or register button i main menu*/
 .login, .logout{
@@ -341,12 +344,27 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
   padding: 10px;
 }
 
+#linkAndLogo {
+    text-align: center;
+    display: block;
+    bottom: 20px;
+    position: fixed;
+    left: 26%;
+}
+#linkAndLogo a, a:focus{
+    color: #FAFAFA;
+    text-decoration: none;
+}
+#linkAndLogo a:hover{
+    color: #00b8d4;
+}
+
+
 
 /*-------------------FILTER MENU----------------------*/
 
 
 /*Filter menu undertitles*/
-
 .filter-undertitle {
   font-size: 14px;
   padding: 10px;
@@ -354,7 +372,6 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 
 
 /*First undertitle in filter menu*/
-
 #filterMenuContent {
   margin: 20px;
 }
@@ -373,7 +390,7 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 }
 
 md-checkbox.md-checked.normalCheckbox .md-icon {
-  background-color: rgb(0, 184, 212);
+  background-color: #364e5c;
 }
 
 .textOverlay{
@@ -392,9 +409,11 @@ md-checkbox.md-checked.normalCheckbox .md-icon {
 }
 .filterCheckboxImg:hover .text{
     display:block;
+    cursor: pointer;
 }
 .filterCheckboxImg:hover .textOverlay{
     background-color:rgba(33, 33, 33, 0.5);
+    cursor: pointer;
 }
 
 input[type=checkbox] {
@@ -434,7 +453,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*Filter menu star rating*/
-
 .star-rating {
   line-height: 32px;
   font-size: 2em;
@@ -448,7 +466,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*Create poll button*/
-
 #createPollButton {
   color: #212121;
   padding: 0;
@@ -486,16 +503,12 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   margin: 2px;
 }
 
-
 /*Create poll button when hovering*/
-
 #createPollIcon:hover {
   opacity: 0.7;
 }
 
-
 /*Create poll icon making the plus sign bigger*/
-
 #createPollIcon {
   font-size: 7em;
   color: #00B8D4;
@@ -564,7 +577,7 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   color:#FAFAFA!important;
 }
 #dialogError{
-    color:rgb(186,51,0);
+    color:#ba3300;
 }
 
 .expiredPoll {
@@ -576,21 +589,16 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*Infoslider with more info about restaurant*/
-
 #moreInfoSlider .md-no-proxy {
   padding: 10px!important;
 }
 
-
 /*Infoslider content width*/
-
 .infomenu {
   width: 500px;
 }
 
-
 /*Add restaurant button for save restaurant*/
-
 .saveRestaurantButton {
   position: absolute;
   right: 20px;
@@ -598,9 +606,7 @@ input[type=checkbox]:checked + .filterCheckboxImg {
   z-index: 2;
 }
 
-
 /*hide md-dialog-container*/
-
 .display-none-md-dialog-container,
 .display-none-md-dialog-backdrop,
 .display-none-md-scroll-mask,
@@ -610,7 +616,6 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 
 
 /*hide link to leaflet*/
-
 .leaflet-control-attribution a {
   display: none!important;
 }
@@ -619,7 +624,20 @@ input[type=checkbox]:checked + .filterCheckboxImg {
 #regError{
     width:200px;
 }
-/*Mobile Device*/
+
+/*LOADING PROGRESS BAR*/
+md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
+    background-color: #00B8D4;
+}
+
+/*styling the popup with all the restaurants that's being added to the poll*/
+md-chips .md-chips{
+    font-family: raleway;
+    box-shadow: 0 0px;
+}
+
+
+/*--------------------------------------MEDIA QUERIES---------------------------------------*/
 @media (max-width:320px) { /* everythig except smartphones, iPhone, portrait 480x320 phones */
     md-sidenav {
         width: calc(100% - 100px);
@@ -627,13 +645,23 @@ input[type=checkbox]:checked + .filterCheckboxImg {
         max-width: calc(100% - 60px);
     }
     .md-toolbar-tools {
-        font-size: 1em;
+        font-size: 1.4em;
     }
     #poll-dialog-name {
         font-size: 2em;
     }
+    
+    .login, .logout{
+    background: #00b8d4!important;
+    color:#FAFAFA!important;
+    padding:10px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 20px;
+    max-width:120px;
 }
 
+}
 
 @media (max-width:456px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     md-sidenav {
@@ -643,30 +671,24 @@ input[type=checkbox]:checked + .filterCheckboxImg {
     }
 }
 
-@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
-    */
+@media (max-width:641px) { /* everythig except portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
     .md-toolbar-tools {
-        font-size: 1em;
+        font-size: 1.4em;
     }
     #poll-dialog-name {
         font-size: 3em;
     }
 }
 
-@media (max-width:961px) {
-  /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */
+
+@media (max-width:961px) { /* everythig except tablet, landscape iPad, lo-res laptops ands desktops */
 }
 
-@media (max-width:1025px) {
-/* everythig except big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) { /* everythig except big landscape tablets, laptops, and desktops */
+}
 
-    .filterCheckboxImg .text{
-            font-size: 1.2em;
-            display:none;
-            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+@media (max-height:430px) {
+    #linkAndLogo {
+    display: none;
     }
-}
-/*LOADING PROGRESS BAR*/
-md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{
-    background-color: #00B8D4;
 }

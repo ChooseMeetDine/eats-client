@@ -1,3 +1,6 @@
+/**
+ * Controller for the main menu
+ */
 app.controller('mainMenu', ['$scope', '$window', 'tokenService', function($scope, $window, tokenService) {
   $scope.tokenData = tokenService.getTokenData();
   $scope.isUserWithValidToken = tokenService.isUserWithValidToken();

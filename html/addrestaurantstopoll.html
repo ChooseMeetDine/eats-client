@@ -1,6 +1,6 @@
 <div id="added_restaurants" ng-controller="addRestaurantsToPoll">
-    <h3>Restauranger i omröstningen</h3>
-    <strong>Lägg till restauranger i omröstningen genom att klicka på markörerna och därefter plustecknet</strong>
+    <h3>Till omröstningen</h3>
+    <strong>Lägg till restauranger/caféer i omröstningen genom att först klicka på markörerna och sedan plustecknet</strong>
     <form name="addPoll" ng-submit="done()">
         <md-chips ng-model="form.data.restaurants" name="restaurantName" readonly="true">
             <md-chip-template id="restaurant_name_chip" ng-click="remove($chip)">

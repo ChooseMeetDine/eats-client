@@ -52,12 +52,11 @@ md-list-item{
 .moreInfoCategoryIcon img{
     width: 100%;
     float:left;
-    
 }
 
 #extrainfo{
     position:relative;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 20px 20px 20px;
     float:left;
 }
 
