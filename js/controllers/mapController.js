@@ -36,12 +36,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     layers: {
       overlays: overlays
     },
-    // events: {
-    //   map: {
-    //     enable: ['locationfound', 'popupopen'],
-    //     logic: 'emit'
-    //   }
-    // },
     defaults: {
       zoomControlPosition: 'topright',
       locationControlPosition: 'topright'
@@ -51,7 +45,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         L.control.locate({
           follow: false,
           position: 'topright',
-          // keepCurrentZoomLevel: false,
           locateOptions: {
             maxZoom: 16
           },
@@ -61,11 +54,9 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
             fillOpacity: 0
           },
           markerStyle: {
-            // color: '#FC8428',
             color: '#000',
             weight: 20,
-            opacity: 0.8,
-            // fillColor: '#FC8428',
+            opacity: 0.6,
             fillColor: 'white',
             fillOpacity: 1,
             clickable: false
@@ -73,38 +64,10 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
         }),
           L.Control.geocoder({
             position: 'topright'
-//        }),
-//          L.Routing.control({
-//            position: 'bottomleft',              
-//              waypoints: [
-//                  L.latLng(55.607335, 13.008678)
-//              ],
-//              routeWhileDragging: true,
-//              geocoder: L.Control.Geocoder.nominatim()
           })
       ]
     }
   }
-
-  // Due to a Chrome error when trying to get user location over HTTP (instead of HTTPS)
-  // on the staging server, this code will evaluate __env-variables to determine if auto discover of
-  // user location should be used or not
-  // if (__env.USE_LOCATION) {
-  //   mapConfig.center.autoDiscover = true;
-  // } else {
-  //   // If not using user location - default to Odd Hill coordinates in Malmö
-  //   userMarker = {
-  //     lat: 55.607335,
-  //     lng: 13.008678,
-  //     draggable: false,
-  //     icon: {
-  //       iconUrl: 'images/icons/you_marker.png',
-  //       iconSize: [24, 24], // size of the icon
-  //       iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
-  //     }
-  //   };
-  //   restaurantMarkers.push(userMarker);
-  // }
 
   // Adds the leaflet config object to $scope
   angular.extend($scope, mapConfig);
@@ -113,27 +76,6 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   // ------------------------------- //
   //       MAP EVENT LISTENERS       //
   // ------------------------------- //
-
-  // Event listener for location found
-  // Draws a marker on map where location was found
-  // $scope.$on('leafletDirectiveMap.locationfound', function(event) {
-  //   if (!userMarker) {
-  //     userMarker = {
-  //       lat: $scope.center.lat,
-  //       lng: $scope.center.lng,
-  //       draggable: false,
-  //       icon: {
-  //         iconUrl: 'images/icons/you_marker.png',
-  //         iconSize: [24, 24], // size of the icon
-  //         iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
-  //       }
-  //     };
-  //     restaurantMarkers.push(userMarker);
-  //   } else {
-  //     userMarker.lat = $scope.center.lat;
-  //     userMarker.lng = $scope.center.lng;
-  //   }
-  // });
 
   // Event listener for clicks on map
   $scope.$on('leafletDirectiveMap.click', function(event, args) {
