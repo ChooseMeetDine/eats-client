@@ -6,16 +6,16 @@
       <span flex></span>
     </div>
   </md-toolbar>
-
   <md-dialog-content>
             
       
-      <!-- First tab wich includes the "login" page with input forms and logos -->
+      <!-- First tab wich includes the "login" page with input forms, logos and buttons -->
     <div id="login">
       <md-content id="login_form" class="md-padding">
         <label class="login-register_header">Logga in</label>
         <form name="login" ng-controller="loginUser" ng-submit="loginUser()">
           <md-input-container>
+        <!-- Email input -->
             <label>Email</label>
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email" name="email" required>
@@ -23,16 +23,18 @@
               <div ng-message="required">Du måste fylla i en E-mail!</div>
             </div>
           </md-input-container> 
+        <!-- Password input -->
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password" name="password" minlength="6" required>
+        <!-- Error handling, password requierd or too short -->
             <div ng-messages="login.password.$error" ng-if="login.password.$dirty">
               <div ng-message="required">Du måste fylla i ett Lösenord!</div>
               <div ng-message="minlength">Lösenordet är för kort!</div>
             </div>  
           </md-input-container>
-
+        <!-- Error handling, wrong email or password -->
           <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Felaktigt E-mail eller Lösenord!</p>
           <div ng-controller="continueToPollAs">
@@ -40,17 +42,16 @@
             </div>
         </form>
           
-
       </md-content>
     </div>
 
 
-    <!-- Second tab wich includes the "register" page with input forms and logos -->
+    <!-- Second tab wich includes the "register" page with input forms, logos and buttons. Also a choice to continue as anonymus -->
     <div id="register">
       <md-content id="register_form" class="md-padding">
         <label class="login-register_header">Registrera dig</label>
         <form name="register" ng-controller="addUser" ng-submit="regUser()">
-
+    <!-- Name input -->
           <md-input-container>
             <label>Namn</label>
             <md-icon md-svg-src="images/icons/ic_person_24px.svg"></md-icon>
@@ -61,8 +62,11 @@
               <div ng-message="minlength">Namnet är för kort!</div>
             </div> 
           </md-input-container>
+    <!-- Email input -->
           <md-input-container>
             <label>Email</label>
+              
+    <!-- Error handling email -->
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email" name="email" required>
             <div ng-messages="register.email.$error" ng-if="register.email.$dirty">
@@ -70,15 +74,19 @@
             </div> 
           </md-input-container>
             <br>
+            
+    <!-- Password input -->
           <md-input-container>
             <label>Lösenord</label>
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password" name="password" minlength="6" required>
+    <!-- Error handling password -->
              <div ng-messages="register.password.$error" ng-if="register.password.$dirty">
               <div ng-message="required">Du måste fylla i ett Lösenord!</div>
               <div ng-message="minlength">Lösenordet är för kort!</div>
             </div>
           </md-input-container>
+            <!-- register button -->
             <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
                 <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
                     Avbryt
