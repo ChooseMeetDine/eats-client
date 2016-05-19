@@ -8,16 +8,6 @@
   </md-toolbar>
 
   <md-dialog-content>
-  <md-dialog-actions layout="row">
- 
-       <div ng-controller="continueToPollAs">
-               
-<!--               <md-button  ng-if="isUserWithInvalidToken" class="md-raised md-primary" > Du är inte längre inloggad som {{username}} </md-button>-->
-               
-                         <md-button id="anonymous_button" ng-click="continueAsAnonymous()" class="md-raised md-primary"> Fortsätt som anonym </md-button>
-      </div>
-
-  </md-dialog-actions>
             
       
       <!-- First tab wich includes the "login" page with input forms and logos -->
@@ -45,10 +35,12 @@
 
           <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Felaktigt E-mail eller Lösenord!</p>
+          <div ng-controller="continueToPollAs">
+            <md-button id="anonymous_button" ng-click="continueAsAnonymous()" class="md-raised md-primary"> Fortsätt som anonym </md-button>
+            </div>
         </form>
-          <md-button id="continue_as_user" class="md-raised md-primary"  ng-click="continueAsUser()" class="md-raised">
-            Fortsätt som {{username}}
-          </md-button>  
+          
+
       </md-content>
     </div>
 
@@ -87,18 +79,13 @@
               <div ng-message="minlength">Lösenordet är för kort!</div>
             </div>
           </md-input-container>
-
-          <md-dialog-actions layout="row">
-                <md-button ng-click="cancel()">
-                  Avbryt
+            <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
+                <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
+                    Avbryt
                 </md-button>
-                <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
-          </md-dialog-actions>
           <p ng-if="regStatus.error">Gick inte att registrera användaren.</p>
         </form>
-    <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
-      Avbryt
-    </md-button>
+    
       </md-content>
     </div>
   </md-dialog-content>

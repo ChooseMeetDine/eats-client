@@ -67,7 +67,6 @@
 #login_button{
     min-width: 50%;
     background-color: #00B8D4;
-    margin-left: 24px;
 }
 
 #register_button{
@@ -86,7 +85,6 @@
     color: #616161;
     float:right;
     clear: both;
-    margin-right: 5px;
 
 }
 
@@ -120,6 +118,7 @@
     background-color: #fafafa;
     color: #616161;
     float: left;
+    margin-top:10px;
 }
 
 @media (max-width:535px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
