@@ -14,9 +14,10 @@
                 <div id="left-content">
                 <md-input-container class="md-block">
                         <label>Restaurangnamn</label>
-                        <input ng-model="form.data.name" type="text" value="name" name="restaurantName" required>
+                        <input ng-model="form.data.name" md-maxlength="20" type="text" value="name" name="restaurantName" required>
                         <div ng-messages="createRestaurant.restaurantName.$error" ng-if="createRestaurant.restaurantName.$dirty">
                             <div ng-message="required">Du måste fylla i ett Namn för restaurangen!</div>
+                            <div ng-message="md-maxlength">Namnet får max vara 20 tecken!</div>
                         </div>
                 </md-input-container>
                 <md-input-container class="md-block">
@@ -46,10 +47,10 @@
             </table>
                 <md-input-container class="md-block">
                         <label>Länk till bild</label>
-                        <input ng-model="form.data.photo" type="text" value="photo" name="photo" pattern="(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|png)$" required>
+                        <input ng-model="form.data.photo" type="text" value="photo" name="photo" pattern="[-a-zA-Z0-9@:%._\+~#=/]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*).(?:jpg|png)$" required>
                         <div ng-messages="createRestaurant.photo.$error" ng-if="createRestaurant.photo.$dirty">
                             <div ng-message="required">Du måste fylla i en länk!</div>
-                            <div ng-message="pattern">Du måste fylla i en länk till en JPG- eller PNG-bild!</div>
+                            <div ng-message="pattern">Du måste fylla i en bildlänk som slutar med JPG- eller PNG!</div>
                         </div>
                 </md-input-container>
                 </div>
