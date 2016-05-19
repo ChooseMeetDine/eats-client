@@ -16,11 +16,11 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   // ------------------------------- //
   var mapConfig = {
     center: {
-      lat: 55.607335,
-      lng: 13.008678,
-      zoom: 15
+      lat: 55.60494792571626,
+      lng: 12.999229431152344,
+      zoom: 14
     },
-    markers: restaurantMarkers,
+    markers: restaurantMarkers, //Markers shown on map
     tiles: {
       name: 'Mapbox',
       url: 'https://api.mapbox.com/styles/v1/{mapid}/tiles/{z}/{x}/{y}?access_token={apikey}',
@@ -36,55 +36,37 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
     layers: {
       overlays: overlays
     },
-    events: {
-      map: {
-        enable: ['locationfound', 'popupopen'],
-        logic: 'emit'
-      }
-    },
     defaults: {
       zoomControlPosition: 'topright',
       locationControlPosition: 'topright'
     },
-    controls: {
+    controls: { //Controlls in top right corner
       custom: [
         L.control.locate({
-          follow: true,
-          position: 'topright'
+          follow: false,
+          position: 'topright',
+          locateOptions: {
+            maxZoom: 16
+          },
+          drawCircle: true,
+          circleStyle:{
+            opacity: 0,
+            fillOpacity: 0
+          },
+          markerStyle: {
+            color: '#000',
+            weight: 20,
+            opacity: 0.6,
+            fillColor: 'white',
+            fillOpacity: 1,
+            clickable: false
+          }
         }),
           L.Control.geocoder({
             position: 'topright'
-//        }),
-//          L.Routing.control({
-//            position: 'bottomleft',              
-//              waypoints: [
-//                  L.latLng(55.607335, 13.008678)
-//              ],
-//              routeWhileDragging: true,
-//              geocoder: L.Control.Geocoder.nominatim()
           })
       ]
     }
-  }
-
-  // Due to a Chrome error when trying to get user location over HTTP (instead of HTTPS)
-  // on the staging server, this code will evaluate __env-variables to determine if auto discover of
-  // user location should be used or not
-  if (__env.USE_LOCATION) {
-    mapConfig.center.autoDiscover = true;
-  } else {
-    // If not using user location - default to Odd Hill coordinates in Malmö
-    userMarker = {
-      lat: 55.607335,
-      lng: 13.008678,
-      draggable: false,
-      icon: {
-        iconUrl: 'images/icons/you_marker.png',
-        iconSize: [24, 24], // size of the icon
-        iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
-      }
-    };
-    restaurantMarkers.push(userMarker);
   }
 
   // Adds the leaflet config object to $scope
@@ -95,29 +77,10 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
   //       MAP EVENT LISTENERS       //
   // ------------------------------- //
 
-  // Event listener for location found
-  // Draws a marker on map where location was found
-  $scope.$on('leafletDirectiveMap.locationfound', function(event) {
-    if (!userMarker) {
-      userMarker = {
-        lat: $scope.center.lat,
-        lng: $scope.center.lng,
-        draggable: false,
-        icon: {
-          iconUrl: 'images/icons/you_marker.png',
-          iconSize: [24, 24], // size of the icon
-          iconAnchor: [12, 0], // point of the icon which will correspond to marker's location
-        }
-      };
-      restaurantMarkers.push(userMarker);
-    } else {
-      userMarker.lat = $scope.center.lat;
-      userMarker.lng = $scope.center.lng;
-    }
-  });
-
   // Event listener for clicks on map
   $scope.$on('leafletDirectiveMap.click', function(event, args) {
+
+    // If CREATE_RESTAURANT-mode is active, create a marker where user clicks and send the data to createRestaurantService
     if ($scope.mode.active === 'CREATE_RESTAURANT') {
       if (!createRestaurantMarker) {
         createRestaurantMarker = {
@@ -150,25 +113,26 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       createRestaurantService.setClickedPosition(createRestaurantMarker);
       $scope.center.lat = args.leafletEvent.latlng.lat;
       $scope.center.lng = args.leafletEvent.latlng.lng;
-      modeService.setMode('DEFAULT');      
-      
+      modeService.setMode('DEFAULT');
+
     }
   });
+
+  // Update position of marker where user tries to create a restaurant when user drags it
   $scope.$on('leafletDirectiveMarker.dragend', function(e, args){
-        console.log(args);
-        if(args.model.id === "CREATE_RESTAURANT_MARKER"){
-            console.log(args.model.id);
-            console.log(args.model.lat);
-            console.log(args.model.lng);
-            createRestaurantMarker.lat = args.model.lat;
-            createRestaurantMarker.lng = args.model.lng;
-            $scope.center.lat = args.model.lat;
-            $scope.center.lng = args.model.lng;
-        }
-       });
+    if(args.model.id === "CREATE_RESTAURANT_MARKER"){
+        createRestaurantMarker.lat = args.model.lat;
+        createRestaurantMarker.lng = args.model.lng;
+        $scope.center.lat = args.model.lat;
+        $scope.center.lng = args.model.lng;
+    }
+  });
+
+  // Deletes createRestaurantMarker
   $scope.deleteMarker = function(){
       restaurantMarkers.pop(createRestaurantMarker);
   }
+
   // Event listener for clicks on markers - centers map on marker
   $scope.$on('leafletDirectiveMap.popupopen', function(event, args) {
     $scope.center.lat = args.leafletEvent.popup._latlng.lat;
@@ -246,6 +210,8 @@ app.controller('mapController', ['$scope', '$http', 'pollService', 'filterServic
       restaurants[restaurant.id] = attributes;
 
     }
+
+    console.log($scope);
   };
 
   //Ugly hack to decide marker type, TODO: redo to a leaflet solution

@@ -15,7 +15,7 @@
 
 
 
-
+/*CATEGORIES CHECKBOXES*/
 #category_checkboxes td{
     width:23%;
     float:left;
@@ -57,9 +57,11 @@ input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     padding:0;
 }
 
+/*CREATE RESTAURANT DIALOG*/
 .createRestaurantDialog{
     width:800px;
 }
+
 #createRestaurantPopup{
     background:#FAFAFA;
     margin:0 0 0 20px;
@@ -69,6 +71,7 @@ input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     text-align: center;
     z-index: 99;
 }
+/*CREATE RESTAURANT BUTTONS*/
 #createRestaurantPopup button{
     width: 120px;
     background:#00B8D4;
@@ -91,6 +94,7 @@ input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0 ,0.26);
 }
 
+/*CREATE RESTAURANT CONTENTS*/
 #left-content{
     width:65%;
     padding-left:5%;
@@ -100,21 +104,22 @@ input[type=checkbox]:checked + .createRestaurantCheckboxImg {
     width:30%;
     float:right;
 }
-#cafe_radio{
+/*CAFE CHECKBOX*/
+#cafe_check{
     padding:10px;
     font-size: 14px;
     line-height:14px;
 }
-#cafe_radio th{
+#cafe_check th{
     width:90%;
     float:left;
     padding:10px 0 10px 0;
 }
-#cafe_radio tr{
+#cafe_check tr{
     width:100%;
     float:left;
 }
-#cafe_radio td{
+#cafe_check td{
     width:100%;
     float:left;
 }
@@ -135,6 +140,7 @@ input[type=checkbox] + .addrestcheck:before{
   border-radius:2px;
 }
 
+/*OTHER FOOD CHECKBOX*/
 #othercheckbox{
     margin:5% 0 0 10%;
     width:90%;
@@ -143,6 +149,8 @@ input[type=checkbox] + .addrestcheck:before{
 #bottom{
     width:100%;
 }
+
+/*PLACE RESTAURANT BUTTON*/
 #placeMarker{
     background:#FAFAFA;
     color:#616161;
@@ -151,6 +159,7 @@ input[type=checkbox] + .addrestcheck:before{
     float:left;
     margin-left:10px;
 }
+/*SUBMIT RESTAURANT BUTTON*/
 #submitrestaurant{
     background-color: #00B8D4;
     color: #fafafa;
@@ -158,6 +167,7 @@ input[type=checkbox] + .addrestcheck:before{
     display:inline-block;
     float:right;
 }
+/*CANCEL CREATE RESTAURANT BUTTON*/
 #cancelCreateRestaurant{
     background-color: #ffffff;
     position:relative;
@@ -168,6 +178,8 @@ input[type=checkbox] + .addrestcheck:before{
     margin-right: 10px;
 }
 
+
+/*MEDIA QUERIES*/
 @media (max-width:1000px){
     #left-content, #right-content{
         width:95%;

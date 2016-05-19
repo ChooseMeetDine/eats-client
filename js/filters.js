@@ -1,3 +1,5 @@
+
+//Filter that returns all polls that are not yet expired
 app.filter('expired', function() {
     return function(polls) {
         var filtered = [];
@@ -13,7 +15,7 @@ app.filter('expired', function() {
     };
 });
 
-
+//Filter that returns all polls that are not yet expired, and those that exipred for up to an hour ago
 app.filter('activeAndRecentlyExpired', function() {
     return function(polls) {
         var filtered = [];
@@ -29,7 +31,7 @@ app.filter('activeAndRecentlyExpired', function() {
     };
 });
 
-
+//Filter that returns an array of integers in the range min to max, with increments based on the step-parameter
 app.filter('range', function() {
   return function(input, min, max, step) {
     min = parseInt(min); //Make string input int
