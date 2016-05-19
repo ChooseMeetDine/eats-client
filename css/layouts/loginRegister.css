@@ -38,18 +38,22 @@
 #login_button{
     min-width: 50%;
     background-color: #00B8D4;
+    margin-left: 24px;
 }
 
 #register_button{
     background-color: #00B8D4;
     min-width: 50%;
+    float: right;
+    margin-bottom: 5px;
 }
 
 #cancel_login-register{
     background-color: #ffffff;
     color: #616161;
-    float:left;
+    float:right;
     clear: both;
+    margin-right: 5px;
 
 }
 
@@ -57,6 +61,15 @@
     font-size: 2em;
 }
 
+.continueToPoll{
+    background-color: #fafafa;
+    float: left;
+}
+
+#continueButton{
+    margin-top: 0px;
+    background-color:#00B8D4;
+}
 @media (max-width:535px) { /* everythig except portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #register {
         float: left;

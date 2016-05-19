@@ -4,9 +4,6 @@
     <div class="md-toolbar-tools">
       <h2>Hur vill du fortsätta?</h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="cancel()">
-        <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-      </md-button>
     </div>
   </md-toolbar>
 
@@ -14,28 +11,15 @@
   <md-dialog-content style="max-width:800px;max-height:810px; ">
 
     <div ng-controller="continueToPollAs">
-
-      <md-content ng-if="isUserWithInvalidToken">
-        <md-dialog-actions layout="row">
-          Du är inte längre inloggad som {{username}}
-        </md-dialog-actions>
-      </md-content>
-
-      <md-content>
-        <md-dialog-actions layout="row">
-          <md-button ng-click="continueAsAnonymous()" class="md-raised">
-            Fortsätt som anonym
-          </md-button>
-        </md-dialog-actions>
-      </md-content>
-
-      <md-content ng-if="isLoggedInAsUser">
+    <!--
+    <md-content ng-if="isLoggedInAsUser" class="continueToPoll">
         <md-dialog-actions layout="row">
           <md-button ng-click="continueAsUser()" class="md-raised">
             Fortsätt som {{username}}
           </md-button>
         </md-dialog-actions>
       </md-content>
+     -->
     <!-- First tab wich includes the "login" page with input forms and logos -->
     <div id="login">
       <md-content id="login_form" class="md-padding">
@@ -51,10 +35,24 @@
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password">
           </md-input-container>
-
-          <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
           <p ng-if=loginStatus.error>Fel användarnamn eller lösenord</p>
         </form>
+        
+        <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
+          
+      <md-content ng-if="isUserWithInvalidToken" class="continueToPoll">
+        <md-dialog-actions layout="row">
+          Du är inte längre inloggad som {{username}}
+        </md-dialog-actions>
+      </md-content>
+
+      <md-content class="continueToPoll">
+        <md-dialog-actions layout="row">
+          <md-button id="continueButton" class="md-raised md-primary" ng-click="continueAsAnonymous()">
+            Fortsätt som anonym
+          </md-button>
+        </md-dialog-actions>
+      </md-content>
       </md-content>
     </div>
 
@@ -85,6 +83,9 @@
           <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
           <p ng-if="regStatus.error">Gick inte att registrera användaren.</p>
         </form>
+    <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
+      Avbryt
+    </md-button>
       </md-content>
     </div>
   </md-dialog-content>
@@ -92,8 +93,6 @@
 
   <!-- Cancel buttons for sending the form and closing the window-->
   <md-dialog-actions layout="row">
-    <md-button id="cancel_login-register" class="md-raised md-primary" ng-click="cancel()">
-      Avbryt
-    </md-button>
+
   </md-dialog-actions>
 </md-dialog>
