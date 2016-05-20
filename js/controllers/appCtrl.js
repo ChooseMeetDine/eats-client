@@ -6,18 +6,42 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
 
   $scope.parameterPollId = $location.search().poll // THIS THE THE POLL!
   $scope.tokenData = tokenService.getTokenData();
-
-  // Holds all functions for mdDialog to be able to change popups from other controllers
-  $scope.dialogs = {};
-
-  // Shows a popup (mdDialog) on the screen
-  //
-  // ev: $event-object, to make the popup animations move from where the user clicked
-  // id: string, the name of one of the popup templates in html/popups
-  // clickOutSideToClose: boolean, to control if popup should be allowed to close when clicking out side it
-  // clearActivePollOnCancel: boolean, that determines if the active poll should be cleared when
-  // this popup is cancelled or not. Clearing activePoll is done to remove the poll-URL-parameter,
-  // for example when closing an active poll popup, to make sure it wont be opened automaticly when the page is reloaded.
+    // Holds all functions for mdDialog to be able to change popups from other controllers
+    $scope.dialogs = {};
+    
+    //A quick check if user is new.
+    var firstTimer;
+    if(localStorage.getItem('jwtToken') === null){
+        firstTimer = true;
+    } else {firstTimer = false;}
+    //if user is new load in welcome screen styling
+    if(firstTimer){
+      $("<link/>", {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "css/layouts/welcomeDialog.css",
+      id: "welcomeStyling"
+      }).appendTo("head");
+      $("<link/>", {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "css/layouts/arrowBounce.css",
+      }).appendTo("head");
+    }
+    //function for removing welcome screen & styling.  
+    $scope.welcomeUser = function(){
+      $("#welcome").hide();
+      $("#welcomeStyling").attr("disabled", "disabled");   
+    };
+    $scope.firstTimeChecker = firstTimer; 
+    // Shows a popup (mdDialog) on the screen
+    // 
+    // ev: $event-object, to make the popup animations move from where the user clicked
+    // id: string, the name of one of the popup templates in html/popups
+    // clickOutSideToClose: boolean, to control if popup should be allowed to close when clicking out side it
+    // clearActivePollOnCancel: boolean, that determines if the active poll should be cleared when
+    // this popup is cancelled or not. Clearing activePoll is done to remove the poll-URL-parameter,
+    // for example when closing an active poll popup, to make sure it wont be opened automaticly when the page is reloaded.
   $scope.dialogs.showPopup = function(ev, id, clickOutsideToClose, clearActivePollOnCancel) {
     $mdDialog.show({
         controller: DialogController,

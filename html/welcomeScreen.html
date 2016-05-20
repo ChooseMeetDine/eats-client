@@ -1,0 +1,18 @@
+<div id="welcomeBackground">
+</div>
+<img id="welcomeLogo" src="images/welcomeLogo.png"/>
+<div id="welcomeContent">
+    <div id="welcomeTop">
+      <h1 id="welcomeHeader">Välkommen till <span id="eats">Eats!</span></h1>
+      <div id="logoBox">
+      </div>
+    <div id="main">
+        <p>Hitta restauranger och skapa omröstningar för vart dagens lunch eller middag ska vara med dina kollegor</p> 
+        <p>Ett enkelt men effektivt sätt att minska tid och uppror på kontor runt om i Sverige</p>
+    </div>
+    </div>
+    <div id="welcomeFooter">
+        <md-button  ng-click="dialogs.showPopup($event, 'login', true, false); welcomeUser()" id="welcomeLogin" class="md-raised" onclick="welcomeUser()">Logga in</md-button>
+        <md-button  ng-click="welcomeUser()" id="welcomeGuest" class="md-raised">Gäst</md-button>
+    </div>
+</div>

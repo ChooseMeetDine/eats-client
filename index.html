@@ -35,14 +35,11 @@
     <link rel="stylesheet" href="/js/geocoder/Control.Geocoder.css" />
     <script src="/js/geocoder/Control.Geocoder.js"></script>
 
-
-<!--   Vägbeskrivning
+    <!-- Vägbeskrivning
 
     <link rel="stylesheet" href="/js/routing/leaflet-routing-machine.css" />
     <script src="/js/routing/leaflet-routing-machine.js"></script>
--->
-
-
+    -->
 
     <!-- Angular Leaflet Directive -->
     <script src="libs/angular-leaflet-directive.min.js"></script>
@@ -74,9 +71,7 @@
 
     <!-- AngularJS App & Controllers & Views -->
     <script src="js/app.js"></script>
-
     <script src="js/directives/fallbackSrc.js"></script>
-
     <script src="js/env.js"></script>
 
     <script src="js/controllers/appCtrl.js"></script>
@@ -102,7 +97,6 @@
     <script src="js/api/addUser.js"></script>
     <script src="js/api/loginUser.js"></script>
     <script src="js/api/getUserId.js"></script>
-
     <script src="js/filters.js"></script>
     
     <!--easter-egg-->
@@ -118,13 +112,20 @@
     <link rel="stylesheet" type="text/css" href="css/other/animate.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/profilePage.css">
     <link rel="stylesheet" type="text/css" href="css/layouts/createRestaurant.css">
+    <link rel="stylesheet" type="text/css" href="css/layouts/popup.css">
   </head>
-  <link rel="stylesheet" type="text/css" href="css/layouts/popup.css">
 
   <body ng-controller="appCtrl" ng-app="app">
+      <!-- welcome screen for first time users -->
+      <div id="welcome" ng-if="firstTimeChecker" ng-include="'html/welcomeScreen.html'">
+      </div>
+      <div ng-if="firstTimeChecker">
+        <div class="arrow bounce"></div>
+      </div>
+      
     <div ng-if="!tokenData.valid" layout="row" layout-sm="column" layout-align="space-around">
       <md-progress-linear md-diameter="150" md-mode="determinate"></md-progress-linear>
-    </div>
+      </div>
     <div ng-if="tokenData.valid">
       <div ng-controller="slideMenu" class="menu" ng-include="'html/sidemenu.html'"></div>
       <!-- Create poll button -->
