@@ -11,10 +11,16 @@
     opacity: 0.6;
 }
 
+#welcomeLogo{
+    position: absolute;
+    z-index: 999;
+    right:14%;
+    top: -70px;
+}
 
 #welcomeContent{
     position: absolute;
-    z-index: 999;
+    z-index: 998;
     background-color: #FFF;
     top: 50%;
     left: 50%;
@@ -88,8 +94,25 @@
     display: none;
 }
 
+.leaflet-control-geocoder{
+    display: none;
+}
 
 /* MEDIA QUERYS FOR DIFFERENT SCREEN SIZES */
+
+@media (max-width:1400px){
+ #welcomeLogo{
+    right:1%;
+   }
+}
+
+@media (max-width:1000px){
+ #welcomeLogo{
+    right:-100px;
+   }
+}
+
+
 @media (max-width:900px){
     #welcomeFooter{
         width: 80%;

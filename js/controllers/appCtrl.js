@@ -15,7 +15,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
         firstTimer = true;
     } else {firstTimer = false;}
     //if user is new load in welcome screen styling
-    if(firstTimer){
+    if(true){
       $("<link/>", {
       rel: "stylesheet",
       type: "text/css",
@@ -33,7 +33,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       $("#welcome").hide();
       $("#welcomeStyling").attr("disabled", "disabled");   
     };
-    $scope.firstTimeChecker = firstTimer;
+    $scope.firstTimeChecker = true; //CHANGE THIS TO firstTimer !!! <<<<
     // Shows a popup (mdDialog) on the screen
     // 
     // ev: $event-object, to make the popup animations move from where the user clicked
