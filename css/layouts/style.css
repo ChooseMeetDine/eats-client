@@ -295,7 +295,13 @@ box-shadow: 1px 2px 5px 0 rgba(0,0,0,.26);
 /*Show me where I am icon*/
 .leaflet-control-locate a {
   padding: 2px;
+  color: #404040;
 }
+
+.leaflet-control-locate a:focus {
+  color: #404040;
+}
+
 .leaflet-control-locate.active a {
   color: #FC8428;
 }
