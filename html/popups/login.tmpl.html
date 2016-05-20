@@ -18,7 +18,7 @@
             <md-icon md-svg-src="images/icons/ic_email_24px.svg"></md-icon>
             <input ng-model="email" type="email" name="email" required>
             <div ng-messages="login.email.$error" ng-if="login.email.$dirty">
-              <div ng-message="required">Vi vill ha en mejladress.</div>
+              <div ng-message="required">Logga in med din mejl.</div>
             </div>
           </md-input-container>
           <md-input-container id="loginpassword">
@@ -27,8 +27,8 @@
             <md-icon md-svg-src="images/icons/lock.svg"></md-icon>
             <input ng-model="password" type="password" name="password" minlength="6" required>
             <div ng-messages="login.password.$error" ng-if="login.password.$dirty">
-              <div ng-message="required">Ange det som du skrev vid registreringen.</div>
-              <div ng-message="minlength">Ditt lösenord är inte så långt!</div>
+              <div ng-message="required">Ange det rätta lösenordet.</div>
+              <div ng-message="minlength">Nä, ditt lösenord är inte så långt!</div>
             </div>  
           </md-input-container>
           <md-button id="login_button" class="md-raised md-primary" type="submit"> Logga in </md-button>
@@ -67,12 +67,12 @@
             <input ng-model="password" type="password" name="password" minlength="6" required>
              <div ng-messages="register.password.$error" ng-if="register.password.$dirty">
               <div ng-message="required">Ange ett bra löserord.</div>
-              <div ng-message="minlength">Nä, längre än så.</div>
+              <div ng-message="minlength">Det måste vara längre än så.</div>
             </div>
           </md-input-container>
     
           <md-button id="register_button" class="md-raised md-primary" type="submit"> Registrera </md-button>
-          <p ng-if="regStatus.error">Det gick inte att registrera användaren. Försök igen!</p>
+          <p ng-if="regStatus.error">Nehe, vi kunde inte registrera dig. Försök igen!</p>
         </form>
       </md-content>
     </div>
