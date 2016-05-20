@@ -8,8 +8,10 @@ app.controller('createRestaurant', ['$scope', '$http', '$window', 'modeService',
   $scope.getLocationOnMap = function() {
     modeService.setMode('CREATE_RESTAURANT');
   };
-
-  $scope.form.data.rating = 1;
+  
+  if(!$scope.form.data.rating){
+    $scope.form.data.rating = 1;
+    } 
 
   //Register the restaurant in the eats-API
   $scope.regRest = function() {
