@@ -6,7 +6,7 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';    
-  
+
   /**
    * 1. Creates POST-body
    * 2. Sends post request to API
