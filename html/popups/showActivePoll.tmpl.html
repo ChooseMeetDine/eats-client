@@ -8,14 +8,14 @@
         </md-button>
 
         <p id="poll-dialog-timeEnds" ng-hide="active.raw.data.hasExpired">
-          [ Kl. {{active.raw.data.attributes.expires | date: 'HH:mm'}} ]</p>
+          [ kl. {{active.raw.data.attributes.expires | date: 'HH:mm'}} ]</p>
         <p id="poll-dialog-timeEnds" ng-show="active.raw.data.hasExpired">Omröstningen är avslutad</p>
 
         <h1 id="poll-dialog-name">{{active.raw.data.attributes.name}}</h1>
 
       </div>
       <div id="poll-dialog-restaurants">
-        <h3 id="rest-text">Restauranger:</h3> <br>
+        <h3 id="rest-text">Restauranger/caféer</h3> <br>
         <div ng-repeat="restaurant in active.cleaned.restaurants | orderBy:'-votes.length'" ng-click="restaurant.userVotedOnThisRestaurant || vote(restaurant.id)" class="poll-dialog-vote-object" ng-class="{ 'poll-dialoge-vote-object-has-vote' : restaurant.userVotedOnThisRestaurant, 'poll-dialoge-vote-object-has-won': restaurant.winner, 'no-pointer': (active.raw.data.hasExpired || active.cleaned.userHasVoted || !active.cleaned.userIsParticipantInPoll)}">
 
               <i ng-if="!restaurant.winner" ng-class="{'hide-keep-space':active.cleaned.userHasVoted}" class="material-icons md-24 thumb">thumb_up</i>
