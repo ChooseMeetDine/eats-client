@@ -11,13 +11,19 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';    
-  if(minute < 10 || hour < 10){
-    $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : '0' + String(hour); //initialize values if not set
+  console.log(minute);
+    console.log(hour);
+  if(minute <= 5){
     $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : '0' + String(minute); //initialize values if not set
   }else{
-      $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : String(hour); //initialize values if not set
       $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : String(minute); //initialize values if not set
   }
+  if(hour < 10){
+      $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : '0' + String(hour); //initialize values if not set
+  }else{
+      $scope.form.data.hour = $scope.form.data.hour ? $scope.form.data.hour : String(hour); //initialize values if not set
+  }
+      
 
 
   /**
