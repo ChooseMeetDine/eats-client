@@ -9,18 +9,6 @@ app.controller('addRestaurantsToPoll', ['$scope', 'pollService', 'modeService', 
     pollService.removeRestaurantFromForm($chip);
   };
 
-  //Add restaurant
-  $scope.add = function() {
-    pollService.addRestaurantToForm({
-      data: {
-        id: 12,
-        attributes: {
-          name: 'Whopii'
-        }
-      }
-    })
-  }
-
   //Switch back to default mode,
   $scope.switchToDefaultMode = function() {
     modeService.setMode('DEFAULT');
