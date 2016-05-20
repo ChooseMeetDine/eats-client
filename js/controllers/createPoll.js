@@ -11,8 +11,6 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
   $scope.form = pollService.getForm();
   $scope.loading = false;
   $scope.error = '';    
-  console.log(minute);
-    console.log(hour);
   if(minute <= 5){
     $scope.form.data.minute = $scope.form.data.minute ? $scope.form.data.minute : '0' + String(minute); //initialize values if not set
   }else{
