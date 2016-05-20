@@ -86,7 +86,7 @@
 
           </div>
         </form>
-          <div id="dialogError" ng-show="error">Hoppsan! Glömde du att ange namn, förslag på plats eller angav du en märklig sluttid? Omröstningen måste avslutas senare än kl. {{hour}}:{{minute}}.</div>
+          <div id="dialogError" ng-show="error">Hoppsan! Glömde du att ange namn, förslag på plats eller angav du en märklig sluttid? Omröstningen måste avslutas senare än kl. {{getCurrentTime() | date:'HH:mm'}}.</div>
       </div>
     </md-dialog-content>
 

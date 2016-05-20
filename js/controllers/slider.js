@@ -5,7 +5,7 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
     $scope.toggleMainMenu = buildToggler('main');
     $scope.toggleFilterMenu = buildToggler('filter');
     $scope.toggleMoreInfoMenu = buildToggler('info');
-    $scope.toggleAddRestaurant = addRestaurantToggler();
+    $scope.closeMenu = closeMenu();
 
     $scope.createInfoScopes = function(restaurant){
       $scope.restaurant = restaurant;
@@ -28,7 +28,7 @@ app.controller('slideMenu', function ($scope, $mdSidenav) {
       }
     }
 
-    function addRestaurantToggler() {
+    function closeMenu() {
         return function() {
             $mdSidenav('main').close();
         }
