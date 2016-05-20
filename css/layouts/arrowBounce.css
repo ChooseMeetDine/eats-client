@@ -1,3 +1,9 @@
+/* ***************************** */
+/* Creates a bouncing arrow in SVG that is placed above create poll icon */ 
+/* To give user a hint to press that icon */
+/* ****************************** */
+
+/* Arrow icon and position */
 .arrow {
   position: fixed;
   z-index: 800;
@@ -50,6 +56,7 @@
     -o-transform: translateY(-15px);
     transform: translateY(-15px); } }
 
+/* Query for different screen sizes, arrow always placed above icon */
 @media (max-width:1650px) {
     .arrow {
         right: 55px;

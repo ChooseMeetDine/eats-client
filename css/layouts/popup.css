@@ -1,4 +1,4 @@
-/*POPUP WINDOW*/
+/*POPUP WINDOW ON A MAP MARKER*/
 .leaflet-popup{
     margin-bottom: 45px;
 }
@@ -192,8 +192,6 @@
     max-width: 70%;
     text-align: left;
     font-weight: bold;
-        
-
 }
     
 #rating{

@@ -14,8 +14,8 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
     if(localStorage.getItem('jwtToken') === null){
         firstTimer = true;
     } else {firstTimer = false;}
-    //if user is new load in welcome screen styling
-    if(true){
+    //if user is new load in welcome screen & styling
+    if(firstTimer){
       $("<link/>", {
       rel: "stylesheet",
       type: "text/css",
@@ -33,7 +33,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       $("#welcome").hide();
       $("#welcomeStyling").attr("disabled", "disabled");   
     };
-    $scope.firstTimeChecker = true; //CHANGE THIS TO firstTimer !!! <<<<
+    $scope.firstTimeChecker = firstTimer; //CHANGE THIS TO firstTimer !!! <<<<
     // Shows a popup (mdDialog) on the screen
     // 
     // ev: $event-object, to make the popup animations move from where the user clicked

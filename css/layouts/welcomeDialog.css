@@ -1,4 +1,6 @@
-/* Styling for the welcome Screen - first time users*/
+/* ******************** */
+/*Styling for the welcome Screen - first time users*/
+/* ******************** */
 
 /*Dialog wrapper*/
 #welcomeBackground{
@@ -11,13 +13,14 @@
     opacity: 0.6;
 }
 
+/* Eats logo */
 #welcomeLogo{
     position: absolute;
     z-index: 999;
     right:14%;
     top: -70px;
 }
-
+/*container for welcome dialog*/
 #welcomeContent{
     position: absolute;
     z-index: 998;
@@ -36,7 +39,6 @@
 #welcomeContent:hover{
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
-
 
 #welcomeHeader{
     text-align: center;
@@ -68,7 +70,7 @@
     padding: 20px 12px 20px 12px;
     width: 120px;
 }
-
+/*Continue buttons Login & Guest*/
 #welcomeLogin{
     float:left;
 }
@@ -81,6 +83,7 @@
     background-color: #00B8D4;
 }
 
+/* Styling of map & interface elements during welcomme screen */
 .leaflet-tile, .leaflet-marker-icon, .leaflet-bar, #menubuttons{
     -webkit-filter: blur(10px);
     filter: blur(10px);
@@ -99,7 +102,6 @@
 }
 
 /* MEDIA QUERYS FOR DIFFERENT SCREEN SIZES */
-
 @media (max-width:1400px){
  #welcomeLogo{
     right:1%;
@@ -111,7 +113,6 @@
     right:-100px;
    }
 }
-
 
 @media (max-width:900px){
     #welcomeFooter{

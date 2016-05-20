@@ -8,4 +8,4 @@ console.log('%c\n    _/_/_/_/    _/_/    _/_/_/_/_/    _/_/_/\n'+
            '  _/_/_/    _/_/_/_/      _/        _/_/\n'+       
           ' _/        _/    _/      _/            _/\n'+   
         '_/_/_/_/  _/    _/      _/      _/_/_/\n  ', consoleCss);
-console.log('%c > Eats är en betatjänst skapad av: \n > Amanda, Andreas, David, Elias, Gustav,\n > Jenny, Marcus, Musse, Natalia och Patrik', consoleCss);
+console.log('%c > Eats är en betatjänst skapad av: \n > Amanda, Andreas, David, Elias, Gustav,\n > Jenny, Marcus, Musse, Natalia och Patrik Beijar', consoleCss);
