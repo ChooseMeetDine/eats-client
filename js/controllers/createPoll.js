@@ -5,7 +5,7 @@
 app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '__env', function($scope, $http, pollService, modeService, __env) {
   $scope.form = pollService.getForm();
   $scope.loading = false;
-  $scope.error = '';    
+  $scope.error = '';
 
   /**
    * 1. Creates POST-body
@@ -100,8 +100,13 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
 
   var initializeFormTime = function(){
       $scope.form.data.hour = new Date().getHours();
-      $scope.form.data.minute = 5 * Math.ceil( new Date().getMinutes() / 5 );
-      
+      var nextFiveMinute = 5 * Math.ceil( new Date().getMinutes() / 5 );
+      if(nextFiveMinute === 60){
+        nextFiveMinute = 0;
+        $scope.form.data.hour++;
+      }
+      $scope.form.data.minute = nextFiveMinute;
+
       // Add zero for single digit minutes
       if($scope.form.data.minute < 10) {
         $scope.form.data.minute = '0' + String($scope.form.data.minute); //initialize values if not set
@@ -109,14 +114,14 @@ app.controller('createPoll', ['$scope', '$http', 'pollService', 'modeService', '
           $scope.form.data.minute = String($scope.form.data.minute); //initialize values if not set
       }
 
-      // Add zero for single digit hours 
+      // Add zero for single digit hours
       if($scope.form.data.hour < 10) {
         $scope.form.data.hour = '0' + String($scope.form.data.hour); //initialize values if not set
       } else {
         $scope.form.data.hour = String($scope.form.data.hour); //initialize values if not set
       }
   };
-  
+
   // Initilize time in form if it's not already done
   if(!$scope.form.data.hour) {
     initializeFormTime();
