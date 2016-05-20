@@ -10,7 +10,7 @@
             <h1 class="md-toolbar-tools">Eats</h1>
         </span>
     </md-toolbar>
-    
+
     <!-- Main menu content -->
     <md-content id="main-meny-nav" ng-controller="mainMenu" layout-padding>
         <md-list ng-cloak layout-padding>
@@ -21,11 +21,11 @@
             </md-list-item>
 
             <!-- Menu section create new poll and add restaurant -->
-            <md-list-item ng-click="dialogs.showPopup($event, 'createpoll', true, false)">
+            <md-list-item ng-click="closeMenu(); dialogs.showPopup($event, 'createpoll', true, false)">
                 <p>Skapa ny omröstning</p>
                 <i class="material-icons">add</i>
             </md-list-item>
-            <md-list-item id="addRestaurantButton" ng-click="toggleAddRestaurant(); dialogs.showPopup($event, 'createRestaurant', true, false);">
+            <md-list-item id="addRestaurantButton" ng-click="closeMenu(); dialogs.showPopup($event, 'createRestaurant', true, false);">
                 <p>Lägg till restaurang eller café</p>
                 <i class="material-icons">add</i>
             </md-list-item>
@@ -38,13 +38,13 @@
             <md-button ng-if="isUserWithValidToken" class="login md-raised" ng-click="logoutUser()">
                 Logga ut
             </md-button>
-            
+
             <md-list-item id="linkAndLogo" ng-click="">
                 <p><a href="http://128.199.48.244:7000/" target="_blank">API dokumentation</a></p>
                 <br>
-                <img src="/images/logo_white.png" id="logoEats" title="EATS logotype"/> 
+                <img src="/images/logo_white.png" id="logoEats" title="EATS logotype"/>
             </md-list-item>
-            
+
         </md-list>
     </md-content>
 </md-sidenav>

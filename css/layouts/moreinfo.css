@@ -58,6 +58,8 @@ md-list-item{
     position:relative;
     padding: 20px 20px 20px 20px;
     float:left;
+    font-size: 1em;
+    line-height: 1.5;
 }
 
 #moreInfoMenu{

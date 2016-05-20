@@ -33,7 +33,7 @@ app.controller('appCtrl', ['$http', '$window', '$scope', '$mdDialog', '$mdMedia'
       $("#welcome").hide();
       $("#welcomeStyling").attr("disabled", "disabled");   
     };
-    $scope.firstTimeChecker = firstTimer; //CHANGE THIS TO firstTimer !!! <<<<
+    $scope.firstTimeChecker = firstTimer; 
     // Shows a popup (mdDialog) on the screen
     // 
     // ev: $event-object, to make the popup animations move from where the user clicked
